@@ -199,7 +199,8 @@
     .mini-stats small { color: var(--muted); font-size: 10px; }
 
     /* Sections & Cards */
-    section { padding: 54px 0; }
+    section { padding: 54px 0; border-top: 1px solid #16202e; }
+    .hero { border-top: none; }
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -221,6 +222,27 @@
       letter-spacing: -1px;
     }
     .section-head p { color: var(--muted); max-width: 470px; margin: 0; font-size: 14px; }
+    
+    /* Markets Section Styles */
+    .market-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .market-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .market-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .market-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .market-symbol { font-weight: 800; font-size: 16px; letter-spacing: 0.5px; }
+    .market-badge { font-size: 11px; color: var(--muted); background: #182333; padding: 3px 8px; border-radius: 6px; }
+    .market-price { font-size: 24px; font-weight: 850; margin-bottom: 4px; }
+    .market-change { font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+    .market-sublist { display: none; }
+    .market-sublist.active { display: grid; }
+
     .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
     .filter {
       border: 1px solid var(--line);
@@ -241,15 +263,17 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    .card-body { padding: 19px; }
+    .card-body { padding: 19px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .thumb {
-      height: 150px;
+      height: 130px;
       background: linear-gradient(135deg, #123a32, #122033);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 45px;
+      font-size: 40px;
       position: relative;
     }
     .thumb:after {
@@ -268,10 +292,10 @@
     }
     .card h3 { font-size: 18px; line-height: 1.3; margin: 8px 0; }
     .card p { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
-    .meta { display: flex; justify-content: space-between; color: #77899e; font-size: 11px; }
+    .meta { display: flex; justify-content: space-between; color: #77899e; font-size: 11px; padding-top: 10px; border-top: 1px solid #1b2636; }
     .feature { grid-column: span 2; display: grid; grid-template-columns: .8fr 1.2fr; }
     .feature .thumb { height: 100%; min-height: 220px; }
-    .feature h3 { font-size: 23px; }
+    .feature h3 { font-size: 22px; }
 
     /* Live News & Economic Calendar Widget Container */
     .feed-grid {
@@ -285,15 +309,16 @@
       border-radius: var(--radius);
       padding: 16px;
       overflow: hidden;
+      min-height: 440px;
     }
     .verified-list { display: grid; gap: 12px; }
     .verified-item {
       background: #0b121c;
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 14px;
+      padding: 16px;
     }
-    .verified-item h4 { margin: 4px 0 6px; font-size: 15px; }
+    .verified-item h4 { margin: 6px 0; font-size: 15px; }
     .verified-item p { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
     .verified-badge {
       display: inline-flex;
@@ -310,7 +335,19 @@
 
     /* Hardware Security & Affiliate */
     .wallet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .wallet { padding: 22px; display: flex; gap: 17px; align-items: flex-start; }
+    .wallet {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      gap: 17px;
+      align-items: flex-start;
+    }
+    .wallet.featured-wallet {
+      border-color: #00d08475;
+      box-shadow: 0 12px 35px #00d08412;
+    }
     .wallet-icon {
       width: 54px;
       height: 54px;
@@ -321,8 +358,8 @@
       place-items: center;
       font-size: 27px;
     }
-    .wallet h3 { margin: 0 0 5px; }
-    .wallet p { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+    .wallet h3 { margin: 0 0 5px; font-size: 18px; }
+    .wallet p { margin: 0 0 14px; color: var(--muted); font-size: 13px; }
     .disclosure {
       border: 1px solid #6c592b;
       background: #f4c66a0d;
@@ -335,31 +372,29 @@
 
     /* Video Desk */
     .video-panel { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; align-items: stretch; }
-    .video-embed-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
-      overflow: hidden;
+    .video-card {
+      background: var(--panel);
       border: 1px solid var(--line);
-      background: #060a10;
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .video-embed-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+    .video-placeholder {
+      background: linear-gradient(145deg, #102422, #0d1522);
+      border: 1px solid #243846;
+      border-radius: var(--radius);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
     }
 
-    /* Membership & Newsletter */
-    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .plan { padding: 22px; }
-    .plan .price { font-size: 30px; font-weight: 850; margin: 10px 0; }
-    .plan .price small { font-size: 12px; color: var(--muted); font-weight: 500; }
-    .plan ul { padding-left: 18px; color: var(--muted); font-size: 13px; }
-    .plan li { margin: 7px 0; }
-    .plan.featured { border-color: #00d08480; box-shadow: 0 0 0 1px #00d08420; }
+    /* Checklist & Newsletter */
     .newsletter {
       background: linear-gradient(120deg, #102b28, #111d2b);
       border: 1px solid #245446;
@@ -403,7 +438,7 @@
     }
     .admin-overlay.open { display: block; }
     .admin-shell {
-      max-width: 1120px;
+      max-width: 900px;
       margin: 20px auto;
       background: #0c131e;
       border: 1px solid #29394a;
@@ -418,76 +453,16 @@
       align-items: center;
       gap: 12px;
     }
-    .admin-main { display: grid; grid-template-columns: 210px 1fr; min-height: 650px; }
-    .sidebar {
-      padding: 18px;
-      border-right: 1px solid var(--line);
-      background: #0a111a;
-    }
-    .side-link {
-      display: block;
-      padding: 10px 12px;
-      border-radius: 9px;
-      color: var(--muted);
-      font-size: 13px;
-      margin: 4px 0;
-      cursor: pointer;
-    }
-    .side-link.active, .side-link:hover { background: #00d08417; color: var(--green); }
     .admin-content { padding: 24px; }
-    .admin-content h2 { margin: 0 0 4px; }
-    .admin-content > p { color: var(--muted); font-size: 13px; margin-top: 0; }
-    .admin-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
-    .admin-stat {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      padding: 15px;
-      border-radius: 13px;
-    }
-    .admin-stat small { color: var(--muted); }
-    .admin-stat b { display: block; font-size: 23px; }
-    .admin-box {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 17px;
-      margin: 14px 0;
-    }
-    .admin-box h3 { margin: 0 0 12px; font-size: 16px; }
-    .field { margin: 11px 0; }
+    .field { margin: 12px 0; }
     .field label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
-    .row { display: flex; gap: 10px; }
-    .row > * { flex: 1; }
-    .notice {
-      background: #f4c66a12;
-      border: 1px solid #6c592b;
-      color: #d9c58e;
-      border-radius: 10px;
-      padding: 11px;
-      font-size: 12px;
-      margin: 12px 0;
-    }
-    .success { color: var(--green); font-size: 12px; }
-    .admin-page { display: none; }
-    .admin-page.active { display: block; }
-    .content-list { display: grid; gap: 9px; }
-    .content-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      background: #0b121c;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      font-size: 13px;
-    }
-    .content-item small { display: block; color: var(--muted); }
     .tiny { font-size: 11px; color: var(--muted); }
-    .file-preview { max-width: 100%; max-height: 220px; border-radius: 12px; margin-top: 12px; display: none; }
     .hidden { display: none !important; }
 
     /* Responsive Breakpoints */
+    @media(max-width: 960px) {
+      .market-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media(max-width: 860px) {
       .navlinks { display: none; }
       .navlinks.show {
@@ -506,19 +481,8 @@
       .signal-card { max-width: 500px; }
       .grid { grid-template-columns: repeat(2, 1fr); }
       .feature { grid-column: span 2; }
-      .plans { grid-template-columns: 1fr; }
       .newsletter { display: block; }
       .newsletter form { margin-top: 16px; }
-      .admin-main { grid-template-columns: 1fr; }
-      .sidebar {
-        display: flex;
-        overflow: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-        gap: 5px;
-      }
-      .side-link { white-space: nowrap; }
-      .admin-cards { grid-template-columns: 1fr 1fr; }
     }
     @media(max-width: 560px) {
       .nav { min-height: 66px; }
@@ -527,17 +491,12 @@
       .hero { padding: 52px 0 35px; }
       h1 { letter-spacing: -1.6px; }
       .lead { font-size: 16px; }
-      .grid, .wallet-grid { grid-template-columns: 1fr; }
+      .grid, .wallet-grid, .market-grid { grid-template-columns: 1fr; }
       .feature { grid-column: auto; display: block; }
-      .feature .thumb { min-height: 150px; }
+      .feature .thumb { min-height: 130px; }
       .section-head { display: block; }
       .section-head p { margin-top: 10px; }
       .newsletter form { display: grid; }
-      .admin-overlay { padding: 7px; }
-      .admin-shell { margin: 5px auto; }
-      .admin-content { padding: 15px; }
-      .row { display: block; }
-      .row > * { margin: 5px 0; }
     }
   </style>
 </head>
@@ -566,11 +525,11 @@
         <span>CURATE <small>EDUCATION</small></span>
       </a>
       <nav class="navlinks">
+        <a href="#markets">Markets 📉📈</a>
         <a href="#briefs">Briefs</a>
-        <a href="#forex-news">Verified News</a>
-        <a href="#videos">Videos</a>
+        <a href="#forex-news">Live Calendar</a>
         <a href="#wallets">Security</a>
-        <a href="#membership">Membership</a>
+        <a href="#videos">Video Desk</a>
       </nav>
       <div class="actions">
         <a class="btn" href="#learn">Free checklist</a>
@@ -589,8 +548,8 @@
           <h1>Less noise.<br><span>More signal.</span></h1>
           <p class="lead">Navigate digital assets and global currency markets with clearer explanations, verified economic updates, and practical security guidance — without hype or unrealistic promises.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#briefs">Explore curated briefs ↗</a>
-            <a class="btn" href="#forex-news">Live Market Calendar</a>
+            <a class="btn primary" href="#markets">View Live Markets 📉📈</a>
+            <a class="btn" href="#briefs">Explore briefs ↗</a>
           </div>
           <p class="hero-note">Educational content only. Not financial, investment, legal, or tax advice.</p>
         </div>
@@ -613,14 +572,37 @@
       </div>
     </section>
 
-    <!-- Curated Briefs Grid -->
-    <section id="briefs">
+    <!-- Markets 📉📈 Section -->
+    <section id="markets">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="kicker">The latest selection</div>
-            <h2>Curated market briefs</h2>
+            <div class="kicker">Real-Time Overview</div>
+            <h2>Markets 📉📈</h2>
           </div>
-          <p>Short, plain-language explainers across crypto and macro forex. Filter by category below.</p>
+          <p>Track key digital assets, major currency pairs, and global commodities benchmarks at a glance.</p>
         </div>
- 
+
+        <div class="market-tabs">
+          <button class="filter active" onclick="switchMarket('crypto', this)">Crypto Assets</button>
+          <button class="filter" onclick="switchMarket('forex', this)">Forex Majors</button>
+          <button class="filter" onclick="switchMarket('commodities', this)">Commodities</button>
+        </div>
+
+        <!-- Crypto Market Cards -->
+        <div class="market-grid market-sublist active" id="market-crypto">
+          <div class="market-card">
+            <div>
+              <div class="market-card-top"><span class="market-symbol">BTC/USD</span><span class="market-badge">Crypto</span></div>
+              <div class="market-price">$91,420</div>
+            </div>
+            <div class="market-change up"><span>📈</span> +2.45% (24h)</div>
+          </div>
+          <div class="market-card">
+            <div>
+              <div class="market-card-top"><span class="market-symbol">ETH/USD</span><span class="market-badge">Crypto</span></div>
+              <div class="market-price">$3,385</div>
+            </div>
+            <div class="market-change up"><span>📈</span> +1.82% (24h)</div>
+          </div>
+    
