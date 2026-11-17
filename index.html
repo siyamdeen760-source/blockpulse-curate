@@ -1,363 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlockPulse Curate | Vetted Crypto Intelligence</title>
-    <style>
-        :root {
-            --bg-dark: #090d16;
-            --surface-dark: #111722;
-            --surface-pill: #1b2230;
-            --border-subtle: #1e2736;
-            --emerald: #00c471;
-            --emerald-dark: #07291f;
-            --emerald-border: #0e4a38;
-            --text-primary: #ffffff;
-            --text-secondary: #9ca3af;
-            --danger: #f87171;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d16">
+  <meta name="description" content="BlockPulse Curate — clear, carefully selected crypto and forex education, market explainers, and digital-asset security resources.">
+  <title>BlockPulse Curate | Clear Crypto &amp; Forex Education</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --panel: #111722;
+      --panel2: #151e2b;
+      --pill: #1b2837;
+      --line: #263344;
+      --green: #00d084;
+      --green2: #00a96b;
+      --white: #f5f8fc;
+      --muted: #9aa9bb;
+      --red: #ff7777;
+      --gold: #f4c66a;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(1120px, 92%); margin: auto; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-        }
+    /* Top Ticker */
+    .ticker {
+      background: #060a10;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .ticker-in {
+      display: flex;
+      gap: 28px;
+      padding: 9px 4%;
+      width: max-content;
+    }
+    .up { color: var(--green); }
+    .down { color: var(--red); }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.55;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(9, 13, 22, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      letter-spacing: -.5px;
+      font-size: 19px;
+    }
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #00e59a, #08734e);
+      display: grid;
+      place-items: center;
+      color: #04140e;
+      font-weight: 950;
+      font-size: 19px;
+      box-shadow: 0 8px 25px #00d08424;
+    }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .navlinks a:hover { color: var(--green); }
+    .actions { display: flex; gap: 9px; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel2);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .btn.primary {
+      background: var(--green);
+      color: #04140e;
+      border-color: var(--green);
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+    .menu { display: none; }
 
-        /* Top Market Pulse Bar */
-        .ticker-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 16px;
-            background-color: #070a12;
-            border-bottom: 1px solid var(--border-subtle);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            overflow-x: auto;
-            white-space: nowrap;
-            gap: 14px;
-        }
+    /* Hero Section */
+    .hero {
+      padding: 76px 0 58px;
+      background: radial-gradient(ellipse at 80% 10%, #00d08419, transparent 36%), radial-gradient(ellipse at 5% 55%, #1266a51c, transparent 34%);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #00d08455;
+      background: #00d08410;
+      color: var(--green);
+      padding: 6px 11px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--green);
+    }
+    h1 {
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.05;
+      letter-spacing: -2.7px;
+      max-width: 760px;
+      margin: 20px 0;
+    }
+    h1 span { color: var(--green); }
+    .lead { max-width: 650px; color: var(--muted); font-size: 18px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-note { font-size: 12px; color: var(--muted); margin-top: 20px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 35px;
+      align-items: center;
+    }
+    .signal-card {
+      background: linear-gradient(145deg, #172334, #0e1723);
+      border: 1px solid #2a3b4d;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 24px 70px #0005;
+    }
+    .signal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .signal-score { font-size: 36px; font-weight: 850; margin: 12px 0 0; }
+    .signal-score span { color: var(--green); font-size: 14px; }
+    .bars { display: grid; gap: 10px; margin: 18px 0; }
+    .bar { height: 7px; background: #263546; border-radius: 20px; overflow: hidden; }
+    .bar i {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      background: linear-gradient(90deg, #00a96b, #00e59a);
+      border-radius: 20px;
+    }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .mini-stats div { background: #0a111b; padding: 12px; border-radius: 12px; }
+    .mini-stats b { display: block; font-size: 17px; }
+    .mini-stats small { color: var(--muted); font-size: 10px; }
 
-        .pulse-label {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            color: var(--emerald);
-            line-height: 1.15;
-        }
+    /* Sections & Cards */
+    section { padding: 54px 0; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 23px;
+    }
+    .kicker {
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: 1.6px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+    .section-head h2 {
+      font-size: clamp(25px, 4vw, 36px);
+      line-height: 1.15;
+      margin: 7px 0 0;
+      letter-spacing: -1px;
+    }
+    .section-head p { color: var(--muted); max-width: 470px; margin: 0; font-size: 14px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
+    .filter {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      padding: 8px 13px;
+      border-radius: 30px;
+      font-size: 12px;
+    }
+    .filter.active, .filter:hover {
+      background: #00d08418;
+      border-color: #00d08470;
+      color: var(--green);
+    }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .card-body { padding: 19px; }
+    .thumb {
+      height: 150px;
+      background: linear-gradient(135deg, #123a32, #122033);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      position: relative;
+    }
+    .thumb:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 20%, #00d08435, transparent 45%);
+    }
+    .tag {
+      display: inline-block;
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .card h3 { font-size: 18px; line-height: 1.3; margin: 8px 0; }
+    .card p { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+    .meta { display: flex; justify-content: space-between; color: #77899e; font-size: 11px; }
+    .feature { grid-column: span 2; display: grid; grid-template-columns: .8fr 1.2fr; }
+    .feature .thumb { height: 100%; min-height: 220px; }
+    .feature h3 { font-size: 23px; }
 
-        .pulse-dot {
-            width: 7px;
-            height: 7px;
-            background-color: var(--emerald);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
+    /* Live News & Economic Calendar Widget Container */
+    .feed-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+    .widget-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      overflow: hidden;
+    }
+    .verified-list { display: grid; gap: 12px; }
+    .verified-item {
+      background: #0b121c;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .verified-item h4 { margin: 4px 0 6px; font-size: 15px; }
+    .verified-item p { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--green);
+      background: #00d08415;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
 
-        .ticker-items {
-            display: flex;
-            gap: 12px;
-        }
+    /* Hardware Security & Affiliate */
+    .wallet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .wallet { padding: 22px; display: flex; gap: 17px; align-items: flex-start; }
+    .wallet-icon {
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      border-radius: 15px;
+      background: #1d2a3a;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+    }
+    .wallet h3 { margin: 0 0 5px; }
+    .wallet p { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+    .disclosure {
+      border: 1px solid #6c592b;
+      background: #f4c66a0d;
+      color: #c8b88f;
+      border-radius: 13px;
+      padding: 13px 16px;
+      font-size: 12px;
+      margin-top: 20px;
+    }
 
-        .ticker-item {
-            color: var(--text-secondary);
-        }
+    /* Video Desk */
+    .video-panel { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; align-items: stretch; }
+    .video-embed-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #060a10;
+    }
+    .video-embed-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
-        .up { color: var(--emerald); }
-        .down { color: var(--danger); }
+    /* Membership & Newsletter */
+    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .plan { padding: 22px; }
+    .plan .price { font-size: 30px; font-weight: 850; margin: 10px 0; }
+    .plan .price small { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .plan ul { padding-left: 18px; color: var(--muted); font-size: 13px; }
+    .plan li { margin: 7px 0; }
+    .plan.featured { border-color: #00d08480; box-shadow: 0 0 0 1px #00d08420; }
+    .newsletter {
+      background: linear-gradient(120deg, #102b28, #111d2b);
+      border: 1px solid #245446;
+      border-radius: 22px;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+    .newsletter p { color: var(--muted); margin: 5px 0 0; font-size: 13px; }
+    .newsletter form { display: flex; gap: 8px; max-width: 420px; width: 100%; }
+    input, textarea, select {
+      width: 100%;
+      background: #0a111b;
+      border: 1px solid var(--line);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 11px 12px;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--green); }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footlinks { display: flex; gap: 16px; }
 
-        /* Main Header */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border-subtle);
-        }
+    /* Admin Studio Modal */
+    .admin-overlay {
+      position: fixed;
+      inset: 0;
+      background: #05080deF;
+      z-index: 50;
+      display: none;
+      overflow: auto;
+      padding: 22px;
+    }
+    .admin-overlay.open { display: block; }
+    .admin-shell {
+      max-width: 1120px;
+      margin: 20px auto;
+      background: #0c131e;
+      border: 1px solid #29394a;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .admin-top {
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-main { display: grid; grid-template-columns: 210px 1fr; min-height: 650px; }
+    .sidebar {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background: #0a111a;
+    }
+    .side-link {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 4px 0;
+      cursor: pointer;
+    }
+    .side-link.active, .side-link:hover { background: #00d08417; color: var(--green); }
+    .admin-content { padding: 24px; }
+    .admin-content h2 { margin: 0 0 4px; }
+    .admin-content > p { color: var(--muted); font-size: 13px; margin-top: 0; }
+    .admin-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+    .admin-stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 15px;
+      border-radius: 13px;
+    }
+    .admin-stat small { color: var(--muted); }
+    .admin-stat b { display: block; font-size: 23px; }
+    .admin-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 17px;
+      margin: 14px 0;
+    }
+    .admin-box h3 { margin: 0 0 12px; font-size: 16px; }
+    .field { margin: 11px 0; }
+    .field label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
+    .row { display: flex; gap: 10px; }
+    .row > * { flex: 1; }
+    .notice {
+      background: #f4c66a12;
+      border: 1px solid #6c592b;
+      color: #d9c58e;
+      border-radius: 10px;
+      padding: 11px;
+      font-size: 12px;
+      margin: 12px 0;
+    }
+    .success { color: var(--green); font-size: 12px; }
+    .admin-page { display: none; }
+    .admin-page.active { display: block; }
+    .content-list { display: grid; gap: 9px; }
+    .content-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: #0b121c;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 13px;
+    }
+    .content-item small { display: block; color: var(--muted); }
+    .tiny { font-size: 11px; color: var(--muted); }
+    .file-preview { max-width: 100%; max-height: 220px; border-radius: 12px; margin-top: 12px; display: none; }
+    .hidden { display: none !important; }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-badge {
-            background-color: var(--emerald-dark);
-            border: 1px solid var(--emerald-border);
-            color: var(--emerald);
-            font-weight: 800;
-            font-size: 1rem;
-            padding: 6px 9px;
-            border-radius: 8px;
-        }
-
-        .brand-name {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-primary);
-        }
-
-        .brand-name span {
-            color: var(--emerald);
-            font-weight: 600;
-        }
-
-        .cta-top {
-            background-color: var(--emerald);
-            color: #051b11;
-            font-weight: 700;
-            font-size: 0.85rem;
-            padding: 9px 14px;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-
-        /* Category Filter Pills */
-        .category-nav {
-            display: flex;
-            gap: 8px;
-            padding: 12px 16px;
-            overflow-x: auto;
-            white-space: nowrap;
-            border-bottom: 1px solid var(--border-subtle);
-            scrollbar-width: none;
-        }
-        .category-nav::-webkit-scrollbar { display: none; }
-
-        .pill {
-            padding: 7px 14px;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            background-color: var(--surface-pill);
-            color: var(--text-secondary);
-            border: 1px solid transparent;
-        }
-
-        .pill.active {
-            background-color: var(--emerald-dark);
-            color: var(--emerald);
-            border-color: var(--emerald-border);
-        }
-
-        /* Layout Container */
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 18px 16px 40px;
-        }
-
-        /* Featured Hero Card */
-        .hero-card {
-            background-color: var(--surface-dark);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 22px 20px;
-            margin-bottom: 24px;
-        }
-
-        .hero-meta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .featured-badge {
-            background-color: var(--emerald-dark);
-            border: 1px solid var(--emerald-border);
-            color: var(--emerald);
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            padding: 5px 10px;
-            border-radius: 6px;
-            line-height: 1.25;
-        }
-
-        .read-time {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-        }
-
-        h1 {
-            font-size: 1.65rem;
-            font-weight: 800;
-            line-height: 1.22;
-            margin-bottom: 14px;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-desc {
-            color: var(--text-secondary);
-            font-size: 0.94rem;
-            margin-bottom: 22px;
-        }
-
-        .btn-white {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background-color: #ffffff;
-            color: #090d16;
-            font-weight: 700;
-            font-size: 0.92rem;
-            padding: 14px;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-bottom: 12px;
-        }
-
-        .btn-outline {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background-color: var(--surface-pill);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 0.92rem;
-            padding: 14px;
-            border-radius: 10px;
-            text-decoration: none;
-        }
-
-        /* Curated Resources & Tools */
-        .section-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin: 26px 0 12px;
-        }
-
-        .card {
-            background-color: var(--surface-dark);
-            border: 1px solid var(--border-subtle);
-            border-radius: 14px;
-            padding: 18px;
-            margin-bottom: 14px;
-        }
-
-        .card h3 {
-            font-size: 1.02rem;
-            margin-bottom: 6px;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            margin-bottom: 14px;
-        }
-
-        .btn-emerald {
-            display: inline-block;
-            background-color: var(--emerald);
-            color: #051b11;
-            font-weight: 700;
-            font-size: 0.85rem;
-            padding: 10px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-
-        .disclosure {
-            background-color: var(--surface-dark);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 24px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        footer {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            margin-top: 26px;
-        }
-    </style>
+    /* Responsive Breakpoints */
+    @media(max-width: 860px) {
+      .navlinks { display: none; }
+      .navlinks.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        padding: 18px 4%;
+        border-bottom: 1px solid var(--line);
+      }
+      .menu { display: inline-flex; }
+      .hero-grid, .feed-grid, .video-panel { grid-template-columns: 1fr; }
+      .signal-card { max-width: 500px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .feature { grid-column: span 2; }
+      .plans { grid-template-columns: 1fr; }
+      .newsletter { display: block; }
+      .newsletter form { margin-top: 16px; }
+      .admin-main { grid-template-columns: 1fr; }
+      .sidebar {
+        display: flex;
+        overflow: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        gap: 5px;
+      }
+      .side-link { white-space: nowrap; }
+      .admin-cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width: 560px) {
+      .nav { min-height: 66px; }
+      .brand { font-size: 16px; }
+      .actions .btn:not(.primary):not(.menu) { display: none; }
+      .hero { padding: 52px 0 35px; }
+      h1 { letter-spacing: -1.6px; }
+      .lead { font-size: 16px; }
+      .grid, .wallet-grid { grid-template-columns: 1fr; }
+      .feature { grid-column: auto; display: block; }
+      .feature .thumb { min-height: 150px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 10px; }
+      .newsletter form { display: grid; }
+      .admin-overlay { padding: 7px; }
+      .admin-shell { margin: 5px auto; }
+      .admin-content { padding: 15px; }
+      .row { display: block; }
+      .row > * { margin: 5px 0; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Market Pulse Ticker -->
-    <div class="ticker-bar">
-        <div class="pulse-label">
-            <span class="pulse-dot"></span>
-            <span>MARKET<br>PULSE</span>
-        </div>
-        <div class="ticker-items">
-            <span class="ticker-item">BTC <span class="up">+2.4%</span></span>
-            <span class="ticker-item">ETH <span class="up">+1.8%</span></span>
-            <span class="ticker-item">SOL <span class="down">-0.9%</span></span>
-        </div>
+  <!-- Top Market Pulse Ticker -->
+  <div class="ticker">
+    <div class="ticker-in">
+      <span>MARKET SNAPSHOT</span>
+      <span>BTC <b class="up">+2.4%</b></span>
+      <span>ETH <b class="up">+1.8%</b></span>
+      <span>EUR/USD <b class="up">+0.32%</b></span>
+      <span>SOL <b class="down">−0.9%</b></span>
+      <span>EDUCATION FIRST · NO GUARANTEED RETURNS</span>
+      <span>BTC <b class="up">+2.4%</b></span>
+      <span>EUR/USD <b class="up">+0.32%</b></span>
     </div>
+  </div>
 
-    <!-- Header -->
-    <header>
-        <a href="#" class="brand">
-            <div class="logo-badge">BP</div>
-            <div class="brand-name">BlockPulse <span>Curate</span></div>
-        </a>
-        <a href="#tools" class="cta-top">Free Checklist</a>
-    </header>
-
-    <!-- Category Pills -->
-    <nav class="category-nav">
-        <a href="#" class="pill active">All</a>
-        <a href="#brief" class="pill">Market News</a>
-        <a href="#tools" class="pill">Trading Guides</a>
-        <a href="#security" class="pill">Security &amp; Wallets</a>
-    </nav>
-
-    <div class="container">
-        <!-- Featured Hero Card -->
-        <section class="hero-card" id="brief">
-            <div class="hero-meta">
-                <span class="featured-badge">FEATURED<br>CURATION</span>
-                <span class="read-time">Updated Daily &bull; 5 Min Read</span>
-            </div>
-            <h1>Cut Through the Crypto Noise: Vetted Trading Frameworks &amp; Daily Market Briefs</h1>
-            <p class="hero-desc">We filter hundreds of market updates, technical analysis videos, and trading tools every week&mdash;summarizing only credible, educational resources so you can build disciplined strategies without falling for hype or scams.</p>
-            <a href="#tools" class="btn-white">Read Today's Market Breakdown</a>
-            <a href="#security" class="btn-outline">Explore Trading Guides</a>
-        </section>
-
-        <!-- Curated Tools & Affiliate Partners -->
-        <h2 class="section-title" id="security">Curated Security &amp; Infrastructure</h2>
-
-        <div class="card" id="tools">
-            <h3>Ledger Hardware Security</h3>
-            <p>Self-custody your digital assets offline using industry-standard secure element hardware wallets verified for long-term protection.</p>
-            <a href="https://shop.ledger.com/?r=502569a3cb4d" class="btn-emerald" target="_blank" rel="noopener">Explore Official Ledger Store</a>
-        </div>
-
-        <div class="card">
-            <h3>Open-Source Cold Storage</h3>
-            <p>Compare air-gapped and open-source hardware storage solutions curated for transparent security verification.</p>
-            <a href="https://trezor.io?offer_id=XXX&amp;aff_id=YOUR_AFFILIATE_ID" class="btn-emerald" target="_blank" rel="noopener">Explore Hardware Options</a>
-        </div>
-
-        <!-- Disclosure -->
-        <div class="disclosure">
-            <strong>Affiliate &amp; Legal Disclosure:</strong> BlockPulse Curate is an independent educational hub. We may earn a commission from partner links on this page at no extra cost to you. Nothing on this site constitutes financial or legal advice. Always do your own research (DYOR).
-        </div>
-
-        <footer>
-            &copy; 2026 BlockPulse Curate. All rights reserved.
-        </footer>
+  <!-- Sticky Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="logo">B</span>
+        <span>BLOCKPULSE <small>CURATE</small></span>
+      </a>
+      <nav class="navlinks">
+        <a href="#briefs">Briefs</a>
+        <a href="#forex-news">Verified News</a>
+        <a href="#videos">Videos</a>
+        <a href="#wallets">Security</a>
+        <a href="#membership">Membership</a>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="#learn">Free checklist</a>
+        <button class="btn primary" onclick="openAdmin()">Content Studio</button>
+        <button class="btn menu" onclick="document.querySelector('.navlinks').classList.toggle('show')">☰</button>
+      </div>
     </div>
+  </header>
 
-</body>
-</html>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><i class="dot"></i> Independent Crypto &amp; Forex Curation</span>
+          <h1>Less noise.<br><span>More signal.</span></h1>
+          <p class="lead">Navigate digital assets and global currency markets with clearer explanations, verified economic updates, and practical security guidance — without hype or unrealistic promises.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#briefs">Explore curated briefs ↗</a>
+            <a class="btn" href="#forex-news">Live Market Calendar</a>
+          </div>
+          <p class="hero-note">Educational content only. Not financial, investment, legal, or tax advice.</p>
+        </div>
+
+        <div class="signal-card">
+          <div class="signal-head"><span>THE CURATION STANDARD</span><span class="up">● ACTIVE</span></div>
+          <div class="signal-score">Clarity first <span>↗</span></div>
+          <p class="tiny">Every resource is vetted to help readers understand market structure, verify primary sources, and improve digital safety.</p>
+          <div class="bars">
+            <div><div class="signal-head"><span>Primary source verification</span><b>Reviewed</b></div><div class="bar"><i style="--w:94%"></i></div></div>
+            <div><div class="signal-head"><span>Education focus</span><b>High</b></div><div class="bar"><i style="--w:96%"></i></div></div>
+            <div><div class="signal-head"><span>Risk awareness</span><b>Essential</b></div><div class="bar"><i style="--w:90%"></i></div></div>
+          </div>
+          <div class="mini-stats">
+            <div><b>01</b><small>Verify sources</small></div>
+            <div><b>02</b><small>Explain risks</small></div>
+            <div><b>03</b><small>Stay disciplined</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curated Briefs Grid -->
+    <section id="briefs">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">The latest selection</div>
+            <h2>Curated market briefs</h2>
+          </div>
+          <p>Short, plain-language explainers across crypto and macro forex. Filter by category below.</p>
+        </div>
+        <div class="filters">
+          <button
