@@ -3,122 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlockPulse Curate</title>
+    <title>BlockPulse Curate | Vetted Crypto Intelligence</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #111827;
-            --border-color: #1f2937;
-            --accent-color: #38bdf8;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
+            --bg-dark: #090d16;
+            --surface-dark: #111722;
+            --surface-pill: #1b2230;
+            --border-subtle: #1e2736;
+            --emerald: #00c471;
+            --emerald-dark: #07291f;
+            --emerald-border: #0e4a38;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --danger: #f87171;
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
         }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding: 20px;
-            line-height: 1.5;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* Top Market Pulse Bar */
+        .ticker-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background-color: #070a12;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 14px;
+        }
+
+        .pulse-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--emerald);
+            line-height: 1.15;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .ticker-items {
+            display: flex;
+            gap: 12px;
+        }
+
+        .ticker-item {
+            color: var(--text-secondary);
+        }
+
+        .up { color: var(--emerald); }
+        .down { color: var(--danger); }
+
+        /* Main Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-badge {
+            background-color: var(--emerald-dark);
+            border: 1px solid var(--emerald-border);
+            color: var(--emerald);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 6px 9px;
+            border-radius: 8px;
+        }
+
+        .brand-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .brand-name span {
+            color: var(--emerald);
+            font-weight: 600;
+        }
+
+        .cta-top {
+            background-color: var(--emerald);
+            color: #051b11;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 9px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        /* Category Filter Pills */
+        .category-nav {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border-subtle);
+            scrollbar-width: none;
+        }
+        .category-nav::-webkit-scrollbar { display: none; }
+
+        .pill {
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            background-color: var(--surface-pill);
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+        }
+
+        .pill.active {
+            background-color: var(--emerald-dark);
+            color: var(--emerald);
+            border-color: var(--emerald-border);
+        }
+
+        /* Layout Container */
         .container {
-            max-width: 600px;
+            max-width: 640px;
             margin: 0 auto;
+            padding: 18px 16px 40px;
         }
+
+        /* Featured Hero Card */
+        .hero-card {
+            background-color: var(--surface-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 22px 20px;
+            margin-bottom: 24px;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .featured-badge {
+            background-color: var(--emerald-dark);
+            border: 1px solid var(--emerald-border);
+            color: var(--emerald);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 5px 10px;
+            border-radius: 6px;
+            line-height: 1.25;
+        }
+
+        .read-time {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
         h1 {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 5px;
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1.22;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
         }
-        .subtitle {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            font-size: 0.95rem;
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 0.94rem;
+            margin-bottom: 22px;
         }
-        .section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 1.25rem;
+
+        .btn-white {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #ffffff;
+            color: #090d16;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
             margin-bottom: 12px;
         }
-        p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-        .resource-card {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        .resource-card h3 {
-            font-size: 1rem;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #0b0f19;
+
+        .btn-outline {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--surface-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
             font-weight: 600;
-            padding: 10px 16px;
-            border-radius: 6px;
+            font-size: 0.92rem;
+            padding: 14px;
+            border-radius: 10px;
             text-decoration: none;
-            font-size: 0.9rem;
         }
+
+        /* Curated Resources & Tools */
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+
+        .card {
+            background-color: var(--surface-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+        }
+
+        .btn-emerald {
+            display: inline-block;
+            background-color: var(--emerald);
+            color: #051b11;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .disclosure {
+            background-color: var(--surface-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 24px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
         footer {
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 30px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: 26px;
         }
     </style>
 </head>
 <body>
+
+    <!-- Market Pulse Ticker -->
+    <div class="ticker-bar">
+        <div class="pulse-label">
+            <span class="pulse-dot"></span>
+            <span>MARKET<br>PULSE</span>
+        </div>
+        <div class="ticker-items">
+            <span class="ticker-item">BTC <span class="up">+2.4%</span></span>
+            <span class="ticker-item">ETH <span class="up">+1.8%</span></span>
+            <span class="ticker-item">SOL <span class="down">-0.9%</span></span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="brand">
+            <div class="logo-badge">BP</div>
+            <div class="brand-name">BlockPulse <span>Curate</span></div>
+        </a>
+        <a href="#tools" class="cta-top">Free Checklist</a>
+    </header>
+
+    <!-- Category Pills -->
+    <nav class="category-nav">
+        <a href="#" class="pill active">All</a>
+        <a href="#brief" class="pill">Market News</a>
+        <a href="#tools" class="pill">Trading Guides</a>
+        <a href="#security" class="pill">Security &amp; Wallets</a>
+    </nav>
+
     <div class="container">
-        <h1>BlockPulse Curate</h1>
-        <div class="subtitle">Your Independent, Scam-Free Crypto Education Hub</div>
+        <!-- Featured Hero Card -->
+        <section class="hero-card" id="brief">
+            <div class="hero-meta">
+                <span class="featured-badge">FEATURED<br>CURATION</span>
+                <span class="read-time">Updated Daily &bull; 5 Min Read</span>
+            </div>
+            <h1>Cut Through the Crypto Noise: Vetted Trading Frameworks &amp; Daily Market Briefs</h1>
+            <p class="hero-desc">We filter hundreds of market updates, technical analysis videos, and trading tools every week&mdash;summarizing only credible, educational resources so you can build disciplined strategies without falling for hype or scams.</p>
+            <a href="#tools" class="btn-white">Read Today's Market Breakdown</a>
+            <a href="#security" class="btn-outline">Explore Trading Guides</a>
+        </section>
 
-        <div class="section">
-            <h2>Affiliate & Legal Disclosure</h2>
-            <p>BlockPulse Curate is an independent, non-licensed educational resource. We may earn a commission from partner links listed on this site at no extra cost to you. Nothing on this site constitutes financial or legal advice. Always do your own research (DYOR) before engaging with digital assets.</p>
+        <!-- Curated Tools & Affiliate Partners -->
+        <h2 class="section-title" id="security">Curated Security &amp; Infrastructure</h2>
+
+        <div class="card" id="tools">
+            <h3>Ledger Hardware Security</h3>
+            <p>Self-custody your digital assets offline using industry-standard secure element hardware wallets verified for long-term protection.</p>
+            <a href="https://shop.ledger.com/?r=502569a3cb4d" class="btn-emerald" target="_blank" rel="noopener">Explore Official Ledger Store</a>
         </div>
 
-        <div class="section">
-            <h2>About Us</h2>
-            <p>Navigating the digital asset market shouldn't feel like navigating a minefield of hype, noise, and unverified promises. BlockPulse Curate was built to solve that problem. We independently scan and filter daily market intelligence so you can focus on high-integrity resources.</p>
+        <div class="card">
+            <h3>Open-Source Cold Storage</h3>
+            <p>Compare air-gapped and open-source hardware storage solutions curated for transparent security verification.</p>
+            <a href="https://trezor.io?offer_id=XXX&amp;aff_id=YOUR_AFFILIATE_ID" class="btn-emerald" target="_blank" rel="noopener">Explore Hardware Options</a>
         </div>
 
-        <div class="section">
-            <h2>Curated Resources & Tools</h2>
-            
-            <div class="resource-card">
-                <h3>Verified Market Intelligence</h3>
-                <p>Access structured breakdowns on blockchain analytics, security best practices, and foundational digital asset courses.</p>
-                <a href="https://shop.ledger.com/?r=502569a3cb4d" class="btn" target="_blank" rel="noopener">Explore Verified Hub</a>
-            </div>
-
-            <div class="resource-card">
-                <h3>Secure Hardware & Wallets</h3>
-                <p>Protect your digital assets with industry-standard hardware storage solutions curated for maximum security.</p>
-                <a href="https://trezor.io?offer_id=XXX&aff_id=YOUR_AFFILIATE_ID" class="btn" target="_blank" rel="noopener">Explore Hardware Options</a>
-            </div>
+        <!-- Disclosure -->
+        <div class="disclosure">
+            <strong>Affiliate &amp; Legal Disclosure:</strong> BlockPulse Curate is an independent educational hub. We may earn a commission from partner links on this page at no extra cost to you. Nothing on this site constitutes financial or legal advice. Always do your own research (DYOR).
         </div>
 
         <footer>
             &copy; 2026 BlockPulse Curate. All rights reserved.
         </footer>
     </div>
+
 </body>
 </html>
