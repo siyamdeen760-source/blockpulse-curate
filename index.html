@@ -695,6 +695,350 @@
     .text-bp-subtle {
       color: var(--bp-text-subtle) !important;
     }
+
+    /* ==========================================================================
+       LIVE MARKET SCREENER & WATCHLIST MODULE STYLES
+       ========================================================================== */
+    .bp-screener-shell {
+      background-color: var(--bp-surface-elevated);
+      border: 1px solid var(--bp-border);
+      border-radius: 16px;
+      box-shadow: var(--bp-shadow-md);
+      overflow: hidden;
+    }
+
+    .bp-screener-search {
+      background-color: var(--bp-surface);
+      border: 1px solid var(--bp-border);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .bp-screener-search:focus-within {
+      border-color: var(--bp-primary);
+      box-shadow: 0 0 0 3px var(--bp-primary-soft);
+    }
+
+    .bp-screener-search input {
+      border: none;
+      background: transparent;
+      color: var(--bp-text);
+      width: 100%;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .bp-screener-search input::placeholder {
+      color: var(--bp-text-subtle);
+    }
+
+    .bp-scroll-tabs {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-bottom: 1px solid var(--bp-border);
+      padding-bottom: 0.1rem;
+    }
+
+    .bp-scroll-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .bp-primary-tab {
+      position: relative;
+      background: transparent;
+      border: none;
+      color: var(--bp-text-subtle);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 0.55rem 0.15rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .bp-primary-tab:hover {
+      color: var(--bp-text);
+    }
+
+    .bp-primary-tab.active {
+      color: var(--bp-text);
+      font-weight: 700;
+    }
+
+    .bp-primary-tab.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2.5px;
+      border-radius: 2px;
+      background-color: var(--bp-primary);
+    }
+
+    .bp-hot-pill {
+      position: absolute;
+      top: -4px;
+      right: -12px;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFFFFF;
+      font-size: 0.58rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 6px;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .bp-cat-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .bp-cat-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .bp-cat-pill {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--bp-text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.32rem 0.78rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .bp-cat-pill:hover {
+      color: var(--bp-text);
+      background: var(--bp-surface);
+    }
+
+    .bp-cat-pill.active {
+      background: var(--bp-surface);
+      border-color: var(--bp-border-strong);
+      color: var(--bp-text);
+    }
+
+    .bp-subtag-btn {
+      border: none;
+      background: transparent;
+      color: var(--bp-text-subtle);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .bp-subtag-btn:hover {
+      color: var(--bp-text);
+    }
+
+    .bp-subtag-btn.active {
+      color: var(--bp-primary);
+      background: var(--bp-primary-soft);
+    }
+
+    .bp-sort-header {
+      background: transparent;
+      border: none;
+      padding: 0;
+      color: var(--bp-text-subtle);
+      font-size: 0.76rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+
+    .bp-sort-header:hover,
+    .bp-sort-header.active {
+      color: var(--bp-primary);
+    }
+
+    .bp-market-row {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr 0.85fr;
+      align-items: center;
+      padding: 0.78rem 1rem;
+      border-bottom: 1px solid var(--bp-border);
+      transition: background-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .bp-market-row:last-child {
+      border-bottom: none;
+    }
+
+    .bp-market-row:hover {
+      background-color: var(--bp-surface);
+    }
+
+    .bp-token-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 700;
+      font-size: 0.78rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .bp-change-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 78px;
+      padding: 0.36rem 0.65rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .bp-change-up {
+      background-color: #10B981;
+    }
+
+    .bp-change-down {
+      background-color: #EF4444;
+    }
+
+    .bp-star-btn {
+      background: transparent;
+      border: none;
+      padding: 0.15rem;
+      color: var(--bp-text-subtle);
+      cursor: pointer;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .bp-star-btn:hover {
+      transform: scale(1.15);
+      color: #F59E0B;
+    }
+
+    .bp-star-btn.starred {
+      color: #F59E0B;
+    }
+
+    @keyframes bpTickUp {
+      0% { background-color: rgba(16, 185, 129, 0.16); }
+      100% { background-color: transparent; }
+    }
+
+    @keyframes bpTickDown {
+      0% { background-color: rgba(239, 68, 68, 0.16); }
+      100% { background-color: transparent; }
+    }
+
+    .tick-flash-up {
+      animation: bpTickUp 0.65s ease-out;
+    }
+
+    .tick-flash-down {
+      animation: bpTickDown 0.65s ease-out;
+    }
+
+    /* ==========================================================================
+       AUTONOMOUS LIVE SYNC HUD & STATUS INDICATORS
+       ========================================================================== */
+    .bp-sync-hud {
+      background-color: var(--bp-surface-elevated);
+      border: 1px solid var(--bp-border);
+      border-radius: 12px;
+      padding: 0.6rem 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      font-size: 0.8rem;
+    }
+
+    .bp-sync-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.03em;
+    }
+
+    .bp-sync-live {
+      background: rgba(16, 185, 129, 0.14);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .bp-sync-cached {
+      background: rgba(245, 158, 11, 0.15);
+      color: #D97706;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    [data-theme="dark"] .bp-sync-cached {
+      color: #FBBF24;
+    }
+
+    .bp-sync-busy {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3B82F6;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    .bp-sync-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+
+    .bp-sync-live .bp-sync-dot,
+    .bp-sync-busy .bp-sync-dot {
+      animation: bpBlink 1.5s infinite;
+    }
+
+    @keyframes bpSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .bp-spin {
+      display: inline-block;
+      animation: bpSpin 0.85s linear infinite;
+    }
+
+    .bp-news-card {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -777,30 +1121,34 @@
 
     <div class="offcanvas-body d-flex flex-column justify-content-between p-3">
       <div>
-        <div class="bp-mono text-bp-subtle mb-2 px-1" style="font-size: 0.7rem; letter-spacing: 0.08em;">PLATFORM PAGES (06)</div>
+        <div class="bp-mono text-bp-subtle mb-2 px-1" style="font-size: 0.7rem; letter-spacing: 0.08em;">PLATFORM PAGES (07)</div>
         <nav aria-label="Primary Multi-Page Navigation">
           <a href="#home" class="bp-nav-link active" data-route="home" data-bs-dismiss="offcanvas">
             <span><i class="bi bi-grid-1x2-fill me-2 text-primary"></i>01. Home &amp; Overview</span>
             <i class="bi bi-chevron-right small"></i>
           </a>
+          <a href="#markets" class="bp-nav-link" data-route="markets" data-bs-dismiss="offcanvas">
+            <span><i class="bi bi-graph-up-arrow me-2 text-primary"></i>02. Live Markets &amp; Watchlist</span>
+            <span class="badge bg-primary bg-opacity-10 text-primary bp-mono" style="font-size: 0.68rem;">LIVE</span>
+          </a>
           <a href="#courses" class="bp-nav-link" data-route="courses" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-mortarboard-fill me-2 text-primary"></i>02. Course Catalog</span>
+            <span><i class="bi bi-mortarboard-fill me-2 text-primary"></i>03. Course Catalog</span>
             <i class="bi bi-chevron-right small"></i>
           </a>
           <a href="#intelligence" class="bp-nav-link" data-route="intelligence" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-broadcast-pin me-2 text-primary"></i>03. Curated Intelligence</span>
+            <span><i class="bi bi-broadcast-pin me-2 text-primary"></i>04. Curated Intelligence</span>
             <i class="bi bi-chevron-right small"></i>
           </a>
           <a href="#roadmap" class="bp-nav-link" data-route="roadmap" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-signpost-split-fill me-2 text-primary"></i>04. 12-Week Roadmap</span>
+            <span><i class="bi bi-signpost-split-fill me-2 text-primary"></i>05. 12-Week Roadmap</span>
             <i class="bi bi-chevron-right small"></i>
           </a>
           <a href="#about" class="bp-nav-link" data-route="about" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-shield-check me-2 text-primary"></i>05. About &amp; Methodology</span>
+            <span><i class="bi bi-shield-check me-2 text-primary"></i>06. About &amp; Methodology</span>
             <i class="bi bi-chevron-right small"></i>
           </a>
           <a href="#contact" class="bp-nav-link" data-route="contact" data-bs-dismiss="offcanvas">
-            <span><i class="bi bi-envelope-paper-fill me-2 text-primary"></i>06. Contact &amp; Advising</span>
+            <span><i class="bi bi-envelope-paper-fill me-2 text-primary"></i>07. Contact &amp; Advising</span>
             <i class="bi bi-chevron-right small"></i>
           </a>
         </nav>
@@ -809,6 +1157,7 @@
 
         <div class="bp-mono text-bp-subtle mb-2 px-1" style="font-size: 0.7rem; letter-spacing: 0.08em;">QUICK HOME SECTIONS</div>
         <div class="d-flex flex-wrap gap-1 px-1">
+          <a href="#home-screener" class="btn btn-sm btn-bp-outline py-1 px-2" data-anchor="home-screener" data-bs-dismiss="offcanvas">Market Screener</a>
           <a href="#home-timeline" class="btn btn-sm btn-bp-outline py-1 px-2" data-anchor="home-timeline" data-bs-dismiss="offcanvas">Curation Pipeline</a>
           <a href="#home-pricing" class="btn btn-sm btn-bp-outline py-1 px-2" data-anchor="home-pricing" data-bs-dismiss="offcanvas">Membership Plans</a>
           <a href="#home-faq" class="btn btn-sm btn-bp-outline py-1 px-2" data-anchor="home-faq" data-bs-dismiss="offcanvas">FAQ</a>
@@ -1054,6 +1403,31 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- LIVE MARKET SCREENER & WATCHLIST SECTION (HOME) -->
+      <section id="home-screener" class="bp-section">
+        <div class="container">
+          <div class="d-flex flex-wrap justify-content-between align-items-end mb-3 gap-2 bp-reveal">
+            <div>
+              <span class="bp-section-kicker"><i class="bi bi-activity"></i> Live Market Screener &amp; Watchlist</span>
+              <h2 class="fw-bold mb-1">Real-Time Spot, Derivatives &amp; Macro Pairs</h2>
+              <p class="small text-bp-muted mb-0">
+                Filter high-liquidity markets, star favorite pairs to your personal Watchlist, and click any ticker for an institutional technical brief.
+              </p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="bp-mono small text-bp-subtle d-none sm-inline d-md-inline"><span class="bp-live-dot me-1 d-inline-block"></span>LIVE FEED</span>
+              <a href="#markets" class="btn btn-bp-outline btn-sm" data-route="markets">
+                Full Screen Markets <i class="bi bi-arrows-fullscreen ms-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bp-sync-hud mb-3 bp-reveal" data-hud-type="market"></div>
+
+          <div class="bp-reveal" id="homeScreenerMount"></div>
         </div>
       </section>
 
@@ -1376,6 +1750,40 @@
     </section>
 
     <!-- ======================================================================
+         DEDICATED PAGE: LIVE MARKETS & WATCHLIST (/markets)
+         ====================================================================== -->
+    <section id="page-markets" class="bp-page" aria-label="Live Markets and Watchlist">
+      <div class="bp-section-sm bp-surface-alt bp-tech-grid">
+        <div class="container">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
+            <div>
+              <span class="bp-section-kicker"><i class="bi bi-graph-up-arrow"></i> Page 02 // Market Telemetry</span>
+              <h1 class="fw-bold mb-2">Live Market Screener &amp; Educational Briefs</h1>
+              <p class="text-bp-muted mb-0" style="max-width: 720px;">
+                Inspect real-time Spot, Futures, Options, CFD, and Tokenized Stock pairs. Tap any asset row to open key support/resistance structure and linked BlockPulse coursework.
+              </p>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-sm btn-bp-outline" data-bs-toggle="modal" data-bs-target="#macroCalendarModal">
+                <i class="bi bi-calendar3 me-1 text-primary"></i>Macro Event Calendar
+              </button>
+              <a href="#courses" class="btn btn-sm btn-bp-primary" data-route="courses">
+                Learn Chart Analysis
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bp-section">
+        <div class="container">
+          <div class="bp-sync-hud mb-3" data-hud-type="market"></div>
+          <div id="pageScreenerMount"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
          PAGE 2: COURSES CATALOG (/courses)
          ====================================================================== -->
     <section id="page-courses" class="bp-page" aria-label="Courses Catalog">
@@ -1423,6 +1831,7 @@
             </div>
             <div class="d-flex flex-wrap gap-2">
               <button type="button" class="btn btn-sm btn-bp-primary intel-filter-btn active" data-type="all">All Resources</button>
+              <button type="button" class="btn btn-sm btn-bp-outline intel-filter-btn" data-type="live">Live Wire</button>
               <button type="button" class="btn btn-sm btn-bp-outline intel-filter-btn" data-type="report">Market Reports</button>
               <button type="button" class="btn btn-sm btn-bp-outline intel-filter-btn" data-type="video">TA Video Briefs</button>
               <button type="button" class="btn btn-sm btn-bp-outline intel-filter-btn" data-type="tool">Software Tools</button>
@@ -1433,6 +1842,7 @@
 
       <div class="bp-section">
         <div class="container">
+          <div class="bp-sync-hud mb-3" data-hud-type="news"></div>
           <div class="row g-3" id="intelligenceFeedGrid">
             <!-- Populated dynamically via JS -->
           </div>
@@ -1808,6 +2218,147 @@
   </div>
 
   <!-- ========================================================================
+       PAIR BRIEF & TECHNICAL STRUCTURE MODAL (ON TICKER ROW CLICK)
+       ======================================================================== -->
+  <div class="modal fade" id="pairDetailModal" tabindex="-1" aria-labelledby="pairDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background-color: var(--bp-surface-elevated); color: var(--bp-text); border: 1px solid var(--bp-border); border-radius: 16px;">
+        <div class="modal-header" style="border-color: var(--bp-border);">
+          <div class="d-flex align-items-center gap-2">
+            <span id="pairModalIcon" class="bp-token-badge"></span>
+            <div>
+              <h5 class="modal-title fw-bold mb-0" id="pairDetailModalLabel">BTC / USDC</h5>
+              <small id="pairModalSubtitle" class="text-bp-subtle">Bitcoin &bull; Spot Market</small>
+            </div>
+          </div>
+          <button type="button" class="bp-icon-btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-items-center p-3 rounded-3 mb-3" style="background: var(--bp-surface); border: 1px solid var(--bp-border);">
+            <div>
+              <div class="small text-bp-subtle bp-mono">LAST INDEX PRICE</div>
+              <div id="pairModalPrice" class="fs-4 fw-bold bp-mono">64,685.8</div>
+              <div id="pairModalUsd" class="small text-bp-muted bp-mono">64,744.017 USD</div>
+            </div>
+            <div class="text-end">
+              <div class="small text-bp-subtle bp-mono mb-1">24H CHANGE</div>
+              <span id="pairModalChange" class="bp-change-pill bp-change-down">-0.35%</span>
+              <div id="pairModalVol" class="small text-bp-muted bp-mono mt-1">Vol: 65.95M</div>
+            </div>
+          </div>
+
+          <h6 class="fw-bold small text-uppercase bp-mono text-primary mb-2">Curated Technical &amp; Liquidity Structure</h6>
+          <p id="pairModalThesis" class="small text-bp-muted mb-3"></p>
+
+          <div class="row g-2 bp-mono small mb-3">
+            <div class="col-6">
+              <div class="p-2 rounded border" style="border-color: var(--bp-border) !important;">
+                <div class="text-bp-subtle" style="font-size: 0.7rem;">KEY SUPPORT ZONE</div>
+                <div id="pairModalSupport" class="fw-bold text-success"></div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-2 rounded border" style="border-color: var(--bp-border) !important;">
+                <div class="text-bp-subtle" style="font-size: 0.7rem;">KEY RESISTANCE ZONE</div>
+                <div id="pairModalResistance" class="fw-bold text-danger"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-3 d-flex align-items-center justify-content-between p-2" style="background: var(--bp-primary-soft); border: 1px solid rgba(59,130,246,0.25);">
+            <div class="small">
+              <span class="bp-mono fw-bold text-primary d-block" style="font-size: 0.7rem;">RECOMMENDED MODULE</span>
+              <span id="pairModalCourse" class="fw-semibold"></span>
+            </div>
+            <a href="#courses" class="btn btn-bp-primary btn-sm" data-route="courses" data-bs-dismiss="modal">Study</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MACRO ECONOMIC CALENDAR QUICK MODAL
+       ======================================================================== -->
+  <div class="modal fade" id="macroCalendarModal" tabindex="-1" aria-labelledby="macroCalendarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background-color: var(--bp-surface-elevated); color: var(--bp-text); border: 1px solid var(--bp-border); border-radius: 16px;">
+        <div class="modal-header" style="border-color: var(--bp-border);">
+          <div>
+            <span class="bp-mono text-primary small fw-bold">MACRO LIQUIDITY SCHEDULE</span>
+            <h5 class="modal-title fw-bold" id="macroCalendarModalLabel">High-Impact Market Catalysts</h5>
+          </div>
+          <button type="button" class="bp-icon-btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body d-grid gap-2 small">
+          <div class="p-2.5 p-2 rounded border d-flex justify-content-between align-items-center" style="border-color: var(--bp-border) !important;">
+            <div>
+              <div class="fw-bold">US FOMC Rate Decision &amp; Liquidity Statement</div>
+              <div class="text-bp-subtle bp-mono" style="font-size: 0.74rem;">19:00 UTC &bull; USD / BTC / Gold Volatility</div>
+            </div>
+            <span class="badge bg-danger">HIGH IMPACT</span>
+          </div>
+          <div class="p-2.5 p-2 rounded border d-flex justify-content-between align-items-center" style="border-color: var(--bp-border) !important;">
+            <div>
+              <div class="fw-bold">US Core CPI &amp; Treasury Yield Auction</div>
+              <div class="text-bp-subtle bp-mono" style="font-size: 0.74rem;">13:30 UTC &bull; Real Rates &amp; Risk Assets</div>
+            </div>
+            <span class="badge bg-danger">HIGH IMPACT</span>
+          </div>
+          <div class="p-2.5 p-2 rounded border d-flex justify-content-between align-items-center" style="border-color: var(--bp-border) !important;">
+            <div>
+              <div class="fw-bold">Monthly Spot ETF Net Flow &amp; Options Expiry</div>
+              <div class="text-bp-subtle bp-mono" style="font-size: 0.74rem;">08:00 UTC &bull; Deribit &amp; CME Gamma Unwind</div>
+            </div>
+            <span class="badge bg-warning text-dark">MEDIUM</span>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-color: var(--bp-border);">
+          <a href="#courses" class="btn btn-bp-primary btn-sm" data-route="courses" data-bs-dismiss="modal">Learn Macro Catalysts (BP-404)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       ARTICLE BRIEF & SOURCE MODAL (LIVE & CURATED INTELLIGENCE)
+       ======================================================================== -->
+  <div class="modal fade" id="articleBriefModal" tabindex="-1" aria-labelledby="articleBriefModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background-color: var(--bp-surface-elevated); color: var(--bp-text); border: 1px solid var(--bp-border); border-radius: 16px;">
+        <div class="modal-header" style="border-color: var(--bp-border);">
+          <div>
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+              <span id="articleModalBadge" class="badge bg-primary bg-opacity-10 text-primary">Verified Wire</span>
+              <span id="articleModalCredibility" class="bp-mono small text-success fw-bold"></span>
+              <span id="articleModalReadTime" class="bp-mono small text-bp-subtle"></span>
+            </div>
+            <h5 class="modal-title fw-bold" id="articleBriefModalLabel">Intelligence Brief</h5>
+          </div>
+          <button type="button" class="bp-icon-btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pb-2 mb-3 border-bottom bp-mono small text-bp-subtle" style="border-color: var(--bp-border) !important;">
+            <span id="articleModalPublisher"><i class="bi bi-building me-1 text-primary"></i>Source</span>
+            <span id="articleModalTimestamp"><i class="bi bi-clock me-1"></i>Timestamp</span>
+          </div>
+          <p id="articleModalBody" class="text-bp-muted mb-3" style="line-height: 1.65;"></p>
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-3 rounded-3" style="background: var(--bp-surface); border: 1px solid var(--bp-border);">
+            <div class="d-flex flex-wrap gap-1" id="articleModalTags"></div>
+            <span class="bp-mono small text-bp-subtle">Filtered by BlockPulse Curate Engine</span>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-color: var(--bp-border);">
+          <button type="button" class="btn btn-bp-outline btn-sm" data-bs-dismiss="modal">Close Brief</button>
+          <a id="articleModalExternalLink" href="#intelligence" target="_blank" rel="noopener noreferrer" class="btn btn-bp-primary btn-sm">
+            Read Full Original Article <i class="bi bi-box-arrow-up-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
        MULTI-COLUMN FOOTER WITH NEWSLETTER SUBSCRIPTION & SOCIAL LINKS
        ======================================================================== -->
   <footer class="bp-footer">
@@ -1841,6 +2392,7 @@
           <h6 class="fw-bold small text-uppercase bp-mono mb-3">Platform</h6>
           <ul class="list-unstyled mb-0">
             <li><a href="#home" class="bp-footer-link" data-route="home">Home Overview</a></li>
+            <li><a href="#markets" class="bp-footer-link" data-route="markets">Live Markets</a></li>
             <li><a href="#courses" class="bp-footer-link" data-route="courses">Course Catalog</a></li>
             <li><a href="#intelligence" class="bp-footer-link" data-route="intelligence">Curated Intelligence</a></li>
             <li><a href="#roadmap" class="bp-footer-link" data-route="roadmap">12-Week Roadmap</a></li>
@@ -2003,70 +2555,94 @@
 
       const INTELLIGENCE_DATA = [
         {
+          id: 'curate-01',
           type: 'report',
           typeLabel: 'Market Report',
           badgeClass: 'bg-primary bg-opacity-10 text-primary',
+          credibility: 'Institutional Source',
           score: '98/100',
-          date: 'Today • 06:00 UTC',
-          title: 'Q4 Global Dollar Liquidity & Spot ETF Absorption Telemetry',
-          source: 'Curated from Institutional Macro Desk',
-          summary: 'Filtered 42-page quantitative breakdown examining how sovereign debt issuance and spot ETF net inflows are compressing exchange float.',
-          tag: 'Macro & Liquidity'
+          date: 'Curated Desk • 06:00 UTC',
+          readTime: '6 min read',
+          title: 'Global Dollar Liquidity & Spot ETF Absorption Telemetry',
+          source: 'BlockPulse Macro Desk',
+          summary: 'Filtered 42-page quantitative breakdown examining how sovereign debt issuance and spot ETF net inflows are compressing liquid exchange float across major digital assets.',
+          tag: 'Macro',
+          url: '#courses'
         },
         {
+          id: 'curate-02',
           type: 'video',
           typeLabel: 'TA Video Brief',
           badgeClass: 'bg-info bg-opacity-10 text-info',
+          credibility: 'Verified Technicals',
           score: '95/100',
-          date: 'Yesterday',
-          title: 'Volume Profile & CVD Absorption on Weekly Pivot Levels (24m)',
-          source: 'Audited Technical Analysis Breakdown',
-          summary: 'Zero price-target hype. Pure step-by-step walkthrough of cumulative volume delta divergences and invalidation placement on major pairs.',
-          tag: 'Price Action'
+          date: 'Audited Briefing',
+          readTime: '24 min watch',
+          title: 'Volume Profile & CVD Absorption on Weekly Pivot Levels',
+          source: 'BlockPulse Chart Lab',
+          summary: 'Zero price-target hype. Pure step-by-step walkthrough of cumulative volume delta divergences, session points of control, and invalidation placement on major pairs.',
+          tag: 'Technicals',
+          url: '#courses'
         },
         {
+          id: 'curate-03',
           type: 'tool',
           typeLabel: 'Software Tool',
           badgeClass: 'bg-success bg-opacity-10 text-success',
+          credibility: 'Security Audited',
           score: '99/100',
-          date: 'Security Audited',
-          title: 'Rabby Wallet + Transaction Simulation Engine',
-          source: 'Open-Source Browser & Hardware Interface',
-          summary: 'Pre-execution balance change simulation and automated contract risk scanning before signing any on-chain transaction.',
-          tag: 'Self-Custody Security'
+          date: 'Open-Source Verified',
+          readTime: '4 min guide',
+          title: 'Rabby Wallet + Pre-Sign Transaction Simulation Engine',
+          source: 'Open-Source Security Audit',
+          summary: 'Pre-execution balance change simulation and automated smart-contract risk scanning before signing any on-chain transaction with hardware wallets.',
+          tag: 'DeFi',
+          url: '#courses'
         },
         {
+          id: 'curate-04',
           type: 'report',
           typeLabel: 'Market Report',
           badgeClass: 'bg-primary bg-opacity-10 text-primary',
+          credibility: 'Institutional Source',
           score: '96/100',
-          date: '2 Days Ago',
-          title: 'Perpetual Funding Compression & Basis Arbitrage Cycles',
+          date: 'Derivatives Desk',
+          readTime: '5 min read',
+          title: 'Perpetual Funding Compression & CME Basis Arbitrage Cycles',
           source: 'Derivatives Microstructure Review',
-          summary: 'Empirical study on how annualized CME vs. offshore perpetual basis predicts spot-led rallies versus fragile leverage-driven spikes.',
-          tag: 'Derivatives'
+          summary: 'Empirical study on how annualized CME vs. offshore perpetual basis predicts spot-led accumulation versus fragile leverage-driven spikes.',
+          tag: 'On-Chain',
+          url: '#courses'
         },
         {
+          id: 'curate-05',
           type: 'tool',
           typeLabel: 'Software Tool',
           badgeClass: 'bg-success bg-opacity-10 text-success',
+          credibility: 'Security Audited',
           score: '97/100',
-          date: 'Security Audited',
+          date: 'Open-Source Verified',
+          readTime: '3 min guide',
           title: 'DefiLlama Yields & Protocol TVL Transparency Suite',
-          source: 'Open-Source Analytics Aggregator',
-          summary: 'Ad-free, non-sponsored protocol revenue, stablecoin peg health, and bridge volume telemetry verified directly from RPC nodes.',
-          tag: 'On-Chain Analytics'
+          source: 'On-Chain Telemetry Index',
+          summary: 'Ad-free, non-sponsored protocol revenue, stablecoin peg health, and bridge volume telemetry verified directly from archive RPC nodes.',
+          tag: 'DeFi',
+          url: '#courses'
         },
         {
+          id: 'curate-06',
           type: 'video',
           typeLabel: 'TA Video Brief',
           badgeClass: 'bg-info bg-opacity-10 text-info',
+          credibility: 'Verified Technicals',
           score: '94/100',
-          date: '3 Days Ago',
-          title: 'Position Sizing Math: Surviving 5 Consecutive Stop-Outs (19m)',
-          source: 'BlockPulse Risk Lab Recording',
-          summary: 'Practical spreadsheet demonstration comparing fixed-fractional 1% risk models against over-leveraged martingale traps.',
-          tag: 'Risk Management'
+          date: 'Risk Lab Session',
+          readTime: '19 min watch',
+          title: 'Position Sizing Math: Surviving 5 Consecutive Stop-Outs',
+          source: 'BlockPulse Quantitative Risk Lab',
+          summary: 'Practical demonstration comparing fixed-fractional 1% equity risk models against over-leveraged martingale traps during high-volatility macro releases.',
+          tag: 'Regulation',
+          url: '#courses'
         }
       ];
 
@@ -2084,212 +2660,348 @@
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
       /* ======================================================================
-         3. DARK / LIGHT MODE TOGGLE (PERSISTED IN LOCALSTORAGE)
+         6. AUTONOMOUS SELF-HEALING LIVE SYNC ENGINE & CURATED INTELLIGENCE FEED
          ====================================================================== */
-      const htmlEl = document.documentElement;
-      const themeToggleBtn = document.getElementById('themeToggleBtn');
-      const themeToggleIcon = document.getElementById('themeToggleIcon');
+      const STORAGE_KEYS = {
+        NEWS_CACHE: 'blockpulse_news_cache',
+        MARKET_CACHE: 'blockpulse_market_cache',
+        AUTO_SYNC: 'blockpulse_auto_sync'
+      };
 
-      function applyTheme(theme) {
-        htmlEl.setAttribute('data-theme', theme);
-        localStorage.setItem('bp-theme', theme);
-        if (themeToggleIcon) {
-          themeToggleIcon.className = theme === 'dark' ? 'bi bi-sun-fill text-warning' : 'bi bi-moon-stars-fill';
+      const CLICKBAIT_BLOCKLIST = [
+        '100x guaranteed',
+        '1000x gem',
+        'airdrop claim',
+        'free airdrop',
+        'guaranteed profit',
+        'to the moon',
+        'pump alert',
+        'get rich quick',
+        'double your crypto',
+        'secret presale'
+      ];
+
+      const syncState = {
+        autoSync: localStorage.getItem(STORAGE_KEYS.AUTO_SYNC) !== 'false',
+        newsStatus: 'busy', // 'live' | 'cached' | 'busy'
+        newsSource: 'Initializing Wire...',
+        newsCountdown: 180,
+        newsItems: [],
+        activeIntelFilter: 'all',
+        marketStatus: 'busy', // 'live' | 'cached' | 'busy'
+        marketSource: 'Connecting Feeds...',
+        marketCountdown: 60
+      };
+
+      // Helper: Fetch with AbortController Timeout (6 seconds default)
+      async function fetchWithTimeout(url, timeoutMs = 6000) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+          const response = await fetch(url, {
+            signal: controller.signal,
+            headers: { 'Accept': 'application/json' }
+          });
+          clearTimeout(timer);
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          return await response.json();
+        } catch (err) {
+          clearTimeout(timer);
+          throw err;
         }
       }
 
-      const savedTheme = localStorage.getItem('bp-theme') || 'light';
-      applyTheme(savedTheme);
-
-      if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-          const current = htmlEl.getAttribute('data-theme');
-          applyTheme(current === 'dark' ? 'light' : 'dark');
-        });
+      // Helper: Strip HTML tags & decode basic entities cleanly
+      function sanitizePlainText(rawHtml) {
+        if (!rawHtml) return '';
+        const tmp = document.createElement('div');
+        tmp.innerHTML = rawHtml;
+        return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
       }
 
-      /* ======================================================================
-         4. MULTI-PAGE ROUTER (6 PAGES IN ONE SINGLE HTML FILE)
-         ====================================================================== */
-      const validRoutes = ['home', 'courses', 'intelligence', 'roadmap', 'about', 'contact'];
-
-      function navigateToRoute(route, scrollToTop = true) {
-        const targetRoute = validRoutes.includes(route) ? route : 'home';
-
-        // Switch active page section
-        document.querySelectorAll('.bp-page').forEach(page => {
-          page.classList.toggle('active', page.id === `page-${targetRoute}`);
-        });
-
-        // Update drawer active link states
-        document.querySelectorAll('.bp-nav-link[data-route]').forEach(link => {
-          link.classList.toggle('active', link.getAttribute('data-route') === targetRoute);
-        });
-
-        // Update URL hash without jarring jump
-        if (window.location.hash !== `#${targetRoute}`) {
-          history.replaceState(null, '', `#${targetRoute}`);
+      // Helper: Auto-categorize article into Macro, On-Chain, Technicals, DeFi, or Regulation
+      function classifyArticleTopic(title, body) {
+        const text = `${title} ${body}`.toLowerCase();
+        if (/\b(sec|cftc|etf|regulation|regulatory|law|bill|congress|mica|compliance|tax|court|judge|treasury)\b/.test(text)) {
+          return 'Regulation';
         }
-
-        if (scrollToTop) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (/\b(fed|fomc|cpi|inflation|rates|macro|dxy|yield|economy|dollar|central bank|liquidity|nasdaq|gold)\b/.test(text)) {
+          return 'Macro';
         }
-
-        // Re-trigger scroll reveal observer for newly shown page
-        setTimeout(triggerRevealCheck, 60);
+        if (/\b(defi|tvl|dex|uniswap|aave|staking|yield|protocol|smart contract|bridge|layer 2|l2|rollup|solana|ethereum)\b/.test(text)) {
+          return 'DeFi';
+        }
+        if (/\b(on-chain|whale|wallet|miner|hashrate|netflow|exchange reserve|utxo|mempool|address|supply)\b/.test(text)) {
+          return 'On-Chain';
+        }
+        return 'Technicals';
       }
 
-      // Delegate route clicks across header, drawer, buttons, and footer
-      document.addEventListener('click', (e) => {
-        const routeTrigger = e.target.closest('[data-route]');
-        if (routeTrigger) {
-          e.preventDefault();
-          const targetRoute = routeTrigger.getAttribute('data-route');
-          navigateToRoute(targetRoute, true);
-          return;
-        }
+      // Helper: Estimate reading time
+      function estimateReadTime(text) {
+        const words = (text || '').split(/\s+/).filter(Boolean).length;
+        const mins = Math.max(2, Math.min(12, Math.round(words / 45) || 3));
+        return `${mins} min read`;
+      }
 
-        // Handle quick anchor jumps on Home page
-        const anchorTrigger = e.target.closest('[data-anchor]');
-        if (anchorTrigger) {
-          e.preventDefault();
-          const anchorId = anchorTrigger.getAttribute('data-anchor');
-          navigateToRoute('home', false);
-          setTimeout(() => {
-            const targetEl = document.getElementById(anchorId);
-            if (targetEl) {
-              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Helper: Relative timestamp formatter
+      function formatRelativeTime(unixSecondsOrIso) {
+        const ts = typeof unixSecondsOrIso === 'number'
+          ? unixSecondsOrIso * 1000
+          : Date.parse(unixSecondsOrIso);
+        if (Number.isNaN(ts)) return 'Just now';
+        const diffMins = Math.max(1, Math.floor((Date.now() - ts) / 60000));
+        if (diffMins < 60) return `${diffMins}m ago`;
+        const diffHours = Math.floor(diffMins / 60);
+        if (diffHours < 24) return `${diffHours}h ago`;
+        return `${Math.floor(diffHours / 24)}d ago`;
+      }
+
+      // Quality & Credibility Filter for Incoming Live News
+      function filterAndNormalizeArticles(rawList, providerTag) {
+        const seenTitles = new Set();
+        const cleaned = [];
+
+        for (let i = 0; i < rawList.length; i++) {
+          const item = rawList[i];
+          const title = sanitizePlainText(item.title);
+          const body = sanitizePlainText(item.body);
+          if (!title || title.length < 14) continue;
+
+          const lowerCombined = `${title} ${body}`.toLowerCase();
+          const isSpam = CLICKBAIT_BLOCKLIST.some(bad => lowerCombined.includes(bad));
+          if (isSpam) continue;
+
+          const dedupeKey = title.slice(0, 48).toLowerCase();
+          if (seenTitles.has(dedupeKey)) continue;
+          seenTitles.add(dedupeKey);
+
+          const topicTag = classifyArticleTopic(title, body);
+          const isInstitutional = /coindesk|reuters|bloomberg|cointelegraph|blockworks|messari|glassnode|decrypt|the block/i.test(item.source || '');
+          const scoreVal = isInstitutional ? 96 + (i % 4) : 91 + (i % 5);
+
+          cleaned.push({
+            id: item.id || `live-${i}-${Date.now()}`,
+            type: 'live',
+            typeLabel: 'Live Wire',
+            badgeClass: 'bg-primary bg-opacity-10 text-primary',
+            credibility: isInstitutional ? 'Institutional Source' : 'Verified Wire',
+            score: `${scoreVal}/100`,
+            date: `${item.source || providerTag} • ${item.timeLabel}`,
+            readTime: estimateReadTime(body || title),
+            title,
+            source: item.source || providerTag,
+            summary: body.length > 210 ? `${body.slice(0, 207)}...` : (body || 'Verified market intelligence dispatch filtered by BlockPulse Curate.'),
+            fullBody: body || title,
+            tag: topicTag,
+            url: item.url || '#intelligence'
+          });
+
+          if (cleaned.length >= 9) break;
+        }
+        return cleaned;
+      }
+
+      // Multi-Source Redundant News Fetcher with Fallback Cascade
+      async function syncLiveNewsFeed(isManual = false) {
+        syncState.newsStatus = 'busy';
+        syncState.newsSource = 'Scanning Wire Sources...';
+        renderAllSyncHUDs();
+
+        // Source 1: CryptoCompare Public News API (CORS-enabled, no key required)
+        try {
+          const ccData = await fetchWithTimeout('https://min-api.cryptocompare.com/data/v2/news/?lang=EN', 6000);
+          if (ccData && Array.isArray(ccData.Data) && ccData.Data.length > 0) {
+            const normalized = filterAndNormalizeArticles(
+              ccData.Data.slice(0, 24).map(art => ({
+                id: `cc-${art.id}`,
+                title: art.title,
+                body: art.body,
+                source: art.source_info?.name || art.source || 'CryptoCompare Wire',
+                timeLabel: formatRelativeTime(art.published_on),
+                url: art.url
+              })),
+              'CryptoCompare Wire'
+            );
+
+            if (normalized.length >= 3) {
+              syncState.newsItems = normalized;
+              syncState.newsStatus = 'live';
+              syncState.newsSource = 'CryptoCompare Wire';
+              syncState.newsCountdown = 180;
+              localStorage.setItem(STORAGE_KEYS.NEWS_CACHE, JSON.stringify({
+                timestamp: Date.now(),
+                source: 'CryptoCompare Wire (Cached)',
+                items: normalized
+              }));
+              renderIntelligence(syncState.activeIntelFilter);
+              renderAllSyncHUDs();
+              return;
             }
-          }, 120);
+          }
+        } catch (_) {
+          // Fall through to RSS-to-JSON secondary cascade
         }
-      });
 
-      // Handle initial hash on load
-      const initialHash = window.location.hash.replace('#', '');
-      if (validRoutes.includes(initialHash)) {
-        navigateToRoute(initialHash, false);
+        // Source 2: Secondary Live RSS-to-JSON Fallbacks (CoinDesk & Cointelegraph)
+        const rssFeeds = [
+          { name: 'CoinDesk RSS', url: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.coindesk.com%2Farc%2Foutboundfeeds%2Frss%2F' },
+          { name: 'Cointelegraph RSS', url: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fcointelegraph.com%2Frss' }
+        ];
+
+        for (const feed of rssFeeds) {
+          try {
+            const rssData = await fetchWithTimeout(feed.url, 6000);
+            if (rssData && rssData.status === 'ok' && Array.isArray(rssData.items) && rssData.items.length > 0) {
+              const normalized = filterAndNormalizeArticles(
+                rssData.items.slice(0, 18).map((art, idx) => ({
+                  id: `rss-${idx}-${Date.now()}`,
+                  title: art.title,
+                  body: art.description || art.content,
+                  source: feed.name.replace(' RSS', ''),
+                  timeLabel: formatRelativeTime(art.pubDate),
+                  url: art.link
+                })),
+                feed.name
+              );
+
+              if (normalized.length >= 3) {
+                syncState.newsItems = normalized;
+                syncState.newsStatus = 'live';
+                syncState.newsSource = feed.name;
+                syncState.newsCountdown = 180;
+                localStorage.setItem(STORAGE_KEYS.NEWS_CACHE, JSON.stringify({
+                  timestamp: Date.now(),
+                  source: `${feed.name} (Cached)`,
+                  items: normalized
+                }));
+                renderIntelligence(syncState.activeIntelFilter);
+                renderAllSyncHUDs();
+                return;
+              }
+            }
+          } catch (_) {
+            // Try next RSS source
+          }
+        }
+
+        // Source 3: Tertiary localStorage Cache + Editorial Desk Fallback
+        try {
+          const cachedRaw = localStorage.getItem(STORAGE_KEYS.NEWS_CACHE);
+          if (cachedRaw) {
+            const parsed = JSON.parse(cachedRaw);
+            if (parsed && Array.isArray(parsed.items) && parsed.items.length > 0) {
+              syncState.newsItems = parsed.items;
+              syncState.newsStatus = 'cached';
+              syncState.newsSource = parsed.source || 'Local Vault Cache';
+              syncState.newsCountdown = 180;
+              renderIntelligence(syncState.activeIntelFilter);
+              renderAllSyncHUDs();
+              return;
+            }
+          }
+        } catch (_) {
+          // Ignore malformed cache
+        }
+
+        syncState.newsItems = [];
+        syncState.newsStatus = 'cached';
+        syncState.newsSource = 'Editorial Desk Archive';
+        syncState.newsCountdown = 180;
+        renderIntelligence(syncState.activeIntelFilter);
+        renderAllSyncHUDs();
       }
 
-      /* ======================================================================
-         5. RENDER COURSES & SYLLABUS MODAL
-         ====================================================================== */
-      function buildCourseCardHTML(course) {
-        return `
-          <div class="col-md-6 col-lg-4">
-            <div class="bp-card p-3 h-100 d-flex flex-column justify-content-between">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span class="bp-mono text-primary fw-bold small">${course.id}</span>
-                  <span class="badge bg-primary bg-opacity-10 text-primary">${course.level}</span>
+      const intelGridEl = document.getElementById('intelligenceFeedGrid');
+      let currentRenderedArticles = [];
+
+      function renderIntelligence(type = 'all') {
+        if (!intelGridEl) return;
+        syncState.activeIntelFilter = type;
+
+        const combinedPool = [...syncState.newsItems, ...INTELLIGENCE_DATA];
+        const items = type === 'all'
+          ? combinedPool
+          : combinedPool.filter(i => i.type === type);
+
+        currentRenderedArticles = items;
+
+        intelGridEl.innerHTML = items.map((item, idx) => {
+          const isExternal = item.url && item.url.startsWith('http');
+          const actionLabel = isExternal
+            ? `Inspect Brief <i class="bi bi-box-arrow-up-right ms-1"></i>`
+            : `Inspect Brief <i class="bi bi-arrow-right ms-1"></i>`;
+
+          return `
+            <div class="col-md-6 col-lg-4">
+              <div class="bp-card bp-news-card p-3 h-100 d-flex flex-column justify-content-between" data-article-idx="${idx}">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2 gap-1">
+                    <span class="badge ${item.badgeClass}">${item.typeLabel}</span>
+                    <span class="bp-mono small text-success fw-bold" style="font-size: 0.72rem;">
+                      <i class="bi bi-patch-check-fill me-1"></i>${item.credibility || 'Verified'} (${item.score})
+                    </span>
+                  </div>
+                  <h5 class="fw-bold mb-1">${item.title}</h5>
+                  <div class="bp-mono text-bp-subtle mb-2" style="font-size: 0.72rem;">
+                    ${item.date} &bull; ${item.readTime || '4 min read'}
+                  </div>
+                  <p class="small text-bp-muted mb-3">${item.summary}</p>
                 </div>
-                <h5 class="fw-bold mb-2">${course.title}</h5>
-                <p class="small text-bp-muted mb-3">${course.summary}</p>
-              </div>
-              <div>
-                <div class="d-flex justify-content-between align-items-center small text-bp-subtle bp-mono border-top pt-2 mb-2" style="border-color: var(--bp-border) !important; font-size: 0.74rem;">
-                  <span><i class="bi bi-clock me-1"></i>${course.duration}</span>
-                  <span><i class="bi bi-tools me-1"></i>${course.tools.split(',')[0]}</span>
-                </div>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-bp-outline flex-grow-1 open-syllabus-btn" data-course-id="${course.id}">
-                    Inspect Syllabus
-                  </button>
-                  <a href="#contact" class="btn btn-sm btn-bp-primary" data-route="contact">Enroll</a>
+                <div class="d-flex justify-content-between align-items-center border-top pt-2" style="border-color: var(--bp-border) !important;">
+                  <span class="badge border text-bp-muted">${item.tag}</span>
+                  <span class="small fw-semibold text-primary">
+                    ${actionLabel}
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
-        `;
+          `;
+        }).join('');
       }
 
-      // Render Home Featured Courses (Top 3)
-      const homeFeaturedEl = document.getElementById('homeFeaturedCourses');
-      if (homeFeaturedEl) {
-        homeFeaturedEl.innerHTML = COURSES_DATA.slice(0, 3).map(buildCourseCardHTML).join('');
-      }
-
-      // Render Full Catalog with Filter
-      const catalogGridEl = document.getElementById('coursesCatalogGrid');
-      function renderCatalog(category = 'all') {
-        if (!catalogGridEl) return;
-        const filtered = category === 'all'
-          ? COURSES_DATA
-          : COURSES_DATA.filter(c => c.category === category);
-        catalogGridEl.innerHTML = filtered.map(buildCourseCardHTML).join('');
-      }
-      renderCatalog('all');
-
-      document.querySelectorAll('.course-filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.course-filter-btn').forEach(b => {
-            b.classList.remove('btn-bp-primary', 'active');
-            b.classList.add('btn-bp-outline');
-          });
-          btn.classList.remove('btn-bp-outline');
-          btn.classList.add('btn-bp-primary', 'active');
-          renderCatalog(btn.getAttribute('data-category'));
-        });
-      });
-
-      // Course Syllabus Modal Trigger
+      // Open Article Brief & Source Modal on Card Click
       document.addEventListener('click', (e) => {
-        const syllabusBtn = e.target.closest('.open-syllabus-btn');
-        if (!syllabusBtn) return;
+        const newsCard = e.target.closest('[data-article-idx]');
+        if (!newsCard) return;
 
-        const courseId = syllabusBtn.getAttribute('data-course-id');
-        const course = COURSES_DATA.find(c => c.id === courseId);
-        if (!course) return;
+        const idx = parseInt(newsCard.getAttribute('data-article-idx'), 10);
+        const article = currentRenderedArticles[idx];
+        if (!article) return;
 
-        document.getElementById('modalCourseCode').textContent = `${course.id} // ${course.categoryLabel.toUpperCase()}`;
-        document.getElementById('courseSyllabusModalLabel').textContent = course.title;
-        document.getElementById('modalCourseDesc').textContent = course.summary;
-        document.getElementById('modalCourseDuration').textContent = course.duration;
-        document.getElementById('modalCourseLevel').textContent = `Level: ${course.level}`;
-        document.getElementById('modalCourseTools').textContent = `Tools: ${course.tools}`;
+        document.getElementById('articleModalBadge').textContent = article.typeLabel;
+        document.getElementById('articleModalCredibility').innerHTML = `<i class="bi bi-shield-check me-1"></i>${article.credibility || 'Verified Wire'} (${article.score})`;
+        document.getElementById('articleModalReadTime').textContent = article.readTime || '4 min read';
+        document.getElementById('articleBriefModalLabel').textContent = article.title;
+        document.getElementById('articleModalPublisher').innerHTML = `<i class="bi bi-building me-1 text-primary"></i>${article.source}`;
+        document.getElementById('articleModalTimestamp').innerHTML = `<i class="bi bi-clock me-1"></i>${article.date}`;
+        document.getElementById('articleModalBody').textContent = article.fullBody || article.summary;
 
-        const modulesList = document.getElementById('modalCourseModules');
-        modulesList.innerHTML = course.modules.map(m => `
-          <li class="list-group-item small" style="background-color: var(--bp-surface); color: var(--bp-text); border-color: var(--bp-border);">
-            <i class="bi bi-check2-circle text-primary me-2"></i>${m}
-          </li>
-        `).join('');
+        document.getElementById('articleModalTags').innerHTML = `
+          <span class="badge bg-primary bg-opacity-10 text-primary">${article.tag}</span>
+          <span class="badge border text-bp-muted">${article.typeLabel}</span>
+        `;
 
-        const modal = new bootstrap.Modal(document.getElementById('courseSyllabusModal'));
+        const extLink = document.getElementById('articleModalExternalLink');
+        if (article.url && article.url.startsWith('http')) {
+          extLink.href = article.url;
+          extLink.target = '_blank';
+          extLink.rel = 'noopener noreferrer';
+          extLink.removeAttribute('data-route');
+          extLink.innerHTML = `Read Full Original Article <i class="bi bi-box-arrow-up-right ms-1"></i>`;
+        } else {
+          extLink.href = '#courses';
+          extLink.removeAttribute('target');
+          extLink.setAttribute('data-route', 'courses');
+          extLink.innerHTML = `Open Related Course Track <i class="bi bi-arrow-right ms-1"></i>`;
+        }
+
+        const modal = new bootstrap.Modal(document.getElementById('articleBriefModal'));
         modal.show();
       });
 
-      /* ======================================================================
-         6. RENDER CURATED INTELLIGENCE FEED
-         ====================================================================== */
-      const intelGridEl = document.getElementById('intelligenceFeedGrid');
-      function renderIntelligence(type = 'all') {
-        if (!intelGridEl) return;
-        const items = type === 'all'
-          ? INTELLIGENCE_DATA
-          : INTELLIGENCE_DATA.filter(i => i.type === type);
-
-        intelGridEl.innerHTML = items.map(item => `
-          <div class="col-md-6 col-lg-4">
-            <div class="bp-card p-3 h-100 d-flex flex-column justify-content-between">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span class="badge ${item.badgeClass}">${item.typeLabel}</span>
-                  <span class="bp-mono small text-success fw-bold">SIGNAL ${item.score}</span>
-                </div>
-                <h5 class="fw-bold mb-1">${item.title}</h5>
-                <div class="bp-mono text-bp-subtle mb-2" style="font-size: 0.72rem;">${item.source} &bull; ${item.date}</div>
-                <p class="small text-bp-muted mb-3">${item.summary}</p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center border-top pt-2" style="border-color: var(--bp-border) !important;">
-                <span class="badge border text-bp-muted">${item.tag}</span>
-                <a href="#courses" class="small fw-semibold text-primary text-decoration-none" data-route="courses">
-                  Related Module <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
       renderIntelligence('all');
 
       document.querySelectorAll('.intel-filter-btn').forEach(btn => {
@@ -2443,6 +3155,998 @@
           emailInput.value = '';
         });
       }
+
+      /* ======================================================================
+         11. LIVE MARKET SCREENER & WATCHLIST ENGINE
+         ====================================================================== */
+      const MARKET_PAIRS_DATA = [
+        // Exact Core Spot Pairs from Reference
+        {
+          id: 'BTC-USDC',
+          base: 'BTC',
+          name: 'Bitcoin',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', '50% Fees'],
+          volText: '65.95M',
+          volNum: 65950000,
+          price: 64685.8,
+          decimals: 1,
+          usdApprox: 64744.017,
+          usdDecimals: 3,
+          change24h: -0.35,
+          bg: '#F7931A',
+          fg: '#FFFFFF',
+          symbolIcon: '₿',
+          support: '63,200 – 63,850',
+          resistance: '66,400 – 67,100',
+          courseRef: 'BP-303: Multi-Timeframe Volume Profile',
+          thesis: 'High-timeframe auction consolidating near composite value area high. Watch spot ETF net inflows and CME basis before breakout confirmation.'
+        },
+        {
+          id: 'ETH-USDC',
+          base: 'ETH',
+          name: 'Ethereum',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', 'DeFi'],
+          volText: '10.09M',
+          volNum: 10090000,
+          price: 1812.74,
+          decimals: 2,
+          usdApprox: 1814.37,
+          usdDecimals: 2,
+          change24h: -1.32,
+          bg: '#0F172A',
+          fg: '#FFFFFF',
+          symbolIcon: '◆',
+          support: '1,765 – 1,790',
+          resistance: '1,880 – 1,920',
+          courseRef: 'BP-202: On-Chain Telemetry & Flows',
+          thesis: 'Layer-2 blob settlement activity remains elevated while ETH/BTC tests multi-month structural demand. Monitor staking netflows and perp funding.'
+        },
+        {
+          id: 'SOL-USDC',
+          base: 'SOL',
+          name: 'Solana',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', 'SOL Eco', '50% Fees'],
+          volText: '2.87M',
+          volNum: 2870000,
+          price: 75.38,
+          decimals: 2,
+          usdApprox: 75.44,
+          usdDecimals: 2,
+          change24h: 3.36,
+          bg: '#111827',
+          fg: '#14F195',
+          symbolIcon: '≡',
+          support: '71.20 – 72.50',
+          resistance: '78.90 – 81.00',
+          courseRef: 'BP-303: Order Flow & CVD Divergences',
+          thesis: 'Leading relative strength across high-throughput Layer-1 pairs backed by spot DEX volume expansion and clean higher-low market structure.'
+        },
+        {
+          id: 'XRP-USDC',
+          base: 'XRP',
+          name: 'XRP',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot'],
+          volText: '2.27M',
+          volNum: 2270000,
+          price: 0.9857,
+          decimals: 4,
+          usdApprox: 0.98,
+          usdDecimals: 2,
+          change24h: 2.20,
+          bg: '#090D16',
+          fg: '#FFFFFF',
+          symbolIcon: '✕',
+          support: '0.9350 – 0.9500',
+          resistance: '1.0250 – 1.0500',
+          courseRef: 'BP-101: Spot Orderbooks & Liquidity',
+          thesis: 'Approaching psychological 1.00 liquidity cluster with rising spot taker buy volume and balanced derivatives open interest.'
+        },
+        {
+          id: 'SUI-USDC',
+          base: 'SUI',
+          name: 'Sui',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', 'DeFi', 'New'],
+          volText: '284.04K',
+          volNum: 284040,
+          price: 0.7302,
+          decimals: 4,
+          usdApprox: 0.73,
+          usdDecimals: 2,
+          change24h: 0.41,
+          bg: '#E0F2FE',
+          fg: '#0284C7',
+          symbolIcon: '💧',
+          support: '0.6950 – 0.7100',
+          resistance: '0.7680 – 0.7900',
+          courseRef: 'BP-202: DEX Liquidity Pools',
+          thesis: 'Holding above 200-period intraday VWAP with steady DeFi TVL retention across native lending protocols.'
+        },
+        {
+          id: 'AVAX-USDC',
+          base: 'AVAX',
+          name: 'Avalanche',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', 'DeFi'],
+          volText: '118.66K',
+          volNum: 118660,
+          price: 7.173,
+          decimals: 3,
+          usdApprox: 7.17,
+          usdDecimals: 2,
+          change24h: -0.43,
+          bg: '#E84142',
+          fg: '#FFFFFF',
+          symbolIcon: '▲',
+          support: '6.85 – 7.00',
+          resistance: '7.55 – 7.80',
+          courseRef: 'BP-101: Layer-1 Settlement Architecture',
+          thesis: 'Range-bound consolidation near mid-range point of control; institutional subnet tokenization deployments remain key catalyst.'
+        },
+        {
+          id: 'DOGE-USDC',
+          base: 'DOGE',
+          name: 'Dogecoin',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', 'Meme', '50% Fees'],
+          volText: '223.78K',
+          volNum: 223780,
+          price: 0.05956,
+          decimals: 5,
+          usdApprox: 0.059,
+          usdDecimals: 3,
+          change24h: 0.56,
+          bg: '#C2A633',
+          fg: '#FFFFFF',
+          symbolIcon: 'Ð',
+          support: '0.0565 – 0.0578',
+          resistance: '0.0625 – 0.0640',
+          courseRef: 'BP-505: Funding Rates & Leverage',
+          thesis: 'High-beta retail sentiment proxy showing neutral perpetual funding after recent leverage flush.'
+        },
+        {
+          id: 'OP-USDC',
+          base: 'OP',
+          name: 'Optimism',
+          marketType: 'Spot',
+          category: 'Crypto',
+          tags: ['Hot', 'DeFi'],
+          volText: '18.52K',
+          volNum: 18520,
+          price: 0.07697,
+          decimals: 5,
+          usdApprox: 0.077,
+          usdDecimals: 3,
+          change24h: -2.94,
+          bg: '#FF0420',
+          fg: '#FFFFFF',
+          symbolIcon: 'OP',
+          support: '0.0730 – 0.0748',
+          resistance: '0.0815 – 0.0840',
+          courseRef: 'BP-606: Position Sizing & Risk Caps',
+          thesis: 'Pulling back into prior demand shelf; requires strict invalidation sizing due to elevated beta relative to ETH.'
+        },
+        // Additional Pairs for Futures, Options, CFD & Tokenized Stocks
+        {
+          id: 'BTC-PERP',
+          base: 'BTC-PERP',
+          name: 'Bitcoin Perpetual',
+          marketType: 'Futures',
+          category: 'Crypto',
+          tags: ['Hot', '50% Fees'],
+          volText: '142.80M',
+          volNum: 142800000,
+          price: 64712.5,
+          decimals: 1,
+          usdApprox: 64712.5,
+          usdDecimals: 1,
+          change24h: -0.28,
+          bg: '#2563EB',
+          fg: '#FFFFFF',
+          symbolIcon: '₿',
+          support: '63,150 – 63,800',
+          resistance: '66,500 – 67,200',
+          courseRef: 'BP-505: Perpetual Swap Mechanics',
+          thesis: 'Annualized funding rate at +8.4% indicates balanced long/short positioning without excessive leverage crowding.'
+        },
+        {
+          id: 'SOL-PERP',
+          base: 'SOL-PERP',
+          name: 'Solana Perpetual',
+          marketType: 'Futures',
+          category: 'Crypto',
+          tags: ['Hot', 'SOL Eco'],
+          volText: '38.40M',
+          volNum: 38400000,
+          price: 75.46,
+          decimals: 2,
+          usdApprox: 75.46,
+          usdDecimals: 2,
+          change24h: 3.52,
+          bg: '#0D9488',
+          fg: '#FFFFFF',
+          symbolIcon: '≡',
+          support: '71.00 – 72.40',
+          resistance: '79.00 – 81.20',
+          courseRef: 'BP-505: Open Interest & Liquidations',
+          thesis: 'Open interest rising alongside spot price appreciation—classic confirmation of new long initiative rather than short covering.'
+        },
+        {
+          id: 'NVDA-USDC',
+          base: 'NVDA',
+          name: 'NVIDIA Tokenized',
+          marketType: 'Spot',
+          category: 'Tokenized Stocks',
+          tags: ['Hot', 'New'],
+          volText: '4.12M',
+          volNum: 4120000,
+          price: 138.45,
+          decimals: 2,
+          usdApprox: 138.45,
+          usdDecimals: 2,
+          change24h: 1.84,
+          bg: '#76B900',
+          fg: '#FFFFFF',
+          symbolIcon: 'NV',
+          support: '132.00 – 134.50',
+          resistance: '142.00 – 145.00',
+          courseRef: 'BP-404: Macro Cross-Asset Correlations',
+          thesis: 'AI compute equity benchmark displaying strong correlation with Nasdaq-100 liquidity and high-beta crypto risk appetite.'
+        },
+        {
+          id: 'BTC-OPT-70K',
+          base: 'BTC-70K-C',
+          name: 'BTC Call Option',
+          marketType: 'Options',
+          category: 'Crypto',
+          tags: ['Hot'],
+          volText: '9.65M',
+          volNum: 9650000,
+          price: 1420.5,
+          decimals: 1,
+          usdApprox: 1420.5,
+          usdDecimals: 1,
+          change24h: 4.15,
+          bg: '#7C3AED',
+          fg: '#FFFFFF',
+          symbolIcon: 'Ω',
+          support: '1,180 IV Floor',
+          resistance: '1,750 IV Cap',
+          courseRef: 'BP-505: Options IV & 25-Delta Skew',
+          thesis: '25-delta call skew steepening ahead of monthly expiry as institutional desks hedge upside tail risk.'
+        },
+        {
+          id: 'XAU-USD',
+          base: 'XAU',
+          name: 'Gold Spot CFD',
+          marketType: 'CFD',
+          category: 'Tokenized Stocks',
+          tags: ['Hot'],
+          volText: '51.20M',
+          volNum: 51200000,
+          price: 2742.60,
+          decimals: 2,
+          usdApprox: 2742.60,
+          usdDecimals: 2,
+          change24h: 0.68,
+          bg: '#D97706',
+          fg: '#FFFFFF',
+          symbolIcon: 'Au',
+          support: '2,705 – 2,718',
+          resistance: '2,765 – 2,785',
+          courseRef: 'BP-404: Real Treasury Yields & Hard Assets',
+          thesis: 'Sovereign central bank reserve accumulation and real-yield compression underpin multi-quarter uptrend.'
+        }
+      ];
+
+      // Watchlist State (Seeded with BTC, ETH, SOL, XRP by default)
+      let userWatchlist = JSON.parse(localStorage.getItem('bp-watchlist') || '["BTC-USDC","ETH-USDC","SOL-USDC","XRP-USDC"]');
+
+      function saveWatchlist() {
+        localStorage.setItem('bp-watchlist', JSON.stringify(userWatchlist));
+      }
+
+      // Quote Multiplier for USDC / USDT / USD switcher
+      const QUOTE_FX = {
+        USDC: { rate: 1.0, suffix: 'USDC' },
+        USDT: { rate: 1.0002, suffix: 'USDT' },
+        USD: { rate: 1.0009, suffix: 'USD' }
+      };
+
+      function createMarketScreenerInstance(mountElementId) {
+        const mountEl = document.getElementById(mountElementId);
+        if (!mountEl) return;
+
+        const state = {
+          search: '',
+          primaryTab: 'Spot', // 'Overview' | 'Watchlist' | 'Spot' | 'Futures' | 'Options' | 'CFD'
+          category: 'Crypto', // 'Crypto' | 'Tokenized Stocks' | 'New' | 'Gainers' | 'Losers'
+          subTag: 'Hot',      // 'Hot' | '50% Fees' | 'SOL Eco' | 'DeFi' | 'Meme' | 'All'
+          quote: 'USDC',
+          sortBy: 'default',  // 'default' | 'vol' | 'price' | 'change'
+          sortDir: 'desc'
+        };
+
+        mountEl.innerHTML = `
+          <div class="bp-screener-shell">
+            <!-- Top Search & Macro Calendar Bar -->
+            <div class="p-3 pb-2 d-flex align-items-center gap-2">
+              <div class="bp-screener-search flex-grow-1">
+                <i class="bi bi-search text-bp-subtle"></i>
+                <input type="text" class="screener-search-input" placeholder="Search pairs e.g. BTC/USDC, SOL, ETH, NVDA..." aria-label="Search Trading Pairs" />
+                <button type="button" class="btn btn-sm p-0 border-0 text-bp-subtle screener-clear-btn d-none" title="Clear search">
+                  <i class="bi bi-x-circle-fill"></i>
+                </button>
+              </div>
+              <button type="button" class="bp-icon-btn flex-shrink-0" data-bs-toggle="modal" data-bs-target="#macroCalendarModal" title="Macro Economic Calendar" aria-label="Open Macro Calendar">
+                <i class="bi bi-calendar-event"></i>
+              </button>
+            </div>
+
+            <!-- Primary Horizontal Tabs (Overview, Watchlist, Spot, Futures [Hot], Options, CFD) -->
+            <div class="px-3">
+              <div class="bp-scroll-tabs" role="tablist">
+                <button type="button" class="bp-primary-tab" data-ptab="Overview">Overview</button>
+                <button type="button" class="bp-primary-tab" data-ptab="Watchlist">Watchlist <span class="badge bg-primary bg-opacity-10 text-primary ms-1 watchlist-count-badge">${userWatchlist.length}</span></button>
+                <button type="button" class="bp-primary-tab active" data-ptab="Spot">Spot</button>
+                <button type="button" class="bp-primary-tab me-2" data-ptab="Futures">Futures <span class="bp-hot-pill">Hot</span></button>
+                <button type="button" class="bp-primary-tab" data-ptab="Options">Options</button>
+                <button type="button" class="bp-primary-tab" data-ptab="CFD">CFD</button>
+              </div>
+            </div>
+
+            <!-- Category Pills Row (Crypto, Tokenized Stocks, New, Gainers, Losers) -->
+            <div class="px-3 pt-2 pb-1">
+              <div class="bp-cat-pills">
+                <button type="button" class="bp-cat-pill active" data-cat="Crypto">Crypto</button>
+                <button type="button" class="bp-cat-pill" data-cat="Tokenized Stocks">Tokenized Stocks</button>
+                <button type="button" class="bp-cat-pill" data-cat="New">New</button>
+                <button type="button" class="bp-cat-pill" data-cat="Gainers">Gainers</button>
+                <button type="button" class="bp-cat-pill" data-cat="Losers">Losers</button>
+              </div>
+            </div>
+
+            <!-- Sub-Filter Tags & Quote Selector (Hot, 50% Fees, SOL Eco, DeFi, Meme | USDC) -->
+            <div class="px-3 py-2 d-flex flex-wrap justify-content-between align-items-center gap-2 border-bottom" style="border-color: var(--bp-border) !important;">
+              <div class="d-flex align-items-center gap-1 overflow-x-auto">
+                <button type="button" class="bp-subtag-btn active" data-sub="Hot">Hot</button>
+                <button type="button" class="bp-subtag-btn" data-sub="50% Fees">50% Fees</button>
+                <button type="button" class="bp-subtag-btn" data-sub="SOL Eco">SOL Eco</button>
+                <button type="button" class="bp-subtag-btn" data-sub="DeFi">DeFi</button>
+                <button type="button" class="bp-subtag-btn" data-sub="Meme">Meme</button>
+                <button type="button" class="bp-subtag-btn" data-sub="All">All</button>
+              </div>
+
+              <div class="d-flex align-items-center gap-2">
+                <span class="text-bp-subtle small d-none sm-inline d-md-inline"><i class="bi bi-sliders2"></i></span>
+                <select class="form-select form-select-sm py-1 px-2 bp-mono fw-semibold screener-quote-select" style="width: auto; font-size: 0.78rem;" aria-label="Quote Currency">
+                  <option value="USDC" selected>USDC</option>
+                  <option value="USDT">USDT</option>
+                  <option value="USD">USD</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Sortable Table Column Headers -->
+            <div class="px-3 py-2 border-bottom d-grid" style="grid-template-columns: 1.45fr 1fr 0.85fr; border-color: var(--bp-border) !important; background: var(--bp-surface);">
+              <div>
+                <button type="button" class="bp-sort-header" data-sort="vol">
+                  Trading Pairs / Vol <i class="bi bi-arrow-down-up"></i>
+                </button>
+              </div>
+              <div class="text-end pe-2">
+                <button type="button" class="bp-sort-header" data-sort="price">
+                  Price <i class="bi bi-arrow-down-up"></i>
+                </button>
+              </div>
+              <div class="text-end">
+                <button type="button" class="bp-sort-header" data-sort="change">
+                  24H Change <i class="bi bi-arrow-down-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ticker Rows List -->
+            <div class="screener-rows-container"></div>
+
+            <!-- Bottom Status Bar -->
+            <div class="px-3 py-2 d-flex flex-wrap justify-content-between align-items-center gap-2 small text-bp-subtle" style="background: var(--bp-surface); border-top: 1px solid var(--bp-border); font-size: 0.76rem;">
+              <span><i class="bi bi-info-circle text-primary me-1"></i>Click any pair to inspect technical levels &amp; study modules.</span>
+              <span class="bp-mono screener-showing-count">Showing 8 pairs</span>
+            </div>
+          </div>
+        `;
+
+        const rowsContainer = mountEl.querySelector('.screener-rows-container');
+        const searchInput = mountEl.querySelector('.screener-search-input');
+        const clearBtn = mountEl.querySelector('.screener-clear-btn');
+        const quoteSelect = mountEl.querySelector('.screener-quote-select');
+        const showingCountEl = mountEl.querySelector('.screener-showing-count');
+
+        function formatPrice(val, decimals) {
+          return val.toLocaleString('en-US', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+          });
+        }
+
+        function renderRows() {
+          const fx = QUOTE_FX[state.quote] || QUOTE_FX.USDC;
+          let list = [...MARKET_PAIRS_DATA];
+
+          // 1. Primary Tab Filter
+          if (state.primaryTab === 'Watchlist') {
+            list = list.filter(item => userWatchlist.includes(item.id));
+          } else if (state.primaryTab !== 'Overview') {
+            list = list.filter(item => item.marketType === state.primaryTab);
+          }
+
+          // 2. Category Pill Filter (only apply if matches exist or user explicitly selected non-default)
+          if (state.primaryTab === 'Spot' || state.primaryTab === 'Overview') {
+            if (state.category === 'Gainers') {
+              list = list.filter(item => item.change24h > 0);
+            } else if (state.category === 'Losers') {
+              list = list.filter(item => item.change24h < 0);
+            } else if (state.category === 'New') {
+              list = list.filter(item => item.tags.includes('New'));
+            } else if (state.category === 'Tokenized Stocks') {
+              list = list.filter(item => item.category === 'Tokenized Stocks');
+            } else if (state.category === 'Crypto') {
+              list = list.filter(item => item.category === 'Crypto');
+            }
+          }
+
+          // 3. Sub-tag Filter (applied when matching items exist)
+          if (state.subTag && state.subTag !== 'All' && state.primaryTab !== 'Watchlist') {
+            const tagged = list.filter(item => item.tags.includes(state.subTag));
+            if (tagged.length > 0) {
+              list = tagged;
+            }
+          }
+
+          // 4. Search Query Filter
+          if (state.search.trim() !== '') {
+            const q = state.search.trim().toLowerCase();
+            list = MARKET_PAIRS_DATA.filter(item =>
+              item.base.toLowerCase().includes(q) ||
+              item.name.toLowerCase().includes(q) ||
+              item.marketType.toLowerCase().includes(q)
+            );
+          }
+
+          // 5. Sorting
+          if (state.sortBy === 'vol') {
+            list.sort((a, b) => state.sortDir === 'desc' ? b.volNum - a.volNum : a.volNum - b.volNum);
+          } else if (state.sortBy === 'price') {
+            list.sort((a, b) => state.sortDir === 'desc' ? b.price - a.price : a.price - b.price);
+          } else if (state.sortBy === 'change') {
+            list.sort((a, b) => state.sortDir === 'desc' ? b.change24h - a.change24h : a.change24h - b.change24h);
+          }
+
+          // Update Watchlist badges across all instances
+          document.querySelectorAll('.watchlist-count-badge').forEach(b => {
+            b.textContent = userWatchlist.length;
+          });
+
+          showingCountEl.textContent = `Showing ${list.length} pair${list.length === 1 ? '' : 's'}`;
+
+          if (list.length === 0) {
+            rowsContainer.innerHTML = `
+              <div class="p-4 text-center text-bp-muted">
+                <i class="bi bi-search fs-4 d-block mb-2 text-primary"></i>
+                <div class="fw-semibold">No matching trading pairs found</div>
+                <div class="small text-bp-subtle">Try switching tabs, clearing your search filter, or starring pairs into your Watchlist.</div>
+              </div>
+            `;
+            return;
+          }
+
+          rowsContainer.innerHTML = list.map(item => {
+            const isStarred = userWatchlist.includes(item.id);
+            const isUp = item.change24h >= 0;
+            const changeStr = `${isUp ? '+' : ''}${item.change24h.toFixed(2)}%`;
+            const convertedPrice = formatPrice(item.price * fx.rate, item.decimals);
+            const usdDisplay = formatPrice(item.usdApprox, item.usdDecimals);
+            const quoteLabel = item.marketType === 'CFD' ? 'USD' : fx.suffix;
+
+            return `
+              <div class="bp-market-row" data-pair-id="${item.id}">
+                <!-- Left: Star + Token Icon + Pair / Volume -->
+                <div class="d-flex align-items-center gap-2 min-w-0">
+                  <button type="button" class="bp-star-btn ${isStarred ? 'starred' : ''}" data-star-id="${item.id}" title="${isStarred ? 'Remove from Watchlist' : 'Add to Watchlist'}" aria-label="Toggle Watchlist">
+                    <i class="bi ${isStarred ? 'bi-star-fill' : 'bi-star'}"></i>
+                  </button>
+                  <span class="bp-token-badge" style="background-color: ${item.bg}; color: ${item.fg};">
+                    ${item.symbolIcon}
+                  </span>
+                  <div class="text-truncate">
+                    <div class="lh-sm">
+                      <span class="fw-bold">${item.base}</span>
+                      <span class="text-bp-subtle small"> / ${quoteLabel}</span>
+                    </div>
+                    <div class="text-bp-subtle small text-truncate" style="font-size: 0.76rem;">
+                      ${item.name} &middot; ${item.volText}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Center: Primary Price & USD Equivalent -->
+                <div class="text-end pe-2 bp-mono">
+                  <div class="fw-bold lh-sm pair-price-cell" data-price-id="${item.id}" style="font-size: 0.92rem;">${convertedPrice}</div>
+                  <div class="text-bp-subtle" style="font-size: 0.74rem;">${usdDisplay} USD</div>
+                </div>
+
+                <!-- Right: 24H Change Pill -->
+                <div class="text-end">
+                  <span class="bp-change-pill ${isUp ? 'bp-change-up' : 'bp-change-down'} pair-change-cell" data-change-id="${item.id}">
+                    ${changeStr}
+                  </span>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Event Listeners for Screener Controls
+        searchInput.addEventListener('input', () => {
+          state.search = searchInput.value;
+          clearBtn.classList.toggle('d-none', state.search.length === 0);
+          renderRows();
+        });
+
+        clearBtn.addEventListener('click', () => {
+          state.search = '';
+          searchInput.value = '';
+          clearBtn.classList.add('d-none');
+          renderRows();
+        });
+
+        mountEl.querySelectorAll('.bp-primary-tab').forEach(btn => {
+          btn.addEventListener('click', () => {
+            mountEl.querySelectorAll('.bp-primary-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.primaryTab = btn.getAttribute('data-ptab');
+            state.search = '';
+            searchInput.value = '';
+            clearBtn.classList.add('d-none');
+            renderRows();
+          });
+        });
+
+        mountEl.querySelectorAll('.bp-cat-pill').forEach(btn => {
+          btn.addEventListener('click', () => {
+            mountEl.querySelectorAll('.bp-cat-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.category = btn.getAttribute('data-cat');
+            renderRows();
+          });
+        });
+
+        mountEl.querySelectorAll('.bp-subtag-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            mountEl.querySelectorAll('.bp-subtag-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.subTag = btn.getAttribute('data-sub');
+            renderRows();
+          });
+        });
+
+        quoteSelect.addEventListener('change', () => {
+          state.quote = quoteSelect.value;
+          renderRows();
+        });
+
+        mountEl.querySelectorAll('.bp-sort-header').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const sortKey = btn.getAttribute('data-sort');
+            if (state.sortBy === sortKey) {
+              state.sortDir = state.sortDir === 'desc' ? 'asc' : 'desc';
+            } else {
+              state.sortBy = sortKey;
+              state.sortDir = 'desc';
+            }
+            mountEl.querySelectorAll('.bp-sort-header').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderRows();
+          });
+        });
+
+        // Row Click (Star Watchlist vs Open Pair Brief Modal)
+        rowsContainer.addEventListener('click', (e) => {
+          const starBtn = e.target.closest('[data-star-id]');
+          if (starBtn) {
+            e.stopPropagation();
+            const pairId = starBtn.getAttribute('data-star-id');
+            if (userWatchlist.includes(pairId)) {
+              userWatchlist = userWatchlist.filter(id => id !== pairId);
+            } else {
+              userWatchlist.push(pairId);
+            }
+            saveWatchlist();
+            renderRows();
+            return;
+          }
+
+          const rowEl = e.target.closest('[data-pair-id]');
+          if (rowEl) {
+            const pairId = rowEl.getAttribute('data-pair-id');
+            openPairDetailModal(pairId, state.quote);
+          }
+        });
+
+        renderRows();
+        return { renderRows, getQuote: () => state.quote };
+      }
+
+      function openPairDetailModal(pairId, quote = 'USDC') {
+        const pair = MARKET_PAIRS_DATA.find(p => p.id === pairId);
+        if (!pair) return;
+
+        const fx = QUOTE_FX[quote] || QUOTE_FX.USDC;
+        const isUp = pair.change24h >= 0;
+        const iconEl = document.getElementById('pairModalIcon');
+        iconEl.style.backgroundColor = pair.bg;
+        iconEl.style.color = pair.fg;
+        iconEl.textContent = pair.symbolIcon;
+
+        document.getElementById('pairDetailModalLabel').textContent = `${pair.base} / ${pair.marketType === 'CFD' ? 'USD' : fx.suffix}`;
+        document.getElementById('pairModalSubtitle').textContent = `${pair.name} • ${pair.marketType} Market`;
+        document.getElementById('pairModalPrice').textContent = (pair.price * fx.rate).toLocaleString('en-US', {
+          minimumFractionDigits: pair.decimals,
+          maximumFractionDigits: pair.decimals
+        });
+        document.getElementById('pairModalUsd').textContent = `${pair.usdApprox.toLocaleString('en-US', {
+          minimumFractionDigits: pair.usdDecimals,
+          maximumFractionDigits: pair.usdDecimals
+        })} USD`;
+
+        const changeEl = document.getElementById('pairModalChange');
+        changeEl.textContent = `${isUp ? '+' : ''}${pair.change24h.toFixed(2)}%`;
+        changeEl.className = `bp-change-pill ${isUp ? 'bp-change-up' : 'bp-change-down'}`;
+
+        document.getElementById('pairModalVol').textContent = `24h Vol: ${pair.volText}`;
+        document.getElementById('pairModalThesis').textContent = pair.thesis;
+        document.getElementById('pairModalSupport').textContent = pair.support;
+        document.getElementById('pairModalResistance').textContent = pair.resistance;
+        document.getElementById('pairModalCourse').textContent = pair.courseRef;
+
+        const modal = new bootstrap.Modal(document.getElementById('pairDetailModal'));
+        modal.show();
+      }
+
+      // Instantiate Screener on both Home Page and Dedicated Markets Page
+      const homeScreener = createMarketScreenerInstance('homeScreenerMount');
+      const pageScreener = createMarketScreenerInstance('pageScreenerMount');
+
+      /* ======================================================================
+         12. MULTI-SOURCE LIVE MARKET PRICE SYNC & HUD CONTROLLER
+         ====================================================================== */
+      const COINGECKO_ID_MAP = {
+        'bitcoin': ['BTC-USDC', 'BTC-PERP'],
+        'ethereum': ['ETH-USDC'],
+        'solana': ['SOL-USDC', 'SOL-PERP'],
+        'ripple': ['XRP-USDC'],
+        'sui': ['SUI-USDC'],
+        'avalanche-2': ['AVAX-USDC'],
+        'dogecoin': ['DOGE-USDC'],
+        'optimism': ['OP-USDC']
+      };
+
+      const CRYPTOCOMPARE_SYM_MAP = {
+        'BTC': ['BTC-USDC', 'BTC-PERP'],
+        'ETH': ['ETH-USDC'],
+        'SOL': ['SOL-USDC', 'SOL-PERP'],
+        'XRP': ['XRP-USDC'],
+        'SUI': ['SUI-USDC'],
+        'AVAX': ['AVAX-USDC'],
+        'DOGE': ['DOGE-USDC'],
+        'OP': ['OP-USDC']
+      };
+
+      function formatCompactVolume(volNum) {
+        if (!volNum || Number.isNaN(volNum)) return null;
+        if (volNum >= 1e9) return `${(volNum / 1e9).toFixed(2)}B`;
+        if (volNum >= 1e6) return `${(volNum / 1e6).toFixed(2)}M`;
+        if (volNum >= 1e3) return `${(volNum / 1e3).toFixed(2)}K`;
+        return volNum.toFixed(0);
+      }
+
+      function applyMarketPriceUpdates(updatesMap) {
+        Object.keys(updatesMap).forEach(pairId => {
+          const item = MARKET_PAIRS_DATA.find(p => p.id === pairId);
+          const u = updatesMap[pairId];
+          if (!item || !u || typeof u.price !== 'number' || u.price <= 0) return;
+
+          const slightPerpSpread = pairId.endsWith('-PERP') ? 1.0004 : 1.0;
+          item.price = u.price * slightPerpSpread;
+          item.usdApprox = u.price * slightPerpSpread;
+          if (typeof u.change24h === 'number' && !Number.isNaN(u.change24h)) {
+            item.change24h = parseFloat(u.change24h.toFixed(2));
+          }
+          if (typeof u.vol24h === 'number' && u.vol24h > 0) {
+            item.volNum = u.vol24h;
+            const compact = formatCompactVolume(u.vol24h);
+            if (compact) item.volText = compact;
+          }
+        });
+
+        if (homeScreener) homeScreener.renderRows();
+        if (pageScreener) pageScreener.renderRows();
+      }
+
+      async function syncLiveMarketPrices() {
+        syncState.marketStatus = 'busy';
+        syncState.marketSource = 'Querying Price Oracles...';
+        renderAllSyncHUDs();
+
+        // Primary Source: CoinGecko Public Simple Price API
+        try {
+          const cgUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,sui,avalanche-2,dogecoin,optimism&vs_currencies=usd&include_24hr_change=true&include_24hr_vol=true';
+          const cgData = await fetchWithTimeout(cgUrl, 6000);
+          if (cgData && cgData.bitcoin && typeof cgData.bitcoin.usd === 'number') {
+            const updates = {};
+            Object.entries(COINGECKO_ID_MAP).forEach(([cgId, pairIds]) => {
+              const entry = cgData[cgId];
+              if (entry && typeof entry.usd === 'number') {
+                pairIds.forEach(pid => {
+                  updates[pid] = {
+                    price: entry.usd,
+                    change24h: entry.usd_24h_change,
+                    vol24h: entry.usd_24h_vol
+                  };
+                });
+              }
+            });
+
+            applyMarketPriceUpdates(updates);
+            syncState.marketStatus = 'live';
+            syncState.marketSource = 'CoinGecko + Wire';
+            syncState.marketCountdown = 60;
+            localStorage.setItem(STORAGE_KEYS.MARKET_CACHE, JSON.stringify({
+              timestamp: Date.now(),
+              source: 'CoinGecko Oracle (Cached)',
+              updates
+            }));
+            renderAllSyncHUDs();
+            return;
+          }
+        } catch (_) {
+          // Fall through to CryptoCompare Price MultiFull
+        }
+
+        // Secondary Fallback: CryptoCompare Price MultiFull API
+        try {
+          const ccPriceUrl = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,SOL,XRP,SUI,AVAX,DOGE,OP&tsyms=USD';
+          const ccPriceData = await fetchWithTimeout(ccPriceUrl, 6000);
+          if (ccPriceData && ccPriceData.RAW && ccPriceData.RAW.BTC && ccPriceData.RAW.BTC.USD) {
+            const updates = {};
+            Object.entries(CRYPTOCOMPARE_SYM_MAP).forEach(([sym, pairIds]) => {
+              const rawUsd = ccPriceData.RAW[sym]?.USD;
+              if (rawUsd && typeof rawUsd.PRICE === 'number') {
+                pairIds.forEach(pid => {
+                  updates[pid] = {
+                    price: rawUsd.PRICE,
+                    change24h: rawUsd.CHANGEPCT24HOUR,
+                    vol24h: rawUsd.VOLUME24HOURTO
+                  };
+                });
+              }
+            });
+
+            applyMarketPriceUpdates(updates);
+            syncState.marketStatus = 'live';
+            syncState.marketSource = 'CryptoCompare MultiFull';
+            syncState.marketCountdown = 60;
+            localStorage.setItem(STORAGE_KEYS.MARKET_CACHE, JSON.stringify({
+              timestamp: Date.now(),
+              source: 'CryptoCompare Cache',
+              updates
+            }));
+            renderAllSyncHUDs();
+            return;
+          }
+        } catch (_) {
+          // Fall through to localStorage market cache
+        }
+
+        // Tertiary Fallback: localStorage Cached Prices + Micro-Tick Simulation
+        try {
+          const cachedMarketRaw = localStorage.getItem(STORAGE_KEYS.MARKET_CACHE);
+          if (cachedMarketRaw) {
+            const parsed = JSON.parse(cachedMarketRaw);
+            if (parsed && parsed.updates) {
+              applyMarketPriceUpdates(parsed.updates);
+              syncState.marketStatus = 'cached';
+              syncState.marketSource = parsed.source || 'Local Vault Cache';
+              syncState.marketCountdown = 60;
+              renderAllSyncHUDs();
+              return;
+            }
+          }
+        } catch (_) {
+          // Ignore malformed cache
+        }
+
+        syncState.marketStatus = 'cached';
+        syncState.marketSource = 'Local Vault Cache';
+        syncState.marketCountdown = 60;
+        renderAllSyncHUDs();
+      }
+
+      // Render Live Sync Status HUDs (News & Market Screener)
+      function formatSecondsMMSS(sec) {
+        const s = Math.max(0, sec);
+        const m = Math.floor(s / 60);
+        const rem = s % 60;
+        return m > 0 ? `${m}m ${String(rem).padStart(2, '0')}s` : `${rem}s`;
+      }
+
+      function renderAllSyncHUDs() {
+        document.querySelectorAll('.bp-sync-hud').forEach(hud => {
+          const kind = hud.getAttribute('data-hud-type'); // 'market' or 'news'
+          const isMarket = kind === 'market';
+          const status = isMarket ? syncState.marketStatus : syncState.newsStatus;
+          const source = isMarket ? syncState.marketSource : syncState.newsSource;
+          const countdown = isMarket ? syncState.marketCountdown : syncState.newsCountdown;
+
+          let pillClass = 'bp-sync-live';
+          let pillText = 'LIVE SYNCED';
+          if (status === 'cached') {
+            pillClass = 'bp-sync-cached';
+            pillText = 'CACHED FALLBACK';
+          } else if (status === 'busy') {
+            pillClass = 'bp-sync-busy';
+            pillText = 'SYNCING...';
+          }
+
+          const countdownText = syncState.autoSync
+            ? `Next sync in <strong class="text-body">${formatSecondsMMSS(countdown)}</strong>`
+            : `<span class="text-warning">Auto-Sync Paused</span>`;
+
+          hud.innerHTML = `
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="bp-sync-pill ${pillClass}">
+                <span class="bp-sync-dot"></span> ${pillText}
+              </span>
+              <span class="bp-mono text-bp-muted" style="font-size: 0.74rem;">
+                Source: <strong style="color: var(--bp-text);">${source}</strong>
+              </span>
+              <span class="text-bp-subtle d-none d-sm-inline">&bull;</span>
+              <span class="bp-mono text-bp-subtle" style="font-size: 0.74rem;">
+                ${countdownText}
+              </span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="Toggle Autonomous Background Refresh">
+                <input class="form-check-input bp-autosync-switch" type="checkbox" role="switch" id="autoSyncSwitch-${kind}-${Math.random().toString(36).slice(2, 6)}" ${syncState.autoSync ? 'checked' : ''} style="cursor: pointer;">
+                <label class="bp-mono text-bp-muted small mb-0" style="font-size: 0.72rem; cursor: pointer;">Auto-Sync</label>
+              </div>
+              <button type="button" class="btn btn-sm btn-bp-outline py-1 px-2 bp-manual-refresh-btn" data-refresh-target="${kind}" style="font-size: 0.75rem;">
+                <i class="bi bi-arrow-clockwise ${status === 'busy' ? 'bp-spin' : ''} me-1"></i>Refresh Now
+              </button>
+            </div>
+          `;
+        });
+      }
+
+      // Event Delegation for HUD Controls (Manual Refresh & Auto-Sync Toggle)
+      document.addEventListener('click', (e) => {
+        const refreshBtn = e.target.closest('.bp-manual-refresh-btn');
+        if (refreshBtn) {
+          const target = refreshBtn.getAttribute('data-refresh-target');
+          if (target === 'market') {
+            syncLiveMarketPrices();
+          } else {
+            syncLiveNewsFeed(true);
+          }
+        }
+      });
+
+      document.addEventListener('change', (e) => {
+        if (e.target.classList.contains('bp-autosync-switch')) {
+          syncState.autoSync = e.target.checked;
+          localStorage.setItem(STORAGE_KEYS.AUTO_SYNC, String(syncState.autoSync));
+          renderAllSyncHUDs();
+        }
+      });
+
+      // Hydrate from localStorage immediately on boot before live network completes
+      try {
+        const bootNews = JSON.parse(localStorage.getItem(STORAGE_KEYS.NEWS_CACHE) || 'null');
+        if (bootNews && Array.isArray(bootNews.items) && bootNews.items.length > 0) {
+          syncState.newsItems = bootNews.items;
+          renderIntelligence(syncState.activeIntelFilter);
+        }
+        const bootMarket = JSON.parse(localStorage.getItem(STORAGE_KEYS.MARKET_CACHE) || 'null');
+        if (bootMarket && bootMarket.updates) {
+          applyMarketPriceUpdates(bootMarket.updates);
+        }
+      } catch (_) {
+        // Ignore storage read issues
+      }
+
+      // Initial Live Sync Dispatch
+      renderAllSyncHUDs();
+      syncLiveMarketPrices();
+      syncLiveNewsFeed();
+
+      // Master 1-Second Heartbeat for Countdown HUD & Autonomous Periodic Refresh
+      setInterval(() => {
+        if (!syncState.autoSync) return;
+
+        syncState.marketCountdown -= 1;
+        syncState.newsCountdown -= 1;
+
+        if (syncState.marketCountdown <= 0) {
+          syncState.marketCountdown = 60;
+          syncLiveMarketPrices();
+        }
+
+        if (syncState.newsCountdown <= 0) {
+          syncState.newsCountdown = 180;
+          syncLiveNewsFeed();
+        }
+
+        renderAllSyncHUDs();
+      }, 1000);
+
+      // Refresh immediately when user returns to browser tab
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && syncState.autoSync) {
+          if (syncState.marketCountdown <= 45) {
+            syncLiveMarketPrices();
+          }
+          if (syncState.newsCountdown <= 120) {
+            syncLiveNewsFeed();
+          }
+        }
+      });
+
+      // Subtle Simulated Real-Time Micro-Tick Engine between 60s Oracle Syncs
+      setInterval(() => {
+        const randomIdx = Math.floor(Math.random() * MARKET_PAIRS_DATA.length);
+        const item = MARKET_PAIRS_DATA[randomIdx];
+        const deltaPct = (Math.random() - 0.48) * 0.0016; // subtle +/- 0.08% tick
+        const oldPrice = item.price;
+
+        item.price = Math.max(0.0001, item.price * (1 + deltaPct));
+        item.usdApprox = Math.max(0.0001, item.usdApprox * (1 + deltaPct));
+        item.change24h = parseFloat((item.change24h + deltaPct * 100).toFixed(2));
+
+        const directionClass = item.price >= oldPrice ? 'tick-flash-up' : 'tick-flash-down';
+
+        document.querySelectorAll(`[data-pair-id="${item.id}"]`).forEach(row => {
+          const priceCell = row.querySelector(`[data-price-id="${item.id}"]`);
+          const changeCell = row.querySelector(`[data-change-id="${item.id}"]`);
+          const isUp = item.change24h >= 0;
+
+          if (priceCell) {
+            priceCell.textContent = item.price.toLocaleString('en-US', {
+              minimumFractionDigits: item.decimals,
+              maximumFractionDigits: item.decimals
+            });
+          }
+          if (changeCell) {
+            changeCell.textContent = `${isUp ? '+' : ''}${item.change24h.toFixed(2)}%`;
+            changeCell.className = `bp-change-pill ${isUp ? 'bp-change-up' : 'bp-change-down'} pair-change-cell`;
+          }
+
+          row.classList.remove('tick-flash-up', 'tick-flash-down');
+          void row.offsetWidth; // trigger reflow for clean flash
+          row.classList.add(directionClass);
+        });
+      }, 2800);
     })();
   </script>
 </body>
