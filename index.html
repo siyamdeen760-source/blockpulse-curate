@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-bg="navy-grid">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,17 +12,190 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
-    :root{--bg:#080d18;--panel:#0e1728;--panel2:#111e33;--line:#22314a;--text:#eef4ff;--muted:#9aa9c0;--blue:#4d91ff;--cyan:#36d6e7;--green:#36d399;--red:#fb7185;--gold:#f6c76b;--shadow:0 18px 55px #0005}
-    [data-theme="light"]{--bg:#f5f8fd;--panel:#fff;--panel2:#edf3fb;--line:#dce5f1;--text:#101b2e;--muted:#586981;--blue:#246eea;--cyan:#078fa6;--green:#079768;--red:#d94862;--gold:#a56b06;--shadow:0 18px 45px #233b5a12}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6;transition:.2s}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.mono{font-family:"DM Mono",monospace}.display{font-family:"Space Grotesk",sans-serif;letter-spacing:-.045em}.muted{color:var(--muted)}.text-blue{color:var(--blue)}.section{padding:82px 0}.section-sm{padding:54px 0}.surface{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.surface-soft{background:var(--panel2);border:1px solid var(--line);border-radius:16px}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);font:500 11px "DM Mono";letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:"";width:19px;height:1px;background:currentColor}.btn-primary-bp{background:var(--blue);color:white;border:1px solid var(--blue);border-radius:11px;padding:11px 17px;font-weight:700}.btn-primary-bp:hover{background:#286fe0;color:white;transform:translateY(-1px)}.btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--panel);border-radius:11px;padding:10px 15px;font-weight:600}.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}.navbar-bp{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.brand-mark{height:37px;width:37px;border-radius:12px;background:linear-gradient(135deg,#64a8ff,#2559d8);display:grid;place-items:center;color:white;box-shadow:0 7px 22px #347dff55}.brand{font:700 21px "Space Grotesk";letter-spacing:-.04em}.nav-link-bp{color:var(--muted);font-weight:600;font-size:13px;padding:10px 12px}.nav-link-bp:hover{color:var(--text)}.icon-btn{height:40px;width:40px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--text)}.ticker{border-bottom:1px solid var(--line);background:var(--panel);overflow:hidden}.ticker-inner{display:flex;gap:30px;white-space:nowrap;padding:10px 0;font:11px "DM Mono";color:var(--muted)}.ticker-item b{color:var(--text);margin-right:7px}.up{color:var(--green)}.down{color:var(--red)}.hero{position:relative;overflow:hidden;padding:92px 0 78px;background:radial-gradient(ellipse at 80% 20%,#1d4f9b55,transparent 38%),radial-gradient(ellipse at 10% 90%,#0d8a9b22,transparent 35%),var(--bg)}.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#4d91ff0b 1px,transparent 1px),linear-gradient(90deg,#4d91ff0b 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent)}.hero .container{position:relative}.hero h1{font-size:clamp(44px,6vw,76px);line-height:1.02;max-width:800px}.gradient-text{background:linear-gradient(90deg,#78b4ff,#50dce5);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{max-width:620px;color:var(--muted);font-size:17px}.hero-panel{padding:22px;background:linear-gradient(145deg,#142744,#0d1728);border:1px solid #29456b;border-radius:20px;box-shadow:0 25px 75px #0006;color:#eff6ff}.hero-panel .metric{font:600 25px "DM Mono"}.hero-panel small{color:#9fb4d2}.sparkline{width:100%;height:62px}.sparkline polyline{fill:none;stroke:#4ed5c6;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.card-bp{height:100%;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:17px;transition:.22s}.card-bp:hover{transform:translateY(-4px);border-color:#4d91ff88;box-shadow:var(--shadow)}.tag{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:4px 9px;font:10px "DM Mono";color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.sector-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}.sector-btn{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:99px;padding:6px 14px;font:500 11px "DM Mono";text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.15s}.sector-btn.active,.sector-btn:hover{border-color:var(--blue);color:var(--blue);background:#4d91ff16}.market-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 18px;border-top:1px solid var(--line);font-size:13px;cursor:pointer;transition:background .15s}.market-row:hover,.market-row.selected{background:#4d91ff14}.market-row.head{color:var(--muted);font:10px "DM Mono";text-transform:uppercase;border:0;cursor:default;background:transparent}.coin{display:flex;align-items:center;gap:10px;font-weight:700}.coin-icon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);font-size:11px;font-weight:700}.market-price{font:12px "DM Mono";transition:color .25s}.pill{border-radius:8px;padding:4px 8px;font:11px "DM Mono";display:inline-block}.pill.up{background:#36d39918}.pill.down{background:#fb718518}.tf-btn{border:1px solid var(--line);border-radius:9px;padding:5px 11px;background:var(--panel);color:var(--muted);font:500 11px "DM Mono";cursor:pointer}.tf-btn.active,.tf-btn:hover{border-color:var(--blue);color:var(--blue);background:#4d91ff18}.trend-stage{position:relative;height:220px;border-radius:14px;background:var(--bg);border:1px solid var(--line);overflow:hidden}.trend-stage svg{width:100%;height:100%;display:block}.trend-tooltip{position:absolute;top:10px;left:12px;background:color-mix(in srgb,var(--panel2) 94%,transparent);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font:11px "DM Mono";pointer-events:none;z-index:2}.lesson-thumb{height:145px;border-radius:13px;background:linear-gradient(135deg,#16365f,#0c1729);display:grid;place-items:center;color:#8dc2ff;font-size:37px;position:relative;overflow:hidden}.lesson-thumb:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff18;border-radius:50%;right:-30px;top:-55px}.progress{height:5px;background:var(--panel2)}.progress-bar{background:linear-gradient(90deg,var(--blue),var(--cyan))}.admin-shell{display:grid;grid-template-columns:210px 1fr;min-height:420px;overflow:hidden}.admin-side{padding:18px;background:var(--panel2);border-right:1px solid var(--line)}.admin-side a{display:block;color:var(--muted);padding:9px 10px;border-radius:9px;font-size:12px}.admin-side a.active,.admin-side a:hover{background:#4d91ff18;color:var(--blue)}.admin-main{padding:22px;min-width:0}.lesson-card-item{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px}.form-control,.form-select{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px}.form-control:focus,.form-select:focus{background:var(--bg);color:var(--text);border-color:var(--blue);box-shadow:0 0 0 3px #4d91ff20}.form-control::placeholder{color:var(--muted)}.footer{background:var(--panel);border-top:1px solid var(--line);padding:50px 0 25px}.footer a{display:block;color:var(--muted);font-size:13px;margin:7px 0}.footer a:hover{color:var(--blue)}.modal-content{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:18px}.btn-close{filter:invert(1)}[data-theme="light"] .btn-close{filter:none}.toast-bp{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:2000;background:var(--panel2);border:1px solid var(--line);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);display:none;font-size:13px}.toast-bp.show{display:block}.hidden{display:none!important}.billing-card-visual{background:linear-gradient(135deg,#17325b,#0d1729);border:1px solid #2e4e7e;border-radius:14px;padding:16px;color:#eff6ff}.video-box{position:relative;aspect-ratio:16/9;border-radius:13px;overflow:hidden;background:#050913;border:1px solid var(--line)}
-    @media(max-width:767px){.section{padding:60px 0}.hero{padding:65px 0 50px}.hero h1{font-size:47px}.hero-copy{font-size:15px}.market-row{grid-template-columns:1.3fr 1fr 1fr;font-size:11px}.market-row>*:nth-child(4),.market-row>*:nth-child(5){display:none}.admin-shell{grid-template-columns:1fr}.admin-side{display:flex;gap:6px;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}.admin-side a{white-space:nowrap}.hide-mobile{display:none!important}}
+    :root{
+      --bg:#080d18;
+      --panel:#0e1728;
+      --panel2:#111e33;
+      --line:#22314a;
+      --text:#eef4ff;
+      --muted:#9aa9c0;
+      --blue:#4d91ff;
+      --cyan:#36d6e7;
+      --green:#36d399;
+      --red:#fb7185;
+      --gold:#f6c76b;
+      --shadow:0 18px 55px #0005;
+      --hero-bg:radial-gradient(ellipse at 80% 20%,#1d4f9b55,transparent 38%),radial-gradient(ellipse at 10% 90%,#0d8a9b22,transparent 35%),var(--bg);
+      --grid-line:#4d91ff0b;
+    }
+    [data-theme="light"]{
+      --bg:#f5f8fd;
+      --panel:#fff;
+      --panel2:#edf3fb;
+      --line:#dce5f1;
+      --text:#101b2e;
+      --muted:#586981;
+      --blue:#246eea;
+      --cyan:#078fa6;
+      --green:#079768;
+      --red:#d94862;
+      --gold:#a56b06;
+      --shadow:0 18px 45px #233b5a12;
+      --hero-bg:radial-gradient(ellipse at 80% 20%,#246eea1c,transparent 42%),radial-gradient(ellipse at 10% 90%,#078fa614,transparent 38%),var(--bg);
+      --grid-line:#246eea0d;
+    }
+    [data-bg="aurora"]{
+      --hero-bg:radial-gradient(ellipse at 15% 15%,#16a39438,transparent 45%),radial-gradient(ellipse at 85% 25%,#4d91ff38,transparent 45%),radial-gradient(ellipse at 50% 95%,#7c3aed24,transparent 50%),var(--bg);
+    }
+    [data-bg="obsidian"]{
+      --panel:#0b0f17;
+      --panel2:#121824;
+      --line:#1f293b;
+      --hero-bg:radial-gradient(ellipse at 75% 15%,#36d6e71c,transparent 40%),var(--bg);
+    }
+    [data-bg="warm-sand"]{
+      --bg:#f8f4ec;
+      --panel:#fffdf9;
+      --panel2:#f1eadc;
+      --line:#e2d7c3;
+      --text:#1d1912;
+      --muted:#695e4c;
+      --hero-bg:radial-gradient(ellipse at 80% 20%,#d9770618,transparent 42%),radial-gradient(ellipse at 15% 85%,#246eea12,transparent 40%),var(--bg);
+      --grid-line:#8c6d3f12;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6;transition:background .25s,color .2s}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    .mono{font-family:"DM Mono",monospace}
+    .display{font-family:"Space Grotesk",sans-serif;letter-spacing:-.045em}
+    .muted{color:var(--muted)}
+    .text-blue{color:var(--blue)}
+    .section{padding:82px 0}
+    .section-sm{padding:54px 0}
+    .surface{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+    .surface-soft{background:var(--panel2);border:1px solid var(--line);border-radius:16px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);font:500 11px "DM Mono";letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:19px;height:1px;background:currentColor}
+    .btn-primary-bp{background:var(--blue);color:white;border:1px solid var(--blue);border-radius:11px;padding:11px 17px;font-weight:700;cursor:pointer}
+    .btn-primary-bp:hover{background:#286fe0;color:white;transform:translateY(-1px)}
+    .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--panel);border-radius:11px;padding:10px 15px;font-weight:600;cursor:pointer}
+    .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+    .navbar-bp{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .brand-mark{height:37px;width:37px;border-radius:12px;background:linear-gradient(135deg,#64a8ff,#2559d8);display:grid;place-items:center;color:white;box-shadow:0 7px 22px #347dff55}
+    .brand{font:700 21px "Space Grotesk";letter-spacing:-.04em}
+    .nav-link-bp{color:var(--muted);font-weight:600;font-size:13px;padding:10px 12px}
+    .nav-link-bp:hover{color:var(--text)}
+    .icon-btn{height:40px;width:40px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--text);display:grid;place-items:center;cursor:pointer}
+    .icon-btn:hover{border-color:var(--blue);color:var(--blue)}
+    .top-avatar-btn{height:40px;width:40px;padding:0;border:1.5px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--text);display:grid;place-items:center;overflow:hidden;cursor:pointer;flex-shrink:0;transition:border-color .18s,transform .18s}
+    .top-avatar-btn:hover{border-color:var(--blue);transform:translateY(-1px)}
+    .top-avatar-btn img{width:100%;height:100%;object-fit:cover;display:block}
+    .avatar-preview-lg{width:68px;height:68px;border-radius:18px;border:1.5px solid var(--line);background:var(--panel2);display:grid;place-items:center;overflow:hidden;flex-shrink:0;font-weight:700;font-size:20px}
+    .avatar-preview-lg img{width:100%;height:100%;object-fit:cover;display:block}
+    .avatar-preset-btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:8px 10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;cursor:pointer;transition:.15s}
+    .avatar-preset-btn:hover,.avatar-preset-btn.active{border-color:var(--blue);background:#4d91ff1a;color:var(--blue)}
+    .avatar-preset-dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700;flex-shrink:0}
+    .bg-choice-btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:10px;text-align:left;cursor:pointer;transition:.15s;width:100%}
+    .bg-choice-btn:hover,.bg-choice-btn.active{border-color:var(--blue);background:#4d91ff16}
+    .bg-swatch{height:24px;border-radius:8px;border:1px solid var(--line);margin-bottom:6px}
+    .ticker{border-bottom:1px solid var(--line);background:var(--panel);overflow-x:auto;scrollbar-width:none}
+    .ticker::-webkit-scrollbar{display:none}
+    .ticker-inner{display:flex;align-items:center;gap:22px;white-space:nowrap;padding:9px 0;font:11px "DM Mono";color:var(--muted)}
+    .live-sectors-ctl{display:inline-flex;align-items:center;gap:4px;background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:2px 6px}
+    .live-sectors-trigger{background:transparent;border:0;color:var(--cyan);font:600 10px "DM Mono";text-transform:uppercase;letter-spacing:.08em;cursor:pointer;padding:2px 4px;display:inline-flex;align-items:center;gap:4px}
+    .live-sectors-trigger:hover{color:var(--text)}
+    .live-sectors-nudge{background:transparent;border:0;color:var(--muted);font-size:11px;line-height:1;padding:2px 3px;border-radius:6px;cursor:pointer}
+    .live-sectors-nudge:hover{color:var(--blue);background:#4d91ff18}
+    .ticker-item b{color:var(--text);margin-right:6px}
+    .up{color:var(--green)}
+    .down{color:var(--red)}
+    .hero{position:relative;overflow:hidden;padding:92px 0 78px;background:var(--hero-bg)}
+    .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent)}
+    .hero .container{position:relative}
+    .hero h1{font-size:clamp(44px,6vw,76px);line-height:1.02;max-width:800px}
+    .gradient-text{background:linear-gradient(90deg,#78b4ff,#50dce5);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy{max-width:620px;color:var(--muted);font-size:17px}
+    .hero-panel{padding:22px;background:linear-gradient(145deg,#142744,#0d1728);border:1px solid #29456b;border-radius:20px;box-shadow:0 25px 75px #0006;color:#eff6ff}
+    .hero-panel .metric{font:600 25px "DM Mono"}
+    .hero-panel small{color:#9fb4d2}
+    .sparkline{width:100%;height:62px}
+    .sparkline polyline{fill:none;stroke:#4ed5c6;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:all .3s ease}
+    .card-bp{height:100%;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:17px;transition:.22s}
+    .card-bp:hover{transform:translateY(-4px);border-color:#4d91ff88;box-shadow:var(--shadow)}
+    .tag{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:99px;padding:4px 9px;font:10px "DM Mono";color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+    .sector-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .sector-btn{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:99px;padding:6px 14px;font:500 11px "DM Mono";text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.15s}
+    .sector-btn.active,.sector-btn:hover{border-color:var(--blue);color:var(--blue);background:#4d91ff16}
+    .market-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 18px;border-top:1px solid var(--line);font-size:13px;cursor:pointer;transition:background .15s}
+    .market-row:hover,.market-row.selected{background:#4d91ff14}
+    .market-row.head{color:var(--muted);font:10px "DM Mono";text-transform:uppercase;border:0;cursor:default;background:transparent}
+    .coin{display:flex;align-items:center;gap:10px;font-weight:700}
+    .coin-icon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);font-size:11px;font-weight:700;flex-shrink:0}
+    .market-price{font:12px "DM Mono";padding:3px 7px;border-radius:7px;display:inline-block;transition:color .25s,background-color .45s}
+    @keyframes flashUp{0%{background-color:rgba(54,211,153,.32)}100%{background-color:transparent}}
+    @keyframes flashDown{0%{background-color:rgba(251,113,133,.32)}100%{background-color:transparent}}
+    .tick-flash-up{animation:flashUp .9s ease-out}
+    .tick-flash-down{animation:flashDown .9s ease-out}
+    .pill{border-radius:8px;padding:4px 8px;font:11px "DM Mono";display:inline-block}
+    .pill.up{background:#36d39918}
+    .pill.down{background:#fb718518}
+    .tf-btn{border:1px solid var(--line);border-radius:9px;padding:5px 11px;background:var(--panel);color:var(--muted);font:500 11px "DM Mono";cursor:pointer}
+    .tf-btn.active,.tf-btn:hover{border-color:var(--blue);color:var(--blue);background:#4d91ff18}
+    .trend-stage{position:relative;height:220px;border-radius:14px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
+    .trend-stage svg{width:100%;height:100%;display:block}
+    .trend-tooltip{position:absolute;top:10px;left:12px;background:color-mix(in srgb,var(--panel2) 94%,transparent);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font:11px "DM Mono";pointer-events:none;z-index:2;max-width:92%}
+    .lesson-thumb{height:145px;border-radius:13px;background:linear-gradient(135deg,#16365f,#0c1729);display:grid;place-items:center;color:#8dc2ff;font-size:37px;position:relative;overflow:hidden}
+    .lesson-thumb:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff18;border-radius:50%;right:-30px;top:-55px}
+    .progress{height:5px;background:var(--panel2)}
+    .progress-bar{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+    .admin-shell{display:grid;grid-template-columns:210px 1fr;min-height:420px;overflow:hidden}
+    .admin-side{padding:18px;background:var(--panel2);border-right:1px solid var(--line)}
+    .admin-side a{display:block;color:var(--muted);padding:9px 10px;border-radius:9px;font-size:12px}
+    .admin-side a.active,.admin-side a:hover{background:#4d91ff18;color:var(--blue)}
+    .admin-main{padding:22px;min-width:0}
+    .lesson-card-item{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:15px;transition:border-color .18s}
+    .lesson-card-item:hover{border-color:#4d91ff66}
+    .lesson-card-item.completed{border-color:color-mix(in srgb,var(--green) 55%,var(--line))}
+    .form-control,.form-select{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px}
+    .form-control:focus,.form-select:focus{background:var(--bg);color:var(--text);border-color:var(--blue);box-shadow:0 0 0 3px #4d91ff20}
+    .form-control::placeholder{color:var(--muted)}
+    .footer{background:var(--panel);border-top:1px solid var(--line);padding:50px 0 25px}
+    .footer a{display:block;color:var(--muted);font-size:13px;margin:7px 0}
+    .footer a:hover{color:var(--blue)}
+    .modal-content{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:18px}
+    .btn-close{filter:invert(1)}
+    [data-theme="light"] .btn-close,[data-bg="warm-sand"] .btn-close{filter:none}
+    .toast-bp{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:2000;background:var(--panel2);border:1px solid var(--line);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);display:none;font-size:13px;max-width:92vw;text-align:center}
+    .toast-bp.show{display:block}
+    .hidden{display:none!important}
+    .billing-card-visual{background:linear-gradient(135deg,#17325b,#0d1729);border:1px solid #2e4e7e;border-radius:14px;padding:16px;color:#eff6ff}
+    .video-box{position:relative;aspect-ratio:16/9;border-radius:13px;overflow:hidden;background:#050913;border:1px solid var(--line)}
+    @media(max-width:767px){
+      .section{padding:52px 0}
+      .section-sm{padding:40px 0}
+      .hero{padding:56px 0 44px}
+      .hero h1{font-size:42px}
+      .hero-copy{font-size:15px}
+      .market-row{grid-template-columns:1.35fr 1fr .9fr;padding:12px 12px;font-size:11px;gap:6px}
+      .market-row>*:nth-child(4),.market-row>*:nth-child(5){display:none}
+      .admin-shell{grid-template-columns:1fr;min-height:auto}
+      .admin-side{display:flex;gap:6px;overflow-x:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}
+      .admin-side a{white-space:nowrap;padding:7px 10px}
+      .admin-main{padding:16px}
+      .hide-mobile{display:none!important}
+    }
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
   <nav class="navbar-bp">
-    <div class="container d-flex align-items-center justify-content-between py-2">
-      <a class="d-flex align-items-center gap-2" href="#home" aria-label="BlockPulse home"><span class="brand-mark"><i class="bi bi-activity fs-5"></i></span><span class="brand">Block<span class="text-blue">Pulse</span></span></a>
+    <div class="container d-flex align-items-center justify-content-between py-2 gap-2">
+      <a class="d-flex align-items-center gap-2" href="#home" aria-label="BlockPulse home">
+        <span class="brand-mark"><i class="bi bi-activity fs-5"></i></span>
+        <span class="brand">Block<span class="text-blue">Pulse</span></span>
+      </a>
       <div class="d-none d-lg-flex align-items-center">
         <a class="nav-link-bp" href="#markets">Markets</a>
         <a class="nav-link-bp" href="#academy">Academy & Videos</a>
@@ -32,28 +205,36 @@
         <a class="nav-link-bp" href="#studio">Learning Studio</a>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle colour theme"><i class="bi bi-sun-moon"></i></button>
-        <button class="btn-ghost d-none d-sm-inline-flex" id="navAccountBtn" data-bs-toggle="modal" data-bs-target="#accountModal"><i class="bi bi-person me-1"></i>Sign in</button>
-        <a class="btn-primary-bp d-none d-sm-inline-flex" href="#studio"><i class="bi bi-mortarboard-fill me-1"></i>Learning Studio</a>
-        <button class="icon-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Open menu"><i class="bi bi-list fs-4"></i></button>
+        <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle light/dark theme"><i class="bi bi-sun-moon"></i></button>
+        <button type="button" class="btn-ghost d-none d-sm-inline-flex" id="navAccountBtn" onclick="openProfileSettings()"><i class="bi bi-person me-1"></i>Sign in</button>
+        <a class="btn-primary-bp d-none d-md-inline-flex" href="#studio"><i class="bi bi-mortarboard-fill me-1"></i>Studio</a>
+        <!-- Top-right Profile Picture / Avatar Button right next to Hamburger Menu -->
+        <button type="button" class="top-avatar-btn" id="topProfileAvatarBtn" onclick="openProfileSettings()" aria-label="Open profile settings" title="Profile & Background Settings">
+          <span id="topAvatarContent" class="small fw-bold mono">BP</span>
+        </button>
+        <button type="button" class="icon-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Open menu"><i class="bi bi-list fs-4"></i></button>
       </div>
     </div>
   </nav>
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" style="background:var(--panel);color:var(--text)">
-    <div class="offcanvas-header"><span class="brand">Block<span class="text-blue">Pulse</span></span><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-header">
+      <span class="brand">Block<span class="text-blue">Pulse</span></span>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
     <div class="offcanvas-body d-grid gap-2">
+      <button type="button" class="btn-ghost text-start" data-bs-dismiss="offcanvas" onclick="openProfileSettings()"><i class="bi bi-person-circle me-2 text-blue"></i>Profile & Background Settings</button>
       <a class="btn-ghost" href="#markets" data-bs-dismiss="offcanvas">Markets</a>
       <a class="btn-ghost" href="#academy" data-bs-dismiss="offcanvas">Academy & Videos</a>
       <a class="btn-ghost" href="#research" data-bs-dismiss="offcanvas">Research</a>
       <a class="btn-ghost" href="#tools" data-bs-dismiss="offcanvas">Tools</a>
       <a class="btn-ghost" href="#membership" data-bs-dismiss="offcanvas">Membership</a>
-      <a class="btn-ghost" href="#studio" data-bs-dismiss="offcanvas">Learning Studio</a>
-      <button class="btn-primary-bp" id="mobileAccountBtn" data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#accountModal"><i class="bi bi-person me-1"></i>Sign in</button>
+      <a class="btn-primary-bp text-center" href="#studio" data-bs-dismiss="offcanvas">Learning Studio</a>
     </div>
   </div>
 
-  <div class="ticker">
+  <!-- TICKER WITH MOVABLE + CLICKABLE "LIVE ALL SECTORS" -->
+  <div class="ticker" id="tickerBar">
     <div class="container">
       <div class="ticker-inner" id="ticker"></div>
     </div>
@@ -66,7 +247,7 @@
           <div class="col-lg-7">
             <div class="eyebrow mb-3"><span class="badge rounded-pill text-bg-success">Live Updating</span> Metals, Commodities, Crypto, Indices, Energies & Exotics</div>
             <h1 class="display fw-bold mb-4">Clarity in markets.<br><span class="gradient-text">Confidence in learning.</span></h1>
-            <p class="hero-copy mb-4">Every sector updates continuously—inspect live line or candlestick charts, build your own structured Learning Studio with custom lessons, and publish briefs or videos.</p>
+            <p class="hero-copy mb-4">Every sector updates continuously—inspect live line or candlestick charts, build your structured Learning Studio with custom lessons, and customize your browsing background.</p>
             <div class="d-flex flex-wrap gap-2">
               <a href="#markets" class="btn-primary-bp">Inspect All Sectors <i class="bi bi-arrow-right ms-1"></i></a>
               <a href="#studio" class="btn-ghost"><i class="bi bi-mortarboard me-1"></i>Build Learning Studio</a>
@@ -85,7 +266,7 @@
                 <div class="col-6"><small>Gold (XAU/USD)</small><div class="metric" id="heroGold">$3,548.00</div><small id="heroGoldSub">Metals · Updating…</small></div>
                 <div class="col-6"><small>Bitcoin (BTC/USD)</small><div class="metric" id="heroBtc">$61,635.18</div><small id="heroBtcSub">Crypto · Updating…</small></div>
               </div>
-              <svg class="sparkline" viewBox="0 0 400 62" preserveAspectRatio="none" aria-label="Market trend line"><polyline id="heroSparkline" points="0,47 25,43 48,48 70,32 94,38 120,27 145,35 170,19 196,26 222,13 248,25 275,18 300,28 325,12 350,17 375,6 400,11"/></svg>
+              <svg class="sparkline" viewBox="0 0 400 62" preserveAspectRatio="none" aria-label="Dynamic market trend line"><polyline id="heroSparkline" points="0,47 25,43 48,48 70,32 94,38 120,27 145,35 170,19 196,26 222,13 248,25 275,18 300,28 325,12 350,17 375,6 400,11"/></svg>
               <div class="d-flex justify-content-between mt-2"><small>All 6 sectors tick live</small><small class="mono" id="heroTickClock">SYNCING…</small></div>
             </div>
           </div>
@@ -102,10 +283,15 @@
             <h2 class="display fw-bold mt-2">Metals, Commodities, Crypto, <span class="text-blue">Indices, Energies & Exotics.</span></h2>
             <p class="muted mb-0">All sectors update automatically—filter by sector, click any row, and switch between <strong>Line</strong> and <strong>Candles</strong>.</p>
           </div>
-          <div class="d-flex align-items-center gap-2">
+          <div class="d-flex flex-wrap align-items-center gap-2">
             <button type="button" class="btn-ghost py-2 px-3 small" id="refreshMarketsBtn"><i class="bi bi-arrow-clockwise me-1"></i>Refresh now</button>
             <span class="tag"><i class="bi bi-arrow-repeat me-1"></i><span id="marketUpdated">Updating…</span></span>
           </div>
+        </div>
+
+        <div class="alert py-2 px-3 small mb-3 surface-soft d-flex align-items-center justify-content-between gap-2" id="feedStatusNotice" role="status" hidden>
+          <span id="feedStatusText"></span>
+          <button type="button" class="btn-ghost py-1 px-2 small" onclick="tickAllMarkets()">Simulate tick</button>
         </div>
 
         <div class="sector-tabs" role="tablist" aria-label="Market sectors">
@@ -233,7 +419,7 @@
               <h5 class="fw-bold mt-3">Multi-Asset Market Foundations</h5>
               <p class="muted small">How metals, commodities, crypto, indices, energies, and exotics are quoted and traded.</p>
               <div class="progress mb-3"><div class="progress-bar" id="prog-foundations" style="width:0%"></div></div>
-              <button class="btn-ghost w-100" onclick="advanceCourse('foundations', 'Multi-Asset Market Foundations')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
+              <button type="button" class="btn-ghost w-100" onclick="advanceCourse('foundations', 'Multi-Asset Market Foundations')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
             </article>
           </div>
           <div class="col-md-4">
@@ -243,7 +429,7 @@
               <h5 class="fw-bold mt-3">Risk & Portfolio Basics</h5>
               <p class="muted small">Diversification, volatility, drawdowns, position sizing and realistic expectations.</p>
               <div class="progress mb-3"><div class="progress-bar" id="prog-risk" style="width:0%"></div></div>
-              <button class="btn-ghost w-100" onclick="advanceCourse('risk', 'Risk & Portfolio Basics')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
+              <button type="button" class="btn-ghost w-100" onclick="advanceCourse('risk', 'Risk & Portfolio Basics')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
             </article>
           </div>
           <div class="col-md-4">
@@ -253,19 +439,22 @@
               <h5 class="fw-bold mt-3">Charts, Candles & Macro Signals</h5>
               <p class="muted small">Reading candlesticks, swing ranges, liquidity shifts, and macro catalysts.</p>
               <div class="progress mb-3"><div class="progress-bar" id="prog-macro" style="width:0%"></div></div>
-              <button class="btn-ghost w-100" onclick="advanceCourse('macro', 'Charts, Candles & Macro Signals')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
+              <button type="button" class="btn-ghost w-100" onclick="advanceCourse('macro', 'Charts, Candles & Macro Signals')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
             </article>
           </div>
         </div>
 
-        <!-- CUSTOM STUDIO LESSONS DISPLAY -->
+        <!-- CUSTOM STUDIO LESSONS DISPLAY WITH STUDY MODAL + COMPLETE + EDIT/DELETE -->
         <div class="surface p-4 mb-5" id="studioLessonsShowcase">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
             <div>
               <span class="tag"><i class="bi bi-mortarboard me-1"></i>LEARNING STUDIO CURRICULUM</span>
               <h5 class="fw-bold mt-2 mb-0" id="showcaseStudioTitle">Your Custom Learning Lessons</h5>
             </div>
-            <a href="#studio" class="btn-ghost small" onclick="switchStudioTab('curriculum')"><i class="bi bi-plus-lg me-1"></i>Add Lesson</a>
+            <div class="d-flex align-items-center gap-2">
+              <span class="tag" id="studioLessonsCompletedBadge">0 COMPLETED</span>
+              <a href="#studio" class="btn-ghost small" onclick="switchStudioTab('curriculum')"><i class="bi bi-plus-lg me-1"></i>Add Lesson</a>
+            </div>
           </div>
           <div class="row g-3" id="studioLessonsList"></div>
         </div>
@@ -393,16 +582,20 @@
           <div class="admin-main">
             <!-- LESSON BUILDER -->
             <div id="studioPaneCurriculum">
-              <h6 class="fw-bold mb-2">Create a Structured Learning Lesson</h6>
-              <p class="small muted mb-3">Lessons appear inside your Learning Studio curriculum in the Academy section so learners can study them clearly.</p>
+              <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+                <h6 class="fw-bold mb-0" id="lessonFormHeading">Create a Structured Learning Lesson</h6>
+                <button type="button" class="btn-ghost py-1 px-2 small" id="cancelEditLessonBtn" hidden onclick="cancelLessonEdit()">Cancel edit</button>
+              </div>
+              <p class="small muted mb-3">Lessons appear inside your Learning Studio curriculum in the Academy section so learners can open, study, mark complete, or edit them.</p>
               <form id="lessonForm">
+                <input type="hidden" id="editingLessonIndex" value="">
                 <div class="row g-3">
                   <div class="col-md-6"><label class="form-label small muted">Lesson title</label><input class="form-control" id="lessonTitleInput" placeholder="e.g. How to read candlestick wicks & rejection zones" required></div>
                   <div class="col-md-3"><label class="form-label small muted">Track</label><select class="form-select" id="lessonTrackInput"><option>Foundations</option><option>Risk & Portfolio</option><option>Charts & Macro</option></select></div>
                   <div class="col-md-3"><label class="form-label small muted">Est. duration</label><input class="form-control" id="lessonDurationInput" placeholder="e.g. 8 min" value="8 min"></div>
                   <div class="col-12"><label class="form-label small muted">Core lesson summary & key takeaway</label><textarea class="form-control" id="lessonSummaryInput" rows="2" placeholder="Explain the concept clearly with 1 practical rule or checklist item…" required></textarea></div>
                   <div class="col-md-8"><label class="form-label small muted">Optional video URL (YouTube or .mp4)</label><input class="form-control" id="lessonVideoInput" placeholder="https://www.youtube.com/watch?v=... (optional)"></div>
-                  <div class="col-md-4 d-flex align-items-end"><button type="submit" class="btn-primary-bp w-100"><i class="bi bi-plus-circle me-1"></i>Add Lesson to Studio</button></div>
+                  <div class="col-md-4 d-flex align-items-end"><button type="submit" class="btn-primary-bp w-100" id="lessonSubmitBtn"><i class="bi bi-plus-circle me-1"></i>Add Lesson to Studio</button></div>
                 </div>
               </form>
             </div>
@@ -433,10 +626,10 @@
             <!-- ACCOUNT & BILLING -->
             <div id="studioPaneMembers" hidden>
               <h6 class="fw-bold mb-2">Account, Billing & Membership Status</h6>
-              <p class="muted small mb-3" id="studioAccountSummary">Sign in via the Account button to manage display name, email verification, password reset, and billing method.</p>
+              <p class="muted small mb-3" id="studioAccountSummary">Open Profile & Background Settings or sign in to manage display name, photo/avatar, background, email verification, and billing.</p>
               <div class="d-flex flex-wrap gap-2">
-                <button type="button" class="btn-primary-bp small" onclick="openAccountBilling()"><i class="bi bi-credit-card me-1"></i>Manage Billing Method</button>
-                <button type="button" class="btn-ghost small" data-bs-toggle="modal" data-bs-target="#accountModal"><i class="bi bi-person-gear me-1"></i>Open Account Profile</button>
+                <button type="button" class="btn-primary-bp small" onclick="openProfileSettings()"><i class="bi bi-person-circle me-1"></i>Profile & Background</button>
+                <button type="button" class="btn-ghost small" onclick="openAccountBilling()"><i class="bi bi-credit-card me-1"></i>Manage Billing Method</button>
               </div>
             </div>
           </div>
@@ -451,131 +644,216 @@
     </div>
   </footer>
 
-  <!-- ACCOUNT & BILLING MODAL -->
+  <!-- LESSON STUDY MODAL -->
+  <div class="modal fade" id="lessonStudyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <div>
+            <span class="tag mb-1" id="studyModalTrack">TRACK</span>
+            <h5 class="modal-title fw-bold mb-0" id="studyModalTitle">Lesson Title</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <div class="small muted mono mb-3" id="studyModalMeta">Duration · Status</div>
+          <div class="surface-soft p-3 mb-3">
+            <div class="small fw-bold text-uppercase mono mb-1" style="letter-spacing:.07em">Key Takeaway & Study Notes</div>
+            <p class="mb-0 small" id="studyModalSummary"></p>
+          </div>
+          <div id="studyModalVideoWrap" class="mb-3" hidden>
+            <a id="studyModalVideoLink" href="#" target="_blank" rel="noopener" class="btn-ghost small"><i class="bi bi-play-circle me-1"></i>Open Attached Lesson Video</a>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn-primary-bp flex-fill" id="studyModalCompleteBtn"><i class="bi bi-check2-circle me-1"></i>Mark Completed</button>
+            <button type="button" class="btn-ghost" id="studyModalEditBtn"><i class="bi bi-pencil me-1"></i>Edit</button>
+            <button type="button" class="btn btn-outline-danger" id="studyModalDeleteBtn"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT, PROFILE PHOTO/AVATAR, BACKGROUND & BILLING MODAL -->
   <div class="modal fade" id="accountModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header border-0">
-          <h5 class="modal-title fw-bold" id="accountModalTitle">Welcome to BlockPulse</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
+          <h5 class="modal-title fw-bold" id="accountModalTitle">Profile, Background & Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body pt-0">
-          <div id="signedInPanel" hidden>
-            <div class="d-flex gap-2 mb-3">
-              <button type="button" class="btn-primary-bp flex-fill" id="profileTabBtn" onclick="switchAccountSection('profile')"><i class="bi bi-person-badge me-1"></i>Profile</button>
-              <button type="button" class="btn btn-outline-secondary flex-fill" id="billingTabBtn" onclick="switchAccountSection('billing')"><i class="bi bi-credit-card me-1"></i>Billing</button>
+          <div class="d-flex gap-2 mb-3">
+            <button type="button" class="btn-primary-bp flex-fill" id="profileTabBtn" onclick="switchAccountSection('profile')"><i class="bi bi-person-badge me-1"></i>Profile & BG</button>
+            <button type="button" class="btn btn-outline-secondary flex-fill" id="billingTabBtn" onclick="switchAccountSection('billing')"><i class="bi bi-credit-card me-1"></i>Billing</button>
+          </div>
+
+          <!-- PROFILE & BACKGROUND SETTINGS PANE (AVAILABLE IMMEDIATELY OR WHEN SIGNED IN) -->
+          <div id="accountProfilePane">
+            <div class="surface-soft p-3 mb-3">
+              <div class="d-flex align-items-center gap-3">
+                <div class="avatar-preview-lg" id="profileModalAvatarPreview">BP</div>
+                <div class="min-w-0 flex-fill">
+                  <div class="fw-bold fs-6 text-truncate" id="userDisplayName">BlockPulse Learner</div>
+                  <div class="small mono text-truncate muted" id="userDisplayEmail">Guest mode · Saved locally & synced when signed in</div>
+                  <div class="mt-1 d-flex align-items-center gap-2 flex-wrap">
+                    <span class="tag" id="userVerifiedBadge">Guest / Local</span>
+                    <span class="small muted">Plan: <strong class="text-blue" id="profilePlanLabel">Free Tier</strong></span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div id="accountProfilePane">
-              <div class="surface-soft p-3 mb-3">
-                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
-                  <div><div class="small muted">Display name</div><div class="fw-bold fs-6" id="userDisplayName">Member</div></div>
-                  <span class="tag" id="userVerifiedBadge">Unverified</span>
-                </div>
-                <div class="small muted">Email address</div>
-                <div class="small mono mb-2" id="userDisplayEmail"></div>
-                <div class="small muted">Membership: <strong class="text-blue" id="profilePlanLabel">Free Tier</strong></div>
+            <!-- EDIT DISPLAY NAME + CAMERA/GALLERY + WEBSITE AVATARS -->
+            <form id="updateProfileForm" class="surface-soft p-3 mb-3">
+              <label class="form-label small muted">Display name</label>
+              <input type="text" class="form-control mb-3" id="profileNameInput" placeholder="Enter your display name" required>
+
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label small muted mb-0">Profile photo (Camera / Gallery)</label>
+                <button type="button" class="btn btn-link btn-sm p-0 text-danger" id="clearPhotoBtn" onclick="clearCustomPhoto()">Remove photo</button>
+              </div>
+              <div class="d-flex gap-2 mb-3">
+                <label class="btn-ghost small flex-fill text-center mb-0" style="cursor:pointer">
+                  <i class="bi bi-images me-1"></i>Gallery / File
+                  <input type="file" id="galleryPhotoInput" accept="image/*" hidden>
+                </label>
+                <label class="btn-ghost small flex-fill text-center mb-0" style="cursor:pointer">
+                  <i class="bi bi-camera me-1"></i>Camera
+                  <input type="file" id="cameraPhotoInput" accept="image/*" capture="user" hidden>
+                </label>
               </div>
 
-              <form id="updateProfileForm" class="mb-3">
-                <label class="form-label small muted">Update display name</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" id="profileNameInput" placeholder="Enter display name" required>
-                  <button type="submit" class="btn-ghost">Save</button>
-                </div>
-              </form>
+              <label class="form-label small muted">Or choose a website avatar</label>
+              <div class="row g-2 mb-3" id="presetAvatarsGrid"></div>
 
+              <button type="submit" class="btn-primary-bp w-100"><i class="bi bi-check2 me-1"></i>Save Profile</button>
+            </form>
+
+            <!-- WEBSITE BROWSING BACKGROUND PICKER -->
+            <div class="surface-soft p-3 mb-3">
+              <label class="form-label small muted d-block mb-2"><i class="bi bi-palette2 me-1 text-blue"></i>Website Browsing Background</label>
+              <div class="row g-2" id="bgChoicesGrid">
+                <div class="col-6">
+                  <button type="button" class="bg-choice-btn active" data-bg-choice="navy-grid" onclick="setBrowsingBackground('navy-grid')">
+                    <div class="bg-swatch" style="background:linear-gradient(135deg,#080d18,#162c4e)"></div>
+                    <div class="small fw-bold">Deep Navy Grid</div>
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="bg-choice-btn" data-bg-choice="aurora" onclick="setBrowsingBackground('aurora')">
+                    <div class="bg-swatch" style="background:linear-gradient(135deg,#0f2930,#1b2a5e,#3b1d6e)"></div>
+                    <div class="small fw-bold">Midnight Aurora</div>
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="bg-choice-btn" data-bg-choice="obsidian" onclick="setBrowsingBackground('obsidian')">
+                    <div class="bg-swatch" style="background:linear-gradient(135deg,#070a0f,#141c2b)"></div>
+                    <div class="small fw-bold">Obsidian Slate</div>
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="bg-choice-btn" data-bg-choice="warm-sand" onclick="setBrowsingBackground('warm-sand')">
+                    <div class="bg-swatch" style="background:linear-gradient(135deg,#f8f4ec,#e6dcc7)"></div>
+                    <div class="small fw-bold">Warm Sand</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="signedInAccountActions" hidden>
               <div class="d-grid gap-2 mb-3">
                 <div class="d-flex gap-2">
                   <button type="button" class="btn-primary-bp flex-fill" id="sendVerificationBtn"><i class="bi bi-envelope-check me-1"></i>Verify Email</button>
                   <button type="button" class="btn-ghost" id="refreshVerificationBtn" title="Refresh verification status"><i class="bi bi-arrow-clockwise"></i></button>
                 </div>
                 <button type="button" class="btn-ghost w-100" id="profileResetPasswordBtn"><i class="bi bi-key me-1"></i>Send Password Reset Email</button>
+                <button type="button" class="btn btn-outline-danger w-100" id="signOutBtn"><i class="bi bi-box-arrow-right me-1"></i>Sign Out</button>
               </div>
             </div>
 
-            <div id="accountBillingPane" hidden>
-              <div class="billing-card-visual mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <small class="mono opacity-75">ACTIVE BILLING METHOD</small>
-                  <span class="tag" style="color:#75e4c2;border-color:#2d806b" id="billingStatusBadge">NONE</span>
-                </div>
-                <div class="fw-bold fs-6" id="billingPrimaryDisplay">No payment method saved</div>
-                <div class="small opacity-75 mono" id="billingSecondaryDisplay">Add a card, bank/IBAN, crypto wallet, or digital wallet below</div>
+            <div id="authFormsPanel" class="surface-soft p-3">
+              <p class="muted small mb-2">Sign in or create a free account to sync your profile, studio, lessons, and billing across devices.</p>
+              <div class="d-flex gap-2 mb-3">
+                <button type="button" class="btn-primary-bp flex-fill" id="showLoginBtn">Sign In</button>
+                <button type="button" class="btn btn-outline-secondary flex-fill" id="showRegisterBtn">Create Account</button>
               </div>
-
-              <form id="billingForm" class="surface-soft p-3 mb-3">
-                <label class="form-label small muted">Payment method type</label>
-                <select class="form-select mb-3" id="billingTypeSelect">
-                  <option value="card">Credit / Debit Card</option>
-                  <option value="bank">Bank Transfer / IBAN</option>
-                  <option value="crypto">Crypto Wallet (USDT / USDC)</option>
-                  <option value="wallet">PayPal / Digital Wallet</option>
-                </select>
-                <div id="billingFieldsCard">
-                  <div class="mb-2"><label class="form-label small muted">Cardholder name</label><input type="text" class="form-control" id="cardHolderInput" placeholder="Name on card"></div>
-                  <div class="row g-2 mb-2">
-                    <div class="col-7"><label class="form-label small muted">Card number</label><input type="text" class="form-control mono" id="cardNumberInput" inputmode="numeric" maxlength="19" placeholder="•••• •••• •••• 4242"></div>
-                    <div class="col-5"><label class="form-label small muted">Expiry (MM/YY)</label><input type="text" class="form-control mono" id="cardExpiryInput" maxlength="5" placeholder="08/29"></div>
-                  </div>
-                </div>
-                <div id="billingFieldsBank" hidden>
-                  <div class="mb-2"><label class="form-label small muted">Account holder name</label><input type="text" class="form-control" id="bankHolderInput" placeholder="Full legal name"></div>
-                  <div class="mb-2"><label class="form-label small muted">Bank name</label><input type="text" class="form-control" id="bankNameInput" placeholder="e.g. Mashreq Bank"></div>
-                  <div class="row g-2 mb-2">
-                    <div class="col-7"><label class="form-label small muted">IBAN / Account number</label><input type="text" class="form-control mono" id="bankIbanInput" placeholder="AE07 0330 ..."></div>
-                    <div class="col-5"><label class="form-label small muted">SWIFT / BIC</label><input type="text" class="form-control mono" id="bankSwiftInput" placeholder="BOMLAEAD"></div>
-                  </div>
-                </div>
-                <div id="billingFieldsCrypto" hidden>
-                  <div class="mb-2"><label class="form-label small muted">Network</label><select class="form-select" id="cryptoNetworkInput"><option>TRC20 (Tron)</option><option>ERC20 (Ethereum)</option><option>BEP20 (BNB Chain)</option><option>Solana</option></select></div>
-                  <div class="mb-2"><label class="form-label small muted">Wallet address</label><input type="text" class="form-control mono" id="cryptoAddressInput" placeholder="0x... or T..."></div>
-                </div>
-                <div id="billingFieldsWallet" hidden>
-                  <div class="mb-2"><label class="form-label small muted">Wallet provider</label><select class="form-select" id="walletProviderInput"><option>PayPal</option><option>Apple Pay</option><option>Google Pay</option></select></div>
-                  <div class="mb-2"><label class="form-label small muted">Account email / ID</label><input type="email" class="form-control" id="walletEmailInput" placeholder="billing@example.com"></div>
-                </div>
-                <div class="d-flex gap-2 mt-3">
-                  <button type="submit" class="btn-primary-bp flex-fill"><i class="bi bi-shield-lock me-1"></i>Save Billing Method</button>
-                  <button type="button" class="btn btn-outline-danger" id="removeBillingBtn"><i class="bi bi-trash"></i></button>
-                </div>
+              <form id="loginForm">
+                <label class="form-label small">Email address</label>
+                <input class="form-control mb-2" type="email" id="loginEmail" placeholder="you@example.com" required>
+                <label class="form-label small">Password</label>
+                <input class="form-control mb-3" type="password" id="loginPassword" placeholder="Enter your password" required>
+                <button class="btn-primary-bp w-100" type="submit">Sign In</button>
+                <button type="button" class="btn btn-link w-100 mt-1 small" id="resetPasswordBtn">Forgot Password?</button>
               </form>
-              <div class="surface-soft p-3 mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2"><span class="small fw-bold">Billing History</span><span class="small text-blue" id="billingHistoryPlan">Free Tier</span></div>
-                <div id="billingHistoryList" class="small muted">No invoices yet.</div>
+              <form id="registerForm" hidden>
+                <label class="form-label small">Display name</label>
+                <input class="form-control mb-2" type="text" id="registerName" placeholder="Your display name" required>
+                <label class="form-label small">Email address</label>
+                <input class="form-control mb-2" type="email" id="registerEmail" placeholder="you@example.com" required>
+                <label class="form-label small">Create password</label>
+                <input class="form-control mb-3" type="password" id="registerPassword" minlength="8" placeholder="At least 8 characters" required>
+                <button class="btn-primary-bp w-100" type="submit">Create My Account</button>
+              </form>
+              <div class="text-center my-2"><small class="muted">OR</small></div>
+              <button type="button" class="btn btn-outline-secondary w-100" id="googleSignInBtn">Continue with Google</button>
+            </div>
+          </div>
+
+          <!-- BILLING PANE -->
+          <div id="accountBillingPane" hidden>
+            <div class="billing-card-visual mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <small class="mono opacity-75">ACTIVE BILLING METHOD</small>
+                <span class="tag" style="color:#75e4c2;border-color:#2d806b" id="billingStatusBadge">NONE</span>
               </div>
+              <div class="fw-bold fs-6" id="billingPrimaryDisplay">No payment method saved</div>
+              <div class="small opacity-75 mono" id="billingSecondaryDisplay">Add a card, bank/IBAN, crypto wallet, or digital wallet below</div>
             </div>
 
-            <button type="button" class="btn btn-outline-danger w-100" id="signOutBtn"><i class="bi bi-box-arrow-right me-1"></i>Sign Out</button>
+            <form id="billingForm" class="surface-soft p-3 mb-3">
+              <label class="form-label small muted">Payment method type</label>
+              <select class="form-select mb-3" id="billingTypeSelect">
+                <option value="card">Credit / Debit Card</option>
+                <option value="bank">Bank Transfer / IBAN</option>
+                <option value="crypto">Crypto Wallet (USDT / USDC)</option>
+                <option value="wallet">PayPal / Digital Wallet</option>
+              </select>
+              <div id="billingFieldsCard">
+                <div class="mb-2"><label class="form-label small muted">Cardholder name</label><input type="text" class="form-control" id="cardHolderInput" placeholder="Name on card"></div>
+                <div class="row g-2 mb-2">
+                  <div class="col-7"><label class="form-label small muted">Card number</label><input type="text" class="form-control mono" id="cardNumberInput" inputmode="numeric" maxlength="19" placeholder="•••• •••• •••• 4242"></div>
+                  <div class="col-5"><label class="form-label small muted">Expiry (MM/YY)</label><input type="text" class="form-control mono" id="cardExpiryInput" maxlength="5" placeholder="08/29"></div>
+                </div>
+              </div>
+              <div id="billingFieldsBank" hidden>
+                <div class="mb-2"><label class="form-label small muted">Account holder name</label><input type="text" class="form-control" id="bankHolderInput" placeholder="Full legal name"></div>
+                <div class="mb-2"><label class="form-label small muted">Bank name</label><input type="text" class="form-control" id="bankNameInput" placeholder="e.g. Mashreq Bank"></div>
+                <div class="row g-2 mb-2">
+                  <div class="col-7"><label class="form-label small muted">IBAN / Account number</label><input type="text" class="form-control mono" id="bankIbanInput" placeholder="AE07 0330 ..."></div>
+                  <div class="col-5"><label class="form-label small muted">SWIFT / BIC</label><input type="text" class="form-control mono" id="bankSwiftInput" placeholder="BOMLAEAD"></div>
+                </div>
+              </div>
+              <div id="billingFieldsCrypto" hidden>
+                <div class="mb-2"><label class="form-label small muted">Network</label><select class="form-select" id="cryptoNetworkInput"><option>TRC20 (Tron)</option><option>ERC20 (Ethereum)</option><option>BEP20 (BNB Chain)</option><option>Solana</option></select></div>
+                <div class="mb-2"><label class="form-label small muted">Wallet address</label><input type="text" class="form-control mono" id="cryptoAddressInput" placeholder="0x... or T..."></div>
+              </div>
+              <div id="billingFieldsWallet" hidden>
+                <div class="mb-2"><label class="form-label small muted">Wallet provider</label><select class="form-select" id="walletProviderInput"><option>PayPal</option><option>Apple Pay</option><option>Google Pay</option></select></div>
+                <div class="mb-2"><label class="form-label small muted">Account email / ID</label><input type="email" class="form-control" id="walletEmailInput" placeholder="billing@example.com"></div>
+              </div>
+              <div class="d-flex gap-2 mt-3">
+                <button type="submit" class="btn-primary-bp flex-fill"><i class="bi bi-shield-lock me-1"></i>Save Billing Method</button>
+                <button type="button" class="btn btn-outline-danger" id="removeBillingBtn"><i class="bi bi-trash"></i></button>
+              </div>
+            </form>
+            <div class="surface-soft p-3 mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2"><span class="small fw-bold">Billing History</span><span class="small text-blue" id="billingHistoryPlan">Free Tier</span></div>
+              <div id="billingHistoryList" class="small muted">No invoices yet.</div>
+            </div>
           </div>
 
-          <div id="authFormsPanel">
-            <p class="muted small">Sign in or create an account to sync your profile, studio, lessons, videos, and billing method.</p>
-            <div class="d-flex gap-2 mb-3">
-              <button type="button" class="btn-primary-bp flex-fill" id="showLoginBtn">Sign In</button>
-              <button type="button" class="btn btn-outline-secondary flex-fill" id="showRegisterBtn">Create Account</button>
-            </div>
-            <form id="loginForm">
-              <label class="form-label small">Email address</label>
-              <input class="form-control mb-3" type="email" id="loginEmail" placeholder="you@example.com" required>
-              <label class="form-label small">Password</label>
-              <input class="form-control mb-3" type="password" id="loginPassword" placeholder="Enter your password" required>
-              <button class="btn-primary-bp w-100" type="submit">Sign In</button>
-              <button type="button" class="btn btn-link w-100 mt-2" id="resetPasswordBtn">Forgot Password?</button>
-            </form>
-            <form id="registerForm" hidden>
-              <label class="form-label small">Display name</label>
-              <input class="form-control mb-3" type="text" id="registerName" placeholder="Your display name" required>
-              <label class="form-label small">Email address</label>
-              <input class="form-control mb-3" type="email" id="registerEmail" placeholder="you@example.com" required>
-              <label class="form-label small">Create password</label>
-              <input class="form-control mb-3" type="password" id="registerPassword" minlength="8" placeholder="At least 8 characters" required>
-              <button class="btn-primary-bp w-100" type="submit">Create My Account</button>
-            </form>
-            <div class="text-center my-3"><small class="muted">OR</small></div>
-            <button type="button" class="btn btn-outline-secondary w-100" id="googleSignInBtn">Continue with Google</button>
-          </div>
-          <div id="accountMessage" class="small mt-3" role="status" aria-live="polite"></div>
+          <div id="accountMessage" class="small mt-2" role="status" aria-live="polite"></div>
         </div>
       </div>
     </div>
@@ -594,15 +872,134 @@
       window.__toastTimer = setTimeout(() => el.classList.remove("show"), 3600);
     }
 
+    // Theme + Browsing Background State
     const themeToggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("bp-theme");
     if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+
+    let browsingBg = localStorage.getItem("bp-bg") || "navy-grid";
+    function applyBrowsingBackground(bgKey) {
+      browsingBg = bgKey || "navy-grid";
+      document.documentElement.setAttribute("data-bg", browsingBg);
+      if (browsingBg === "warm-sand") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+      document.querySelectorAll("[data-bg-choice]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.bgChoice === browsingBg);
+      });
+      localStorage.setItem("bp-bg", browsingBg);
+      localStorage.setItem("bp-theme", document.documentElement.getAttribute("data-theme") || "dark");
+    }
+    function setBrowsingBackground(bgKey) {
+      applyBrowsingBackground(bgKey);
+      if (typeof persistAllState === "function") persistAllState(true);
+      showToast("Browsing background updated.");
+    }
+    applyBrowsingBackground(browsingBg);
+
     themeToggle?.addEventListener("click", () => {
       const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", next);
       localStorage.setItem("bp-theme", next);
     });
 
+    // Preset Avatars & User Profile Photo/Name State
+    const PRESET_AVATARS = [
+      { id: "pulse-blue", label: "Pulse", initials: "BP", bg: "linear-gradient(135deg,#4d91ff,#2559d8)" },
+      { id: "cyan-quant", label: "Quant", initials: "QT", bg: "linear-gradient(135deg,#36d6e7,#0891b2)" },
+      { id: "gold-bull", label: "Bullion", initials: "AU", bg: "linear-gradient(135deg,#f59e0b,#b45309)" },
+      { id: "emerald-risk", label: "Risk", initials: "RK", bg: "linear-gradient(135deg,#36d399,#059669)" }
+    ];
+
+    let profilePrefs = JSON.parse(localStorage.getItem("bp-profile-prefs") || '{"displayName":"","avatarId":"pulse-blue","photoDataUrl":""}');
+    let tickerOffsetPx = Number(localStorage.getItem("bp-ticker-offset") || "0");
+
+    function renderPresetAvatars() {
+      const grid = document.getElementById("presetAvatarsGrid");
+      if (!grid) return;
+      grid.innerHTML = PRESET_AVATARS.map(av => {
+        const active = !profilePrefs.photoDataUrl && profilePrefs.avatarId === av.id;
+        return `
+          <div class="col-6">
+            <button type="button" class="avatar-preset-btn w-100 ${active ? "active" : ""}" onclick="choosePresetAvatar('${av.id}')">
+              <span class="avatar-preset-dot" style="background:${av.bg}">${av.initials}</span>
+              <span>${av.label}</span>
+            </button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAvatarEverywhere(nameOverride) {
+      const activeName = (nameOverride || profilePrefs.displayName || document.getElementById("userDisplayName")?.textContent || "BP").trim();
+      const initials = activeName.split(/\s+/).filter(Boolean).slice(0, 2).map(s => s[0].toUpperCase()).join("") || "BP";
+      const preset = PRESET_AVATARS.find(a => a.id === profilePrefs.avatarId) || PRESET_AVATARS[0];
+
+      const topBtn = document.getElementById("topProfileAvatarBtn");
+      const modalPrev = document.getElementById("profileModalAvatarPreview");
+
+      if (profilePrefs.photoDataUrl) {
+        const imgTag = `<img src="${profilePrefs.photoDataUrl}" alt="${activeName}">`;
+        if (topBtn) topBtn.innerHTML = imgTag;
+        if (modalPrev) modalPrev.innerHTML = imgTag;
+      } else {
+        if (topBtn) {
+          topBtn.style.background = preset.bg;
+          topBtn.style.color = "#fff";
+          topBtn.innerHTML = `<span class="small fw-bold mono">${initials}</span>`;
+        }
+        if (modalPrev) {
+          modalPrev.style.background = preset.bg;
+          modalPrev.style.color = "#fff";
+          modalPrev.innerHTML = `<span>${initials}</span>`;
+        }
+      }
+      renderPresetAvatars();
+    }
+
+    function choosePresetAvatar(avatarId) {
+      profilePrefs.avatarId = avatarId;
+      profilePrefs.photoDataUrl = "";
+      localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+      renderAvatarEverywhere();
+      if (typeof persistAllState === "function") persistAllState(true);
+    }
+
+    function clearCustomPhoto() {
+      profilePrefs.photoDataUrl = "";
+      localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+      renderAvatarEverywhere();
+      if (typeof persistAllState === "function") persistAllState(true);
+      showToast("Custom photo removed.");
+    }
+
+    function handlePhotoFileSelection(e) {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (file.size > 1.5 * 1024 * 1024) {
+        showToast("Please select an image under 1.5 MB.");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        profilePrefs.photoDataUrl = String(reader.result || "");
+        localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+        renderAvatarEverywhere();
+        if (typeof persistAllState === "function") persistAllState(true);
+        showToast("Profile photo updated!");
+      };
+      reader.readAsDataURL(file);
+    }
+    document.getElementById("galleryPhotoInput")?.addEventListener("change", handlePhotoFileSelection);
+    document.getElementById("cameraPhotoInput")?.addEventListener("change", handlePhotoFileSelection);
+
+    if (profilePrefs.displayName) {
+      document.getElementById("userDisplayName").textContent = profilePrefs.displayName;
+      document.getElementById("profileNameInput").value = profilePrefs.displayName;
+    }
+    renderAvatarEverywhere();
+
+    // Calculators
     function updateCalculators() {
       const acc = parseFloat(document.getElementById("calcAccount")?.value) || 0;
       const risk = parseFloat(document.getElementById("calcRisk")?.value) || 0;
@@ -633,18 +1030,22 @@
 
     const DEFAULT_LESSONS = [
       {
+        id: "lesson-1",
         title: "Structure Before Entry: Reading Trend & Pullbacks",
         track: "Charts & Macro",
         duration: "7 min",
         summary: "Identify higher highs/lows vs range boundaries first, then wait for confirmation rather than chasing candles.",
-        videoUrl: ""
+        videoUrl: "",
+        completed: false
       },
       {
+        id: "lesson-2",
         title: "Fixed Fractional Risk: Keeping Drawdowns Survivable",
         track: "Risk & Portfolio",
         duration: "6 min",
         summary: "Cap risk per trade to a small percentage of account equity so a losing streak never knocks you out of the game.",
-        videoUrl: ""
+        videoUrl: "",
+        completed: false
       }
     ];
 
@@ -662,23 +1063,27 @@
     function persistAllState(syncCloud = true) {
       localStorage.setItem("bp-courses", JSON.stringify(courseState));
       localStorage.setItem("bp-plan", activePlan);
+      localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+      localStorage.setItem("bp-bg", browsingBg);
       if (billingMethod) localStorage.setItem("bp-billing", JSON.stringify(billingMethod));
       else localStorage.removeItem("bp-billing");
       localStorage.setItem("bp-billing-history", JSON.stringify(billingHistory.slice(0, 10)));
       if (studioData) localStorage.setItem("bp-studio", JSON.stringify(studioData));
       localStorage.setItem("bp-studios-list", JSON.stringify(savedStudios.slice(0, 10)));
-      localStorage.setItem("bp-studio-lessons", JSON.stringify(studioLessons.slice(0, 30)));
+      localStorage.setItem("bp-studio-lessons", JSON.stringify(studioLessons.slice(0, 40)));
       localStorage.setItem("bp-briefs", JSON.stringify(customBriefs.slice(0, 20)));
       localStorage.setItem("bp-videos", JSON.stringify(customVideos.slice(0, 20)));
       if (syncCloud && typeof window.syncUserStateToCloud === "function") {
         window.syncUserStateToCloud({
           courses: courseState,
           plan: activePlan,
+          profilePrefs,
+          browsingBg,
           billingMethod,
           billingHistory: billingHistory.slice(0, 10),
           studio: studioData,
           studios: savedStudios.slice(0, 10),
-          lessons: studioLessons.slice(0, 30),
+          lessons: studioLessons.slice(0, 40),
           briefs: customBriefs.slice(0, 20),
           videos: customVideos.slice(0, 20)
         });
@@ -689,6 +1094,15 @@
       if (!remote || typeof remote !== "object") return;
       if (remote.courses) courseState = { foundations: 0, risk: 0, macro: 0, ...remote.courses };
       if (remote.plan) activePlan = remote.plan;
+      if (remote.profilePrefs) {
+        profilePrefs = { ...profilePrefs, ...remote.profilePrefs };
+        if (profilePrefs.displayName) {
+          document.getElementById("userDisplayName").textContent = profilePrefs.displayName;
+          document.getElementById("profileNameInput").value = profilePrefs.displayName;
+        }
+        renderAvatarEverywhere();
+      }
+      if (remote.browsingBg) applyBrowsingBackground(remote.browsingBg);
       if ("billingMethod" in remote) billingMethod = remote.billingMethod || null;
       if (Array.isArray(remote.billingHistory)) billingHistory = remote.billingHistory;
       if ("studio" in remote && remote.studio) studioData = remote.studio;
@@ -743,9 +1157,15 @@
       showToast("Video added to Academy!");
     });
 
+    // Studio Lessons: Study Modal, Mark Complete, Edit & Delete
+    let activeStudyIndex = null;
+
     function renderStudioLessons() {
       const listEl = document.getElementById("studioLessonsList");
       const titleEl = document.getElementById("showcaseStudioTitle");
+      const compBadge = document.getElementById("studioLessonsCompletedBadge");
+      const completedCount = studioLessons.filter(l => Boolean(l.completed)).length;
+      if (compBadge) compBadge.textContent = `${completedCount} / ${studioLessons.length} COMPLETED`;
       if (titleEl) {
         titleEl.textContent = studioData?.name
           ? `${studioData.name} — Learning Lessons (${studioLessons.length})`
@@ -758,18 +1178,25 @@
       }
       listEl.innerHTML = studioLessons.map((les, idx) => `
         <div class="col-md-6">
-          <div class="lesson-card-item h-100 d-flex flex-column justify-content-between">
+          <div class="lesson-card-item h-100 d-flex flex-column justify-content-between ${les.completed ? "completed" : ""}">
             <div>
               <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
-                <span class="tag">${les.track || "Foundations"}</span>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                  <span class="tag">${les.track || "Foundations"}</span>
+                  ${les.completed ? `<span class="pill up" style="padding:2px 7px;font-size:10px"><i class="bi bi-check2 me-1"></i>Done</span>` : ""}
+                </div>
                 <span class="small muted mono">${les.duration || "6 min"}</span>
               </div>
               <h6 class="fw-bold mb-1">${les.title}</h6>
-              <p class="small muted mb-2">${les.summary}</p>
+              <p class="small muted mb-3" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${les.summary}</p>
             </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top" style="border-color:var(--line)!important">
-              <span class="small text-blue"><i class="bi bi-check2-all me-1"></i>Lesson #${studioLessons.length - idx}</span>
-              ${les.videoUrl ? `<a href="${les.videoUrl}" target="_blank" rel="noopener" class="small text-blue">Watch video <i class="bi bi-box-arrow-up-right"></i></a>` : `<span class="small muted">Study note</span>`}
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top" style="border-color:var(--line)!important">
+              <button type="button" class="btn-ghost py-1 px-2 small" onclick="openLessonStudyModal(${idx})"><i class="bi bi-book-open me-1 text-blue"></i>Study</button>
+              <div class="d-flex gap-1">
+                <button type="button" class="btn-ghost py-1 px-2 small" title="Toggle complete" onclick="toggleLessonComplete(${idx})"><i class="bi ${les.completed ? "bi-check-circle-fill text-success" : "bi-check2-circle"}"></i></button>
+                <button type="button" class="btn-ghost py-1 px-2 small" title="Edit lesson" onclick="startEditLesson(${idx})"><i class="bi bi-pencil"></i></button>
+                <button type="button" class="btn btn-outline-danger py-1 px-2 small" title="Delete lesson" onclick="deleteLesson(${idx})"><i class="bi bi-trash"></i></button>
+              </div>
             </div>
           </div>
         </div>
@@ -777,8 +1204,90 @@
     }
     renderStudioLessons();
 
+    function openLessonStudyModal(idx) {
+      const les = studioLessons[idx];
+      if (!les) return;
+      activeStudyIndex = idx;
+      document.getElementById("studyModalTrack").textContent = les.track || "Foundations";
+      document.getElementById("studyModalTitle").textContent = les.title;
+      document.getElementById("studyModalMeta").textContent = `Est. ${les.duration || "6 min"} · ${les.completed ? "Completed" : "In Progress"}`;
+      document.getElementById("studyModalSummary").textContent = les.summary;
+
+      const vidWrap = document.getElementById("studyModalVideoWrap");
+      const vidLink = document.getElementById("studyModalVideoLink");
+      if (les.videoUrl) {
+        vidWrap.hidden = false;
+        vidLink.href = les.videoUrl;
+      } else {
+        vidWrap.hidden = true;
+      }
+
+      const compBtn = document.getElementById("studyModalCompleteBtn");
+      compBtn.innerHTML = les.completed
+        ? `<i class="bi bi-arrow-counterclockwise me-1"></i>Mark Incomplete`
+        : `<i class="bi bi-check2-circle me-1"></i>Mark Completed`;
+
+      document.getElementById("studyModalCompleteBtn").onclick = () => {
+        toggleLessonComplete(idx);
+        bootstrap.Modal.getInstance(document.getElementById("lessonStudyModal"))?.hide();
+      };
+      document.getElementById("studyModalEditBtn").onclick = () => {
+        bootstrap.Modal.getInstance(document.getElementById("lessonStudyModal"))?.hide();
+        startEditLesson(idx);
+      };
+      document.getElementById("studyModalDeleteBtn").onclick = () => {
+        bootstrap.Modal.getInstance(document.getElementById("lessonStudyModal"))?.hide();
+        deleteLesson(idx);
+      };
+
+      bootstrap.Modal.getOrCreateInstance(document.getElementById("lessonStudyModal")).show();
+    }
+
+    function toggleLessonComplete(idx) {
+      const les = studioLessons[idx];
+      if (!les) return;
+      les.completed = !les.completed;
+      persistAllState(true);
+      renderStudioLessons();
+      showToast(les.completed ? "Lesson marked completed!" : "Lesson marked incomplete.");
+    }
+
+    function startEditLesson(idx) {
+      const les = studioLessons[idx];
+      if (!les) return;
+      switchStudioTab("curriculum");
+      document.getElementById("editingLessonIndex").value = String(idx);
+      document.getElementById("lessonTitleInput").value = les.title;
+      document.getElementById("lessonTrackInput").value = les.track || "Foundations";
+      document.getElementById("lessonDurationInput").value = les.duration || "6 min";
+      document.getElementById("lessonSummaryInput").value = les.summary;
+      document.getElementById("lessonVideoInput").value = les.videoUrl || "";
+      document.getElementById("lessonFormHeading").textContent = "Edit Learning Lesson";
+      document.getElementById("lessonSubmitBtn").innerHTML = `<i class="bi bi-check2 me-1"></i>Update Lesson`;
+      document.getElementById("cancelEditLessonBtn").hidden = false;
+      document.getElementById("studio").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function cancelLessonEdit() {
+      document.getElementById("editingLessonIndex").value = "";
+      document.getElementById("lessonForm").reset();
+      document.getElementById("lessonDurationInput").value = "8 min";
+      document.getElementById("lessonFormHeading").textContent = "Create a Structured Learning Lesson";
+      document.getElementById("lessonSubmitBtn").innerHTML = `<i class="bi bi-plus-circle me-1"></i>Add Lesson to Studio`;
+      document.getElementById("cancelEditLessonBtn").hidden = true;
+    }
+
+    function deleteLesson(idx) {
+      if (idx < 0 || idx >= studioLessons.length) return;
+      studioLessons.splice(idx, 1);
+      persistAllState(true);
+      renderStudioLessons();
+      showToast("Lesson removed from studio.");
+    }
+
     document.getElementById("lessonForm")?.addEventListener("submit", (e) => {
       e.preventDefault();
+      const editVal = document.getElementById("editingLessonIndex").value;
       const title = document.getElementById("lessonTitleInput").value.trim();
       const track = document.getElementById("lessonTrackInput").value;
       const duration = document.getElementById("lessonDurationInput").value.trim() || "6 min";
@@ -786,14 +1295,22 @@
       const videoUrl = document.getElementById("lessonVideoInput").value.trim();
       if (!title || !summary) return;
 
-      studioLessons.unshift({ title, track, duration, summary, videoUrl });
-      if (videoUrl) customVideos.unshift({ title, url: videoUrl });
+      if (editVal !== "" && studioLessons[Number(editVal)]) {
+        const prevComp = Boolean(studioLessons[Number(editVal)].completed);
+        studioLessons[Number(editVal)] = { ...studioLessons[Number(editVal)], title, track, duration, summary, videoUrl, completed: prevComp };
+        cancelLessonEdit();
+        showToast("Lesson updated!");
+      } else {
+        studioLessons.unshift({ id: "lesson-" + Date.now(), title, track, duration, summary, videoUrl, completed: false });
+        if (videoUrl) customVideos.unshift({ title, url: videoUrl });
+        e.target.reset();
+        document.getElementById("lessonDurationInput").value = "8 min";
+        showToast("Lesson added to your Learning Studio!");
+      }
+
       persistAllState(true);
       renderStudioLessons();
       if (videoUrl) renderVideos();
-      e.target.reset();
-      document.getElementById("lessonDurationInput").value = "8 min";
-      showToast("Lesson added to your Learning Studio!");
     });
 
     function renderCourses() {
@@ -813,6 +1330,13 @@
     }
     renderCourses();
 
+    // Profile & Billing Modal Helpers
+    function openProfileSettings() {
+      const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("accountModal"));
+      modal.show();
+      switchAccountSection("profile");
+    }
+
     function switchAccountSection(section) {
       const isProfile = section === "profile";
       document.getElementById("accountProfilePane").hidden = !isProfile;
@@ -823,8 +1347,7 @@
     function openAccountBilling() {
       const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("accountModal"));
       modal.show();
-      if (!document.getElementById("signedInPanel").hidden) switchAccountSection("billing");
-      else showToast("Sign in first to manage a billing method.");
+      switchAccountSection("billing");
     }
     function renderBillingUI() {
       const statusBadge = document.getElementById("billingStatusBadge");
@@ -1032,7 +1555,7 @@
       showToast("Brief published to Research Desk.");
     });
 
-    // All Sectors with continuous price updates + live crypto sync
+    // All Sectors with continuous price updates + flash + dynamic hero sparkline + live crypto sync
     const MARKET_SECTORS = [
       { id: "xauusd", name: "Gold", symbol: "XAU/USD", sector: "metals", sectorLabel: "METALS", price: 3548.00, chg24: -2.14, chg7d: -4.85, note: "Bullion · Rates & USD watch", decimals: 2, prefix: "$", tickVol: 0.0012 },
       { id: "xagusd", name: "Silver", symbol: "XAG/USD", sector: "metals", sectorLabel: "METALS", price: 33.45, chg24: -1.45, chg7d: -3.10, note: "Precious & industrial metal", decimals: 2, prefix: "$", tickVol: 0.0018 },
@@ -1056,11 +1579,33 @@
     let candleSeries = [];
     let lineSeries = [];
     let lastDirections = {};
+    let sparkHistory = [3548, 3551, 3544, 3549, 3553, 3546, 3550, 3547, 3552, 3548];
+
+    function moveLiveAllSectors(deltaPx) {
+      tickerOffsetPx = Math.max(-180, Math.min(260, tickerOffsetPx + deltaPx));
+      localStorage.setItem("bp-ticker-offset", String(tickerOffsetPx));
+      const ctl = document.getElementById("liveAllSectorsCtl");
+      if (ctl) ctl.style.transform = `translateX(${tickerOffsetPx}px)`;
+    }
 
     function fmtAssetPrice(val, item) {
       const num = Number(val) || 0;
       const formatted = num.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals });
       return (item.prefix || "") + formatted;
+    }
+
+    function updateHeroSparkline() {
+      const poly = document.getElementById("heroSparkline");
+      if (!poly || sparkHistory.length < 2) return;
+      const minV = Math.min(...sparkHistory);
+      const maxV = Math.max(...sparkHistory);
+      const span = maxV - minV || 1;
+      const pts = sparkHistory.map((v, i) => {
+        const x = (i / (sparkHistory.length - 1)) * 400;
+        const y = 54 - ((v - minV) / span) * 44;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(" ");
+      poly.setAttribute("points", pts);
     }
 
     function generateSeries(item, days) {
@@ -1207,6 +1752,7 @@
           const up7d = item.chg7d >= 0;
           const isSel = item.id === selectedItemId;
           const dir = lastDirections[item.id] || "";
+          const flashCls = dir === "up" ? "tick-flash-up" : dir === "down" ? "tick-flash-down" : "";
           return `
             <div class="market-row ${isSel ? "selected" : ""}" data-item-id="${item.id}" onclick="selectInstrument('${item.id}')">
               <div class="coin">
@@ -1216,7 +1762,7 @@
                   <small class="muted mono">${item.symbol}</small>
                 </div>
               </div>
-              <div class="market-price ${dir}">${fmtAssetPrice(item.price, item)}</div>
+              <div class="market-price ${dir} ${flashCls}">${fmtAssetPrice(item.price, item)}</div>
               <div><span class="pill ${up24 ? "up" : "down"}">${up24 ? "+" : ""}${item.chg24.toFixed(2)}%</span></div>
               <div class="hide-mobile"><span class="pill ${up7d ? "up" : "down"}">${up7d ? "+" : ""}${item.chg7d.toFixed(2)}%</span></div>
               <div class="hide-mobile small muted">${item.note}</div>
@@ -1228,7 +1774,13 @@
       const ticker = document.getElementById("ticker");
       if (ticker) {
         const featured = ["xauusd", "ukoil", "btcusd", "us500", "usdaed"].map(id => MARKET_SECTORS.find(x => x.id === id)).filter(Boolean);
-        ticker.innerHTML = `<span>LIVE ALL SECTORS</span>` + featured.map(c => {
+        ticker.innerHTML = `
+          <span class="live-sectors-ctl" id="liveAllSectorsCtl" style="transform:translateX(${tickerOffsetPx}px)">
+            <button type="button" class="live-sectors-nudge" title="Move left" aria-label="Move Live All Sectors left" onclick="event.stopPropagation();moveLiveAllSectors(-28)"><i class="bi bi-chevron-left"></i></button>
+            <a href="#markets" class="live-sectors-trigger" title="Jump to All Sectors"><i class="bi bi-broadcast"></i>LIVE ALL SECTORS</a>
+            <button type="button" class="live-sectors-nudge" title="Move right" aria-label="Move Live All Sectors right" onclick="event.stopPropagation();moveLiveAllSectors(28)"><i class="bi bi-chevron-right"></i></button>
+          </span>
+        ` + featured.map(c => {
           const up = c.chg24 >= 0;
           return `<span class="ticker-item"><b>${c.symbol}</b>${fmtAssetPrice(c.price, c)} <span class="${up ? "up" : "down"}">${up ? "+" : ""}${c.chg24.toFixed(2)}%</span></span>`;
         }).join("");
@@ -1245,6 +1797,7 @@
         document.getElementById("heroBtcSub").innerHTML = `<span class="${btc.chg24 >= 0 ? "up" : "down"}">${btc.chg24 >= 0 ? "+" : ""}${btc.chg24.toFixed(2)}% (24h)</span>`;
       }
 
+      updateHeroSparkline();
       const timeStr = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
       document.getElementById("marketUpdated").textContent = "Live · " + timeStr;
       document.getElementById("heroTickClock").textContent = "LIVE " + timeStr;
@@ -1259,17 +1812,37 @@
         lastDirections[item.id] = nextPrice >= item.price ? "up" : "down";
         item.price = Number(nextPrice.toFixed(item.decimals));
         item.chg24 = Number((item.chg24 + deltaFrac * 35).toFixed(2));
+        if (item.id === "xauusd") {
+          sparkHistory.push(item.price);
+          if (sparkHistory.length > 16) sparkHistory.shift();
+        }
       });
       renderMarketListAndTicker();
       const activeItem = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
       renderChart(activeItem);
     }
 
+    function setFeedNotice(msg) {
+      const box = document.getElementById("feedStatusNotice");
+      const txt = document.getElementById("feedStatusText");
+      if (!box || !txt) return;
+      if (msg) {
+        txt.textContent = msg;
+        box.hidden = false;
+      } else {
+        box.hidden = true;
+      }
+    }
+
     async function syncLiveCryptoPrices() {
       try {
         const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana&order=market_cap_desc&price_change_percentage=24h,7d");
-        if (!res.ok) return;
+        if (!res.ok) {
+          setFeedNotice("CoinGecko feed temporarily rate-limited or busy — cross-sector live ticks remain active.");
+          return;
+        }
         const coins = await res.json();
+        setFeedNotice("");
         coins.forEach(c => {
           const item = MARKET_SECTORS.find(m => m.cgId === c.id);
           if (item && typeof c.current_price === "number") {
@@ -1282,7 +1855,9 @@
         renderMarketListAndTicker();
         const activeItem = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
         renderChart(activeItem);
-      } catch {}
+      } catch {
+        setFeedNotice("Live crypto endpoint took too long to respond — using active cross-sector updates.");
+      }
     }
 
     function selectInstrument(id) {
@@ -1431,14 +2006,13 @@
     const signOutBtn = document.getElementById("signOutBtn");
     const accountMessage = document.getElementById("accountMessage");
     const authFormsPanel = document.getElementById("authFormsPanel");
-    const signedInPanel = document.getElementById("signedInPanel");
+    const signedInAccountActions = document.getElementById("signedInAccountActions");
     const navAccountBtn = document.getElementById("navAccountBtn");
-    const mobileAccountBtn = document.getElementById("mobileAccountBtn");
 
     function setMessage(text, isError = false) {
       if (!accountMessage) return;
       accountMessage.textContent = text;
-      accountMessage.className = `small mt-3 ${isError ? "text-danger" : "text-success"}`;
+      accountMessage.className = `small mt-2 ${isError ? "text-danger" : "text-success"}`;
     }
     function friendlyError(err) {
       const map = {
@@ -1462,13 +2036,12 @@
       setMessage("");
     }
     function renderUserProfile(user) {
-      const displayName = user.displayName || user.email?.split("@")[0] || "BlockPulse Member";
+      const displayName = profilePrefs.displayName || user.displayName || user.email?.split("@")[0] || "BlockPulse Member";
       const email = user.email || "No email on account";
       const verified = Boolean(user.emailVerified);
-      document.getElementById("accountModalTitle").textContent = "Account & Billing";
       document.getElementById("userDisplayName").textContent = displayName;
       document.getElementById("userDisplayEmail").textContent = email;
-      document.getElementById("profileNameInput").value = user.displayName || "";
+      document.getElementById("profileNameInput").value = displayName;
       const badge = document.getElementById("userVerifiedBadge");
       if (badge) {
         badge.textContent = verified ? "Verified Email" : "Unverified Email";
@@ -1482,7 +2055,7 @@
       const studioSummary = document.getElementById("studioAccountSummary");
       if (studioSummary) studioSummary.textContent = `Signed in as ${displayName} (${email}) · ${verified ? "Email verified" : "Email unverified"}`;
       if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${displayName}`;
-      if (mobileAccountBtn) mobileAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${displayName}`;
+      renderAvatarEverywhere(displayName);
     }
 
     showLoginBtn?.addEventListener("click", () => setMode("login"));
@@ -1502,7 +2075,10 @@
       const name = document.getElementById("registerName").value.trim();
       try {
         const cred = await createUserWithEmailAndPassword(auth, document.getElementById("registerEmail").value.trim(), document.getElementById("registerPassword").value);
-        if (name) await updateProfile(cred.user, { displayName: name });
+        if (name) {
+          profilePrefs.displayName = name;
+          await updateProfile(cred.user, { displayName: name });
+        }
         try { await sendEmailVerification(cred.user); setMessage("Account created! Verification email sent."); } catch { setMessage("Account created!"); }
         renderUserProfile(cred.user);
         window.showToast?.(`Welcome to BlockPulse, ${name || "Member"}!`);
@@ -1511,16 +2087,19 @@
 
     updateProfileForm?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (!auth.currentUser) return;
       const newName = document.getElementById("profileNameInput").value.trim();
       if (!newName) return;
-      try {
-        await updateProfile(auth.currentUser, { displayName: newName });
-        renderUserProfile(auth.currentUser);
-        await window.syncUserStateToCloud?.({ displayName: newName });
-        setMessage("Display name updated.");
-        window.showToast?.(`Display name updated to ${newName}.`);
-      } catch (err) { setMessage(friendlyError(err), true); }
+      profilePrefs.displayName = newName;
+      localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+      document.getElementById("userDisplayName").textContent = newName;
+      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${newName}`;
+      renderAvatarEverywhere(newName);
+      if (auth.currentUser) {
+        try { await updateProfile(auth.currentUser, { displayName: newName }); } catch {}
+        await window.syncUserStateToCloud?.({ displayName: newName, profilePrefs });
+      }
+      setMessage("Profile saved.");
+      window.showToast?.(`Profile saved as ${newName}.`);
     });
 
     sendVerificationBtn?.addEventListener("click", async () => {
@@ -1553,17 +2132,23 @@
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         authFormsPanel.hidden = true;
-        signedInPanel.hidden = false;
+        signedInAccountActions.hidden = false;
         renderUserProfile(user);
         await loadCloudUserState(user);
       } else {
         authFormsPanel.hidden = false;
-        signedInPanel.hidden = true;
-        document.getElementById("accountModalTitle").textContent = "Welcome to BlockPulse";
-        const studioSummary = document.getElementById("studioAccountSummary");
-        if (studioSummary) studioSummary.textContent = "Sign in via the Account button to manage display name, email verification, password reset, and billing method.";
+        signedInAccountActions.hidden = true;
+        const guestName = profilePrefs.displayName || "BlockPulse Learner";
+        document.getElementById("userDisplayName").textContent = guestName;
+        document.getElementById("userDisplayEmail").textContent = "Guest mode · Saved locally & synced when signed in";
+        const badge = document.getElementById("userVerifiedBadge");
+        if (badge) {
+          badge.textContent = "Guest / Local";
+          badge.style.color = "var(--muted)";
+          badge.style.borderColor = "var(--line)";
+        }
         if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person me-1"></i>Sign in`;
-        if (mobileAccountBtn) mobileAccountBtn.innerHTML = `<i class="bi bi-person me-1"></i>Sign in`;
+        renderAvatarEverywhere(guestName);
       }
     });
   </script>
