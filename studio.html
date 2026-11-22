@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlockPulse Curate — Virtual Demo Trading Studio</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0b0e14;
+      color: #e2e8f0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    .studio-card {
+      background-color: #121722;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+    }
+    .tv-chart-wrapper {
+      height: 530px;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .tv-chart-wrapper {
+        height: 400px;
+      }
+    }
+    .price-up { color: #00d084 !important; }
+    .price-down { color: #ff4d6d !important; }
+    .btn-long {
+      background-color: #00b874;
+      border-color: #00b874;
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-long:hover { background-color: #009e63; color: #fff; }
+    .btn-short {
+      background-color: #e63956;
+      border-color: #e63956;
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-short:hover { background-color: #cc2b46; color: #fff; }
+    .mono-num {
+      font-variant-numeric: tabular-nums;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- ==================== TOP STUDIO NAVBAR & WALLET ==================== -->
+  <nav class="navbar navbar-expand-lg border-bottom border-secondary border-opacity-25 px-3 py-2" style="background-color: #0f141e;">
+    <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
+      
+      <!-- Brand + Simulation Badge -->
+      <div class="d-flex align-items-center gap-2">
+        <span class="fw-bold fs-5 text-white"><span class="text-info">BlockPulse</span> Curate</span>
+        <span class="badge bg-warning text-dark fw-semibold">
+          <i class="bi bi-shield-check me-1"></i>VIRTUAL DEMO FUNDS
+        </span>
+      </div>
+
+      <!-- Virtual Wallet Metrics + Account Status -->
+      <div class="d-flex flex-wrap align-items-center gap-2">
+        <div class="px-2 px-sm-3 py-1 rounded bg-dark border border-secondary border-opacity-25">
+          <small class="text-secondary d-block" style="font-size: 0.68rem;">AVAILABLE BALANCE</small>
+          <span id="walletBalance" class="fw-bold text-white mono-num small">$10,000.00</span>
+        </div>
+        <div class="px-2 px-sm-3 py-1 rounded bg-dark border border-secondary border-opacity-25">
+          <small class="text-secondary d-block" style="font-size: 0.68rem;">TOTAL EQUITY</small>
+          <span id="walletEquity" class="fw-bold text-info mono-num small">$10,000.00</span>
+        </div>
+        <div class="px-2 px-sm-3 py-1 rounded bg-dark border border-secondary border-opacity-25">
+          <small class="text-secondary d-block" style="font-size: 0.68rem;">UNREALIZED PNL</small>
+          <span id="totalUnrealizedPnl" class="fw-bold text-secondary mono-num small">$0.00</span>
+        </div>
+
+        <button id="resetWalletBtn" class="btn btn-outline-secondary btn-sm" title="Reset Demo Balance to $10,000">
+          <i class="bi bi-arrow-counterclockwise me-1"></i>Reset $10k
+        </button>
+
+        <!-- Auth Status Container (Guest Prompt vs. Logged-In Badge) -->
+        <div id="authHeaderSlot" class="d-flex align-items-center gap-2 ms-lg-1">
+          <!-- Guest View -->
+          <div id="guestAuthPrompt" class="d-flex align-items-center gap-2">
+            <span class="badge bg-secondary bg-opacity-25 text-light fw-normal d-none d-xl-inline">
+              Guest Mode (Local)
+            </span>
+            <button id="openSignInBtn" type="button" class="btn btn-info btn-sm fw-semibold">
+              <i class="bi bi-box-arrow-in-right me-1"></i>Sign In to Save
+            </button>
+          </div>
+
+          <!-- Logged-In View -->
+          <div id="userAuthBadge" class="d-none align-items-center gap-2 px-2 py-1 rounded bg-dark border border-info border-opacity-50">
+            <span class="rounded-circle bg-info text-dark fw-bold d-inline-flex align-items-center justify-content-center" style="width: 26px; height: 26px; font-size: 0.78rem;" id="userAvatarInitials">
+              BP
+            </span>
+            <div class="lh-1 me-1">
+              <div id="userDisplayLabel" class="small fw-semibold text-white text-truncate" style="max-width: 140px;">Trader</div>
+              <small class="text-info" style="font-size: 0.66rem;"><i class="bi bi-cloud-check me-1"></i>Cloud Synced</small>
+            </div>
+            <button id="signOutBtn" type="button" class="btn btn-outline-secondary btn-sm py-0 px-2" title="Sign Out">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ==================== LIVE MARKET TICKER STRIP ==================== -->
+  <div class="border-bottom border-secondary border-opacity-25 px-3 py-2" style="background-color: #121722;">
+    <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <select id="pairSelector" class="form-select form-select-sm bg-dark text-white border-secondary fw-bold" style="width: 155px;">
+          <option value="BTCUSDT" selected>BTC / USDT</option>
+          <option value="ETHUSDT">ETH / USDT</option>
+          <option value="SOLUSDT">SOL / USDT</option>
+          <option value="XRPUSDT">XRP / USDT</option>
+        </select>
+
+        <div>
+          <span id="livePriceDisplay" class="fs-5 fw-bold mono-num text-white">Loading...</span>
+          <span id="priceChangeBadge" class="badge bg-secondary ms-2 mono-num">0.00%</span>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-2 small text-secondary">
+        <span id="wsStatusDot" class="badge rounded-pill bg-secondary">Connecting Feed...</span>
+        <span class="d-none d-md-inline">| Use the left chart toolbar for Trendlines, Fibs, Brushes &amp; Indicators</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN TRADING STUDIO WORKSPACE ==================== -->
+  <main class="container-fluid py-3 flex-grow-1">
+    <div class="row g-3">
+
+      <!-- LEFT COLUMN: TRADINGVIEW CHART WITH EDITING TOOLS -->
+      <div class="col-lg-8">
+        <div class="studio-card p-2">
+          <div id="tv_chart_container" class="tv-chart-wrapper"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: DEMO ORDER EXECUTION TICKET -->
+      <div class="col-lg-4">
+        <div class="studio-card p-3 h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold text-white mb-0">
+                <i class="bi bi-sliders2 text-info me-2"></i>Demo Order Ticket
+              </h6>
+              <span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">Market Execution</span>
+            </div>
+
+            <!-- Long / Short Toggle -->
+            <div class="btn-group w-100 mb-3" role="group">
+              <input type="radio" class="btn-check" name="orderSide" id="sideLong" value="LONG" checked>
+              <label class="btn btn-outline-success fw-semibold" for="sideLong">
+                <i class="bi bi-graph-up-arrow me-1"></i>Buy / Long
+              </label>
+
+              <input type="radio" class="btn-check" name="orderSide" id="sideShort" value="SHORT">
+              <label class="btn btn-outline-danger fw-semibold" for="sideShort">
+                <i class="bi bi-graph-down-arrow me-1"></i>Sell / Short
+              </label>
+            </div>
+
+            <!-- Margin Amount (USDT) -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small mb-1">
+                <label for="marginInput" class="text-secondary">Margin Amount (Virtual USDT)</label>
+                <span class="text-info" style="cursor:pointer;" onclick="setMaxMargin()">Max</span>
+              </div>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-dark border-secondary text-secondary">$</span>
+                <input type="number" id="marginInput" class="form-control bg-dark text-white border-secondary mono-num" value="500" min="10" step="10" />
+              </div>
+              <div class="d-flex gap-1 mt-2">
+                <button type="button" class="btn btn-dark btn-sm border-secondary flex-fill py-0" onclick="setPercentMargin(0.10)">10%</button>
+                <button type="button" class="btn btn-dark btn-sm border-secondary flex-fill py-0" onclick="setPercentMargin(0.25)">25%</button>
+                <button type="button" class="btn btn-dark btn-sm border-secondary flex-fill py-0" onclick="setPercentMargin(0.50)">50%</button>
+                <button type="button" class="btn btn-dark btn-sm border-secondary flex-fill py-0" onclick="setPercentMargin(1.00)">100%</button>
+              </div>
+            </div>
+
+            <!-- Leverage Slider -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small mb-1">
+                <label for="leverageRange" class="text-secondary">Simulated Leverage</label>
+                <span id="leverageValue" class="fw-bold text-info mono-num">5x</span>
+              </div>
+              <input type="range" class="form-range" id="leverageRange" min="1" max="20" step="1" value="5">
+              <div class="d-flex justify-content-between text-secondary" style="font-size: 0.72rem;">
+                <span>1x (Spot)</span>
+                <span>5x</span>
+                <span>10x</span>
+                <span>20x</span>
+              </div>
+            </div>
+
+            <!-- Optional Stop Loss & Take Profit -->
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="slInput" class="form-label small text-secondary mb-1">Stop-Loss (Optional)</label>
+                <input type="number" id="slInput" class="form-control form-control-sm bg-dark text-white border-secondary mono-num" placeholder="Price" step="any" />
+              </div>
+              <div class="col-6">
+                <label for="tpInput" class="form-label small text-secondary mb-1">Take-Profit (Optional)</label>
+                <input type="number" id="tpInput" class="form-control form-control-sm bg-dark text-white border-secondary mono-num" placeholder="Price" step="any" />
+              </div>
+            </div>
+
+            <!-- Order Summary Box -->
+            <div class="p-2 rounded bg-dark border border-secondary border-opacity-25 small mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-secondary">Position Size:</span>
+                <span id="positionSizePreview" class="text-white fw-semibold mono-num">$2,500.00</span>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-secondary">Est. Entry Price:</span>
+                <span id="entryPricePreview" class="text-white mono-num">—</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-secondary">Est. Liquidation Price:</span>
+                <span id="liqPricePreview" class="text-warning mono-num">—</span>
+              </div>
+            </div>
+
+            <!-- Submit Order Button -->
+            <button id="placeOrderBtn" type="button" class="btn btn-long w-100 py-2">
+              Open Virtual Long (BTC)
+            </button>
+            <div id="orderFeedback" class="small mt-2 text-center"></div>
+          </div>
+
+          <div class="text-secondary mt-3 pt-2 border-top border-secondary border-opacity-25" style="font-size: 0.72rem;">
+            <i class="bi bi-info-circle me-1"></i>Educational simulation only. No real money or live exchange orders are executed.
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM PANEL: OPEN POSITIONS & TRADE HISTORY -->
+      <div class="col-12">
+        <div class="studio-card p-3">
+          <ul class="nav nav-tabs border-secondary border-opacity-25 mb-3" id="studioTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active text-info fw-semibold" id="positions-tab" data-bs-toggle="tab" data-bs-target="#positionsPane" type="button" role="tab">
+                Open Positions (<span id="openCount">0</span>)
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link text-secondary fw-semibold" id="history-tab" data-bs-toggle="tab" data-bs-target="#historyPane" type="button" role="tab">
+                Closed Trade History (<span id="historyCount">0</span>)
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- Open Positions Table -->
+            <div class="tab-pane fade show active" id="positionsPane" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle small mb-0">
+                  <thead>
+                    <tr class="text-secondary">
+                      <th>Pair</th>
+                      <th>Side</th>
+                      <th>Size (Lev)</th>
+                      <th>Entry Price</th>
+                      <th>Mark Price</th>
+                      <th>SL / TP</th>
+                      <th>Unrealized PnL</th>
+                      <th class="text-end">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="openPositionsBody">
+                    <tr>
+                      <td colspan="8" class="text-center text-secondary py-4">No open virtual positions. Place a demo order above to start practicing.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Closed History Table -->
+            <div class="tab-pane fade" id="historyPane" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle small mb-0">
+                  <thead>
+                    <tr class="text-secondary">
+                      <th>Time Closed</th>
+                      <th>Pair</th>
+                      <th>Side</th>
+                      <th>Margin</th>
+                      <th>Entry &rarr; Exit</th>
+                      <th>Close Reason</th>
+                      <th class="text-end">Realized PnL</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tradeHistoryBody">
+                    <tr>
+                      <td colspan="7" class="text-center text-secondary py-4">No closed trades yet.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== BLOCKPULSE CURATE FOOTER ==================== -->
+  <footer class="bg-dark text-light border-top border-secondary border-opacity-25 pt-5 pb-4 mt-auto">
+    <div class="container">
+      <div class="row gy-4 justify-content-between align-items-start">
+        
+        <!-- Brand & Mission -->
+        <div class="col-lg-5 col-md-6">
+          <h5 class="fw-bold text-white mb-2">
+            <span class="text-info">BlockPulse</span> Curate
+          </h5>
+          <p class="text-secondary small mb-3">
+            Independent cryptocurrency and forex market intelligence, self-custody security guides, and structured learning resources.
+          </p>
+          <p class="small text-secondary mb-0">
+            Editorial &amp; Support Desk: 
+            <a href="mailto:Blockpulsecurate@gmail.com" class="link-info text-decoration-none">
+              Blockpulsecurate@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <!-- Legal & Compliance Links -->
+        <div class="col-lg-4 col-md-6 text-md-end">
+          <h6 class="text-uppercase fw-semibold text-secondary small mb-3">Legal &amp; Compliance</h6>
+          <ul class="list-unstyled d-flex flex-wrap gap-3 justify-content-md-end mb-2">
+            <li>
+              <button type="button" class="btn btn-link link-light text-decoration-none p-0 small" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
+                Financial Disclaimer
+              </button>
+            </li>
+            <li class="text-secondary">&bull;</li>
+            <li>
+              <button type="button" class="btn btn-link link-light text-decoration-none p-0 small" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                Privacy Policy (UAE PDPL)
+              </button>
+            </li>
+          </ul>
+          <span class="badge bg-secondary bg-opacity-25 text-light fw-normal border border-secondary border-opacity-25">
+            18+ Educational Platform Only
+          </span>
+        </div>
+
+      </div>
+
+      <hr class="border-secondary border-opacity-25 my-4">
+
+      <!-- Mandatory Short Risk Disclaimer -->
+      <div class="row">
+        <div class="col-12">
+          <p class="text-secondary mb-2" style="font-size: 0.78rem; line-height: 1.55;">
+            <strong class="text-light">Risk &amp; Regulatory Disclaimer:</strong> BlockPulse Curate is an independent educational and market intelligence platform. All content, market briefs, and tools are provided strictly for informational and educational purposes and do not constitute financial, investment, trading, or legal advice. BlockPulse Curate is not licensed or regulated by the UAE Capital Market Authority (CMA), Central Bank of the UAE (CBUAE), or Virtual Assets Regulatory Authority (VARA). Trading cryptocurrencies and foreign exchange involves substantial risk of loss.
+          </p>
+          <p class="text-secondary mb-0" style="font-size: 0.78rem;">
+            &copy; 2026 BlockPulse Curate. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== STUDIO AUTH MODAL (SIGN IN & REGISTER) ==================== -->
+  <div class="modal fade" id="studioAuthModal" tabindex="-1" aria-labelledby="studioAuthModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light border-secondary">
+        <div class="modal-header border-secondary border-opacity-50 pb-2">
+          <h5 class="modal-title fw-bold" id="studioAuthModalLabel">
+            <span class="text-info">BlockPulse</span> Studio Account
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body pt-2">
+          <!-- Nav Tabs -->
+          <ul class="nav nav-pills nav-fill bg-black bg-opacity-25 p-1 rounded mb-3" id="authTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active py-1 small fw-semibold" id="signin-tab" data-bs-toggle="pill" data-bs-target="#signinPane" type="button" role="tab">
+                Sign In
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link py-1 small fw-semibold" id="register-tab" data-bs-toggle="pill" data-bs-target="#registerPane" type="button" role="tab">
+                Create Account
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- TAB 1: SIGN IN -->
+            <div class="tab-pane fade show active" id="signinPane" role="tabpanel">
+              <form id="studioLoginForm">
+                <div class="mb-2">
+                  <label for="authEmailInput" class="form-label small text-secondary mb-1">Email</label>
+                  <input type="email" id="authEmailInput" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="you@example.com" required />
+                </div>
+                <div class="mb-3">
+                  <label for="authPasswordInput" class="form-label small text-secondary mb-1">Password</label>
+                  <input type="password" id="authPasswordInput" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="••••••••" required />
+                </div>
+                <button type="submit" class="btn btn-info btn-sm w-100 fw-semibold py-2">
+                  Sign In to Sync Wallet
+                </button>
+              </form>
+            </div>
+
+            <!-- TAB 2: CREATE ACCOUNT -->
+            <div class="tab-pane fade" id="registerPane" role="tabpanel">
+              <form id="studioRegisterForm">
+                <div class="mb-2">
+                  <label for="regNameInput" class="form-label small text-secondary mb-1">Display Name / Handle</label>
+                  <input type="text" id="regNameInput" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="e.g. CryptoTrader" maxlength="30" required />
+                </div>
+                <div class="mb-2">
+                  <label for="regEmailInput" class="form-label small text-secondary mb-1">Email</label>
+                  <input type="email" id="regEmailInput" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="you@example.com" required />
+                </div>
+                <div class="mb-2">
+                  <label for="regPasswordInput" class="form-label small text-secondary mb-1">Password (Min. 6 characters)</label>
+                  <input type="password" id="regPasswordInput" class="form-control form-control-sm bg-dark text-white border-secondary" minlength="6" placeholder="Create a strong password" required />
+                </div>
+
+                <!-- Mandatory 18+ UAE PDPL & Disclaimer Consent -->
+                <div class="form-check my-3">
+                  <input class="form-check-input" type="checkbox" id="studioLegalConsentCheck" required />
+                  <label class="form-check-label text-secondary" for="studioLegalConsentCheck" style="font-size: 0.78rem; line-height: 1.4;">
+                    I confirm I am <strong>18+</strong> and agree to the 
+                    <a href="#" class="link-info text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a> 
+                    and 
+                    <a href="#" class="link-info text-decoration-none" data-bs-toggle="modal" data-bs-target="#disclaimerModal">Financial Disclaimer</a> 
+                    (educational virtual funds only).
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-info btn-sm w-100 fw-semibold py-2">
+                  Create Free Account &amp; Claim $10,000 Demo
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Divider & Google Auth -->
+          <div class="d-flex align-items-center my-3">
+            <hr class="flex-grow-1 border-secondary border-opacity-25 my-0">
+            <span class="px-2 small text-secondary">OR</span>
+            <hr class="flex-grow-1 border-secondary border-opacity-25 my-0">
+          </div>
+
+          <button id="googleSignInBtn" type="button" class="btn btn-outline-light btn-sm w-100 py-2">
+            <i class="bi bi-google me-2"></i>Continue with Google
+          </button>
+
+          <div id="studioAuthError" class="small text-danger mt-2 text-center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FINANCIAL DISCLAIMER MODAL ==================== -->
+  <div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light border-secondary">
+        <div class="modal-header border-secondary border-opacity-50">
+          <h5 class="modal-title fw-bold" id="disclaimerModalLabel">Educational &amp; Financial Risk Disclaimer</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body small text-light-emphasis" style="line-height: 1.65;">
+          <p class="text-secondary mb-3"><strong>Last Updated:</strong> November 2026</p>
+
+          <h6 class="text-white fw-semibold">1. Strictly Educational &amp; Informational Purpose</h6>
+          <p>All articles, market briefs, charts, watchlists, security checklists, virtual demo trading tools, and learning resources published on <strong>BlockPulse Curate</strong> and its associated YouTube channel are provided strictly for general educational and informational purposes. Nothing on this platform constitutes—or should be construed as—financial, investment, trading, tax, or legal advice.</p>
+
+          <h6 class="text-white fw-semibold mt-3">2. Non-Regulated Status in the United Arab Emirates</h6>
+          <p>BlockPulse Curate is an independent educational publication and is <strong>not</strong> a licensed financial institution, broker, dealer, investment advisor, or Virtual Asset Service Provider (VASP). BlockPulse Curate is not regulated or licensed by the <strong>UAE Capital Market Authority (CMA)</strong> (successor to the Securities and Commodities Authority), the <strong>Central Bank of the UAE (CBUAE)</strong>, the <strong>Dubai Virtual Assets Regulatory Authority (VARA)</strong>, the <strong>DFSA</strong>, or the <strong>FSRA</strong>. We do not accept deposits, manage funds, execute real trades, or offer regulated financial promotions to UAE residents or international users.</p>
+
+          <h6 class="text-white fw-semibold mt-3">3. High Risk of Cryptocurrency &amp; Forex Trading</h6>
+          <p>Trading and holding cryptocurrencies, digital assets, and foreign exchange (forex) carry a high level of risk and may not be suitable for all individuals. Market prices are highly volatile, and past market performance or simulated demo results are not indicative of future live results. You should never trade or invest money you cannot afford to lose. Always conduct your own independent research (DYOR) and consult a duly licensed financial advisor before making any investment decisions.</p>
+
+          <h6 class="text-white fw-semibold mt-3">4. No Warranties &amp; Third-Party Links</h6>
+          <p>While we strive to provide accurate, verified market summaries, BlockPulse Curate makes no representations or warranties regarding the completeness, accuracy, or timeliness of any data or third-party market feeds displayed on the site. Any references or links to third-party exchanges, wallets, or external websites are for educational reference only; BlockPulse Curate is not responsible for the security, availability, or practices of external platforms.</p>
+
+          <h6 class="text-white fw-semibold mt-3">5. Limitation of Liability</h6>
+          <p class="mb-0">By using BlockPulse Curate, you agree that the platform and its creator(s) shall not be held liable for any direct, indirect, incidental, or consequential financial loss or damage arising from your reliance on information published on this website.</p>
+        </div>
+        <div class="modal-footer border-secondary border-opacity-50">
+          <button type="button" class="btn btn-info btn-sm fw-semibold px-4" data-bs-dismiss="modal">I Understand</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PRIVACY POLICY MODAL (UAE PDPL) ==================== -->
+  <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light border-secondary">
+        <div class="modal-header border-secondary border-opacity-50">
+          <h5 class="modal-title fw-bold" id="privacyModalLabel">Privacy Policy (UAE PDPL Compliant)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body small text-light-emphasis" style="line-height: 1.65;">
+          <p class="text-secondary mb-3"><strong>Last Updated:</strong> November 2026</p>
+
+          <h6 class="text-white fw-semibold">1. Overview &amp; Data Controller</h6>
+          <p><strong>BlockPulse Curate</strong> ("we," "our," or "us") respects your privacy and is committed to protecting your personal data in accordance with the <strong>UAE Personal Data Protection Law (Federal Decree-Law No. 45 of 2021 — PDPL)</strong>.<br>
+          <strong>Contact Email:</strong> <a href="mailto:Blockpulsecurate@gmail.com" class="link-info">Blockpulsecurate@gmail.com</a></p>
+
+          <h6 class="text-white fw-semibold mt-3">2. Personal Data We Collect</h6>
+          <ul>
+            <li><strong>Account Information:</strong> Your email address, display name/username, and authentication credentials (processed securely via Google Firebase Authentication).</li>
+            <li><strong>Preferences &amp; Learning Progress:</strong> Saved watchlist selections, virtual demo trading balances/positions, profile avatar choices, or educational checklist progress stored in your account profile.</li>
+            <li><strong>Basic Technical Data:</strong> Standard browser and device logs (such as IP address and browser type) generated automatically by our hosting provider (GitHub Pages) and backend infrastructure (Google Firebase) for security and performance.</li>
+          </ul>
+          <p>We do <strong>not</strong> collect banking details, payment card numbers, government IDs, or private wallet seed phrases. Never share your private keys or recovery phrases with anyone, including us.</p>
+
+          <h6 class="text-white fw-semibold mt-3">3. Purpose &amp; Legal Basis for Processing</h6>
+          <p>Under the UAE PDPL, we process your personal data strictly based on your <strong>explicit consent</strong> when creating an account to authenticate your login, save your dashboard and demo studio settings, respond to inquiries, and protect the platform against abuse. We do <strong>not</strong> sell, rent, or trade your personal data to third parties.</p>
+
+          <h6 class="text-white fw-semibold mt-3">4. Third-Party Infrastructure &amp; Cross-Border Storage</h6>
+          <p>We rely on <strong>Google Firebase</strong> (authentication and database) and <strong>GitHub Pages</strong> (front-end hosting). Because these cloud providers operate global server infrastructure, your account data may be stored and processed on secure servers outside the United Arab Emirates. By creating an account, you acknowledge and consent to this cross-border data processing.</p>
+
+          <h6 class="text-white fw-semibold mt-3">5. Cookies &amp; Local Browser Storage</h6>
+          <p>BlockPulse Curate uses essential local storage and authentication session tokens strictly required to keep you signed in and remember your interface preferences. We do not run third-party behavioral advertising trackers.</p>
+
+          <h6 class="text-white fw-semibold mt-3">6. Data Retention &amp; Security</h6>
+          <p>We apply HTTPS encryption and Firebase security rules to safeguard your account data. Data is retained only while your account remains active or until you request deletion.</p>
+
+          <h6 class="text-white fw-semibold mt-3">7. Your Rights Under UAE Law</h6>
+          <p>Under the UAE PDPL, you have the right to request <strong>access</strong>, <strong>correction</strong>, or <strong>permanent deletion</strong> of your account data, or withdraw consent at any time. Email <a href="mailto:Blockpulsecurate@gmail.com" class="link-info">Blockpulsecurate@gmail.com</a> from your registered email address; verified requests are processed within 30 days.</p>
+
+          <h6 class="text-white fw-semibold mt-3">8. Age Restriction &amp; Updates</h6>
+          <p class="mb-0">BlockPulse Curate is intended strictly for users aged <strong>18 and older</strong>. We may update this policy as new features are introduced, with any revisions posted here.</p>
+        </div>
+        <div class="modal-footer border-secondary border-opacity-50">
+          <button type="button" class="btn btn-info btn-sm fw-semibold px-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- TradingView Chart Library -->
+  <script src="https://s3.tradingview.com/tv.js"></script>
+
+  <!-- ==================== CORE TRADING STUDIO ENGINE ==================== -->
+  <script>
+    const INITIAL_BALANCE = 10000;
+    const STORAGE_KEY = "blockpulse_demo_studio_v1";
+
+    let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+      balance: INITIAL_BALANCE,
+      positions: [],
+      history: []
+    };
+
+    let selectedSymbol = "BTCUSDT";
+    let prices = {
+      BTCUSDT: { price: 0, change24h: 0 },
+      ETHUSDT: { price: 0, change24h: 0 },
+      SOLUSDT: { price: 0, change24h: 0 },
+      XRPUSDT: { price: 0, change24h: 0 }
+    };
+    let prevSelectedPrice = 0;
+    let ws = null;
+    let fallbackTimer = null;
+
+    function saveState() {
+      if (window.demoStudioSync && window.demoStudioSync.getUser()) {
+        window.demoStudioSync.save(state);
+      } else {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+    }
+
+    function formatUSD(val) {
+      return "$" + Number(val).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function formatPrice(val, symbol = selectedSymbol) {
+      if (!val) return "—";
+      const decimals = symbol === "XRPUSDT" ? 4 : 2;
+      return "$" + Number(val).toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+    }
+
+    // ==================== TRADINGVIEW CHART WITH DRAWING TOOLS ====================
+    function loadTradingViewChart(symbol) {
+      const container = document.getElementById("tv_chart_container");
+      container.innerHTML = "";
+
+      new TradingView.widget({
+        autosize: true,
+        symbol: "BINANCE:" + symbol,
+        interval: "15",
+        timezone: "Asia/Dubai",
+        theme: "dark",
+        style: "1",
+        locale: "en",
+        toolbar_bg: "#121722",
+        enable_publishing: false,
+        hide_side_toolbar: false,
+        allow_symbol_change: false,
+        withdateranges: true,
+        details: false,
+        studies: ["RSI@tv-basicstudies"],
+        container_id: "tv_chart_container"
+      });
+    }
+
+    // ==================== LIVE WEBSOCKET PRICE FEED ====================
+    function connectWebSocket() {
+      if (ws) ws.close();
+      clearInterval(fallbackTimer);
+
+      const streams = "btcusdt@miniTicker/ethusdt@miniTicker/solusdt@miniTicker/xrpusdt@miniTicker";
+      const wsUrl = `wss://data-stream.binance.vision/stream?streams=${streams}`;
+
+      try {
+        ws = new WebSocket(wsUrl);
+
+        ws.onopen = () => {
+          const dot = document.getElementById("wsStatusDot");
+          dot.className = "badge rounded-pill bg-success";
+          dot.innerHTML = '<i class="bi bi-broadcast me-1"></i>Live Market Feed';
+        };
+
+        ws.onmessage = (event) => {
+          const payload = JSON.parse(event.data);
+          if (!payload || !payload.data) return;
+
+          const data = payload.data;
+          const sym = data.s;
+          const lastPrice = parseFloat(data.c);
+          const openPrice = parseFloat(data.o);
+          const changePct = openPrice > 0 ? ((lastPrice - openPrice) / openPrice) * 100 : 0;
+
+          if (prices[sym]) {
+            prices[sym].price = lastPrice;
+            prices[sym].change24h = changePct;
+          }
+
+          onPriceTick();
+        };
+
+        ws.onerror = () => startFallbackFeed();
+        ws.onclose = () => {
+          const dot = document.getElementById("wsStatusDot");
+          dot.className = "badge rounded-pill bg-warning text-dark";
+          dot.textContent = "Simulated Feed";
+        };
+      } catch (err) {
+        startFallbackFeed();
+      }
+    }
+
+    function startFallbackFeed() {
+      const dot = document.getElementById("wsStatusDot");
+      dot.className = "badge rounded-pill bg-warning text-dark";
+      dot.textContent = "Simulated Tick Feed";
+
+      if (!prices.BTCUSDT.price) {
+        prices.BTCUSDT = { price: 94250.00, change24h: 1.85 };
+        prices.ETHUSDT = { price: 3320.50, change24h: 1.12 };
+        prices.SOLUSDT = { price: 215.40, change24h: 3.40 };
+        prices.XRPUSDT = { price: 1.4250, change24h: -0.65 };
+      }
+
+      clearInterval(fallbackTimer);
+      fallbackTimer = setInterval(() => {
+        Object.keys(prices).forEach(sym => {
+          const delta = (Math.random() - 0.495) * 0.0015;
+          prices[sym].price = +(prices[sym].price * (1 + delta)).toFixed(sym === "XRPUSDT" ? 4 : 2);
+        });
+        onPriceTick();
+      }, 1200);
+    }
+
+    // ==================== REAL-TIME TICK EVALUATION ====================
+    function onPriceTick() {
+      const current = prices[selectedSymbol];
+      if (current && current.price > 0) {
+        const priceEl = document.getElementById("livePriceDisplay");
+        priceEl.textContent = formatPrice(current.price, selectedSymbol);
+
+        if (prevSelectedPrice > 0) {
+          priceEl.classList.remove("price-up", "price-down");
+          if (current.price > prevSelectedPrice) priceEl.classList.add("price-up");
+          else if (current.price < prevSelectedPrice) priceEl.classList.add("price-down");
+        }
+        prevSelectedPrice = current.price;
+
+        const badge = document.getElementById("priceChangeBadge");
+        const sign = current.change24h >= 0 ? "+" : "";
+        badge.textContent = `${sign}${current.change24h.toFixed(2)}%`;
+        badge.className = `badge ms-2 mono-num ${current.change24h >= 0 ? "bg-success" : "bg-danger"}`;
+      }
+
+      updateOrderPreview();
+      evaluatePositions();
+    }
+
+    // ==================== ORDER TICKET CALCULATIONS ====================
+    function updateOrderPreview() {
+      const margin = parseFloat(document.getElementById("marginInput").value) || 0;
+      const leverage = parseInt(document.getElementById("leverageRange").value) || 1;
+      const side = document.querySelector('input[name="orderSide"]:checked').value;
+      const entry = prices[selectedSymbol]?.price || 0;
+
+      document.getElementById("leverageValue").textContent = leverage + "x";
+      document.getElementById("positionSizePreview").textContent = formatUSD(margin * leverage);
+      document.getElementById("entryPricePreview").textContent = formatPrice(entry, selectedSymbol);
+
+      if (entry > 0 && leverage > 1) {
+        const liqDistance = entry * (0.9 / leverage);
+        const liqPrice = side === "LONG" ? entry - liqDistance : entry + liqDistance;
+        document.getElementById("liqPricePreview").textContent = formatPrice(Math.max(0, liqPrice), selectedSymbol);
+      } else {
+        document.getElementById("liqPricePreview").textContent = "None (1x)";
+      }
+
+      const btn = document.getElementById("placeOrderBtn");
+      if (side === "LONG") {
+        btn.className = "btn btn-long w-100 py-2";
+        btn.textContent = `Open Virtual Long (${selectedSymbol.replace("USDT", "")})`;
+      } else {
+        btn.className = "btn btn-short w-100 py-2";
+        btn.textContent = `Open Virtual Short (${selectedSymbol.replace("USDT", "")})`;
+      }
+    }
+
+    function setPercentMargin(pct) {
+      const val = Math.floor(state.balance * pct);
+      document.getElementById("marginInput").value = Math.max(10, val);
+      updateOrderPreview();
+    }
+
+    function setMaxMargin() {
+      setPercentMargin(1.0);
+    }
+
+    // ==================== PLACE & CLOSE VIRTUAL ORDERS ====================
+    function placeOrder() {
+      const feedback = document.getElementById("orderFeedback");
+      const margin = parseFloat(document.getElementById("marginInput").value);
+      const leverage = parseInt(document.getElementById("leverageRange").value);
+      const side = document.querySelector('input[name="orderSide"]:checked').value;
+      const sl = parseFloat(document.getElementById("slInput").value) || null;
+      const tp = parseFloat(document.getElementById("tpInput").value) || null;
+      const entryPrice = prices[selectedSymbol]?.price || 0;
+
+      if (!entryPrice || entryPrice <= 0) {
+        feedback.innerHTML = '<span class="text-warning">Waiting for live market price...</span>';
+        return;
+      }
+      if (isNaN(margin) || margin < 10) {
+        feedback.innerHTML = '<span class="text-danger">Minimum demo order margin is $10.</span>';
+        return;
+      }
+      if (margin > state.balance) {
+        feedback.innerHTML = '<span class="text-danger">Insufficient virtual balance.</span>';
+        return;
+      }
+
+      if (side === "LONG") {
+        if (sl && sl >= entryPrice) {
+          feedback.innerHTML = '<span class="text-danger">Long Stop-Loss must be below entry price.</span>';
+          return;
+        }
+        if (tp && tp <= entryPrice) {
+          feedback.innerHTML = '<span class="text-danger">Long Take-Profit must be above entry price.</span>';
+          return;
+        }
+      } else {
+        if (sl && sl <= entryPrice) {
+          feedback.innerHTML = '<span class="text-danger">Short Stop-Loss must be above entry price.</span>';
+          return;
+        }
+        if (tp && tp >= entryPrice) {
+          feedback.innerHTML = '<span class="text-danger">Short Take-Profit must be below entry price.</span>';
+          return;
+        }
+      }
+
+      const liqPrice = leverage > 1
+        ? (side === "LONG" ? entryPrice * (1 - 0.9 / leverage) : entryPrice * (1 + 0.9 / leverage))
+        : 0;
+
+      const position = {
+        id: Date.now(),
+        symbol: selectedSymbol,
+        side,
+        margin,
+        leverage,
+        sizeUsd: margin * leverage,
+        entryPrice,
+        sl,
+        tp,
+        liqPrice
+      };
+
+      state.balance -= margin;
+      state.positions.unshift(position);
+      saveState();
+
+      document.getElementById("slInput").value = "";
+      document.getElementById("tpInput").value = "";
+      feedback.innerHTML = `<span class="text-success">Opened ${side} ${selectedSymbol} @ ${formatPrice(entryPrice)}</span>`;
+      setTimeout(() => { feedback.innerHTML = ""; }, 3000);
+
+      evaluatePositions();
+    }
+
+    function calculatePositionPnl(pos, markPrice) {
+      if (!markPrice) return 0;
+      const priceDiffPct = (markPrice - pos.entryPrice) / pos.entryPrice;
+      const direction = pos.side === "LONG" ? 1 : -1;
+      return pos.sizeUsd * priceDiffPct * direction;
+    }
+
+    function closePosition(id, reason = "Manual Close", customExitPrice = null) {
+      const idx = state.positions.findIndex(p => p.id === id);
+      if (idx === -1) return;
+
+      const pos = state.positions[idx];
+      const exitPrice = customExitPrice || prices[pos.symbol]?.price || pos.entryPrice;
+      let pnl = calculatePositionPnl(pos, exitPrice);
+
+      if (pnl < -pos.margin) pnl = -pos.margin;
+
+      state.balance += (pos.margin + pnl);
+      state.positions.splice(idx, 1);
+
+      state.history.unshift({
+        closedAt: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
+        symbol: pos.symbol,
+        side: pos.side,
+        margin: pos.margin,
+        leverage: pos.leverage,
+        entryPrice: pos.entryPrice,
+        exitPrice,
+        reason,
+        pnl
+      });
+
+      saveState();
+      renderTables();
+    }
+
+    // ==================== EVALUATE OPEN POSITIONS ====================
+    function evaluatePositions() {
+      let totalUnrealized = 0;
+      let totalLockedMargin = 0;
+
+      for (let i = state.positions.length - 1; i >= 0; i--) {
+        const pos = state.positions[i];
+        const mark = prices[pos.symbol]?.price || pos.entryPrice;
+
+        if (pos.sl) {
+          if ((pos.side === "LONG" && mark <= pos.sl) || (pos.side === "SHORT" && mark >= pos.sl)) {
+            closePosition(pos.id, "Stop-Loss Hit", pos.sl);
+            continue;
+          }
+        }
+        if (pos.tp) {
+          if ((pos.side === "LONG" && mark >= pos.tp) || (pos.side === "SHORT" && mark <= pos.tp)) {
+            closePosition(pos.id, "Take-Profit Hit", pos.tp);
+            continue;
+          }
+        }
+        if (pos.liqPrice > 0) {
+          if ((pos.side === "LONG" && mark <= pos.liqPrice) || (pos.side === "SHORT" && mark >= pos.liqPrice)) {
+            closePosition(pos.id, "Liquidated", pos.liqPrice);
+            continue;
+          }
+        }
+
+        const pnl = calculatePositionPnl(pos, mark);
+        totalUnrealized += pnl;
+        totalLockedMargin += pos.margin;
+      }
+
+      const equity = state.balance + totalLockedMargin + totalUnrealized;
+      document.getElementById("walletBalance").textContent = formatUSD(state.balance);
+      document.getElementById("walletEquity").textContent = formatUSD(equity);
+
+      const pnlEl = document.getElementById("totalUnrealizedPnl");
+      const sign = totalUnrealized >= 0 ? "+" : "";
+      pnlEl.textContent = `${sign}${formatUSD(totalUnrealized)}`;
+      pnlEl.className = `fw-bold mono-num small ${totalUnrealized > 0 ? "price-up" : totalUnrealized < 0 ? "price-down" : "text-secondary"}`;
+
+      renderTables();
+    }
+
+    // ==================== RENDER TABLES ====================
+    function renderTables() {
+      document.getElementById("openCount").textContent = state.positions.length;
+      document.getElementById("historyCount").textContent = state.history.length;
+
+      const openBody = document.getElementById("openPositionsBody");
+      if (state.positions.length === 0) {
+        openBody.innerHTML = '<tr><td colspan="8" class="text-center text-secondary py-4">No open virtual positions. Place a demo order above to start practicing.</td></tr>';
+      } else {
+        openBody.innerHTML = state.positions.map(pos => {
+          const mark = prices[pos.symbol]?.price || pos.entryPrice;
+          const pnl = calculatePositionPnl(pos, mark);
+          const roe = (pnl / pos.margin) * 100;
+          const pnlClass = pnl >= 0 ? "price-up" : "price-down";
+          const sign = pnl >= 0 ? "+" : "";
+          const sideBadge = pos.side === "LONG"
+            ? '<span class="badge bg-success bg-opacity-25 text-success">LONG</span>'
+            : '<span class="badge bg-danger bg-opacity-25 text-danger">SHORT</span>';
+
+          const slText = pos.sl ? formatPrice(pos.sl, pos.symbol) : "—";
+          const tpText = pos.tp ? formatPrice(pos.tp, pos.symbol) : "—";
+
+          return `
+            <tr>
+              <td class="fw-bold text-white">${pos.symbol}</td>
+              <td>${sideBadge}</td>
+              <td class="mono-num">${formatUSD(pos.sizeUsd)} <span class="text-secondary">(${pos.leverage}x)</span></td>
+              <td class="mono-num">${formatPrice(pos.entryPrice, pos.symbol)}</td>
+              <td class="mono-num text-white">${formatPrice(mark, pos.symbol)}</td>
+              <td class="mono-num small"><span class="text-danger">${slText}</span> / <span class="text-success">${tpText}</span></td>
+              <td class="mono-num fw-bold ${pnlClass}">${sign}${formatUSD(pnl)} (${sign}${roe.toFixed(1)}%)</td>
+              <td class="text-end">
+                <button class="btn btn-outline-light btn-sm py-0 px-2" onclick="closePosition(${pos.id})">Close</button>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      const histBody = document.getElementById("tradeHistoryBody");
+      if (state.history.length === 0) {
+        histBody.innerHTML = '<tr><td colspan="7" class="text-center text-secondary py-4">No closed trades yet.</td></tr>';
+      } else {
+        histBody.innerHTML = state.history.map(item => {
+          const pnlClass = item.pnl >= 0 ? "price-up" : "price-down";
+          const sign = item.pnl >= 0 ? "+" : "";
+          return `
+            <tr>
+              <td class="text-secondary mono-num">${item.closedAt}</td>
+              <td class="fw-bold text-white">${item.symbol}</td>
+              <td>${item.side} (${item.leverage}x)</td>
+              <td class="mono-num">${formatUSD(item.margin)}</td>
+              <td class="mono-num">${formatPrice(item.entryPrice, item.symbol)} &rarr; ${formatPrice(item.exitPrice, item.symbol)}</td>
+              <td><span class="badge bg-secondary bg-opacity-25 text-light fw-normal">${item.reason}</span></td>
+              <td class="text-end mono-num fw-bold ${pnlClass}">${sign}${formatUSD(item.pnl)}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+    }
+
+    // ==================== EVENT LISTENERS & INIT ====================
+    document.getElementById("pairSelector").addEventListener("change", (e) => {
+      selectedSymbol = e.target.value;
+      prevSelectedPrice = 0;
+      loadTradingViewChart(selectedSymbol);
+      onPriceTick();
+    });
+
+    document.getElementById("marginInput").addEventListener("input", updateOrderPreview);
+    document.getElementById("leverageRange").addEventListener("input", updateOrderPreview);
+    document.querySelectorAll('input[name="orderSide"]').forEach(el => {
+      el.addEventListener("change", updateOrderPreview);
+    });
+
+    document.getElementById("placeOrderBtn").addEventListener("click", placeOrder);
+
+    document.getElementById("resetWalletBtn").addEventListener("click", () => {
+      if (confirm("Reset your virtual demo wallet back to $10,000.00 and clear open positions?")) {
+        state = { balance: INITIAL_BALANCE, positions: [], history: [] };
+        saveState();
+        evaluatePositions();
+      }
+    });
+
+    // Boot Studio
+    loadTradingViewChart(selectedSymbol);
+    connectWebSocket();
+    evaluatePositions();
+  </script>
+
+  <!-- ==================== FIREBASE AUTH & FIRESTORE SYNC MODULE ==================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      updateProfile,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    // TODO: Replace with your BlockPulse Curate Firebase Project Config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    const guestPromptEl = document.getElementById("guestAuthPrompt");
+    const userBadgeEl = document.getElementById("userAuthBadge");
+    const userLabelEl = document.getElementById("userDisplayLabel");
+    const userInitialsEl = document.getElementById("userAvatarInitials");
+    const authErrorEl = document.getElementById("studioAuthError");
+    const authModalEl = document.getElementById("studioAuthModal");
+    const authModal = authModalEl ? new bootstrap.Modal(authModalEl) : null;
+
+    function renderAuthHeader(user) {
+      if (user) {
+        guestPromptEl.classList.add("d-none");
+        userBadgeEl.classList.remove("d-none");
+        userBadgeEl.classList.add("d-flex");
+
+        const label = user.displayName || user.email || "Trader";
+        userLabelEl.textContent = label;
+        userLabelEl.title = user.email || label;
+        userInitialsEl.textContent = label.trim().slice(0, 2).toUpperCase();
+      } else {
+        userBadgeEl.classList.add("d-none");
+        userBadgeEl.classList.remove("d-flex");
+        guestPromptEl.classList.remove("d-none");
+      }
+    }
+
+    function formatFirebaseAuthError(code, fallback) {
+      const messages = {
+        "auth/email-already-in-use": "An account with this email already exists. Switch to Sign In.",
+        "auth/invalid-email": "Please enter a valid email address.",
+        "auth/weak-password": "Password must be at least 6 characters long.",
+        "auth/invalid-credential": "Incorrect email or password.",
+        "auth/too-many-requests": "Too many attempts. Please wait a moment and try again."
+      };
+      return messages[code] || fallback || "Authentication failed.";
+    }
+
+    async function loadUserWallet(uid) {
+      const walletRef = doc(db, "demoWallets", uid);
+      const snap = await getDoc(walletRef);
+
+      if (snap.exists()) {
+        const data = snap.data();
+        return {
+          balance: typeof data.balance === "number" ? data.balance : INITIAL_BALANCE,
+          positions: Array.isArray(data.positions) ? data.positions : [],
+          history: Array.isArray(data.history) ? data.history : []
+        };
+      }
+
+      const freshWallet = {
+        balance: INITIAL_BALANCE,
+        positions: [],
+        history: [],
+        updatedAt: serverTimestamp()
+      };
+      await setDoc(walletRef, freshWallet);
+      return { balance: INITIAL_BALANCE, positions: [], history: [] };
+    }
+
+    async function saveUserWallet(nextState) {
+      if (!currentUser) return;
+      const walletRef = doc(db, "demoWallets", currentUser.uid);
+      await setDoc(
+        walletRef,
+        {
+          balance: nextState.balance,
+          positions: nextState.positions,
+          history: nextState.history,
+          updatedAt: serverTimestamp()
+        },
+        { merge: true }
+      );
+    }
+
+    document.getElementById("openSignInBtn")?.addEventListener("click", () => {
+      authErrorEl.textContent = "";
+      authModal?.show();
+    });
+
+    document.getElementById("studioLoginForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      authErrorEl.textContent = "";
+      const email = document.getElementById("authEmailInput").value.trim();
+      const password = document.getElementById("authPasswordInput").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        authModal?.hide();
+      } catch (err) {
+        authErrorEl.textContent = formatFirebaseAuthError(err.code, err.message);
+      }
+    });
+
+    document.getElementById("studioRegisterForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      authErrorEl.textContent = "";
+
+      const displayName = document.getElementById("regNameInput").value.trim();
+      const email = document.getElementById("regEmailInput").value.trim();
+      const password = document.getElementById("regPasswordInput").value;
+      const consented = document.getElementById("studioLegalConsentCheck").checked;
+
+      if (!consented) {
+        authErrorEl.textContent = "Please confirm you are 18+ and accept the Privacy Policy and Financial Disclaimer.";
+        return;
+      }
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+
+        if (displayName) {
+          await updateProfile(cred.user, { displayName });
+        }
+
+        await setDoc(
+          doc(db, "demoWallets", cred.user.uid),
+          {
+            balance: INITIAL_BALANCE,
+            positions: [],
+            history: [],
+            legalConsentAccepted: true,
+            legalConsentAcceptedAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+          },
+          { merge: true }
+        );
+
+        renderAuthHeader(cred.user);
+        authModal?.hide();
+      } catch (err) {
+        authErrorEl.textContent = formatFirebaseAuthError(err.code, err.message);
+      }
+    });
+
+    document.getElementById("googleSignInBtn")?.addEventListener("click", async () => {
+      authErrorEl.textContent = "";
+      try {
+        await signInWithPopup(auth, new GoogleAuthProvider());
+        authModal?.hide();
+      } catch (err) {
+        authErrorEl.textContent = formatFirebaseAuthError(err.code, err.message);
+      }
+    });
+
+    document.getElementById("signOutBtn")?.addEventListener("click", async () => {
+      await signOut(auth);
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      renderAuthHeader(user);
+
+      if (user) {
+        state = await loadUserWallet(user.uid);
+        evaluatePositions();
+      } else {
+        state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+          balance: INITIAL_BALANCE,
+          positions: [],
+          history: []
+        };
+        evaluatePositions();
+      }
+    });
+
+    window.demoStudioSync = {
+      save: saveUserWallet,
+      getUser: () => currentUser
+    };
+  </script>
+</body>
+</html>
