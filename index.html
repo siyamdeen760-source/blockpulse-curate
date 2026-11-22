@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d18">
   <meta name="description" content="BlockPulse — clear, independent education for investment and multi-sector markets.">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>BlockPulse | Investment & Multi-Sector Markets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,7 +211,7 @@
         <a class="nav-link-bp" href="#studio">Learning Studio</a>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle light/dark theme"><i class="bi bi-sun-moon"></i></button>
+        <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle light/dark theme"><span class="fw-bold" style="font-size:15px;line-height:1">◑</span></button>
         <button type="button" class="btn-ghost d-none d-sm-inline-flex" id="navAccountBtn" onclick="openProfileSettings()"><i class="bi bi-person me-1"></i>Sign in</button>
         <a class="btn-primary-bp d-none d-md-inline-flex" href="#studio"><i class="bi bi-mortarboard-fill me-1"></i>Studio</a>
         <button type="button" class="top-avatar-btn" id="topProfileAvatarBtn" onclick="openProfileSettings()" aria-label="Open profile settings" title="Profile & Background Settings">
@@ -225,14 +227,14 @@
       <span class="brand">Block<span class="text-blue">Pulse</span></span>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div class="offcanvas-body d-grid gap-2">
-      <button type="button" class="btn-ghost text-start" data-bs-dismiss="offcanvas" onclick="openProfileSettings()"><i class="bi bi-person-circle me-2 text-blue"></i>Profile & Background Settings</button>
-      <a class="btn-ghost" href="#markets" data-bs-dismiss="offcanvas">Markets</a>
-      <a class="btn-ghost" href="#academy" data-bs-dismiss="offcanvas">Academy & Videos</a>
-      <a class="btn-ghost" href="#research" data-bs-dismiss="offcanvas">Research</a>
-      <a class="btn-ghost" href="#tools" data-bs-dismiss="offcanvas">Tools</a>
-      <a class="btn-ghost" href="#membership" data-bs-dismiss="offcanvas">Membership</a>
-      <a class="btn-primary-bp text-center" href="#studio" data-bs-dismiss="offcanvas">Learning Studio</a>
+    <div class="offcanvas-body d-flex flex-column gap-2">
+      <button type="button" class="btn-ghost text-start py-3" onclick="navigateFromMenu(null, true)"><i class="bi bi-person-circle me-2 text-blue"></i>Profile & Background Settings</button>
+      <a class="btn-ghost text-start py-3" href="#markets" onclick="navigateFromMenu(event, false, '#markets')">Markets</a>
+      <a class="btn-ghost text-start py-3" href="#academy" onclick="navigateFromMenu(event, false, '#academy')">Academy & Videos</a>
+      <a class="btn-ghost text-start py-3" href="#research" onclick="navigateFromMenu(event, false, '#research')">Research</a>
+      <a class="btn-ghost text-start py-3" href="#tools" onclick="navigateFromMenu(event, false, '#tools')">Tools</a>
+      <a class="btn-ghost text-start py-3" href="#membership" onclick="navigateFromMenu(event, false, '#membership')">Membership</a>
+      <a class="btn-primary-bp text-center py-3 mt-1" href="#studio" onclick="navigateFromMenu(event, false, '#studio')">Learning Studio</a>
     </div>
   </div>
 
@@ -401,9 +403,9 @@
           <div class="col-lg-4 text-lg-end mt-3 mt-lg-0"><a href="#studio" class="btn-ghost small" onclick="switchStudioTab('brief')"><i class="bi bi-plus-lg me-1"></i>Publish brief</a></div>
         </div>
         <div class="row g-3" id="researchCards">
-          <div class="col-md-4"><article class="card-bp"><div class="d-flex justify-content-between mb-3"><span class="tag">METALS & MACRO</span><i class="bi bi-arrow-up-right text-blue"></i></div><h5 class="fw-bold">Gold, rates & safe-haven flows</h5><p class="muted small">How real yields, central bank expectations, and macro pullbacks shape gold and silver price action.</p><span class="small text-blue">6 min read · Beginner</span></article></div>
-          <div class="col-md-4"><article class="card-bp"><div class="d-flex justify-content-between mb-3"><span class="tag">ENERGIES & INDICES</span><i class="bi bi-arrow-up-right text-blue"></i></div><h5 class="fw-bold">Crude oil & equity index sensitivity</h5><p class="muted small">Understand how energy swings interact with inflation expectations and equity volatility.</p><span class="small text-blue">8 min read · All levels</span></article></div>
-          <div class="col-md-4"><article class="card-bp"><div class="d-flex justify-content-between mb-3"><span class="tag">EXOTICS & RISK</span><i class="bi bi-arrow-up-right text-blue"></i></div><h5 class="fw-bold">Exotic pairs & spread discipline</h5><p class="muted small">Why wider spreads, carry differentials, and event gaps require smaller position sizes on exotic pairs.</p><span class="small text-blue">5 min read · Beginner</span></article></div>
+          <div class="col-md-4"><article class="card-bp"><div class="d-flex justify-content-between mb-3"><span class="tag">FOREX & MACRO</span><i class="bi bi-arrow-up-right text-blue"></i></div><h5 class="fw-bold">Central bank rates, pips & FX sessions</h5><p class="muted small">How interest rate expectations, London/New York overlap volume, and spreads shape currency pairs.</p><span class="small text-blue">6 min read · Beginner</span></article></div>
+          <div class="col-md-4"><article class="card-bp"><div class="d-flex justify-content-between mb-3"><span class="tag">CRYPTO & CUSTODY</span><i class="bi bi-arrow-up-right text-blue"></i></div><h5 class="fw-bold">Spot vs leverage & self-custody rules</h5><p class="muted small">Why spot ownership, liquidity awareness, and offline seed backups protect capital over long cycles.</p><span class="small text-blue">7 min read · All levels</span></article></div>
+          <div class="col-md-4"><article class="card-bp"><div class="d-flex justify-content-between mb-3"><span class="tag">RISK DISCIPLINE</span><i class="bi bi-arrow-up-right text-blue"></i></div><h5 class="fw-bold">Position sizing & stop-loss math</h5><p class="muted small">How risking a fixed small percentage per setup keeps drawdowns manageable across losing streaks.</p><span class="small text-blue">5 min read · Beginner</span></article></div>
         </div>
       </div>
     </section>
@@ -411,49 +413,48 @@
     <section class="section" id="academy">
       <div class="container">
         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
-          <div><div class="eyebrow">BlockPulse Academy & Videos</div><h2 class="display fw-bold mt-2">Learn with courses, <span class="text-blue">studio lessons & videos.</span></h2><p class="muted mb-0">Advance core tracks, study custom lessons created in your Learning Studio, and watch video explainers.</p></div>
+          <div><div class="eyebrow">BlockPulse Academy & Videos</div><h2 class="display fw-bold mt-2">Learn with courses, <span class="text-blue">studio lessons & videos.</span></h2><p class="muted mb-0">Open any track to read clear Forex & Crypto lessons, study custom lessons in your Learning Studio, and watch video explainers.</p></div>
           <span class="tag" id="academyProgressBadge">0 / 3 TRACKS STARTED</span>
         </div>
 
         <div class="row g-3 mb-4" id="academyGrid">
           <div class="col-md-4">
             <article class="card-bp">
-              <div class="lesson-thumb mb-3"><i class="bi bi-compass"></i></div>
-              <div class="d-flex justify-content-between"><span class="tag">FOUNDATIONS</span><small class="muted">6 lessons</small></div>
-              <h5 class="fw-bold mt-3">Multi-Asset Market Foundations</h5>
-              <p class="muted small">How metals, commodities, crypto, indices, energies, and exotics are quoted and traded.</p>
+              <div class="lesson-thumb mb-3"><i class="bi bi-currency-exchange"></i></div>
+              <div class="d-flex justify-content-between"><span class="tag">FOREX TRACK</span><small class="muted">4 core lessons</small></div>
+              <h5 class="fw-bold mt-3">Forex Trading Mastery</h5>
+              <p class="muted small">Pips, spreads, leverage, London & NY sessions, central bank interest rates, and clean chart structure.</p>
               <div class="progress mb-3"><div class="progress-bar" id="prog-foundations" style="width:0%"></div></div>
-              <button type="button" class="btn-ghost w-100" onclick="advanceCourse('foundations', 'Multi-Asset Market Foundations')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
+              <button type="button" class="btn-ghost w-100" onclick="openTrackReader('foundations')"><i class="bi bi-book-open me-1 text-blue"></i>Open Forex Lessons & Advance</button>
             </article>
           </div>
           <div class="col-md-4">
             <article class="card-bp">
-              <div class="lesson-thumb mb-3" style="background:linear-gradient(135deg,#153b46,#0c1729);color:#6ee7d2"><i class="bi bi-shield-check"></i></div>
-              <div class="d-flex justify-content-between"><span class="tag">PRACTICAL</span><small class="muted">8 lessons</small></div>
-              <h5 class="fw-bold mt-3">Risk & Portfolio Basics</h5>
-              <p class="muted small">Diversification, volatility, drawdowns, position sizing and realistic expectations.</p>
+              <div class="lesson-thumb mb-3" style="background:linear-gradient(135deg,#153b46,#0c1729);color:#6ee7d2"><i class="bi bi-currency-bitcoin"></i></div>
+              <div class="d-flex justify-content-between"><span class="tag">CRYPTO TRACK</span><small class="muted">4 core lessons</small></div>
+              <h5 class="fw-bold mt-3">Crypto & Self-Custody</h5>
+              <p class="muted small">BTC & altcoin cycles, spot vs futures/liquidation risk, liquidity & slippage, and hardware wallet security.</p>
               <div class="progress mb-3"><div class="progress-bar" id="prog-risk" style="width:0%"></div></div>
-              <button type="button" class="btn-ghost w-100" onclick="advanceCourse('risk', 'Risk & Portfolio Basics')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
+              <button type="button" class="btn-ghost w-100" onclick="openTrackReader('risk')"><i class="bi bi-book-open me-1 text-blue"></i>Open Crypto Lessons & Advance</button>
             </article>
           </div>
           <div class="col-md-4">
             <article class="card-bp">
               <div class="lesson-thumb mb-3" style="background:linear-gradient(135deg,#42345e,#0c1729);color:#c5a5ff"><i class="bi bi-graph-up-arrow"></i></div>
-              <div class="d-flex justify-content-between"><span class="tag">INTERMEDIATE</span><small class="muted">7 lessons</small></div>
-              <h5 class="fw-bold mt-3">Charts, Candles & Macro Signals</h5>
-              <p class="muted small">Reading candlesticks, swing ranges, liquidity shifts, and macro catalysts.</p>
+              <div class="d-flex justify-content-between"><span class="tag">EXECUTION & RISK</span><small class="muted">4 core lessons</small></div>
+              <h5 class="fw-bold mt-3">Charts, Risk Math & Psychology</h5>
+              <p class="muted small">Candlesticks, support/resistance, 1–2% position sizing math, and avoiding FOMO or revenge trades.</p>
               <div class="progress mb-3"><div class="progress-bar" id="prog-macro" style="width:0%"></div></div>
-              <button type="button" class="btn-ghost w-100" onclick="advanceCourse('macro', 'Charts, Candles & Macro Signals')"><i class="bi bi-play-circle me-1"></i>Start / Advance lesson</button>
+              <button type="button" class="btn-ghost w-100" onclick="openTrackReader('macro')"><i class="bi bi-book-open me-1 text-blue"></i>Open Execution Lessons & Advance</button>
             </article>
           </div>
         </div>
 
-        <!-- CUSTOM STUDIO LESSONS DISPLAY WITH STUDY MODAL + COMPLETE + EDIT/DELETE -->
         <div class="surface p-4 mb-5" id="studioLessonsShowcase">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
             <div>
               <span class="tag"><i class="bi bi-mortarboard me-1"></i>LEARNING STUDIO CURRICULUM</span>
-              <h5 class="fw-bold mt-2 mb-0" id="showcaseStudioTitle">Your Custom Learning Lessons</h5>
+              <h5 class="fw-bold mt-2 mb-0" id="showcaseStudioTitle">Forex & Crypto Studio Lessons</h5>
             </div>
             <div class="d-flex align-items-center gap-2">
               <span class="tag" id="studioLessonsCompletedBadge">0 COMPLETED</span>
@@ -479,9 +480,9 @@
             <div class="surface-soft p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="fw-bold mb-0"><i class="bi bi-sliders text-blue me-2"></i>Position Size Calculator</h5><span class="tag">RISK TOOL</span></div>
               <div class="row g-3">
-                <div class="col-sm-4"><label class="form-label small muted">Account ($)</label><input class="form-control" type="number" id="calcAccount" value="1000"></div>
-                <div class="col-sm-4"><label class="form-label small muted">Risk (%)</label><input class="form-control" type="number" id="calcRisk" value="2" step="0.5"></div>
-                <div class="col-sm-4"><label class="form-label small muted">Stop distance (%)</label><input class="form-control" type="number" id="calcStop" value="5" step="0.5"></div>
+                <div class="col-sm-4"><label class="form-label small muted">Account ($)</label><input class="form-control" type="number" id="calcAccount" value="1000" min="0" max="100000000"></div>
+                <div class="col-sm-4"><label class="form-label small muted">Risk (%)</label><input class="form-control" type="number" id="calcRisk" value="2" min="0" max="100" step="0.5"></div>
+                <div class="col-sm-4"><label class="form-label small muted">Stop distance (%)</label><input class="form-control" type="number" id="calcStop" value="5" min="0.1" max="100" step="0.5"></div>
               </div>
               <div class="row g-3 mt-3 pt-3 border-top" style="border-color:var(--line)!important">
                 <div class="col-6"><small class="muted d-block">Max loss at stop</small><strong class="mono fs-5 text-danger" id="calcMaxLoss">$20.00</strong></div>
@@ -493,9 +494,9 @@
             <div class="surface-soft p-4 h-100">
               <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="fw-bold mb-0"><i class="bi bi-calendar2-check text-blue me-2"></i>DCA Growth Simulator</h5><span class="tag">ILLUSTRATIVE</span></div>
               <div class="row g-3">
-                <div class="col-sm-4"><label class="form-label small muted">Monthly ($)</label><input class="form-control" type="number" id="dcaMonthly" value="100"></div>
-                <div class="col-sm-4"><label class="form-label small muted">Years</label><input class="form-control" type="number" id="dcaYears" value="5"></div>
-                <div class="col-sm-4"><label class="form-label small muted">Est. annual (%)</label><input class="form-control" type="number" id="dcaRate" value="8"></div>
+                <div class="col-sm-4"><label class="form-label small muted">Monthly ($)</label><input class="form-control" type="number" id="dcaMonthly" value="100" min="0" max="10000000"></div>
+                <div class="col-sm-4"><label class="form-label small muted">Years</label><input class="form-control" type="number" id="dcaYears" value="5" min="1" max="60"></div>
+                <div class="col-sm-4"><label class="form-label small muted">Est. annual (%)</label><input class="form-control" type="number" id="dcaRate" value="8" min="-50" max="100"></div>
               </div>
               <div class="row g-3 mt-3 pt-3 border-top" style="border-color:var(--line)!important">
                 <div class="col-6"><small class="muted d-block">Total contributed</small><strong class="mono fs-5" id="dcaTotal">$6,000</strong></div>
@@ -566,11 +567,11 @@
           </div>
           <form id="createStudioForm">
             <div class="row g-3">
-              <div class="col-md-4"><label class="form-label small muted">Studio name</label><input class="form-control" id="studioNameInput" placeholder="e.g. Macro & Price Action Lab" required></div>
-              <div class="col-md-3"><label class="form-label small muted">Studio handle</label><input class="form-control" id="studioHandleInput" placeholder="@macropriceaction" required></div>
-              <div class="col-md-3"><label class="form-label small muted">Learning track focus</label><select class="form-select" id="studioFocusInput"><option>Multi-Sector & Forex Mastery</option><option>Metals, Energies & Macro</option><option>Candlesticks, Risk & Sizing</option><option>Crypto & Spot Fundamentals</option></select></div>
+              <div class="col-md-4"><label class="form-label small muted">Studio name</label><input class="form-control" id="studioNameInput" maxlength="80" placeholder="e.g. Forex & Crypto Execution Lab" required></div>
+              <div class="col-md-3"><label class="form-label small muted">Studio handle</label><input class="form-control" id="studioHandleInput" maxlength="32" placeholder="@fxpriceaction" required></div>
+              <div class="col-md-3"><label class="form-label small muted">Learning track focus</label><select class="form-select" id="studioFocusInput"><option>Forex & Crypto Mastery</option><option>Metals, Energies & Macro</option><option>Candlesticks, Risk & Sizing</option><option>Crypto & Spot Fundamentals</option></select></div>
               <div class="col-md-2"><label class="form-label small muted">Audience level</label><select class="form-select" id="studioLevelInput"><option>Beginner</option><option>All Levels</option><option>Intermediate</option></select></div>
-              <div class="col-md-9"><label class="form-label small muted">Learning manifesto / what learners will master</label><input class="form-control" id="studioMottoInput" placeholder="e.g. Step-by-step chart reading, risk math, and calm execution without hype."></div>
+              <div class="col-md-9"><label class="form-label small muted">Learning manifesto / what learners will master</label><input class="form-control" id="studioMottoInput" maxlength="220" placeholder="e.g. Step-by-step forex & crypto chart reading, risk math, and calm execution without hype."></div>
               <div class="col-md-3 d-flex align-items-end"><button type="submit" class="btn-primary-bp w-100"><i class="bi bi-check2-circle me-1"></i>Save Studio</button></div>
             </div>
           </form>
@@ -588,7 +589,6 @@
             <a href="#studio" id="tabMembers" onclick="switchStudioTab('members');return false"><i class="bi bi-credit-card-2-front me-2"></i>Account & Billing</a>
           </div>
           <div class="admin-main">
-            <!-- PANE 1: PINNED MARKET WATCHLIST & MACRO SCRATCHPAD -->
             <div id="studioPaneWatchlist">
               <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                 <div>
@@ -607,14 +607,13 @@
                   <label for="studioMacroNotesInput" class="small fw-bold text-uppercase mono mb-0" style="letter-spacing:.06em"><i class="bi bi-pencil-square text-blue me-1"></i>Macro & Session Desk Notes</label>
                   <span class="small muted mono" id="macroNotesSavedTag">Auto-saved</span>
                 </div>
-                <textarea class="form-control mb-2" id="studioMacroNotesInput" rows="3" placeholder="Jot down key support/resistance levels, upcoming CPI/FOMC events, or session bias…"></textarea>
+                <textarea class="form-control mb-2" id="studioMacroNotesInput" rows="3" maxlength="2000" placeholder="Jot down key support/resistance levels, upcoming CPI/FOMC events, or session bias…"></textarea>
                 <div class="text-end">
                   <button type="button" class="btn-ghost py-1 px-3 small" onclick="saveStudioMacroNotes()"><i class="bi bi-cloud-check me-1 text-blue"></i>Save Notes</button>
                 </div>
               </div>
             </div>
 
-            <!-- PANE 2: TRADE & MISTAKE JOURNAL -->
             <div id="studioPaneJournal" hidden>
               <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                 <div>
@@ -625,19 +624,18 @@
               </div>
               <form id="tradeJournalForm" class="surface-soft p-3 mb-3">
                 <div class="row g-2">
-                  <div class="col-sm-3"><label class="form-label small muted">Instrument</label><input class="form-control form-control-sm" id="journalPairInput" placeholder="e.g. XAU/USD" required></div>
+                  <div class="col-sm-3"><label class="form-label small muted">Instrument</label><input class="form-control form-control-sm" id="journalPairInput" maxlength="24" placeholder="e.g. BTC/USD or EUR/USD" required></div>
                   <div class="col-sm-2"><label class="form-label small muted">Side</label><select class="form-select form-select-sm" id="journalSideInput"><option>Long</option><option>Short</option></select></div>
-                  <div class="col-sm-2"><label class="form-label small muted">Risk %</label><input class="form-control form-control-sm" id="journalRiskInput" type="number" step="0.1" value="1.0" required></div>
+                  <div class="col-sm-2"><label class="form-label small muted">Risk %</label><input class="form-control form-control-sm" id="journalRiskInput" type="number" step="0.1" min="0" max="100" value="1.0" required></div>
                   <div class="col-sm-2"><label class="form-label small muted">Outcome</label><select class="form-select form-select-sm" id="journalOutcomeInput"><option value="Win">Win (+R)</option><option value="Loss">Loss (-1R)</option><option value="Breakeven">Breakeven</option></select></div>
                   <div class="col-sm-3"><label class="form-label small muted">Execution Tag</label><select class="form-select form-select-sm" id="journalTagInput"><option>Followed Plan</option><option>FOMO Entry</option><option>Moved Stop-Loss</option><option>Over-leveraged</option><option>Early Exit</option></select></div>
-                  <div class="col-sm-9"><input class="form-control form-control-sm mt-1" id="journalNoteInput" placeholder="Setup thesis & lesson learned (e.g. Waited for 4H liquidity sweep before entry)…"></div>
+                  <div class="col-sm-9"><input class="form-control form-control-sm mt-1" id="journalNoteInput" maxlength="280" placeholder="Setup thesis & lesson learned (e.g. Waited for 4H liquidity sweep before entry)…"></div>
                   <div class="col-sm-3"><button type="submit" class="btn-primary-bp btn-sm w-100 mt-1"><i class="bi bi-plus-circle me-1"></i>Log Trade</button></div>
                 </div>
               </form>
               <div class="d-grid gap-2" id="tradeJournalList"></div>
             </div>
 
-            <!-- PANE 3: STRATEGY PLAYBOOK & PRE-TRADE CHECKLIST -->
             <div id="studioPanePlaybook" hidden>
               <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                 <div>
@@ -647,13 +645,12 @@
                 <button type="button" class="btn-ghost py-1 px-2 small" onclick="resetPlaybookChecks()"><i class="bi bi-arrow-counterclockwise me-1"></i>Reset Session Checks</button>
               </div>
               <form id="playbookRuleForm" class="d-flex gap-2 mb-3">
-                <input class="form-control" id="playbookRuleInput" placeholder="Add a personal rule (e.g. Never risk more than 1.5% on a single setup)…" required>
+                <input class="form-control" id="playbookRuleInput" maxlength="220" placeholder="Add a personal rule (e.g. Never risk more than 1.5% on a single setup)…" required>
                 <button type="submit" class="btn-primary-bp px-3" style="white-space:nowrap"><i class="bi bi-plus-lg me-1"></i>Add Rule</button>
               </form>
               <div class="d-grid gap-2" id="playbookRulesList"></div>
             </div>
 
-            <!-- PANE 4: SECURITY & SELF-CUSTODY OPSEC VAULT -->
             <div id="studioPaneSecurity" hidden>
               <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
                 <div>
@@ -665,12 +662,11 @@
               <div class="progress mb-3" style="height:8px"><div class="progress-bar" id="securityScoreBar" style="width:0%"></div></div>
               <div class="d-grid gap-2 mb-3" id="securityChecklistWrap"></div>
               <form id="customSecurityForm" class="d-flex gap-2">
-                <input class="form-control form-control-sm" id="customSecurityInput" placeholder="Add custom security check (e.g. Verify multisig signer backup)…">
+                <input class="form-control form-control-sm" id="customSecurityInput" maxlength="220" placeholder="Add custom security check (e.g. Verify multisig signer backup)…">
                 <button type="submit" class="btn-ghost py-1 px-3 small" style="white-space:nowrap"><i class="bi bi-plus-lg me-1"></i>Add Check</button>
               </form>
             </div>
 
-            <!-- PANE 5: LESSON BUILDER -->
             <div id="studioPaneCurriculum" hidden>
               <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
                 <h6 class="fw-bold mb-0" id="lessonFormHeading">Create a Structured Learning Lesson</h6>
@@ -680,40 +676,37 @@
               <form id="lessonForm">
                 <input type="hidden" id="editingLessonIndex" value="">
                 <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label small muted">Lesson title</label><input class="form-control" id="lessonTitleInput" placeholder="e.g. How to read candlestick wicks & rejection zones" required></div>
-                  <div class="col-md-3"><label class="form-label small muted">Track</label><select class="form-select" id="lessonTrackInput"><option>Foundations</option><option>Risk & Portfolio</option><option>Charts & Macro</option></select></div>
-                  <div class="col-md-3"><label class="form-label small muted">Est. duration</label><input class="form-control" id="lessonDurationInput" placeholder="e.g. 8 min" value="8 min"></div>
-                  <div class="col-12"><label class="form-label small muted">Core lesson summary & key takeaway</label><textarea class="form-control" id="lessonSummaryInput" rows="2" placeholder="Explain the concept clearly with 1 practical rule or checklist item…" required></textarea></div>
-                  <div class="col-md-8"><label class="form-label small muted">Optional video URL (YouTube or .mp4)</label><input class="form-control" id="lessonVideoInput" placeholder="https://www.youtube.com/watch?v=... (optional)"></div>
+                  <div class="col-md-6"><label class="form-label small muted">Lesson title</label><input class="form-control" id="lessonTitleInput" maxlength="120" placeholder="e.g. Forex Pips, Lots & Spreads Explained Simply" required></div>
+                  <div class="col-md-3"><label class="form-label small muted">Track</label><select class="form-select" id="lessonTrackInput"><option>Forex Trading</option><option>Crypto Trading</option><option>Risk & Charts</option></select></div>
+                  <div class="col-md-3"><label class="form-label small muted">Est. duration</label><input class="form-control" id="lessonDurationInput" maxlength="24" placeholder="e.g. 8 min" value="8 min"></div>
+                  <div class="col-12"><label class="form-label small muted">Core lesson summary & key takeaway</label><textarea class="form-control" id="lessonSummaryInput" rows="2" maxlength="1200" placeholder="Explain the concept clearly with 1 practical rule or checklist item…" required></textarea></div>
+                  <div class="col-md-8"><label class="form-label small muted">Optional video URL (YouTube or .mp4)</label><input class="form-control" id="lessonVideoInput" maxlength="400" placeholder="https://www.youtube.com/watch?v=... (optional)"></div>
                   <div class="col-md-4 d-flex align-items-end"><button type="submit" class="btn-primary-bp w-100" id="lessonSubmitBtn"><i class="bi bi-plus-circle me-1"></i>Add Lesson to Studio</button></div>
                 </div>
               </form>
             </div>
 
-            <!-- PANE 6: NEW BRIEF -->
             <div id="studioPaneBrief" hidden>
               <form id="briefForm">
                 <div class="row g-3">
-                  <div class="col-md-8"><label class="form-label small muted">Brief headline</label><input class="form-control" id="briefTitle" placeholder="e.g. Gold & crude oil reactions to macro prints" required></div>
-                  <div class="col-md-4"><label class="form-label small muted">Category</label><select class="form-select" id="briefTag"><option>METALS & MACRO</option><option>ENERGIES & INDICES</option><option>EXOTICS & RISK</option><option>CRYPTO</option></select></div>
-                  <div class="col-12"><label class="form-label small muted">Summary</label><textarea class="form-control" id="briefSummary" rows="2" placeholder="Concise, verified educational takeaway…" required></textarea></div>
+                  <div class="col-md-8"><label class="form-label small muted">Brief headline</label><input class="form-control" id="briefTitle" maxlength="140" placeholder="e.g. Gold & crude oil reactions to macro prints" required></div>
+                  <div class="col-md-4"><label class="form-label small muted">Category</label><select class="form-select" id="briefTag"><option>FOREX & MACRO</option><option>CRYPTO & CUSTODY</option><option>RISK DISCIPLINE</option><option>METALS & ENERGIES</option></select></div>
+                  <div class="col-12"><label class="form-label small muted">Summary</label><textarea class="form-control" id="briefSummary" rows="2" maxlength="900" placeholder="Concise, verified educational takeaway…" required></textarea></div>
                   <div class="col-12"><button class="btn-primary-bp" type="submit"><i class="bi bi-plus-lg me-1"></i>Publish to Research Desk</button></div>
                 </div>
               </form>
             </div>
 
-            <!-- PANE 7: ADD VIDEO -->
             <div id="studioPaneVideos" hidden>
               <form id="videoForm">
                 <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label small muted">Video title</label><input class="form-control" id="videoTitleInput" placeholder="e.g. Line vs Candlestick charts in forex & commodities" required></div>
-                  <div class="col-md-6"><label class="form-label small muted">YouTube URL or .mp4 link</label><input class="form-control" id="videoUrlInput" placeholder="https://www.youtube.com/watch?v=... or https://.../video.mp4" required></div>
+                  <div class="col-md-6"><label class="form-label small muted">Video title</label><input class="form-control" id="videoTitleInput" maxlength="120" placeholder="e.g. Line vs Candlestick charts in forex & crypto" required></div>
+                  <div class="col-md-6"><label class="form-label small muted">YouTube URL or .mp4 link</label><input class="form-control" id="videoUrlInput" maxlength="400" placeholder="https://www.youtube.com/watch?v=... or https://.../video.mp4" required></div>
                   <div class="col-12"><button type="submit" class="btn-primary-bp"><i class="bi bi-play-btn me-1"></i>Add Video to Academy</button></div>
                 </div>
               </form>
             </div>
 
-            <!-- PANE 8: ACCOUNT & BILLING -->
             <div id="studioPaneMembers" hidden>
               <h6 class="fw-bold mb-2">Account, Billing & Membership Status</h6>
               <p class="muted small mb-3" id="studioAccountSummary">Open Profile & Background Settings or sign in to manage display name, photo/avatar, background, email verification, and billing.</p>
@@ -734,6 +727,32 @@
     </div>
   </footer>
 
+  <!-- TRACK STUDY READER MODAL -->
+  <div class="modal fade" id="trackReaderModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <div>
+            <span class="tag mb-1" id="trackReaderBadge">TRACK READER</span>
+            <h5 class="modal-title fw-bold mb-0" id="trackReaderTitle">Track Lessons</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <p class="small muted mb-3" id="trackReaderIntro"></p>
+          <div class="d-grid gap-3 mb-4" id="trackReaderLessonsList"></div>
+          <div class="surface-soft p-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <div class="small fw-bold">Track Progress: <span class="text-blue mono" id="trackReaderProgressText">0%</span></div>
+              <small class="muted">Tap below after reading to advance your track progress by +25%.</small>
+            </div>
+            <button type="button" class="btn-primary-bp" id="trackReaderAdvanceBtn"><i class="bi bi-check2-circle me-1"></i>Complete Step & Advance (+25%)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- LESSON STUDY MODAL -->
   <div class="modal fade" id="lessonStudyModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -752,7 +771,7 @@
             <p class="mb-0 small" id="studyModalSummary"></p>
           </div>
           <div id="studyModalVideoWrap" class="mb-3" hidden>
-            <a id="studyModalVideoLink" href="#" target="_blank" rel="noopener" class="btn-ghost small"><i class="bi bi-play-circle me-1"></i>Open Attached Lesson Video</a>
+            <a id="studyModalVideoLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-ghost small"><i class="bi bi-play-circle me-1"></i>Open Attached Lesson Video</a>
           </div>
           <div class="d-flex flex-wrap gap-2">
             <button type="button" class="btn-primary-bp flex-fill" id="studyModalCompleteBtn"><i class="bi bi-check2-circle me-1"></i>Mark Completed</button>
@@ -795,7 +814,7 @@
 
             <form id="updateProfileForm" class="surface-soft p-3 mb-3">
               <label class="form-label small muted">Display name</label>
-              <input type="text" class="form-control mb-3" id="profileNameInput" placeholder="Enter your display name" required>
+              <input type="text" class="form-control mb-3" id="profileNameInput" maxlength="60" placeholder="Enter your display name" required>
 
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <label class="form-label small muted mb-0">Profile photo (Camera / Gallery)</label>
@@ -867,19 +886,19 @@
               </div>
               <form id="loginForm">
                 <label class="form-label small">Email address</label>
-                <input class="form-control mb-2" type="email" id="loginEmail" placeholder="you@example.com" required>
+                <input class="form-control mb-2" type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required>
                 <label class="form-label small">Password</label>
-                <input class="form-control mb-3" type="password" id="loginPassword" placeholder="Enter your password" required>
+                <input class="form-control mb-3" type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
                 <button class="btn-primary-bp w-100" type="submit">Sign In</button>
                 <button type="button" class="btn btn-link w-100 mt-1 small" id="resetPasswordBtn">Forgot Password?</button>
               </form>
               <form id="registerForm" hidden>
                 <label class="form-label small">Display name</label>
-                <input class="form-control mb-2" type="text" id="registerName" placeholder="Your display name" required>
+                <input class="form-control mb-2" type="text" id="registerName" maxlength="60" placeholder="Your display name" required>
                 <label class="form-label small">Email address</label>
-                <input class="form-control mb-2" type="email" id="registerEmail" placeholder="you@example.com" required>
+                <input class="form-control mb-2" type="email" id="registerEmail" placeholder="you@example.com" autocomplete="email" required>
                 <label class="form-label small">Create password</label>
-                <input class="form-control mb-3" type="password" id="registerPassword" minlength="8" placeholder="At least 8 characters" required>
+                <input class="form-control mb-3" type="password" id="registerPassword" minlength="8" placeholder="At least 8 characters" autocomplete="new-password" required>
                 <button class="btn-primary-bp w-100" type="submit">Create My Account</button>
               </form>
               <div class="text-center my-2"><small class="muted">OR</small></div>
@@ -906,27 +925,27 @@
                 <option value="wallet">PayPal / Digital Wallet</option>
               </select>
               <div id="billingFieldsCard">
-                <div class="mb-2"><label class="form-label small muted">Cardholder name</label><input type="text" class="form-control" id="cardHolderInput" placeholder="Name on card"></div>
+                <div class="mb-2"><label class="form-label small muted">Cardholder name</label><input type="text" class="form-control" id="cardHolderInput" maxlength="80" placeholder="Name on card"></div>
                 <div class="row g-2 mb-2">
                   <div class="col-7"><label class="form-label small muted">Card number</label><input type="text" class="form-control mono" id="cardNumberInput" inputmode="numeric" maxlength="19" placeholder="•••• •••• •••• 4242"></div>
                   <div class="col-5"><label class="form-label small muted">Expiry (MM/YY)</label><input type="text" class="form-control mono" id="cardExpiryInput" maxlength="5" placeholder="08/29"></div>
                 </div>
               </div>
               <div id="billingFieldsBank" hidden>
-                <div class="mb-2"><label class="form-label small muted">Account holder name</label><input type="text" class="form-control" id="bankHolderInput" placeholder="Full legal name"></div>
-                <div class="mb-2"><label class="form-label small muted">Bank name</label><input type="text" class="form-control" id="bankNameInput" placeholder="e.g. Mashreq Bank"></div>
+                <div class="mb-2"><label class="form-label small muted">Account holder name</label><input type="text" class="form-control" id="bankHolderInput" maxlength="80" placeholder="Full legal name"></div>
+                <div class="mb-2"><label class="form-label small muted">Bank name</label><input type="text" class="form-control" id="bankNameInput" maxlength="80" placeholder="e.g. Mashreq Bank"></div>
                 <div class="row g-2 mb-2">
-                  <div class="col-7"><label class="form-label small muted">IBAN / Account number</label><input type="text" class="form-control mono" id="bankIbanInput" placeholder="AE07 0330 ..."></div>
-                  <div class="col-5"><label class="form-label small muted">SWIFT / BIC</label><input type="text" class="form-control mono" id="bankSwiftInput" placeholder="BOMLAEAD"></div>
+                  <div class="col-7"><label class="form-label small muted">IBAN / Account number</label><input type="text" class="form-control mono" id="bankIbanInput" maxlength="40" placeholder="AE07 0330 ..."></div>
+                  <div class="col-5"><label class="form-label small muted">SWIFT / BIC</label><input type="text" class="form-control mono" id="bankSwiftInput" maxlength="16" placeholder="BOMLAEAD"></div>
                 </div>
               </div>
               <div id="billingFieldsCrypto" hidden>
                 <div class="mb-2"><label class="form-label small muted">Network</label><select class="form-select" id="cryptoNetworkInput"><option>TRC20 (Tron)</option><option>ERC20 (Ethereum)</option><option>BEP20 (BNB Chain)</option><option>Solana</option></select></div>
-                <div class="mb-2"><label class="form-label small muted">Wallet address</label><input type="text" class="form-control mono" id="cryptoAddressInput" placeholder="0x... or T..."></div>
+                <div class="mb-2"><label class="form-label small muted">Wallet address</label><input type="text" class="form-control mono" id="cryptoAddressInput" maxlength="100" placeholder="0x... or T..."></div>
               </div>
               <div id="billingFieldsWallet" hidden>
                 <div class="mb-2"><label class="form-label small muted">Wallet provider</label><select class="form-select" id="walletProviderInput"><option>PayPal</option><option>Apple Pay</option><option>Google Pay</option></select></div>
-                <div class="mb-2"><label class="form-label small muted">Account email / ID</label><input type="email" class="form-control" id="walletEmailInput" placeholder="billing@example.com"></div>
+                <div class="mb-2"><label class="form-label small muted">Account email / ID</label><input type="email" class="form-control" id="walletEmailInput" maxlength="120" placeholder="billing@example.com"></div>
               </div>
               <div class="d-flex gap-2 mt-3">
                 <button type="submit" class="btn-primary-bp flex-fill"><i class="bi bi-shield-lock me-1"></i>Save Billing Method</button>
@@ -949,6 +968,35 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function safeHttpUrl(raw) {
+      if (!raw) return "";
+      try {
+        const u = new URL(String(raw).trim());
+        if (u.protocol === "https:" || u.protocol === "http:") return u.toString();
+      } catch {}
+      return "";
+    }
+
+    function safeJsonParse(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return fallback;
+        const parsed = JSON.parse(raw);
+        return parsed ?? fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
     function showToast(msg) {
       const el = document.getElementById("toastBp");
       if (!el) return;
@@ -958,14 +1006,42 @@
       window.__toastTimer = setTimeout(() => el.classList.remove("show"), 3600);
     }
 
-    // Theme + Browsing Background State
+    window.addEventListener("error", (event) => {
+      if (event?.message && !String(event.message).includes("Script error")) {
+        showToast("Heads up: a minor hiccup occurred, and your saved data is safe.");
+      }
+    });
+
+    window.addEventListener("unhandledrejection", () => {
+      showToast("Connection hiccup while syncing—your local changes remain saved.");
+    });
+
+    function navigateFromMenu(e, openProfile, targetSelector) {
+      if (e) e.preventDefault();
+      const menuEl = document.getElementById("mobileMenu");
+      const instance = menuEl ? bootstrap.Offcanvas.getInstance(menuEl) : null;
+      if (instance) instance.hide();
+
+      setTimeout(() => {
+        if (openProfile) {
+          openProfileSettings();
+        } else if (targetSelector) {
+          const target = document.querySelector(targetSelector);
+          if (target) target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 260);
+    }
+
     const themeToggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("bp-theme");
-    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    if (savedTheme === "light" || savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    }
 
     let browsingBg = localStorage.getItem("bp-bg") || "navy-grid";
     function applyBrowsingBackground(bgKey) {
-      browsingBg = bgKey || "navy-grid";
+      const allowed = ["navy-grid", "aurora", "obsidian", "warm-sand"];
+      browsingBg = allowed.includes(bgKey) ? bgKey : "navy-grid";
       document.documentElement.setAttribute("data-bg", browsingBg);
       if (browsingBg === "warm-sand") {
         document.documentElement.setAttribute("data-theme", "light");
@@ -989,7 +1065,6 @@
       localStorage.setItem("bp-theme", next);
     });
 
-    // Preset Avatars & User Profile Photo/Name State
     const PRESET_AVATARS = [
       { id: "pulse-blue", label: "Pulse", initials: "BP", bg: "linear-gradient(135deg,#4d91ff,#2559d8)" },
       { id: "cyan-quant", label: "Quant", initials: "QT", bg: "linear-gradient(135deg,#36d6e7,#0891b2)" },
@@ -997,7 +1072,7 @@
       { id: "emerald-risk", label: "Risk", initials: "RK", bg: "linear-gradient(135deg,#36d399,#059669)" }
     ];
 
-    let profilePrefs = JSON.parse(localStorage.getItem("bp-profile-prefs") || '{"displayName":"","avatarId":"pulse-blue","photoDataUrl":""}');
+    let profilePrefs = safeJsonParse("bp-profile-prefs", { displayName: "", avatarId: "pulse-blue", photoDataUrl: "" });
     let tickerOffsetPx = Number(localStorage.getItem("bp-ticker-offset") || "0");
 
     function renderPresetAvatars() {
@@ -1007,9 +1082,9 @@
         const active = !profilePrefs.photoDataUrl && profilePrefs.avatarId === av.id;
         return `
           <div class="col-6">
-            <button type="button" class="avatar-preset-btn w-100 ${active ? "active" : ""}" onclick="choosePresetAvatar('${av.id}')">
-              <span class="avatar-preset-dot" style="background:${av.bg}">${av.initials}</span>
-              <span>${av.label}</span>
+            <button type="button" class="avatar-preset-btn w-100 ${active ? "active" : ""}" onclick="choosePresetAvatar('${escapeHtml(av.id)}')">
+              <span class="avatar-preset-dot" style="background:${av.bg}">${escapeHtml(av.initials)}</span>
+              <span>${escapeHtml(av.label)}</span>
             </button>
           </div>
         `;
@@ -1024,20 +1099,24 @@
       const topBtn = document.getElementById("topProfileAvatarBtn");
       const modalPrev = document.getElementById("profileModalAvatarPreview");
 
-      if (profilePrefs.photoDataUrl) {
-        const imgTag = `<img src="${profilePrefs.photoDataUrl}" alt="${activeName}">`;
+      const safePhoto = profilePrefs.photoDataUrl && String(profilePrefs.photoDataUrl).startsWith("data:image/")
+        ? profilePrefs.photoDataUrl
+        : "";
+
+      if (safePhoto) {
+        const imgTag = `<img src="${escapeHtml(safePhoto)}" alt="${escapeHtml(activeName)}">`;
         if (topBtn) topBtn.innerHTML = imgTag;
         if (modalPrev) modalPrev.innerHTML = imgTag;
       } else {
         if (topBtn) {
           topBtn.style.background = preset.bg;
           topBtn.style.color = "#fff";
-          topBtn.innerHTML = `<span class="small fw-bold mono">${initials}</span>`;
+          topBtn.innerHTML = `<span class="small fw-bold mono">${escapeHtml(initials)}</span>`;
         }
         if (modalPrev) {
           modalPrev.style.background = preset.bg;
           modalPrev.style.color = "#fff";
-          modalPrev.innerHTML = `<span>${initials}</span>`;
+          modalPrev.innerHTML = `<span>${escapeHtml(initials)}</span>`;
         }
       }
       renderPresetAvatars();
@@ -1062,18 +1141,28 @@
     function handlePhotoFileSelection(e) {
       const file = e.target.files?.[0];
       if (!file) return;
+      if (!file.type || !file.type.startsWith("image/")) {
+        showToast("Please pick a valid image file (PNG, JPG, or WebP).");
+        return;
+      }
       if (file.size > 1.5 * 1024 * 1024) {
-        showToast("Please select an image under 1.5 MB.");
+        showToast("Please select an image under 1.5 MB so it loads fast.");
         return;
       }
       const reader = new FileReader();
       reader.onload = () => {
-        profilePrefs.photoDataUrl = String(reader.result || "");
+        const result = String(reader.result || "");
+        if (!result.startsWith("data:image/")) {
+          showToast("Could not read that image safely.");
+          return;
+        }
+        profilePrefs.photoDataUrl = result;
         localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
         renderAvatarEverywhere();
         if (typeof persistAllState === "function") persistAllState(true);
         showToast("Profile photo updated!");
       };
+      reader.onerror = () => showToast("Couldn't load that photo—try another one.");
       reader.readAsDataURL(file);
     }
     document.getElementById("galleryPhotoInput")?.addEventListener("change", handlePhotoFileSelection);
@@ -1085,18 +1174,17 @@
     }
     renderAvatarEverywhere();
 
-    // Calculators
     function updateCalculators() {
-      const acc = parseFloat(document.getElementById("calcAccount")?.value) || 0;
-      const risk = parseFloat(document.getElementById("calcRisk")?.value) || 0;
-      const stop = parseFloat(document.getElementById("calcStop")?.value) || 0;
+      const acc = Math.max(0, parseFloat(document.getElementById("calcAccount")?.value) || 0);
+      const risk = Math.max(0, parseFloat(document.getElementById("calcRisk")?.value) || 0);
+      const stop = Math.max(0, parseFloat(document.getElementById("calcStop")?.value) || 0);
       const maxLoss = acc * (risk / 100);
       const pos = stop > 0 ? maxLoss / (stop / 100) : 0;
       document.getElementById("calcMaxLoss").textContent = "$" + maxLoss.toFixed(2);
       document.getElementById("calcPosition").textContent = "$" + pos.toFixed(2);
 
-      const m = parseFloat(document.getElementById("dcaMonthly")?.value) || 0;
-      const y = parseFloat(document.getElementById("dcaYears")?.value) || 0;
+      const m = Math.max(0, parseFloat(document.getElementById("dcaMonthly")?.value) || 0);
+      const y = Math.max(0, parseFloat(document.getElementById("dcaYears")?.value) || 0);
       const r = (parseFloat(document.getElementById("dcaRate")?.value) || 0) / 100 / 12;
       const n = y * 12;
       const total = m * n;
@@ -1109,6 +1197,90 @@
     });
     updateCalculators();
 
+    const ACADEMY_TRACK_GUIDES = {
+      foundations: {
+        badge: "FOREX TRACK",
+        title: "Forex Trading Mastery — Easy Study Guide",
+        intro: "Forex (foreign exchange) is where one currency is exchanged for another—like EUR/USD or USD/AED. Read each plain-English lesson below, then advance your track progress.",
+        lessons: [
+          {
+            heading: "1. Currency Pairs, Base vs. Quote",
+            plain: "In EUR/USD, EUR is the base currency (what you buy or sell) and USD is the quote currency (what you measure the price in). If EUR/USD is 1.1000, 1 Euro equals 1.10 US Dollars.",
+            rule: "Rule: Know which currency you are actually buying and which one you are selling before clicking buy or sell."
+          },
+          {
+            heading: "2. Pips, Lots & Spreads",
+            plain: "A pip is the standard small price move in forex (usually 0.0001 on most pairs, or 0.01 on JPY pairs). The spread is the small difference between the bid (sell) and ask (buy) price—it is your instant cost of entering a trade.",
+            rule: "Rule: Watch spreads during low-liquidity hours or major news releases; wider spreads mean a harder entry."
+          },
+          {
+            heading: "3. Trading Sessions (London & New York)",
+            plain: "Forex runs 24 hours on weekdays, but volume is not equal all day. The London and New York overlap usually brings the strongest liquidity and cleanest moves, while quiet off-hours can bring choppy whipsaws.",
+            rule: "Rule: Trade the session that matches your schedule and avoid forcing trades in dead liquidity."
+          },
+          {
+            heading: "4. Interest Rates & Central Banks",
+            plain: "Currencies move strongly on central bank interest rate decisions, inflation prints, and jobs data. Higher relative rates and hawkish guidance often support a currency, while surprise cuts or weak inflation can weigh on it.",
+            rule: "Rule: Check the economic calendar before trading so news spikes do not catch your stop-loss off guard."
+          }
+        ]
+      },
+      risk: {
+        badge: "CRYPTO TRACK",
+        title: "Crypto & Self-Custody — Easy Study Guide",
+        intro: "Cryptocurrency markets trade 24/7 with high speed and sharp swings. Learn how spot vs. leverage works, how liquidity affects fills, and how to keep your coins safe.",
+        lessons: [
+          {
+            heading: "1. Bitcoin Dominance, Altcoins & Market Cycles",
+            plain: "Bitcoin (BTC) acts as the liquidity anchor of crypto, while altcoins tend to move faster—upward in strong risk-on waves and deeper downward during pullbacks.",
+            rule: "Rule: Respect volatility—a 10% move in crypto is common, so size smaller than you would on a slow pair."
+          },
+          {
+            heading: "2. Spot Ownership vs. Leverage & Liquidation",
+            plain: "Buying spot means you own the actual asset without forced liquidation from small price dips. Using high leverage on margin or perpetuals magnifies both gains and losses—and a sudden wick can wipe out your margin.",
+            rule: "Rule: Beginners should master spot sizing and risk rules first before ever touching leverage."
+          },
+          {
+            heading: "3. Order Books, Liquidity & Slippage",
+            plain: "Slippage happens when your order fills at a slightly worse price than expected because liquidity is thin or price is moving fast—especially on smaller altcoins or during sudden spikes.",
+            rule: "Rule: Prefer liquid pairs and use limit orders or careful sizing when trading volatile coins."
+          },
+          {
+            heading: "4. Self-Custody & Seed Phrase Safety",
+            plain: "If you hold long-term crypto, self-custody means controlling your own private keys/seed phrase—ideally backed up with a hardware wallet and offline seed storage, plus strong 2FA on exchange accounts.",
+            rule: "Rule: Never type your seed phrase into a website, screenshot it, or store it in cloud notes."
+          }
+        ]
+      },
+      macro: {
+        badge: "EXECUTION & RISK",
+        title: "Charts, Risk Math & Psychology — Easy Study Guide",
+        intro: "Good setups only work when paired with position sizing math and emotional control. Here is how to read price cleanly and protect your account.",
+        lessons: [
+          {
+            heading: "1. Line Charts vs. Candlesticks & Structure",
+            plain: "A line chart shows closing prices cleanly so you can spot the big trend. Candlesticks add four details per period: Open, High, Low, and Close—helping you see buyer/seller rejection wicks and momentum.",
+            rule: "Rule: Identify the bigger trend and key support/resistance zones first before zooming into small candles."
+          },
+          {
+            heading: "2. Support, Resistance & Breakouts vs. Fakeouts",
+            plain: "Support is a floor where buyers have stepped in before; resistance is a ceiling where sellers have pushed price down. Breakouts sometimes reverse ('fakeouts') when price sweeps stops and snaps back.",
+            rule: "Rule: Wait for clear confirmation and define where your idea is proven wrong before entering."
+          },
+          {
+            heading: "3. Position Sizing & Stop-Loss Math",
+            plain: "Never guess how big a trade should be. Pick your max dollar risk (for example, 1% to 2% of your account), measure your stop distance, and calculate position size so a normal loss never wrecks your account.",
+            rule: "Rule: Use the Position Size Calculator in the Tools section before every trade."
+          },
+          {
+            heading: "4. Beating FOMO, Revenge Trading & Over-Leveraging",
+            plain: "Most account losses come from emotional reactions—chasing a green candle after it already ran (FOMO) or doubling size to win back a loss (revenge trading).",
+            rule: "Rule: Log every trade in your Studio Trade Journal and tag whether you followed your plan."
+          }
+        ]
+      }
+    };
+
     const DEFAULT_VIDEOS = [
       { title: "How Market Liquidity & Price Moves Work", url: "https://www.youtube.com/watch?v=Yb6825b0CmI" },
       { title: "Risk Management & Position Sizing Basics", url: "https://www.youtube.com/watch?v=8p8Y8f4m7vE" }
@@ -1116,20 +1288,47 @@
 
     const DEFAULT_LESSONS = [
       {
-        id: "lesson-1",
-        title: "Structure Before Entry: Reading Trend & Pullbacks",
-        track: "Charts & Macro",
+        id: "fx-1",
+        title: "Forex Basics: Pips, Spreads & London/NY Sessions",
+        track: "Forex Trading",
         duration: "7 min",
-        summary: "Identify higher highs/lows vs range boundaries first, then wait for confirmation rather than chasing candles.",
+        summary: "A pip is the standard small unit of movement in forex (0.0001 on most pairs), while the spread is the bid-ask gap. Focus on high-liquidity sessions like London and New York overlap and avoid trading blind into major rate news.",
         videoUrl: "",
         completed: false
       },
       {
-        id: "lesson-2",
-        title: "Fixed Fractional Risk: Keeping Drawdowns Survivable",
-        track: "Risk & Portfolio",
+        id: "fx-2",
+        title: "Forex Macro: Interest Rates & Currency Strength",
+        track: "Forex Trading",
         duration: "6 min",
-        summary: "Cap risk per trade to a small percentage of account equity so a losing streak never knocks you out of the game.",
+        summary: "Central bank interest rate expectations and inflation data drive multi-day currency trends. Always check which currency is the base and which is the quote so you know what a rising or falling chart means.",
+        videoUrl: "",
+        completed: false
+      },
+      {
+        id: "cr-1",
+        title: "Crypto Basics: Spot vs. Leverage & Liquidation Risk",
+        track: "Crypto Trading",
+        duration: "8 min",
+        summary: "Spot buying gives you direct ownership without forced liquidation, whereas leveraged futures can liquidate a position on sharp wicks. Pair position size with crypto's naturally wider daily swings.",
+        videoUrl: "",
+        completed: false
+      },
+      {
+        id: "cr-2",
+        title: "Crypto Safety: Hardware Wallets, 2FA & Seed Rules",
+        track: "Crypto Trading",
+        duration: "6 min",
+        summary: "Keep long-term holdings in self-custody with an offline-backed seed phrase and hardware wallet, use authenticator/hardware 2FA on exchange accounts, and always send a small test transfer first.",
+        videoUrl: "",
+        completed: false
+      },
+      {
+        id: "rk-1",
+        title: "Position Sizing & Stop-Loss Math Made Simple",
+        track: "Risk & Charts",
+        duration: "6 min",
+        summary: "Decide your max risk per trade (such as 1%–2% of equity) before entry. Smaller risk per trade keeps you calm and gives you enough shots to let your edge play out.",
         videoUrl: "",
         completed: false
       }
@@ -1150,42 +1349,45 @@
       { id: "sec-5", text: "Small test transaction verified before transferring major balances to cold storage", checked: false }
     ];
 
-    let courseState = JSON.parse(localStorage.getItem("bp-courses") || '{"foundations":0,"risk":0,"macro":0}');
+    let courseState = safeJsonParse("bp-courses", { foundations: 0, risk: 0, macro: 0 });
     let activePlan = localStorage.getItem("bp-plan") || "Free Tier";
-    let billingMethod = JSON.parse(localStorage.getItem("bp-billing") || "null");
-    let billingHistory = JSON.parse(localStorage.getItem("bp-billing-history") || "[]");
-    let studioData = JSON.parse(localStorage.getItem("bp-studio") || "null");
-    let savedStudios = JSON.parse(localStorage.getItem("bp-studios-list") || "[]");
-    let studioLessons = JSON.parse(localStorage.getItem("bp-studio-lessons") || "null") || [...DEFAULT_LESSONS];
-    let customBriefs = JSON.parse(localStorage.getItem("bp-briefs") || "[]");
-    let customVideos = JSON.parse(localStorage.getItem("bp-videos") || "null") || [...DEFAULT_VIDEOS];
+    let billingMethod = safeJsonParse("bp-billing", null);
+    let billingHistory = safeJsonParse("bp-billing-history", []);
+    let studioData = safeJsonParse("bp-studio", null);
+    let savedStudios = safeJsonParse("bp-studios-list", []);
+    let studioLessons = safeJsonParse("bp-studio-lessons", null) || [...DEFAULT_LESSONS];
+    let customBriefs = safeJsonParse("bp-briefs", []);
+    let customVideos = safeJsonParse("bp-videos", null) || [...DEFAULT_VIDEOS];
 
-    // New Studio Workspace State
-    let studioWatchlist = JSON.parse(localStorage.getItem("bp-studio-watchlist") || '["xauusd","btcusd","ukoil","usdaed"]');
+    let studioWatchlist = safeJsonParse("bp-studio-watchlist", ["xauusd", "btcusd", "ukoil", "usdaed"]);
     let studioMacroNotes = localStorage.getItem("bp-studio-macro-notes") || "";
-    let studioJournal = JSON.parse(localStorage.getItem("bp-studio-journal") || "[]");
-    let studioPlaybook = JSON.parse(localStorage.getItem("bp-studio-playbook") || "null") || [...DEFAULT_PLAYBOOK_RULES];
-    let studioSecurity = JSON.parse(localStorage.getItem("bp-studio-security") || "null") || [...DEFAULT_SECURITY_CHECKS];
+    let studioJournal = safeJsonParse("bp-studio-journal", []);
+    let studioPlaybook = safeJsonParse("bp-studio-playbook", null) || [...DEFAULT_PLAYBOOK_RULES];
+    let studioSecurity = safeJsonParse("bp-studio-security", null) || [...DEFAULT_SECURITY_CHECKS];
     let pendingUpgradePlan = null;
 
     function persistAllState(syncCloud = true) {
-      localStorage.setItem("bp-courses", JSON.stringify(courseState));
-      localStorage.setItem("bp-plan", activePlan);
-      localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
-      localStorage.setItem("bp-bg", browsingBg);
-      if (billingMethod) localStorage.setItem("bp-billing", JSON.stringify(billingMethod));
-      else localStorage.removeItem("bp-billing");
-      localStorage.setItem("bp-billing-history", JSON.stringify(billingHistory.slice(0, 10)));
-      if (studioData) localStorage.setItem("bp-studio", JSON.stringify(studioData));
-      localStorage.setItem("bp-studios-list", JSON.stringify(savedStudios.slice(0, 10)));
-      localStorage.setItem("bp-studio-lessons", JSON.stringify(studioLessons.slice(0, 40)));
-      localStorage.setItem("bp-briefs", JSON.stringify(customBriefs.slice(0, 20)));
-      localStorage.setItem("bp-videos", JSON.stringify(customVideos.slice(0, 20)));
-      localStorage.setItem("bp-studio-watchlist", JSON.stringify(studioWatchlist.slice(0, 15)));
-      localStorage.setItem("bp-studio-macro-notes", studioMacroNotes);
-      localStorage.setItem("bp-studio-journal", JSON.stringify(studioJournal.slice(0, 50)));
-      localStorage.setItem("bp-studio-playbook", JSON.stringify(studioPlaybook.slice(0, 25)));
-      localStorage.setItem("bp-studio-security", JSON.stringify(studioSecurity.slice(0, 25)));
+      try {
+        localStorage.setItem("bp-courses", JSON.stringify(courseState));
+        localStorage.setItem("bp-plan", activePlan);
+        localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+        localStorage.setItem("bp-bg", browsingBg);
+        if (billingMethod) localStorage.setItem("bp-billing", JSON.stringify(billingMethod));
+        else localStorage.removeItem("bp-billing");
+        localStorage.setItem("bp-billing-history", JSON.stringify(billingHistory.slice(0, 10)));
+        if (studioData) localStorage.setItem("bp-studio", JSON.stringify(studioData));
+        localStorage.setItem("bp-studios-list", JSON.stringify(savedStudios.slice(0, 10)));
+        localStorage.setItem("bp-studio-lessons", JSON.stringify(studioLessons.slice(0, 40)));
+        localStorage.setItem("bp-briefs", JSON.stringify(customBriefs.slice(0, 20)));
+        localStorage.setItem("bp-videos", JSON.stringify(customVideos.slice(0, 20)));
+        localStorage.setItem("bp-studio-watchlist", JSON.stringify(studioWatchlist.slice(0, 15)));
+        localStorage.setItem("bp-studio-macro-notes", studioMacroNotes);
+        localStorage.setItem("bp-studio-journal", JSON.stringify(studioJournal.slice(0, 50)));
+        localStorage.setItem("bp-studio-playbook", JSON.stringify(studioPlaybook.slice(0, 25)));
+        localStorage.setItem("bp-studio-security", JSON.stringify(studioSecurity.slice(0, 25)));
+      } catch {
+        showToast("Storage is full—try removing a large photo or older items.");
+      }
 
       if (syncCloud && typeof window.syncUserStateToCloud === "function") {
         window.syncUserStateToCloud({
@@ -1257,10 +1459,18 @@
     };
 
     function toEmbedUrl(url) {
+      const safe = safeHttpUrl(url);
+      if (!safe) return null;
       try {
-        const u = new URL(url);
-        if (u.hostname.includes("youtu.be")) return `https://www.youtube.com/embed${u.pathname}`;
-        if (u.hostname.includes("youtube.com") && u.searchParams.get("v")) return `https://www.youtube.com/embed/${u.searchParams.get("v")}`;
+        const u = new URL(safe);
+        if (u.hostname.includes("youtu.be")) {
+          const vid = u.pathname.replace(/^\/+/, "").split("/")[0];
+          if (/^[A-Za-z0-9_-]{6,20}$/.test(vid)) return `https://www.youtube.com/embed/${vid}`;
+        }
+        if (u.hostname.includes("youtube.com") && u.searchParams.get("v")) {
+          const vid = u.searchParams.get("v");
+          if (/^[A-Za-z0-9_-]{6,20}$/.test(vid)) return `https://www.youtube.com/embed/${vid}`;
+        }
       } catch {}
       return null;
     }
@@ -1269,11 +1479,14 @@
       const wrap = document.getElementById("videoCards");
       if (!wrap) return;
       wrap.innerHTML = customVideos.map(v => {
-        const embed = toEmbedUrl(v.url);
+        const safeUrl = safeHttpUrl(v.url);
+        if (!safeUrl) return "";
+        const embed = toEmbedUrl(safeUrl);
+        const safeTitle = escapeHtml(v.title || "Video Explainer");
         const mediaHtml = embed
-          ? `<iframe src="${embed}" title="${v.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0"></iframe>`
-          : `<video controls preload="metadata" style="width:100%;height:100%;object-fit:cover"><source src="${v.url}"></video>`;
-        return `<div class="col-md-6"><article class="card-bp"><div class="video-box mb-3">${mediaHtml}</div><h6 class="fw-bold mb-1">${v.title}</h6><a href="${v.url}" target="_blank" rel="noopener" class="small text-blue">Open original video link <i class="bi bi-box-arrow-up-right"></i></a></article></div>`;
+          ? `<iframe src="${escapeHtml(embed)}" title="${safeTitle}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0"></iframe>`
+          : `<video controls preload="metadata" style="width:100%;height:100%;object-fit:cover"><source src="${escapeHtml(safeUrl)}"></video>`;
+        return `<div class="col-md-6"><article class="card-bp"><div class="video-box mb-3">${mediaHtml}</div><h6 class="fw-bold mb-1">${safeTitle}</h6><a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer" class="small text-blue">Open original video link <i class="bi bi-box-arrow-up-right"></i></a></article></div>`;
       }).join("");
     }
     renderVideos();
@@ -1281,16 +1494,17 @@
     document.getElementById("videoForm")?.addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("videoTitleInput").value.trim();
-      const url = document.getElementById("videoUrlInput").value.trim();
-      if (!title || !url) return;
-      customVideos.unshift({ title, url });
+      const rawUrl = document.getElementById("videoUrlInput").value.trim();
+      const safeUrl = safeHttpUrl(rawUrl);
+      if (!title) return showToast("Please add a video title.");
+      if (!safeUrl) return showToast("Please enter a valid http:// or https:// video link.");
+      customVideos.unshift({ title, url: safeUrl });
       persistAllState(true);
       renderVideos();
       e.target.reset();
       showToast("Video added to Academy!");
     });
 
-    // Studio Lessons: Study Modal, Mark Complete, Edit & Delete
     let activeStudyIndex = null;
 
     function renderStudioLessons() {
@@ -1300,9 +1514,10 @@
       const completedCount = studioLessons.filter(l => Boolean(l.completed)).length;
       if (compBadge) compBadge.textContent = `${completedCount} / ${studioLessons.length} COMPLETED`;
       if (titleEl) {
-        titleEl.textContent = studioData?.name
-          ? `${studioData.name} — Learning Lessons (${studioLessons.length})`
-          : `Custom Learning Lessons (${studioLessons.length})`;
+        const baseTitle = studioData?.name
+          ? `${escapeHtml(studioData.name)} — Forex & Crypto Lessons (${studioLessons.length})`
+          : `Forex & Crypto Studio Lessons (${studioLessons.length})`;
+        titleEl.textContent = baseTitle;
       }
       if (!listEl) return;
       if (!studioLessons.length) {
@@ -1315,13 +1530,13 @@
             <div>
               <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
                 <div class="d-flex align-items-center gap-2 flex-wrap">
-                  <span class="tag">${les.track || "Foundations"}</span>
+                  <span class="tag">${escapeHtml(les.track || "Forex Trading")}</span>
                   ${les.completed ? `<span class="pill up" style="padding:2px 7px;font-size:10px"><i class="bi bi-check2 me-1"></i>Done</span>` : ""}
                 </div>
-                <span class="small muted mono">${les.duration || "6 min"}</span>
+                <span class="small muted mono">${escapeHtml(les.duration || "6 min")}</span>
               </div>
-              <h6 class="fw-bold mb-1">${les.title}</h6>
-              <p class="small muted mb-3" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${les.summary}</p>
+              <h6 class="fw-bold mb-1">${escapeHtml(les.title)}</h6>
+              <p class="small muted mb-3" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${escapeHtml(les.summary)}</p>
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top" style="border-color:var(--line)!important">
               <button type="button" class="btn-ghost py-1 px-2 small" onclick="openLessonStudyModal(${idx})"><i class="bi bi-book-open me-1 text-blue"></i>Study</button>
@@ -1341,16 +1556,17 @@
       const les = studioLessons[idx];
       if (!les) return;
       activeStudyIndex = idx;
-      document.getElementById("studyModalTrack").textContent = les.track || "Foundations";
+      document.getElementById("studyModalTrack").textContent = les.track || "Forex Trading";
       document.getElementById("studyModalTitle").textContent = les.title;
       document.getElementById("studyModalMeta").textContent = `Est. ${les.duration || "6 min"} · ${les.completed ? "Completed" : "In Progress"}`;
       document.getElementById("studyModalSummary").textContent = les.summary;
 
       const vidWrap = document.getElementById("studyModalVideoWrap");
       const vidLink = document.getElementById("studyModalVideoLink");
-      if (les.videoUrl) {
+      const safeVid = safeHttpUrl(les.videoUrl);
+      if (safeVid) {
         vidWrap.hidden = false;
-        vidLink.href = les.videoUrl;
+        vidLink.href = safeVid;
       } else {
         vidWrap.hidden = true;
       }
@@ -1391,7 +1607,7 @@
       switchStudioTab("curriculum");
       document.getElementById("editingLessonIndex").value = String(idx);
       document.getElementById("lessonTitleInput").value = les.title;
-      document.getElementById("lessonTrackInput").value = les.track || "Foundations";
+      document.getElementById("lessonTrackInput").value = les.track || "Forex Trading";
       document.getElementById("lessonDurationInput").value = les.duration || "6 min";
       document.getElementById("lessonSummaryInput").value = les.summary;
       document.getElementById("lessonVideoInput").value = les.videoUrl || "";
@@ -1425,8 +1641,10 @@
       const track = document.getElementById("lessonTrackInput").value;
       const duration = document.getElementById("lessonDurationInput").value.trim() || "6 min";
       const summary = document.getElementById("lessonSummaryInput").value.trim();
-      const videoUrl = document.getElementById("lessonVideoInput").value.trim();
-      if (!title || !summary) return;
+      const rawVid = document.getElementById("lessonVideoInput").value.trim();
+      const videoUrl = rawVid ? safeHttpUrl(rawVid) : "";
+      if (!title || !summary) return showToast("Please fill in both the lesson title and notes.");
+      if (rawVid && !videoUrl) return showToast("Video link must start with http:// or https://.");
 
       if (editVal !== "" && studioLessons[Number(editVal)]) {
         const prevComp = Boolean(studioLessons[Number(editVal)].completed);
@@ -1455,15 +1673,41 @@
       const badge = document.getElementById("academyProgressBadge");
       if (badge) badge.textContent = `${started} / 3 TRACKS STARTED`;
     }
+
     function advanceCourse(key, title) {
       courseState[key] = Math.min(100, (courseState[key] || 0) + 25);
       persistAllState(true);
       renderCourses();
+      const progEl = document.getElementById("trackReaderProgressText");
+      if (progEl) progEl.textContent = `${courseState[key]}%`;
       showToast(`${title}: progress updated to ${courseState[key]}%.`);
     }
+
+    function openTrackReader(trackKey) {
+      const guide = ACADEMY_TRACK_GUIDES[trackKey];
+      if (!guide) return;
+      document.getElementById("trackReaderBadge").textContent = guide.badge;
+      document.getElementById("trackReaderTitle").textContent = guide.title;
+      document.getElementById("trackReaderIntro").textContent = guide.intro;
+      document.getElementById("trackReaderProgressText").textContent = `${courseState[trackKey] || 0}%`;
+
+      const listEl = document.getElementById("trackReaderLessonsList");
+      listEl.innerHTML = guide.lessons.map(item => `
+        <div class="surface-soft p-3">
+          <h6 class="fw-bold mb-1 text-blue">${escapeHtml(item.heading)}</h6>
+          <p class="small mb-2">${escapeHtml(item.plain)}</p>
+          <div class="small muted mono"><i class="bi bi-shield-check text-success me-1"></i>${escapeHtml(item.rule)}</div>
+        </div>
+      `).join("");
+
+      const advBtn = document.getElementById("trackReaderAdvanceBtn");
+      advBtn.onclick = () => advanceCourse(trackKey, guide.title);
+
+      bootstrap.Modal.getOrCreateInstance(document.getElementById("trackReaderModal")).show();
+    }
+
     renderCourses();
 
-    // Profile & Billing Modal Helpers
     function openProfileSettings() {
       const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("accountModal"));
       modal.show();
@@ -1500,7 +1744,9 @@
         if (membershipSummary) membershipSummary.textContent = "Not set";
       }
       if (historyList) {
-        historyList.innerHTML = billingHistory.length ? billingHistory.map(item => `<div class="d-flex justify-content-between py-1 border-top" style="border-color:var(--line)!important"><span>${item.plan} <span class="muted">(${item.method})</span></span><span class="mono">${item.amount} · ${item.date}</span></div>`).join("") : "No invoices yet.";
+        historyList.innerHTML = billingHistory.length
+          ? billingHistory.map(item => `<div class="d-flex justify-content-between py-1 border-top" style="border-color:var(--line)!important"><span>${escapeHtml(item.plan)} <span class="muted">(${escapeHtml(item.method)})</span></span><span class="mono">${escapeHtml(item.amount)} · ${escapeHtml(item.date)}</span></div>`).join("")
+          : "No invoices yet.";
       }
     }
     function syncPlanUI() {
@@ -1591,8 +1837,8 @@
     function renderStudioBanner(studio) {
       const el = document.getElementById("studioStatusText");
       if (el && studio) {
-        const lvl = studio.level ? ` · <span class="tag">${studio.level}</span>` : "";
-        el.innerHTML = `Active Studio: <strong>${studio.name}</strong> (${studio.handle}) · <span class="text-blue">${studio.focus}</span>${lvl}`;
+        const lvl = studio.level ? ` · <span class="tag">${escapeHtml(studio.level)}</span>` : "";
+        el.innerHTML = `Active Studio: <strong>${escapeHtml(studio.name)}</strong> (${escapeHtml(studio.handle)}) · <span class="text-blue">${escapeHtml(studio.focus)}</span>${lvl}`;
       }
       renderStudioLessons();
     }
@@ -1606,7 +1852,7 @@
         return;
       }
       wrap.hidden = false;
-      sel.innerHTML = savedStudios.map((s, idx) => `<option value="${idx}" ${studioData && studioData.handle === s.handle ? "selected" : ""}>${s.name} (${s.handle})</option>`).join("");
+      sel.innerHTML = savedStudios.map((s, idx) => `<option value="${idx}" ${studioData && studioData.handle === s.handle ? "selected" : ""}>${escapeHtml(s.name)} (${escapeHtml(s.handle)})</option>`).join("");
     }
 
     function switchSavedStudio(indexStr) {
@@ -1687,7 +1933,7 @@
       const title = document.getElementById("briefTitle").value.trim();
       const tag = document.getElementById("briefTag").value;
       const summary = document.getElementById("briefSummary").value.trim();
-      if (!title) return;
+      if (!title || !summary) return;
       const author = studioData ? `Published by ${studioData.name}` : "New · Studio Brief";
       customBriefs.push({ title, tag, summary, author });
       persistAllState(true);
@@ -1696,7 +1942,6 @@
       showToast("Brief published to Research Desk.");
     });
 
-    // All Sectors with continuous price updates + flash + dynamic hero sparkline + live crypto sync
     const MARKET_SECTORS = [
       { id: "xauusd", name: "Gold", symbol: "XAU/USD", sector: "metals", sectorLabel: "METALS", price: 3548.00, chg24: -2.14, chg7d: -4.85, note: "Bullion · Rates & USD watch", decimals: 2, prefix: "$", tickVol: 0.0012 },
       { id: "xagusd", name: "Silver", symbol: "XAG/USD", sector: "metals", sectorLabel: "METALS", price: 33.45, chg24: -1.45, chg7d: -3.10, note: "Precious & industrial metal", decimals: 2, prefix: "$", tickVol: 0.0018 },
@@ -1722,11 +1967,10 @@
     let lastDirections = {};
     let sparkHistory = [3548, 3551, 3544, 3549, 3553, 3546, 3550, 3547, 3552, 3548];
 
-    // --- STUDIO WATCHLIST & MACRO NOTES ---
     function populateWatchlistDropdown() {
       const sel = document.getElementById("watchlistAddSelect");
       if (!sel) return;
-      sel.innerHTML = MARKET_SECTORS.map(m => `<option value="${m.id}">${m.symbol} · ${m.name}</option>`).join("");
+      sel.innerHTML = MARKET_SECTORS.map(m => `<option value="${escapeHtml(m.id)}">${escapeHtml(m.symbol)} · ${escapeHtml(m.name)}</option>`).join("");
     }
     populateWatchlistDropdown();
 
@@ -1784,13 +2028,13 @@
         return `
           <div class="col-sm-6 col-xl-4">
             <div class="surface-soft p-3 d-flex justify-content-between align-items-center gap-2">
-              <div style="cursor:pointer" onclick="selectInstrument('${item.id}');document.getElementById('markets').scrollIntoView({behavior:'smooth'})">
-                <div class="fw-bold small">${item.symbol} <span class="tag ms-1">${item.sectorLabel}</span></div>
-                <div class="mono fw-bold mt-1">${fmtAssetPrice(item.price, item)} <span class="small ${up ? "up" : "down"}">${up ? "+" : ""}${item.chg24.toFixed(2)}%</span></div>
+              <div style="cursor:pointer" onclick="selectInstrument('${escapeHtml(item.id)}');document.getElementById('markets').scrollIntoView({behavior:'smooth'})">
+                <div class="fw-bold small">${escapeHtml(item.symbol)} <span class="tag ms-1">${escapeHtml(item.sectorLabel)}</span></div>
+                <div class="mono fw-bold mt-1">${escapeHtml(fmtAssetPrice(item.price, item))} <span class="small ${up ? "up" : "down"}">${up ? "+" : ""}${item.chg24.toFixed(2)}%</span></div>
               </div>
               <div class="d-flex gap-1">
-                <button type="button" class="btn-ghost py-1 px-2 small" title="Inspect chart" onclick="selectInstrument('${item.id}');document.getElementById('markets').scrollIntoView({behavior:'smooth'})"><i class="bi bi-graph-up"></i></button>
-                <button type="button" class="btn btn-outline-danger py-1 px-2 small" title="Unpin" onclick="removeWatchlistAsset('${item.id}')"><i class="bi bi-x-lg"></i></button>
+                <button type="button" class="btn-ghost py-1 px-2 small" title="Inspect chart" onclick="selectInstrument('${escapeHtml(item.id)}');document.getElementById('markets').scrollIntoView({behavior:'smooth'})"><i class="bi bi-graph-up"></i></button>
+                <button type="button" class="btn btn-outline-danger py-1 px-2 small" title="Unpin" onclick="removeWatchlistAsset('${escapeHtml(item.id)}')"><i class="bi bi-x-lg"></i></button>
               </div>
             </div>
           </div>
@@ -1808,7 +2052,6 @@
       showToast("Macro desk notes saved!");
     }
 
-    // --- TRADE & MISTAKE JOURNAL ---
     function renderTradeJournal() {
       const listEl = document.getElementById("tradeJournalList");
       const statsEl = document.getElementById("journalStatsBadges");
@@ -1840,15 +2083,15 @@
           <div class="surface-soft p-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>
               <div class="d-flex align-items-center gap-2 flex-wrap">
-                <strong class="mono">${t.pair}</strong>
-                <span class="tag">${t.side} · ${t.risk}% Risk</span>
-                <span class="pill ${badgeCls}" style="padding:2px 8px;font-size:10px">${t.outcome}</span>
-                <span class="tag" style="${tagGood ? "color:var(--green);border-color:var(--green)" : "color:var(--gold);border-color:var(--gold)"}">${t.tag}</span>
+                <strong class="mono">${escapeHtml(t.pair)}</strong>
+                <span class="tag">${escapeHtml(t.side)} · ${escapeHtml(t.risk)}% Risk</span>
+                <span class="pill ${badgeCls}" style="padding:2px 8px;font-size:10px">${escapeHtml(t.outcome)}</span>
+                <span class="tag" style="${tagGood ? "color:var(--green);border-color:var(--green)" : "color:var(--gold);border-color:var(--gold)"}">${escapeHtml(t.tag)}</span>
               </div>
-              ${t.note ? `<div class="small muted mt-1">${t.note}</div>` : ""}
+              ${t.note ? `<div class="small muted mt-1">${escapeHtml(t.note)}</div>` : ""}
             </div>
             <div class="d-flex align-items-center gap-2">
-              <small class="muted mono">${t.date}</small>
+              <small class="muted mono">${escapeHtml(t.date)}</small>
               <button type="button" class="btn btn-outline-danger py-1 px-2 small" onclick="deleteJournalTrade(${idx})"><i class="bi bi-trash"></i></button>
             </div>
           </div>
@@ -1879,7 +2122,6 @@
       renderTradeJournal();
     }
 
-    // --- STRATEGY PLAYBOOK & PRE-TRADE CHECKLIST ---
     function renderPlaybookRules() {
       const wrap = document.getElementById("playbookRulesList");
       if (!wrap) return;
@@ -1887,7 +2129,7 @@
         <div class="checklist-row justify-content-between ${r.checked ? "checked" : ""}" onclick="togglePlaybookRule(${idx})">
           <div class="d-flex align-items-start gap-2">
             <input type="checkbox" ${r.checked ? "checked" : ""} onclick="event.stopPropagation();togglePlaybookRule(${idx})">
-            <span class="small ${r.checked ? "text-decoration-line-through muted" : ""}">${r.text}</span>
+            <span class="small ${r.checked ? "text-decoration-line-through muted" : ""}">${escapeHtml(r.text)}</span>
           </div>
           <button type="button" class="btn btn-link btn-sm p-0 text-danger" title="Delete rule" onclick="event.stopPropagation();deletePlaybookRule(${idx})"><i class="bi bi-x-lg"></i></button>
         </div>
@@ -1925,7 +2167,6 @@
       showToast("Rule added to Strategy Playbook!");
     });
 
-    // --- SECURITY & SELF-CUSTODY VAULT ---
     function renderSecurityVault() {
       const wrap = document.getElementById("securityChecklistWrap");
       const badge = document.getElementById("securityScoreBadge");
@@ -1942,7 +2183,7 @@
         <div class="checklist-row justify-content-between ${s.checked ? "checked" : ""}" onclick="toggleSecurityCheck(${idx})">
           <div class="d-flex align-items-start gap-2">
             <input type="checkbox" ${s.checked ? "checked" : ""} onclick="event.stopPropagation();toggleSecurityCheck(${idx})">
-            <span class="small">${s.text}</span>
+            <span class="small">${escapeHtml(s.text)}</span>
           </div>
           <button type="button" class="btn btn-link btn-sm p-0 text-danger" title="Remove check" onclick="event.stopPropagation();deleteSecurityCheck(${idx})"><i class="bi bi-x-lg"></i></button>
         </div>
@@ -2151,18 +2392,18 @@
           const dir = lastDirections[item.id] || "";
           const flashCls = dir === "up" ? "tick-flash-up" : dir === "down" ? "tick-flash-down" : "";
           return `
-            <div class="market-row ${isSel ? "selected" : ""}" data-item-id="${item.id}" onclick="selectInstrument('${item.id}')">
+            <div class="market-row ${isSel ? "selected" : ""}" data-item-id="${escapeHtml(item.id)}" onclick="selectInstrument('${escapeHtml(item.id)}')">
               <div class="coin">
-                <span class="coin-icon">${item.symbol.slice(0, 3)}</span>
+                <span class="coin-icon">${escapeHtml(item.symbol.slice(0, 3))}</span>
                 <div>
-                  <div>${item.name} <span class="tag ms-1">${item.sectorLabel}</span></div>
-                  <small class="muted mono">${item.symbol}</small>
+                  <div>${escapeHtml(item.name)} <span class="tag ms-1">${escapeHtml(item.sectorLabel)}</span></div>
+                  <small class="muted mono">${escapeHtml(item.symbol)}</small>
                 </div>
               </div>
-              <div class="market-price ${dir} ${flashCls}">${fmtAssetPrice(item.price, item)}</div>
+              <div class="market-price ${dir} ${flashCls}">${escapeHtml(fmtAssetPrice(item.price, item))}</div>
               <div><span class="pill ${up24 ? "up" : "down"}">${up24 ? "+" : ""}${item.chg24.toFixed(2)}%</span></div>
               <div class="hide-mobile"><span class="pill ${up7d ? "up" : "down"}">${up7d ? "+" : ""}${item.chg7d.toFixed(2)}%</span></div>
-              <div class="hide-mobile small muted">${item.note}</div>
+              <div class="hide-mobile small muted">${escapeHtml(item.note)}</div>
             </div>
           `;
         }).join("");
@@ -2179,7 +2420,7 @@
           </span>
         ` + featured.map(c => {
           const up = c.chg24 >= 0;
-          return `<span class="ticker-item"><b>${c.symbol}</b>${fmtAssetPrice(c.price, c)} <span class="${up ? "up" : "down"}">${up ? "+" : ""}${c.chg24.toFixed(2)}%</span></span>`;
+          return `<span class="ticker-item"><b>${escapeHtml(c.symbol)}</b>${escapeHtml(fmtAssetPrice(c.price, c))} <span class="${up ? "up" : "down"}">${up ? "+" : ""}${c.chg24.toFixed(2)}%</span></span>`;
         }).join("");
       }
 
@@ -2236,7 +2477,7 @@
       try {
         const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana&order=market_cap_desc&price_change_percentage=24h,7d");
         if (!res.ok) {
-          setFeedNotice("CoinGecko feed temporarily rate-limited or busy — cross-sector live ticks remain active.");
+          setFeedNotice("Live crypto feed is taking a quick breather—cross-sector market updates stay active.");
           return;
         }
         const coins = await res.json();
@@ -2254,7 +2495,7 @@
         const activeItem = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
         renderChart(activeItem);
       } catch {
-        setFeedNotice("Live crypto endpoint took too long to respond — using active cross-sector updates.");
+        setFeedNotice("Live crypto endpoint took a moment to respond—all other sector updates continue smoothly.");
       }
     }
 
@@ -2374,6 +2615,9 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const googleProvider = new GoogleAuthProvider();
+    googleProvider.setCustomParameters({ prompt: "select_account" });
+
+    let authMailCooldownUntil = 0;
 
     window.syncUserStateToCloud = async function (payload) {
       const user = auth.currentUser;
@@ -2412,19 +2656,37 @@
       accountMessage.textContent = text;
       accountMessage.className = `small mt-2 ${isError ? "text-danger" : "text-success"}`;
     }
+
     function friendlyError(err) {
       const map = {
-        "auth/invalid-credential": "Incorrect email or password.",
-        "auth/user-not-found": "No account found with that email.",
-        "auth/wrong-password": "Incorrect password.",
-        "auth/email-already-in-use": "An account with this email already exists.",
-        "auth/weak-password": "Password must be at least 8 characters.",
-        "auth/invalid-email": "Please enter a valid email address.",
-        "auth/popup-closed-by-user": "Google sign-in popup was closed before completing.",
-        "auth/unauthorized-domain": "Add this domain in Firebase Console -> Authentication -> Settings -> Authorized domains."
+        "auth/too-many-requests": "No worries—too many requests were sent in a short time. Take a quick breather, check your Spam/Junk folder in case an email already arrived, and try again in a few minutes.",
+        "auth/invalid-credential": "Hmm, that email or password didn't match. Double-check your typing or tap Forgot Password? if needed.",
+        "auth/user-not-found": "We couldn't find an account with that email yet. You can switch to Create Account to start fresh!",
+        "auth/wrong-password": "That password doesn't match this account—give it another try or reset your password.",
+        "auth/email-already-in-use": "Good news: an account with this email already exists! Switch to Sign In to access it.",
+        "auth/weak-password": "Please choose a slightly stronger password with at least 8 characters.",
+        "auth/invalid-email": "That doesn't look like a valid email address yet—check for typos like missing @ or .com.",
+        "auth/network-request-failed": "Looks like your connection dropped for a second. Check your internet and try again—your local studio is safe.",
+        "auth/popup-closed-by-user": "The Google sign-in window closed before finishing. Whenever you're ready, tap Continue with Google again.",
+        "auth/popup-blocked": "Your browser blocked the sign-in popup. Allow popups for this site or sign in with email and password.",
+        "auth/unauthorized-domain": "This domain isn't listed yet in Firebase Authorized Domains. Add it in Firebase Console -> Authentication -> Settings."
       };
-      return map[err?.code] || err?.message || "Authentication failed. Please try again.";
+      return map[err?.code] || "Something unexpected happened, and your saved studio is safe. Please try again in a moment.";
     }
+
+    function checkMailCooldown() {
+      const remainingSec = Math.ceil((authMailCooldownUntil - Date.now()) / 1000);
+      if (remainingSec > 0) {
+        setMessage(`We just sent an email—please wait ${remainingSec}s or check your Spam/Junk folder before sending another.`, true);
+        return false;
+      }
+      return true;
+    }
+
+    function startMailCooldown(seconds = 45) {
+      authMailCooldownUntil = Date.now() + seconds * 1000;
+    }
+
     function setMode(mode) {
       const isLogin = mode === "login";
       loginForm.hidden = !isLogin;
@@ -2452,7 +2714,7 @@
       }
       const studioSummary = document.getElementById("studioAccountSummary");
       if (studioSummary) studioSummary.textContent = `Signed in as ${displayName} (${email}) · ${verified ? "Email verified" : "Email unverified"}`;
-      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${displayName}`;
+      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${escapeHtml(displayName)}`;
       renderAvatarEverywhere(displayName);
     }
 
@@ -2463,7 +2725,7 @@
       e.preventDefault();
       try {
         await signInWithEmailAndPassword(auth, document.getElementById("loginEmail").value.trim(), document.getElementById("loginPassword").value);
-        setMessage("Signed in successfully.");
+        setMessage("Signed in successfully—welcome back!");
         window.showToast?.("Welcome back to BlockPulse!");
       } catch (err) { setMessage(friendlyError(err), true); }
     });
@@ -2477,7 +2739,13 @@
           profilePrefs.displayName = name;
           await updateProfile(cred.user, { displayName: name });
         }
-        try { await sendEmailVerification(cred.user); setMessage("Account created! Verification email sent."); } catch { setMessage("Account created!"); }
+        try {
+          await sendEmailVerification(cred.user);
+          startMailCooldown(45);
+          setMessage("Account created! We sent a verification link—check your inbox or Spam folder.");
+        } catch {
+          setMessage("Account created! You can send a verification email anytime from your profile.");
+        }
         renderUserProfile(cred.user);
         window.showToast?.(`Welcome to BlockPulse, ${name || "Member"}!`);
       } catch (err) { setMessage(friendlyError(err), true); }
@@ -2490,7 +2758,7 @@
       profilePrefs.displayName = newName;
       localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
       document.getElementById("userDisplayName").textContent = newName;
-      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${newName}`;
+      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${escapeHtml(newName)}`;
       renderAvatarEverywhere(newName);
       if (auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName: newName }); } catch {}
@@ -2502,17 +2770,31 @@
 
     sendVerificationBtn?.addEventListener("click", async () => {
       if (!auth.currentUser) return;
-      try { await sendEmailVerification(auth.currentUser); setMessage(`Verification email sent to ${auth.currentUser.email}.`); } catch (err) { setMessage(friendlyError(err), true); }
+      if (!checkMailCooldown()) return;
+      try {
+        await sendEmailVerification(auth.currentUser);
+        startMailCooldown(45);
+        setMessage(`Verification email sent to ${auth.currentUser.email}. Check your inbox or Spam folder.`);
+      } catch (err) { setMessage(friendlyError(err), true); }
     });
 
     refreshVerificationBtn?.addEventListener("click", async () => {
       if (!auth.currentUser) return;
-      try { await auth.currentUser.reload(); renderUserProfile(auth.currentUser); setMessage(auth.currentUser.emailVerified ? "Email is now verified!" : "Still unverified."); } catch (err) { setMessage(friendlyError(err), true); }
+      try {
+        await auth.currentUser.reload();
+        renderUserProfile(auth.currentUser);
+        setMessage(auth.currentUser.emailVerified ? "Awesome—your email is verified!" : "Not verified yet—tap the link in your email, then refresh again.");
+      } catch (err) { setMessage(friendlyError(err), true); }
     });
 
     async function triggerPasswordReset(targetEmail) {
-      if (!targetEmail) return setMessage("Enter your email address first.", true);
-      try { await sendPasswordResetEmail(auth, targetEmail); setMessage(`Password reset email sent to ${targetEmail}.`); } catch (err) { setMessage(friendlyError(err), true); }
+      if (!targetEmail) return setMessage("Enter your email address first so we know where to send the reset link.", true);
+      if (!checkMailCooldown()) return;
+      try {
+        await sendPasswordResetEmail(auth, targetEmail);
+        startMailCooldown(45);
+        setMessage(`Password reset link sent to ${targetEmail}. Check your inbox or Spam/Junk folder.`);
+      } catch (err) { setMessage(friendlyError(err), true); }
     }
     resetPasswordBtn?.addEventListener("click", () => triggerPasswordReset(document.getElementById("loginEmail").value.trim()));
     profileResetPasswordBtn?.addEventListener("click", () => triggerPasswordReset(auth.currentUser?.email || ""));
@@ -2522,9 +2804,13 @@
     });
 
     signOutBtn?.addEventListener("click", async () => {
-      await signOut(auth);
-      setMessage("Signed out.");
-      window.showToast?.("You have been signed out.");
+      try {
+        await signOut(auth);
+        setMessage("Signed out safely. Your local studio settings stay right here.");
+        window.showToast?.("You have been signed out.");
+      } catch (err) {
+        setMessage(friendlyError(err), true);
+      }
     });
 
     onAuthStateChanged(auth, async (user) => {
