@@ -80,14 +80,14 @@
     .surface-soft{background:var(--panel2);border:1px solid var(--line);border-radius:16px}
     .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);font:500 11px "DM Mono";letter-spacing:.13em;text-transform:uppercase}
     .eyebrow:before{content:"";width:19px;height:1px;background:currentColor}
-    .btn-primary-bp{background:var(--blue);color:white;border:1px solid var(--blue);border-radius:11px;padding:11px 17px;font-weight:700;cursor:pointer}
+    .btn-primary-bp{background:var(--blue);color:white;border:1px solid var(--blue);border-radius:11px;padding:11px 17px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
     .btn-primary-bp:hover{background:#286fe0;color:white;transform:translateY(-1px)}
-    .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--panel);border-radius:11px;padding:10px 15px;font-weight:600;cursor:pointer}
+    .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--panel);border-radius:11px;padding:10px 15px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
     .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
     .navbar-bp{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
     .brand-mark{height:37px;width:37px;border-radius:12px;background:linear-gradient(135deg,#64a8ff,#2559d8);display:grid;place-items:center;color:white;box-shadow:0 7px 22px #347dff55}
     .brand{font:700 21px "Space Grotesk";letter-spacing:-.04em}
-    .nav-link-bp{color:var(--muted);font-weight:600;font-size:13px;padding:10px 12px}
+    .nav-link-bp{color:var(--muted);font-weight:600;font-size:13px;padding:10px 11px;white-space:nowrap}
     .nav-link-bp:hover{color:var(--text)}
     .icon-btn{height:40px;width:40px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--text);display:grid;place-items:center;cursor:pointer}
     .icon-btn:hover{border-color:var(--blue);color:var(--blue)}
@@ -126,6 +126,7 @@
     .sparkline polyline{fill:none;stroke:#4ed5c6;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:all .3s ease}
     .card-bp{height:100%;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:17px;transition:.22s}
     .card-bp:hover{transform:translateY(-4px);border-color:#4d91ff88;box-shadow:var(--shadow)}
+    .partner-icon-box{width:44px;height:44px;border-radius:13px;background:color-mix(in srgb,var(--blue) 14%,var(--panel2));border:1px solid color-mix(in srgb,var(--blue) 35%,var(--line));color:var(--blue);display:grid;place-items:center;font-size:20px;flex-shrink:0}
     .tag{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:99px;padding:4px 9px;font:10px "DM Mono";color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
     .sector-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
     .sector-btn{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:99px;padding:6px 14px;font:500 11px "DM Mono";text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.15s}
@@ -204,11 +205,12 @@
       </a>
       <div class="d-none d-lg-flex align-items-center">
         <a class="nav-link-bp" href="#markets">Markets</a>
-        <a class="nav-link-bp" href="#academy">Academy & Videos</a>
+        <a class="nav-link-bp" href="#academy">Academy</a>
         <a class="nav-link-bp" href="#research">Research</a>
         <a class="nav-link-bp" href="#tools">Tools</a>
+        <a class="nav-link-bp" href="#partners">Tech Partners</a>
         <a class="nav-link-bp" href="#membership">Membership</a>
-        <a class="nav-link-bp" href="#studio">Learning Studio</a>
+        <a class="nav-link-bp" href="#studio">Studio</a>
       </div>
       <div class="d-flex align-items-center gap-2">
         <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle light/dark theme"><span class="fw-bold" style="font-size:15px;line-height:1">◑</span></button>
@@ -233,6 +235,7 @@
       <a class="btn-ghost text-start py-3" href="#academy" onclick="navigateFromMenu(event, false, '#academy')">Academy & Videos</a>
       <a class="btn-ghost text-start py-3" href="#research" onclick="navigateFromMenu(event, false, '#research')">Research</a>
       <a class="btn-ghost text-start py-3" href="#tools" onclick="navigateFromMenu(event, false, '#tools')">Tools</a>
+      <a class="btn-ghost text-start py-3" href="#partners" onclick="navigateFromMenu(event, false, '#partners')">Tech Partners</a>
       <a class="btn-ghost text-start py-3" href="#membership" onclick="navigateFromMenu(event, false, '#membership')">Membership</a>
       <a class="btn-primary-bp text-center py-3 mt-1" href="#studio" onclick="navigateFromMenu(event, false, '#studio')">Learning Studio</a>
     </div>
@@ -256,8 +259,8 @@
             <div class="d-flex flex-wrap gap-2">
               <a href="#markets" class="btn-primary-bp">Inspect All Sectors <i class="bi bi-arrow-right ms-1"></i></a>
               <a href="#studio" class="btn-ghost"><i class="bi bi-mortarboard me-1"></i>Open Learning Studio</a>
+              <a href="#partners" class="btn-ghost"><i class="bi bi-laptop me-1"></i>Tech Partners</a>
               <a href="#academy" class="btn-ghost">Academy & Videos</a>
-              <a href="#tools" class="btn-ghost">Tools</a>
               <a href="#membership" class="btn-ghost">Membership</a>
             </div>
           </div>
@@ -508,7 +511,35 @@
       </div>
     </section>
 
-    <section class="section" id="membership">
+    <!-- TECH & ELECTRONICS PARTNER SECTION (MOBILE PHONES, GAMING PC, LAPTOPS & ELECTRONICS) -->
+    <section class="section" id="partners">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+          <div>
+            <div class="eyebrow">Tech & Electronics Partners</div>
+            <h2 class="display fw-bold mt-2">Phones, laptops, gaming PCs <span class="text-blue">& study gear.</span></h2>
+            <p class="muted mb-0">Partner storefronts focused strictly on mobile devices, laptops, gaming PCs, and electronics that power research, charting, and mobile learning.</p>
+          </div>
+          <a href="#studio" class="btn-ghost small" onclick="switchStudioTab('partners')"><i class="bi bi-link-45deg me-1 text-blue"></i>Manage Partner Links</a>
+        </div>
+
+        <div class="surface-soft px-3 py-2 small muted mb-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <span><i class="bi bi-info-circle text-blue me-1"></i><strong>Partner Disclosure:</strong> BlockPulse focuses on investment education and may partner with electronics/tech retailers—some outbound links may earn a referral commission at no extra cost to you.</span>
+          <span class="tag">TECH & ELECTRONICS ONLY</span>
+        </div>
+
+        <div class="sector-tabs" role="tablist" aria-label="Tech partner categories">
+          <button type="button" class="sector-btn active" data-partner-cat="all" onclick="filterTechPartners('all')">All Tech</button>
+          <button type="button" class="sector-btn" data-partner-cat="phones" onclick="filterTechPartners('phones')">Mobile Phones</button>
+          <button type="button" class="sector-btn" data-partner-cat="laptops-pc" onclick="filterTechPartners('laptops-pc')">Laptops & Gaming PCs</button>
+          <button type="button" class="sector-btn" data-partner-cat="electronics" onclick="filterTechPartners('electronics')">Electronics & Gear</button>
+        </div>
+
+        <div class="row g-3" id="techPartnersGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="membership" style="background:var(--panel);border-block:1px solid var(--line)">
       <div class="container">
         <div class="text-center mb-5">
           <div class="eyebrow">Membership & Billing</div>
@@ -543,13 +574,13 @@
     </section>
 
     <!-- FULL LEARNING & EXECUTION STUDIO WORKSPACE -->
-    <section class="section section-sm" id="studio" style="background:var(--panel);border-top:1px solid var(--line)">
+    <section class="section section-sm" id="studio">
       <div class="container">
         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
           <div>
             <div class="eyebrow">Learning & Execution Studio</div>
             <h2 class="display fw-bold mt-2">Your complete <span class="text-blue">market studio.</span></h2>
-            <p class="muted mb-0">Manage your custom curriculum, pinned market watchlist, trade journal, strategy playbook, and self-custody security checklist.</p>
+            <p class="muted mb-0">Manage your custom curriculum, pinned market watchlist, trade journal, strategy playbook, security checklist, and tech partner links.</p>
           </div>
           <div id="activeStudioBanner" class="surface-soft px-3 py-2 small">
             <i class="bi bi-mortarboard-fill text-blue me-1"></i>
@@ -584,6 +615,7 @@
             <a href="#studio" id="tabPlaybook" onclick="switchStudioTab('playbook');return false"><i class="bi bi-compass-fill me-2"></i>Strategy Playbook</a>
             <a href="#studio" id="tabSecurity" onclick="switchStudioTab('security');return false"><i class="bi bi-shield-lock-fill me-2"></i>Security Vault</a>
             <a href="#studio" id="tabCurriculum" onclick="switchStudioTab('curriculum');return false"><i class="bi bi-journal-bookmark-fill me-2"></i>Lesson Builder</a>
+            <a href="#studio" id="tabPartners" onclick="switchStudioTab('partners');return false"><i class="bi bi-laptop me-2"></i>Tech Partners</a>
             <a href="#studio" id="tabNewBrief" onclick="switchStudioTab('brief');return false"><i class="bi bi-file-earmark-plus me-2"></i>New Brief</a>
             <a href="#studio" id="tabVideos" onclick="switchStudioTab('videos');return false"><i class="bi bi-camera-video me-2"></i>Add Video</a>
             <a href="#studio" id="tabMembers" onclick="switchStudioTab('members');return false"><i class="bi bi-credit-card-2-front me-2"></i>Account & Billing</a>
@@ -682,6 +714,24 @@
                   <div class="col-12"><label class="form-label small muted">Core lesson summary & key takeaway</label><textarea class="form-control" id="lessonSummaryInput" rows="2" maxlength="1200" placeholder="Explain the concept clearly with 1 practical rule or checklist item…" required></textarea></div>
                   <div class="col-md-8"><label class="form-label small muted">Optional video URL (YouTube or .mp4)</label><input class="form-control" id="lessonVideoInput" maxlength="400" placeholder="https://www.youtube.com/watch?v=... (optional)"></div>
                   <div class="col-md-4 d-flex align-items-end"><button type="submit" class="btn-primary-bp w-100" id="lessonSubmitBtn"><i class="bi bi-plus-circle me-1"></i>Add Lesson to Studio</button></div>
+                </div>
+              </form>
+            </div>
+
+            <div id="studioPanePartners" hidden>
+              <div class="mb-3">
+                <h6 class="fw-bold mb-1">Tech & Electronics Partner Storefronts</h6>
+                <small class="muted">Update your tracked partner/affiliate links for mobile phone, laptop, gaming PC, and electronics storefronts, or add a new tech partner.</small>
+              </div>
+              <div class="d-grid gap-2 mb-3" id="studioPartnerLinksList"></div>
+              <form id="addTechPartnerForm" class="surface-soft p-3">
+                <div class="small fw-bold mb-2">Add a Tech / Electronics Partner</div>
+                <div class="row g-2">
+                  <div class="col-sm-4"><input class="form-control form-control-sm" id="newPartnerName" maxlength="70" placeholder="Store or app name" required></div>
+                  <div class="col-sm-3"><select class="form-select form-select-sm" id="newPartnerCat"><option value="phones">Mobile Phones</option><option value="laptops-pc">Laptops & Gaming PCs</option><option value="electronics">Electronics & Gear</option></select></div>
+                  <div class="col-sm-5"><input class="form-control form-control-sm" id="newPartnerUrl" maxlength="400" placeholder="https://partner-link.example.com" required></div>
+                  <div class="col-sm-9"><input class="form-control form-control-sm mt-1" id="newPartnerDesc" maxlength="180" placeholder="Short use-case for learners/traders (e.g. Fast multi-monitor laptops for charting)…" required></div>
+                  <div class="col-sm-3"><button type="submit" class="btn-primary-bp btn-sm w-100 mt-1"><i class="bi bi-plus-lg me-1"></i>Add Partner</button></div>
                 </div>
               </form>
             </div>
@@ -889,7 +939,7 @@
                 <input class="form-control mb-2" type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required>
                 <label class="form-label small">Password</label>
                 <input class="form-control mb-3" type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
-                <button class="btn-primary-bp w-100" type="submit">Sign In</button>
+                <button type="submit" class="btn-primary-bp w-100">Sign In</button>
                 <button type="button" class="btn btn-link w-100 mt-1 small" id="resetPasswordBtn">Forgot Password?</button>
               </form>
               <form id="registerForm" hidden>
@@ -899,7 +949,7 @@
                 <input class="form-control mb-2" type="email" id="registerEmail" placeholder="you@example.com" autocomplete="email" required>
                 <label class="form-label small">Create password</label>
                 <input class="form-control mb-3" type="password" id="registerPassword" minlength="8" placeholder="At least 8 characters" autocomplete="new-password" required>
-                <button class="btn-primary-bp w-100" type="submit">Create My Account</button>
+                <button type="submit" class="btn-primary-bp w-100">Create My Account</button>
               </form>
               <div class="text-center my-2"><small class="muted">OR</small></div>
               <button type="button" class="btn btn-outline-secondary w-100" id="googleSignInBtn">Continue with Google</button>
@@ -1197,6 +1247,49 @@
     });
     updateCalculators();
 
+    const DEFAULT_TECH_PARTNERS = [
+      {
+        id: "partner-phones",
+        name: "Mobile Phones & Alerts Hub",
+        category: "phones",
+        categoryLabel: "MOBILE PHONES",
+        icon: "bi-phone",
+        description: "Fast smartphones with smooth displays and reliable connectivity for mobile market checks, price alerts, and on-the-go lessons.",
+        url: "https://www.sharafdg.com/",
+        cta: "Browse Mobile Phones"
+      },
+      {
+        id: "partner-laptops",
+        name: "Laptops & Trading Workstations",
+        category: "laptops-pc",
+        categoryLabel: "LAPTOPS & GAMING PCs",
+        icon: "bi-laptop",
+        description: "Portable laptops and high-refresh screens suited for multi-tab research, spreadsheet risk calculators, and chart study.",
+        url: "https://www.sharafdg.com/",
+        cta: "Explore Laptops"
+      },
+      {
+        id: "partner-gaming-pc",
+        name: "Gaming PCs & Multi-Screen Rigs",
+        category: "laptops-pc",
+        categoryLabel: "LAPTOPS & GAMING PCs",
+        icon: "bi-pc-display",
+        description: "Desktop & gaming PC setups built for heavy multitasking, dual-monitor market layouts, and smooth video explainers.",
+        url: "https://www.geekay.com/",
+        cta: "View Gaming PCs"
+      },
+      {
+        id: "partner-electronics",
+        name: "Monitors, Audio & Desk Electronics",
+        category: "electronics",
+        categoryLabel: "ELECTRONICS & GEAR",
+        icon: "bi-display",
+        description: "External monitors, mechanical keyboards, chargers, and headphones that keep your study and trading desk clean and focused.",
+        url: "https://www.sharafdg.com/",
+        cta: "Shop Electronics"
+      }
+    ];
+
     const ACADEMY_TRACK_GUIDES = {
       foundations: {
         badge: "FOREX TRACK",
@@ -1358,6 +1451,8 @@
     let studioLessons = safeJsonParse("bp-studio-lessons", null) || [...DEFAULT_LESSONS];
     let customBriefs = safeJsonParse("bp-briefs", []);
     let customVideos = safeJsonParse("bp-videos", null) || [...DEFAULT_VIDEOS];
+    let techPartners = safeJsonParse("bp-tech-partners", null) || [...DEFAULT_TECH_PARTNERS];
+    let activePartnerCategory = "all";
 
     let studioWatchlist = safeJsonParse("bp-studio-watchlist", ["xauusd", "btcusd", "ukoil", "usdaed"]);
     let studioMacroNotes = localStorage.getItem("bp-studio-macro-notes") || "";
@@ -1380,6 +1475,7 @@
         localStorage.setItem("bp-studio-lessons", JSON.stringify(studioLessons.slice(0, 40)));
         localStorage.setItem("bp-briefs", JSON.stringify(customBriefs.slice(0, 20)));
         localStorage.setItem("bp-videos", JSON.stringify(customVideos.slice(0, 20)));
+        localStorage.setItem("bp-tech-partners", JSON.stringify(techPartners.slice(0, 25)));
         localStorage.setItem("bp-studio-watchlist", JSON.stringify(studioWatchlist.slice(0, 15)));
         localStorage.setItem("bp-studio-macro-notes", studioMacroNotes);
         localStorage.setItem("bp-studio-journal", JSON.stringify(studioJournal.slice(0, 50)));
@@ -1402,6 +1498,7 @@
           lessons: studioLessons.slice(0, 40),
           briefs: customBriefs.slice(0, 20),
           videos: customVideos.slice(0, 20),
+          techPartners: techPartners.slice(0, 25),
           watchlist: studioWatchlist.slice(0, 15),
           macroNotes: studioMacroNotes,
           journal: studioJournal.slice(0, 50),
@@ -1431,6 +1528,7 @@
       if (Array.isArray(remote.lessons) && remote.lessons.length) studioLessons = remote.lessons;
       if (Array.isArray(remote.briefs)) customBriefs = remote.briefs;
       if (Array.isArray(remote.videos) && remote.videos.length) customVideos = remote.videos;
+      if (Array.isArray(remote.techPartners) && remote.techPartners.length) techPartners = remote.techPartners;
       if (Array.isArray(remote.watchlist)) studioWatchlist = remote.watchlist;
       if (typeof remote.macroNotes === "string") {
         studioMacroNotes = remote.macroNotes;
@@ -1452,11 +1550,125 @@
       renderStudioLessons();
       renderCustomBriefs();
       renderVideos();
+      renderTechPartners();
+      renderStudioPartnerManager();
       renderStudioWatchlist();
       renderTradeJournal();
       renderPlaybookRules();
       renderSecurityVault();
     };
+
+    const PARTNER_CAT_META = {
+      phones: { label: "MOBILE PHONES", icon: "bi-phone" },
+      "laptops-pc": { label: "LAPTOPS & GAMING PCs", icon: "bi-laptop" },
+      electronics: { label: "ELECTRONICS & GEAR", icon: "bi-display" }
+    };
+
+    function renderTechPartners() {
+      const grid = document.getElementById("techPartnersGrid");
+      if (!grid) return;
+      const list = activePartnerCategory === "all"
+        ? techPartners
+        : techPartners.filter(p => p.category === activePartnerCategory);
+
+      grid.innerHTML = list.map(p => {
+        const safeUrl = safeHttpUrl(p.url) || "https://www.sharafdg.com/";
+        const catMeta = PARTNER_CAT_META[p.category] || PARTNER_CAT_META.electronics;
+        return `
+          <div class="col-md-6 col-xl-3">
+            <article class="card-bp d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                  <div class="partner-icon-box"><i class="bi ${escapeHtml(p.icon || catMeta.icon)}"></i></div>
+                  <span class="tag">${escapeHtml(p.categoryLabel || catMeta.label)}</span>
+                </div>
+                <h5 class="fw-bold mb-2">${escapeHtml(p.name)}</h5>
+                <p class="small muted mb-4">${escapeHtml(p.description)}</p>
+              </div>
+              <a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer sponsored" class="btn-ghost w-100 small">
+                ${escapeHtml(p.cta || "Visit Partner")} <i class="bi bi-box-arrow-up-right ms-1"></i>
+              </a>
+            </article>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function filterTechPartners(cat) {
+      activePartnerCategory = cat;
+      document.querySelectorAll("[data-partner-cat]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.partnerCat === cat);
+      });
+      renderTechPartners();
+    }
+
+    function renderStudioPartnerManager() {
+      const listEl = document.getElementById("studioPartnerLinksList");
+      if (!listEl) return;
+      listEl.innerHTML = techPartners.map((p, idx) => `
+        <div class="surface-soft p-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div class="min-w-0 flex-fill" style="min-width:200px">
+            <div class="fw-bold small">${escapeHtml(p.name)} <span class="tag ms-1">${escapeHtml(p.categoryLabel || "TECH")}</span></div>
+            <div class="small muted text-truncate mono">${escapeHtml(p.url)}</div>
+          </div>
+          <div class="d-flex align-items-center gap-2 flex-fill" style="max-width:340px">
+            <input type="url" class="form-control form-control-sm mono" id="partnerUrlEdit-${idx}" value="${escapeHtml(p.url)}" placeholder="https://...">
+            <button type="button" class="btn-ghost py-1 px-2 small" onclick="updateTechPartnerUrl(${idx})">Save</button>
+            <button type="button" class="btn btn-outline-danger py-1 px-2 small" title="Remove partner" onclick="deleteTechPartner(${idx})"><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateTechPartnerUrl(idx) {
+      const input = document.getElementById(`partnerUrlEdit-${idx}`);
+      if (!input || !techPartners[idx]) return;
+      const safe = safeHttpUrl(input.value.trim());
+      if (!safe) return showToast("Enter a valid http:// or https:// partner link.");
+      techPartners[idx].url = safe;
+      persistAllState(true);
+      renderTechPartners();
+      renderStudioPartnerManager();
+      showToast("Partner link updated!");
+    }
+
+    function deleteTechPartner(idx) {
+      if (idx < 0 || idx >= techPartners.length) return;
+      techPartners.splice(idx, 1);
+      persistAllState(true);
+      renderTechPartners();
+      renderStudioPartnerManager();
+      showToast("Partner removed.");
+    }
+
+    document.getElementById("addTechPartnerForm")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("newPartnerName").value.trim();
+      const category = document.getElementById("newPartnerCat").value;
+      const safeUrl = safeHttpUrl(document.getElementById("newPartnerUrl").value.trim());
+      const description = document.getElementById("newPartnerDesc").value.trim();
+      if (!name || !description) return showToast("Please fill in the partner name and description.");
+      if (!safeUrl) return showToast("Please enter a valid http:// or https:// URL.");
+      const meta = PARTNER_CAT_META[category] || PARTNER_CAT_META.electronics;
+      techPartners.unshift({
+        id: "partner-" + Date.now(),
+        name,
+        category,
+        categoryLabel: meta.label,
+        icon: meta.icon,
+        description,
+        url: safeUrl,
+        cta: "Visit Partner"
+      });
+      persistAllState(true);
+      renderTechPartners();
+      renderStudioPartnerManager();
+      e.target.reset();
+      showToast("Tech partner added!");
+    });
+
+    renderTechPartners();
+    renderStudioPartnerManager();
 
     function toEmbedUrl(url) {
       const safe = safeHttpUrl(url);
@@ -1898,6 +2110,7 @@
         playbook: ["studioPanePlaybook", "tabPlaybook"],
         security: ["studioPaneSecurity", "tabSecurity"],
         curriculum: ["studioPaneCurriculum", "tabCurriculum"],
+        partners: ["studioPanePartners", "tabPartners"],
         brief: ["studioPaneBrief", "tabNewBrief"],
         videos: ["studioPaneVideos", "tabVideos"],
         members: ["studioPaneMembers", "tabMembers"]
@@ -2597,7 +2810,8 @@
     import {
       getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
       updateProfile, sendEmailVerification, sendPasswordResetEmail,
-      GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
+      GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+      signOut, onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
     import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
@@ -2617,22 +2831,33 @@
     const googleProvider = new GoogleAuthProvider();
     googleProvider.setCustomParameters({ prompt: "select_account" });
 
-    let authMailCooldownUntil = 0;
+    let authMailCooldownUntil = Number(localStorage.getItem("bp-mail-cooldown") || "0");
 
     window.syncUserStateToCloud = async function (payload) {
       const user = auth.currentUser;
       if (!user) return;
       try {
-        await setDoc(doc(db, "users", user.uid), { ...payload, displayName: user.displayName || "", email: user.email || "", updatedAt: new Date().toISOString() }, { merge: true });
-      } catch {}
+        await setDoc(doc(db, "users", user.uid), {
+          ...payload,
+          displayName: user.displayName || "",
+          email: user.email || "",
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+      } catch {
+        // Keep local state intact if offline or Firestore rules block write
+      }
     };
 
     async function loadCloudUserState(user) {
       if (!user) return;
       try {
         const snap = await getDoc(doc(db, "users", user.uid));
-        if (snap.exists() && typeof window.applyCloudUserState === "function") window.applyCloudUserState(snap.data());
-      } catch {}
+        if (snap.exists() && typeof window.applyCloudUserState === "function") {
+          window.applyCloudUserState(snap.data());
+        }
+      } catch {
+        // Fallback smoothly to local state
+      }
     }
 
     const showLoginBtn = document.getElementById("showLoginBtn");
@@ -2657,34 +2882,50 @@
       accountMessage.className = `small mt-2 ${isError ? "text-danger" : "text-success"}`;
     }
 
+    function setBtnBusy(btn, isBusy, busyLabel = "Please wait…") {
+      if (!btn) return;
+      if (isBusy) {
+        btn.dataset.origHtml = btn.innerHTML;
+        btn.disabled = true;
+        btn.textContent = busyLabel;
+      } else {
+        btn.disabled = false;
+        if (btn.dataset.origHtml) btn.innerHTML = btn.dataset.origHtml;
+      }
+    }
+
     function friendlyError(err) {
       const map = {
-        "auth/too-many-requests": "No worries—too many requests were sent in a short time. Take a quick breather, check your Spam/Junk folder in case an email already arrived, and try again in a few minutes.",
-        "auth/invalid-credential": "Hmm, that email or password didn't match. Double-check your typing or tap Forgot Password? if needed.",
-        "auth/user-not-found": "We couldn't find an account with that email yet. You can switch to Create Account to start fresh!",
-        "auth/wrong-password": "That password doesn't match this account—give it another try or reset your password.",
-        "auth/email-already-in-use": "Good news: an account with this email already exists! Switch to Sign In to access it.",
-        "auth/weak-password": "Please choose a slightly stronger password with at least 8 characters.",
-        "auth/invalid-email": "That doesn't look like a valid email address yet—check for typos like missing @ or .com.",
-        "auth/network-request-failed": "Looks like your connection dropped for a second. Check your internet and try again—your local studio is safe.",
-        "auth/popup-closed-by-user": "The Google sign-in window closed before finishing. Whenever you're ready, tap Continue with Google again.",
-        "auth/popup-blocked": "Your browser blocked the sign-in popup. Allow popups for this site or sign in with email and password.",
-        "auth/unauthorized-domain": "This domain isn't listed yet in Firebase Authorized Domains. Add it in Firebase Console -> Authentication -> Settings."
+        "auth/too-many-requests": "No worries—too many requests happened in a short window. Check your Spam/Junk folder in case an email already arrived, and give it a few minutes before trying again.",
+        "auth/invalid-credential": "That email or password didn't match. Check your spelling or tap Forgot Password? to reset it.",
+        "auth/user-not-found": "No account was found with that email yet. Tap Create Account to get started!",
+        "auth/wrong-password": "That password didn't match—try again or tap Forgot Password? below.",
+        "auth/email-already-in-use": "Good news: an account with this email already exists! Switch to Sign In to log in.",
+        "auth/weak-password": "Please use a password with at least 8 characters.",
+        "auth/invalid-email": "Please enter a valid email address (for example, name@example.com).",
+        "auth/network-request-failed": "Your connection dropped briefly. Check your internet and try again—your local progress is safe.",
+        "auth/popup-closed-by-user": "The Google sign-in window closed before finishing. Tap Continue with Google whenever you're ready.",
+        "auth/popup-blocked": "Popup was blocked—switching to full-page Google sign-in…",
+        "auth/cancelled-popup-request": "Sign-in was interrupted by another tap. Please try once more.",
+        "auth/user-disabled": "This account has been disabled. Please contact BlockPulse support.",
+        "auth/requires-recent-login": "For security, please sign out and sign back in before changing sensitive account settings.",
+        "auth/unauthorized-domain": "Add this domain in Firebase Console -> Authentication -> Settings -> Authorized domains."
       };
-      return map[err?.code] || "Something unexpected happened, and your saved studio is safe. Please try again in a moment.";
+      return map[err?.code] || "Something went wrong, and your saved studio data is safe. Please try again in a moment.";
     }
 
     function checkMailCooldown() {
       const remainingSec = Math.ceil((authMailCooldownUntil - Date.now()) / 1000);
       if (remainingSec > 0) {
-        setMessage(`We just sent an email—please wait ${remainingSec}s or check your Spam/Junk folder before sending another.`, true);
+        setMessage(`Email already sent—please wait ${remainingSec}s or check your Spam/Junk folder before requesting another.`, true);
         return false;
       }
       return true;
     }
 
-    function startMailCooldown(seconds = 45) {
+    function startMailCooldown(seconds = 60) {
       authMailCooldownUntil = Date.now() + seconds * 1000;
+      localStorage.setItem("bp-mail-cooldown", String(authMailCooldownUntil));
     }
 
     function setMode(mode) {
@@ -2695,6 +2936,7 @@
       showRegisterBtn.className = !isLogin ? "btn-primary-bp flex-fill" : "btn btn-outline-secondary flex-fill";
       setMessage("");
     }
+
     function renderUserProfile(user) {
       const displayName = profilePrefs.displayName || user.displayName || user.email?.split("@")[0] || "BlockPulse Member";
       const email = user.email || "No email on account";
@@ -2710,106 +2952,186 @@
       }
       if (sendVerificationBtn) {
         sendVerificationBtn.disabled = verified;
-        sendVerificationBtn.innerHTML = verified ? `<i class="bi bi-patch-check-fill me-1"></i>Email Verified` : `<i class="bi bi-envelope-check me-1"></i>Send Verification Email`;
+        sendVerificationBtn.innerHTML = verified
+          ? `<i class="bi bi-patch-check-fill me-1"></i>Email Verified`
+          : `<i class="bi bi-envelope-check me-1"></i>Send Verification Email`;
       }
       const studioSummary = document.getElementById("studioAccountSummary");
-      if (studioSummary) studioSummary.textContent = `Signed in as ${displayName} (${email}) · ${verified ? "Email verified" : "Email unverified"}`;
-      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${escapeHtml(displayName)}`;
+      if (studioSummary) {
+        studioSummary.textContent = `Signed in as ${displayName} (${email}) · ${verified ? "Email verified" : "Email unverified"}`;
+      }
+      if (navAccountBtn) {
+        navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${escapeHtml(displayName)}`;
+      }
       renderAvatarEverywhere(displayName);
     }
+
+    getRedirectResult(auth)
+      .then((res) => {
+        if (res?.user) {
+          setMessage("Signed in with Google!");
+          window.showToast?.("Signed in with Google!");
+        }
+      })
+      .catch((err) => {
+        if (err?.code) setMessage(friendlyError(err), true);
+      });
 
     showLoginBtn?.addEventListener("click", () => setMode("login"));
     showRegisterBtn?.addEventListener("click", () => setMode("register"));
 
     loginForm?.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      if (!email.includes("@")) return setMessage("Please enter a valid email address.", true);
+      const submitBtn = loginForm.querySelector('button[type="submit"]');
+      setBtnBusy(submitBtn, true, "Signing in…");
       try {
-        await signInWithEmailAndPassword(auth, document.getElementById("loginEmail").value.trim(), document.getElementById("loginPassword").value);
+        await signInWithEmailAndPassword(auth, email, password);
         setMessage("Signed in successfully—welcome back!");
         window.showToast?.("Welcome back to BlockPulse!");
-      } catch (err) { setMessage(friendlyError(err), true); }
+      } catch (err) {
+        setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(submitBtn, false);
+      }
     });
 
     registerForm?.addEventListener("submit", async (e) => {
       e.preventDefault();
       const name = document.getElementById("registerName").value.trim();
+      const email = document.getElementById("registerEmail").value.trim();
+      const password = document.getElementById("registerPassword").value;
+      if (!email.includes("@")) return setMessage("Please enter a valid email address.", true);
+      if (password.length < 8) return setMessage("Password must be at least 8 characters.", true);
+      const submitBtn = registerForm.querySelector('button[type="submit"]');
+      setBtnBusy(submitBtn, true, "Creating account…");
       try {
-        const cred = await createUserWithEmailAndPassword(auth, document.getElementById("registerEmail").value.trim(), document.getElementById("registerPassword").value);
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
         if (name) {
           profilePrefs.displayName = name;
           await updateProfile(cred.user, { displayName: name });
         }
         try {
           await sendEmailVerification(cred.user);
-          startMailCooldown(45);
-          setMessage("Account created! We sent a verification link—check your inbox or Spam folder.");
+          startMailCooldown(60);
+          setMessage("Account created! We sent a verification email—check your inbox or Spam folder.");
         } catch {
           setMessage("Account created! You can send a verification email anytime from your profile.");
         }
         renderUserProfile(cred.user);
         window.showToast?.(`Welcome to BlockPulse, ${name || "Member"}!`);
-      } catch (err) { setMessage(friendlyError(err), true); }
+      } catch (err) {
+        setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(submitBtn, false);
+      }
     });
 
     updateProfileForm?.addEventListener("submit", async (e) => {
       e.preventDefault();
       const newName = document.getElementById("profileNameInput").value.trim();
       if (!newName) return;
-      profilePrefs.displayName = newName;
-      localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
-      document.getElementById("userDisplayName").textContent = newName;
-      if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${escapeHtml(newName)}`;
-      renderAvatarEverywhere(newName);
-      if (auth.currentUser) {
-        try { await updateProfile(auth.currentUser, { displayName: newName }); } catch {}
-        await window.syncUserStateToCloud?.({ displayName: newName, profilePrefs });
+      const submitBtn = updateProfileForm.querySelector('button[type="submit"]');
+      setBtnBusy(submitBtn, true, "Saving…");
+      try {
+        profilePrefs.displayName = newName;
+        localStorage.setItem("bp-profile-prefs", JSON.stringify(profilePrefs));
+        document.getElementById("userDisplayName").textContent = newName;
+        if (navAccountBtn) navAccountBtn.innerHTML = `<i class="bi bi-person-check me-1"></i>${escapeHtml(newName)}`;
+        renderAvatarEverywhere(newName);
+        if (auth.currentUser) {
+          try { await updateProfile(auth.currentUser, { displayName: newName }); } catch {}
+          await window.syncUserStateToCloud?.({ displayName: newName, profilePrefs });
+        }
+        setMessage("Profile saved.");
+        window.showToast?.(`Profile saved as ${newName}.`);
+      } finally {
+        setBtnBusy(submitBtn, false);
       }
-      setMessage("Profile saved.");
-      window.showToast?.(`Profile saved as ${newName}.`);
     });
 
     sendVerificationBtn?.addEventListener("click", async () => {
-      if (!auth.currentUser) return;
-      if (!checkMailCooldown()) return;
+      if (!auth.currentUser || !checkMailCooldown()) return;
+      setBtnBusy(sendVerificationBtn, true, "Sending…");
       try {
         await sendEmailVerification(auth.currentUser);
-        startMailCooldown(45);
+        startMailCooldown(60);
         setMessage(`Verification email sent to ${auth.currentUser.email}. Check your inbox or Spam folder.`);
-      } catch (err) { setMessage(friendlyError(err), true); }
+      } catch (err) {
+        if (err?.code === "auth/too-many-requests") startMailCooldown(120);
+        setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(sendVerificationBtn, false);
+        if (auth.currentUser) renderUserProfile(auth.currentUser);
+      }
     });
 
     refreshVerificationBtn?.addEventListener("click", async () => {
       if (!auth.currentUser) return;
+      setBtnBusy(refreshVerificationBtn, true, "…");
       try {
         await auth.currentUser.reload();
         renderUserProfile(auth.currentUser);
-        setMessage(auth.currentUser.emailVerified ? "Awesome—your email is verified!" : "Not verified yet—tap the link in your email, then refresh again.");
-      } catch (err) { setMessage(friendlyError(err), true); }
+        setMessage(auth.currentUser.emailVerified
+          ? "Awesome—your email is verified!"
+          : "Not verified yet—tap the link in your email, then refresh again.");
+      } catch (err) {
+        setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(refreshVerificationBtn, false);
+      }
     });
 
-    async function triggerPasswordReset(targetEmail) {
-      if (!targetEmail) return setMessage("Enter your email address first so we know where to send the reset link.", true);
+    async function triggerPasswordReset(targetEmail, btnEl) {
+      if (!targetEmail || !targetEmail.includes("@")) {
+        return setMessage("Enter a valid email address first so we know where to send the reset link.", true);
+      }
       if (!checkMailCooldown()) return;
+      setBtnBusy(btnEl, true, "Sending…");
       try {
         await sendPasswordResetEmail(auth, targetEmail);
-        startMailCooldown(45);
+        startMailCooldown(60);
         setMessage(`Password reset link sent to ${targetEmail}. Check your inbox or Spam/Junk folder.`);
-      } catch (err) { setMessage(friendlyError(err), true); }
+      } catch (err) {
+        if (err?.code === "auth/too-many-requests") startMailCooldown(120);
+        setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(btnEl, false);
+      }
     }
-    resetPasswordBtn?.addEventListener("click", () => triggerPasswordReset(document.getElementById("loginEmail").value.trim()));
-    profileResetPasswordBtn?.addEventListener("click", () => triggerPasswordReset(auth.currentUser?.email || ""));
+    resetPasswordBtn?.addEventListener("click", () => triggerPasswordReset(document.getElementById("loginEmail").value.trim(), resetPasswordBtn));
+    profileResetPasswordBtn?.addEventListener("click", () => triggerPasswordReset(auth.currentUser?.email || "", profileResetPasswordBtn));
 
     googleSignInBtn?.addEventListener("click", async () => {
-      try { await signInWithPopup(auth, googleProvider); setMessage("Signed in with Google."); window.showToast?.("Signed in with Google!"); } catch (err) { setMessage(friendlyError(err), true); }
+      setBtnBusy(googleSignInBtn, true, "Connecting to Google…");
+      try {
+        await signInWithPopup(auth, googleProvider);
+        setMessage("Signed in with Google.");
+        window.showToast?.("Signed in with Google!");
+      } catch (err) {
+        if (err?.code === "auth/popup-blocked") {
+          setMessage(friendlyError(err));
+          await signInWithRedirect(auth, googleProvider);
+          return;
+        }
+        setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(googleSignInBtn, false);
+      }
     });
 
     signOutBtn?.addEventListener("click", async () => {
+      setBtnBusy(signOutBtn, true, "Signing out…");
       try {
         await signOut(auth);
         setMessage("Signed out safely. Your local studio settings stay right here.");
         window.showToast?.("You have been signed out.");
       } catch (err) {
         setMessage(friendlyError(err), true);
+      } finally {
+        setBtnBusy(signOutBtn, false);
       }
     });
 
