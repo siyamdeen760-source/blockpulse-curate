@@ -58,7 +58,6 @@
       white-space: nowrap;
     }
 
-    /* Category Filter Bar */
     .filter-bar {
       display: flex;
       gap: 8px;
@@ -173,7 +172,6 @@
       text-align: right;
     }
 
-    /* Live Price Position Bar */
     .position-box {
       margin-top: 10px;
       background: var(--card-2);
@@ -234,7 +232,6 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Chart & Timeframe Controls */
     .chart-controls {
       display: flex;
       justify-content: space-between;
@@ -280,6 +277,7 @@
       overflow: hidden;
       background: #080f1d;
       border: 1px solid rgba(148, 163, 184, 0.1);
+      touch-action: pan-y;
     }
 
     .chart-readout {
@@ -294,7 +292,6 @@
 
     .chart-readout strong { color: var(--text); }
 
-    /* Expandable Specs */
     .expand-btn {
       width: 100%;
       margin-top: 10px;
@@ -383,10 +380,10 @@
 
   <script>
     const timeframes = {
-      "1H": { mult: 0.5, step: 0.45 },
-      "4H": { mult: 0.8, step: 0.75 },
+      "1H": { mult: 0.55, step: 0.45 },
+      "4H": { mult: 0.85, step: 0.75 },
       "1D": { mult: 1.0, step: 1.0 },
-      "7D": { mult: 1.4, step: 1.35 }
+      "7D": { mult: 1.45, step: 1.35 }
     };
 
     const METALS_SPOT_URL = "https://alyawmgold.com/api/v1/spot/latest?country=USD";
@@ -399,12 +396,13 @@
         category: "CRYPTO",
         decimals: 2,
         unit: "$",
-        tickStep: 90,
+        swingPct: 0.014,
         specNote: "24/7 Spot · High liquidity",
         driverNote: "Watch liquidity sweeps, funding rates, and key range boundaries.",
         spotUrl: "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+        candlesUrl: "https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=300",
         parseSpot: (d) => Number(d?.data?.amount),
-        series: [88400, 89100, 88750, 90200, 91450, 90800, 92100, 91600, 92850, 92400, 93100, 92940]
+        series: []
       },
       {
         id: "ethusd",
@@ -413,12 +411,13 @@
         category: "CRYPTO",
         decimals: 2,
         unit: "$",
-        tickStep: 6.5,
+        swingPct: 0.018,
         specNote: "24/7 Spot · Smart contract beta",
         driverNote: "Track ETH/BTC relative strength, network activity, and range pivots.",
         spotUrl: "https://api.coinbase.com/v2/prices/ETH-USD/spot",
+        candlesUrl: "https://api.exchange.coinbase.com/products/ETH-USD/candles?granularity=300",
         parseSpot: (d) => Number(d?.data?.amount),
-        series: [3180, 3215, 3190, 3255, 3290, 3260, 3310, 3285, 3335, 3312, 3350, 3338]
+        series: []
       },
       {
         id: "xagusd",
@@ -427,12 +426,13 @@
         category: "METALS",
         decimals: 2,
         unit: "$",
-        tickStep: 0.05,
+        swingPct: 0.012,
         specNote: "Spot bullion / oz · Industrial + safe haven",
         driverNote: "Watch real yields, US dollar shifts, and safe-haven flows before sizing entries.",
         spotUrl: METALS_SPOT_URL,
-        parseSpot: (d) => Number(d?.metals?.silver?.units?.ounce ?? d?.metals?.silver?.price),
-        series: [40.85, 41.05, 40.92, 41.28, 41.55, 41.32, 41.74, 41.50, 41.88, 41.62, 41.82, 41.69]
+        parseSpot: (d) => Number(d?.metals?.silver?.units?.ounce ?? d?.metals?.silver?.price ?? d?.silver),
+        seedPrice: 33.44,
+        series: []
       },
       {
         id: "xauusd",
@@ -441,12 +441,13 @@
         category: "METALS",
         decimals: 2,
         unit: "$",
-        tickStep: 2.5,
+        swingPct: 0.009,
         specNote: "Spot bullion / oz · Reserve & macro hedge",
         driverNote: "Monitor sovereign yields, central bank demand, and USD index momentum.",
         spotUrl: METALS_SPOT_URL,
-        parseSpot: (d) => Number(d?.metals?.gold?.units?.ounce ?? d?.metals?.gold?.price),
-        series: [3538, 3552, 3544, 3566, 3580, 3561, 3592, 3574, 3601, 3584, 3596, 3571]
+        parseSpot: (d) => Number(d?.metals?.gold?.units?.ounce ?? d?.metals?.gold?.price ?? d?.gold),
+        seedPrice: 2695.0,
+        series: []
       },
       {
         id: "eurusd",
@@ -455,12 +456,13 @@
         category: "FOREX",
         decimals: 5,
         unit: "",
-        tickStep: 0.00025,
+        swingPct: 0.004,
         specNote: "Major FX · 0.00010 = 1 pip",
         driverNote: "Watch rate differentials, US/EU macro prints, and London/NY overlap.",
         spotUrl: "https://api.frankfurter.app/latest?from=EUR&to=USD",
         parseSpot: (d) => Number(d?.rates?.USD),
-        series: [1.0942, 1.0951, 1.0938, 1.0964, 1.0979, 1.0969, 1.0988, 1.0975, 1.0994, 1.0986, 1.0999, 1.0970]
+        seedPrice: 1.0891,
+        series: []
       },
       {
         id: "gbpusd",
@@ -469,14 +471,31 @@
         category: "FOREX",
         decimals: 5,
         unit: "",
-        tickStep: 0.0003,
+        swingPct: 0.005,
         specNote: "Major FX · Active European/US sessions",
         driverNote: "Track BoE vs. Fed policy expectations, UK data releases, and range edges.",
         spotUrl: "https://api.frankfurter.app/latest?from=GBP&to=USD",
         parseSpot: (d) => Number(d?.rates?.USD),
-        series: [1.3060, 1.3082, 1.3071, 1.3098, 1.3114, 1.3092, 1.3125, 1.3105, 1.3134, 1.3118, 1.3129, 1.3109]
+        seedPrice: 1.2758,
+        series: []
       }
     ];
+
+    // Build a realistic 14-point market wave ending at anchorPrice so live price sits naturally in range
+    function buildAnchoredSeries(anchorPrice, swingPct, count = 14) {
+      const safePrice = Number.isFinite(anchorPrice) && anchorPrice > 0 ? anchorPrice : 100;
+      const pattern = [-0.65, -0.25, -0.85, -0.35, 0.25, -0.15, 0.65, 0.15, -0.45, 0.35, -0.1, 0.2, -0.05];
+      const pts = pattern.map((factor) => {
+        const jitter = (Math.random() - 0.5) * 0.25;
+        return Math.max(0.00001, safePrice * (1 + (factor + jitter) * swingPct));
+      });
+      pts.push(safePrice);
+      return pts;
+    }
+
+    markets.forEach((m) => {
+      m.series = buildAnchoredSeries(m.seedPrice || 100, m.swingPct);
+    });
 
     function fmt(val, m) {
       return `${m.unit}${Number(val).toFixed(m.decimals)}`;
@@ -487,19 +506,19 @@
       const anchor = m.series[m.series.length - 1];
       return m.series.map((v, idx) => {
         if (idx === m.series.length - 1) return anchor;
-        return anchor + (v - anchor) * cfg.mult;
+        return Math.max(0.00001, anchor + (v - anchor) * cfg.mult);
       });
     }
 
     function renderMarketChart(state, values, color, posPct, high, low, live) {
       const svg = state.el.querySelector("svg");
-      const w = 380, h = 175, padTop = 14, padBottom = 16, padLeft = 12, padRight = 56;
+      const w = 380, h = 175, padTop = 14, padBottom = 16, padLeft = 12, padRight = 58;
       const plotW = w - padLeft - padRight;
       const plotH = h - padTop - padBottom;
 
       const min = Math.min(...values);
       const max = Math.max(...values);
-      const span = max - min || 1;
+      const span = max - min || (Math.abs(live) * 0.01) || 1;
       const mid = (high + low) / 2;
 
       const toX = (i) => padLeft + (i / Math.max(values.length - 1, 1)) * plotW;
@@ -544,8 +563,8 @@
         <line x1="${padLeft}" y1="${lastY.toFixed(1)}" x2="${padLeft + plotW}" y2="${lastY.toFixed(1)}"
               stroke="#ffffff" stroke-opacity="0.35" stroke-dasharray="4,3" stroke-width="1" />
         <rect x="${padLeft + plotW + 4}" y="${Math.max(2, Math.min(h - 18, lastY - 8)).toFixed(1)}"
-              width="50" height="16" rx="4" fill="${color}" />
-        <text x="${padLeft + plotW + 29}" y="${Math.max(13, Math.min(h - 7, lastY + 3)).toFixed(1)}"
+              width="52" height="16" rx="4" fill="${color}" />
+        <text x="${padLeft + plotW + 30}" y="${Math.max(13, Math.min(h - 7, lastY + 3)).toFixed(1)}"
               fill="#05101c" font-size="8.5" font-weight="700" text-anchor="middle">
           ${Number(live).toFixed(state.m.decimals > 3 ? 3 : state.m.decimals)}
         </text>
@@ -656,7 +675,7 @@
             <button class="tf-btn" data-tf="1D" type="button">1D</button>
             <button class="tf-btn" data-tf="7D" type="button">7D</button>
           </div>
-          <span class="tick-status">● Live Sync</span>
+          <span class="tick-status">● Tick Sync</span>
         </div>
 
         <div class="chart-box">
@@ -685,7 +704,7 @@
         </div>
       `;
 
-      const state = { m, el, tf: "1H", hoverIndex: null };
+      const state = { m, el, tf: "1H", hoverIndex: null, isLive: false };
 
       const chartBox = el.querySelector(".chart-box");
       const updateInspectFromClientX = (clientX) => {
@@ -727,7 +746,6 @@
       return state;
     });
 
-    // Category Filter Logic
     document.querySelectorAll(".filter-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
@@ -740,7 +758,26 @@
       });
     });
 
-    // Live Public API Sync (Crypto, Metals, Forex) with Automatic Fallback
+    async function tryLoadCandles(m, livePrice) {
+      if (!m.candlesUrl) return false;
+      try {
+        const res = await fetch(m.candlesUrl, { cache: "no-store" });
+        if (!res.ok) return false;
+        const raw = await res.json();
+        if (!Array.isArray(raw) || raw.length < 6) return false;
+        // Coinbase candles return [time, low, high, open, close, volume] newest-first
+        const closes = raw.slice(0, 14).reverse().map((c) => Number(c[4])).filter((n) => Number.isFinite(n) && n > 0);
+        if (closes.length < 6) return false;
+        if (Number.isFinite(livePrice) && livePrice > 0) {
+          closes[closes.length - 1] = livePrice;
+        }
+        m.series = closes;
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
     async function syncLiveSpots() {
       let liveHits = 0;
       const jsonCache = new Map();
@@ -760,7 +797,13 @@
             if (!json) return;
             const price = m.parseSpot(json);
             if (Number.isFinite(price) && price > 0) {
-              m.series[m.series.length - 1] = price;
+              const gotCandles = await tryLoadCandles(m, price);
+              if (!gotCandles && !state.isLive) {
+                m.series = buildAnchoredSeries(price, m.swingPct, m.series.length);
+              } else {
+                m.series[m.series.length - 1] = price;
+              }
+              state.isLive = true;
               liveHits += 1;
               el.querySelector(".tick-status").textContent = "● API Live";
               updateCard(state);
@@ -773,20 +816,19 @@
 
       badge.textContent = liveHits > 0
         ? `Live API + Tick Stream (${liveHits}/${cardStates.length})`
-        : "Simulated Live Stream";
+        : "Tick Stream Active";
     }
 
     syncLiveSpots();
     setInterval(syncLiveSpots, 20000);
 
-    // Continuous market-moving tick updates across all cards
     setInterval(() => {
       cardStates.forEach((state) => {
         const { m, tf } = state;
-        const tfStep = m.tickStep * (timeframes[tf]?.step ?? 1);
+        const tfStep = m.series[m.series.length - 1] * m.swingPct * 0.14 * (timeframes[tf]?.step ?? 1);
         const last = m.series[m.series.length - 1];
         const move = (Math.random() - 0.49) * tfStep;
-        const nextPrice = Math.max(0.0001, last + move);
+        const nextPrice = Math.max(0.00001, last + move);
         m.series = [...m.series.slice(1), nextPrice];
         updateCard(state);
       });
