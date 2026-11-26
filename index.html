@@ -255,7 +255,7 @@
           <div class="col-lg-7">
             <div class="eyebrow mb-3"><span class="badge rounded-pill text-bg-success">Live Updating</span> Metals, Commodities, Crypto, Indices, Energies & Exotics</div>
             <h1 class="display fw-bold mb-4">Clarity in markets.<br><span class="gradient-text">Confidence in learning.</span></h1>
-            <p class="hero-copy mb-4">Every sector updates continuously—inspect live line or candlestick charts, build your complete Learning Studio with custom lessons, watchlists, trade journals, and self-custody security checklists.</p>
+            <p class="hero-copy mb-4">Every sector updates continuously—tap any market to open live line or candlestick graphics, and build your Learning Studio with custom lessons, watchlists, trade journals, and self-custody security checklists.</p>
             <div class="d-flex flex-wrap gap-2">
               <a href="#markets" class="btn-primary-bp">Inspect All Sectors <i class="bi bi-arrow-right ms-1"></i></a>
               <a href="#studio" class="btn-ghost"><i class="bi bi-mortarboard me-1"></i>Open Learning Studio</a>
@@ -289,7 +289,7 @@
           <div>
             <div class="eyebrow">Multi-Sector Market Monitor</div>
             <h2 class="display fw-bold mt-2">Metals, Commodities, Crypto, <span class="text-blue">Indices, Energies & Exotics.</span></h2>
-            <p class="muted mb-0">All sectors update automatically—filter by sector, click any row, and switch between <strong>Line</strong> and <strong>Candles</strong>.</p>
+            <p class="muted mb-0">Tap any row to open its interactive <strong>Line</strong> or <strong>Candles</strong> chart immediately—filter by sector or inspect inline below.</p>
           </div>
           <div class="d-flex flex-wrap align-items-center gap-2">
             <button type="button" class="btn-ghost py-2 px-3 small" id="refreshMarketsBtn"><i class="bi bi-arrow-clockwise me-1"></i>Refresh now</button>
@@ -331,8 +331,9 @@
                 <span class="tag" id="detailSectorTag">METALS</span>
                 <span class="pill down" id="detailWindowDelta">-1.92% (7D)</span>
                 <button type="button" class="btn-ghost py-1 px-2 small" id="pinToStudioBtn" onclick="togglePinSelectedAsset()"><i class="bi bi-pin-angle me-1 text-blue"></i>Pin to Studio</button>
+                <button type="button" class="btn-primary-bp py-1 px-2 small" onclick="selectInstrument(selectedItemId, true)"><i class="bi bi-arrows-fullscreen me-1"></i>Expand Chart</button>
               </div>
-              <small class="muted mono" id="detailCoinSubtitle">Click any row above to inspect another instrument</small>
+              <small class="muted mono" id="detailCoinSubtitle">Tap any row above to pop open its chart</small>
             </div>
 
             <div class="d-flex flex-wrap gap-2">
@@ -350,8 +351,8 @@
 
           <div class="row g-4 align-items-center">
             <div class="col-lg-7">
-              <div class="trend-stage" id="trendStage">
-                <div class="trend-tooltip" id="trendTooltip">Hover chart to inspect price or candle OHLC</div>
+              <div class="trend-stage" id="trendStage" style="touch-action:pan-y">
+                <div class="trend-tooltip" id="trendTooltip">Touch or hover chart to inspect price or candle OHLC</div>
                 <svg id="coinTrendChart" viewBox="0 0 600 220" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="trendAreaGrad" x1="0" y1="0" x2="0" y2="1">
@@ -752,7 +753,7 @@
                 <div class="row g-3">
                   <div class="col-md-6"><label class="form-label small muted">Video title</label><input class="form-control" id="videoTitleInput" maxlength="120" placeholder="e.g. Line vs Candlestick charts in forex & crypto" required></div>
                   <div class="col-md-6"><label class="form-label small muted">YouTube URL or .mp4 link</label><input class="form-control" id="videoUrlInput" maxlength="400" placeholder="https://www.youtube.com/watch?v=... or https://.../video.mp4" required></div>
-                  <div class="col-12"><button type="submit" class="btn-primary-bp"><i class="bi bi-play-btn me-1"></i>Add Video to Academy</button></div>
+                  <div class="col-12"><button class="btn-primary-bp"><i class="bi bi-play-btn me-1"></i>Add Video to Academy</button></div>
                 </div>
               </form>
             </div>
@@ -776,6 +777,73 @@
       <div class="d-flex flex-wrap justify-content-between align-items-center small muted"><span>© 2026 BlockPulse. All rights reserved.</span><span>Education first · Risk always</span></div>
     </div>
   </footer>
+
+  <!-- INTERACTIVE MARKET CHART MODAL (OPENS ON ROW CLICK) -->
+  <div class="modal fade" id="marketChartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-2">
+          <div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <h5 class="modal-title fw-bold mb-0" id="modalMarketTitle">Gold (XAU/USD)</h5>
+              <span class="tag" id="modalMarketSector">METALS</span>
+              <span class="pill down" id="modalMarketDelta">-2.15% (7D)</span>
+            </div>
+            <small class="muted mono" id="modalMarketSubtitle">Live Quote · Line & Candlestick View</small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close chart"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <div class="d-flex gap-1" role="group" aria-label="Modal chart mode">
+              <button type="button" class="tf-btn active" id="modalModeLineBtn" onclick="setChartMode('line')"><i class="bi bi-graph-up me-1"></i>Line</button>
+              <button type="button" class="tf-btn" id="modalModeCandleBtn" onclick="setChartMode('candle')"><i class="bi bi-bar-chart me-1"></i>Candles</button>
+            </div>
+            <div class="d-flex gap-1" role="group" aria-label="Modal timeframe">
+              <button type="button" class="tf-btn" data-modal-days="1" onclick="changeChartTimeframe(1)">24H</button>
+              <button type="button" class="tf-btn active" data-modal-days="7" onclick="changeChartTimeframe(7)">7D</button>
+              <button type="button" class="tf-btn" data-modal-days="30" onclick="changeChartTimeframe(30)">30D</button>
+            </div>
+            <button type="button" class="btn-ghost py-1 px-2 small" id="modalPinBtn" onclick="togglePinSelectedAsset()"><i class="bi bi-pin-angle me-1 text-blue"></i>Pin</button>
+          </div>
+
+          <div class="trend-stage mb-2" id="modalTrendStage" style="height:245px;touch-action:pan-y">
+            <div class="trend-tooltip" id="modalTrendTooltip">Touch or hover chart to inspect price / OHLC</div>
+            <svg id="modalTrendChart" viewBox="0 0 600 220" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="modalAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#4d91ff" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#4d91ff" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="45" x2="600" y2="45" stroke="var(--line)" stroke-dasharray="4 4"/>
+              <line x1="0" y1="110" x2="600" y2="110" stroke="var(--line)" stroke-dasharray="4 4"/>
+              <line x1="0" y1="175" x2="600" y2="175" stroke="var(--line)" stroke-dasharray="4 4"/>
+              <g id="modalLineGroup">
+                <path id="modalAreaPath" d="" fill="url(#modalAreaGrad)"/>
+                <polyline id="modalLinePath" points="" fill="none" stroke="var(--blue)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <g id="modalCandleGroup" hidden></g>
+              <line id="modalHoverLine" x1="0" y1="0" x2="0" y2="220" stroke="var(--cyan)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>
+              <circle id="modalHoverDot" cx="0" cy="0" r="4.5" fill="var(--cyan)" opacity="0"/>
+            </svg>
+          </div>
+
+          <div class="d-flex justify-content-between small muted mono mb-3">
+            <span>Low: <strong id="modalRangeLow" class="text-body">$—</strong></span>
+            <span>Live: <strong id="modalRangeNow" class="text-blue">$—</strong></span>
+            <span>High: <strong id="modalRangeHigh" class="text-body">$—</strong></span>
+          </div>
+
+          <div class="surface-soft p-3">
+            <div class="small fw-bold text-uppercase mono mb-1" style="letter-spacing:.07em"><i class="bi bi-chat-square-quote-fill text-blue me-1"></i>Market Context</div>
+            <p class="small fw-semibold mb-1" id="modalCommentaryHeadline"></p>
+            <p class="small muted mb-0" id="modalCommentaryBody"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- TRACK STUDY READER MODAL -->
   <div class="modal fade" id="trackReaderModal" tabindex="-1" aria-hidden="true">
@@ -1055,6 +1123,7 @@
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => el.classList.remove("show"), 3600);
     }
+    window.showToast = showToast;
 
     window.addEventListener("error", (event) => {
       if (event?.message && !String(event.message).includes("Script error")) {
@@ -1525,10 +1594,10 @@
       if (Array.isArray(remote.billingHistory)) billingHistory = remote.billingHistory;
       if ("studio" in remote && remote.studio) studioData = remote.studio;
       if (Array.isArray(remote.studios)) savedStudios = remote.studios;
-      if (Array.isArray(remote.lessons) && remote.lessons.length) studioLessons = remote.lessons;
+      if (Array.isArray(remote.lessons)) studioLessons = remote.lessons;
       if (Array.isArray(remote.briefs)) customBriefs = remote.briefs;
-      if (Array.isArray(remote.videos) && remote.videos.length) customVideos = remote.videos;
-      if (Array.isArray(remote.techPartners) && remote.techPartners.length) techPartners = remote.techPartners;
+      if (Array.isArray(remote.videos)) customVideos = remote.videos;
+      if (Array.isArray(remote.techPartners)) techPartners = remote.techPartners;
       if (Array.isArray(remote.watchlist)) studioWatchlist = remote.watchlist;
       if (typeof remote.macroNotes === "string") {
         studioMacroNotes = remote.macroNotes;
@@ -1536,8 +1605,8 @@
         if (notesEl) notesEl.value = studioMacroNotes;
       }
       if (Array.isArray(remote.journal)) studioJournal = remote.journal;
-      if (Array.isArray(remote.playbook) && remote.playbook.length) studioPlaybook = remote.playbook;
-      if (Array.isArray(remote.security) && remote.security.length) studioSecurity = remote.security;
+      if (Array.isArray(remote.playbook)) studioPlaybook = remote.playbook;
+      if (Array.isArray(remote.security)) studioSecurity = remote.security;
 
       persistAllState(false);
       renderCourses();
@@ -2188,12 +2257,19 @@
     populateWatchlistDropdown();
 
     function updatePinButtonUI() {
-      const btn = document.getElementById("pinToStudioBtn");
-      if (!btn) return;
       const isPinned = studioWatchlist.includes(selectedItemId);
-      btn.innerHTML = isPinned
-        ? `<i class="bi bi-pin-fill me-1 text-blue"></i>Pinned in Studio`
-        : `<i class="bi bi-pin-angle me-1 text-blue"></i>Pin to Studio`;
+      const btn = document.getElementById("pinToStudioBtn");
+      const mBtn = document.getElementById("modalPinBtn");
+      if (btn) {
+        btn.innerHTML = isPinned
+          ? `<i class="bi bi-pin-fill me-1 text-blue"></i>Pinned in Studio`
+          : `<i class="bi bi-pin-angle me-1 text-blue"></i>Pin to Studio`;
+      }
+      if (mBtn) {
+        mBtn.innerHTML = isPinned
+          ? `<i class="bi bi-pin-fill me-1 text-blue"></i>Pinned`
+          : `<i class="bi bi-pin-angle me-1 text-blue"></i>Pin`;
+      }
     }
 
     function togglePinSelectedAsset() {
@@ -2241,12 +2317,12 @@
         return `
           <div class="col-sm-6 col-xl-4">
             <div class="surface-soft p-3 d-flex justify-content-between align-items-center gap-2">
-              <div style="cursor:pointer" onclick="selectInstrument('${escapeHtml(item.id)}');document.getElementById('markets').scrollIntoView({behavior:'smooth'})">
+              <div style="cursor:pointer" onclick="selectInstrument('${escapeHtml(item.id)}', true)">
                 <div class="fw-bold small">${escapeHtml(item.symbol)} <span class="tag ms-1">${escapeHtml(item.sectorLabel)}</span></div>
                 <div class="mono fw-bold mt-1">${escapeHtml(fmtAssetPrice(item.price, item))} <span class="small ${up ? "up" : "down"}">${up ? "+" : ""}${item.chg24.toFixed(2)}%</span></div>
               </div>
               <div class="d-flex gap-1">
-                <button type="button" class="btn-ghost py-1 px-2 small" title="Inspect chart" onclick="selectInstrument('${escapeHtml(item.id)}');document.getElementById('markets').scrollIntoView({behavior:'smooth'})"><i class="bi bi-graph-up"></i></button>
+                <button type="button" class="btn-ghost py-1 px-2 small" title="Inspect chart" onclick="selectInstrument('${escapeHtml(item.id)}', true)"><i class="bi bi-graph-up"></i></button>
                 <button type="button" class="btn btn-outline-danger py-1 px-2 small" title="Unpin" onclick="removeWatchlistAsset('${escapeHtml(item.id)}')"><i class="bi bi-x-lg"></i></button>
               </div>
             </div>
@@ -2264,6 +2340,13 @@
       if (tag) tag.textContent = "Saved · " + new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
       showToast("Macro desk notes saved!");
     }
+    let macroSaveTimer;
+    macroNotesEl?.addEventListener("input", () => {
+      const tag = document.getElementById("macroNotesSavedTag");
+      if (tag) tag.textContent = "Saving…";
+      clearTimeout(macroSaveTimer);
+      macroSaveTimer = setTimeout(saveStudioMacroNotes, 800);
+    });
 
     function renderTradeJournal() {
       const listEl = document.getElementById("tradeJournalList");
@@ -2364,9 +2447,11 @@
     }
 
     function deletePlaybookRule(idx) {
+      if (idx < 0 || idx >= studioPlaybook.length) return;
       studioPlaybook.splice(idx, 1);
       persistAllState(true);
       renderPlaybookRules();
+      showToast("Rule removed from playbook.");
     }
 
     document.getElementById("playbookRuleForm")?.addEventListener("submit", (e) => {
@@ -2411,9 +2496,11 @@
     }
 
     function deleteSecurityCheck(idx) {
+      if (idx < 0 || idx >= studioSecurity.length) return;
       studioSecurity.splice(idx, 1);
       persistAllState(true);
       renderSecurityVault();
+      showToast("Security check removed.");
     }
 
     document.getElementById("customSecurityForm")?.addEventListener("submit", (e) => {
@@ -2524,24 +2611,19 @@
       };
     }
 
-    function renderChart(item) {
-      const lineGroup = document.getElementById("lineSeriesGroup");
-      const candleGroup = document.getElementById("candleSeriesGroup");
-      const lineEl = document.getElementById("trendLinePath");
-      const areaEl = document.getElementById("trendAreaPath");
-      if (!item || !lineGroup || !candleGroup) return;
+    function drawSvgSeries(item, candles, lineData, ids) {
+      const lineGroup = document.getElementById(ids.lineGroup);
+      const candleGroup = document.getElementById(ids.candleGroup);
+      const lineEl = document.getElementById(ids.linePath);
+      const areaEl = document.getElementById(ids.areaPath);
+      if (!lineGroup || !candleGroup) return;
 
-      candleSeries = generateSeries(item, selectedDays);
-      lineSeries = candleSeries.map(c => ({ time: c.time, price: c.close }));
-
-      const lows = candleSeries.map(c => c.low);
-      const highs = candleSeries.map(c => c.high);
+      const lows = candles.map(c => c.low);
+      const highs = candles.map(c => c.high);
       const minP = Math.min(...lows);
       const maxP = Math.max(...highs);
       const span = maxP - minP || 1;
-      const w = 600;
-      const h = 220;
-      const padY = 20;
+      const w = 600, h = 220, padY = 20;
       const toY = (val) => padY + (1 - (val - minP) / span) * (h - padY * 2);
 
       const isLine = chartMode === "line";
@@ -2549,25 +2631,21 @@
       candleGroup.hidden = isLine;
 
       if (isLine) {
-        const pts = lineSeries.map((pt, idx) => {
-          const x = lineSeries.length === 1 ? w / 2 : (idx / (lineSeries.length - 1)) * w;
-          const y = toY(pt.price);
-          return { x, y, pt };
-        });
+        const pts = lineData.map((pt, idx) => ({
+          x: lineData.length === 1 ? w / 2 : (idx / (lineData.length - 1)) * w,
+          y: toY(pt.price)
+        }));
         lineEl.setAttribute("points", pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" "));
         const areaD = `M ${pts[0].x.toFixed(1)},${h} L ${pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" L ")} L ${pts[pts.length - 1].x.toFixed(1)},${h} Z`;
         areaEl.setAttribute("d", areaD);
       } else {
-        const slotW = w / candleSeries.length;
+        const slotW = w / candles.length;
         const bodyW = Math.max(4, slotW * 0.56);
-        candleGroup.innerHTML = candleSeries.map((c, idx) => {
+        candleGroup.innerHTML = candles.map((c, idx) => {
           const cx = idx * slotW + slotW / 2;
-          const yHigh = toY(c.high);
-          const yLow = toY(c.low);
-          const yOpen = toY(c.open);
-          const yClose = toY(c.close);
-          const isUp = c.close >= c.open;
-          const color = isUp ? "var(--green)" : "var(--red)";
+          const yHigh = toY(c.high), yLow = toY(c.low);
+          const yOpen = toY(c.open), yClose = toY(c.close);
+          const color = c.close >= c.open ? "var(--green)" : "var(--red)";
           const topBody = Math.min(yOpen, yClose);
           const bodyH = Math.max(2, Math.abs(yClose - yOpen));
           return `
@@ -2576,21 +2654,57 @@
           `;
         }).join("");
       }
+    }
+
+    function renderChart(item) {
+      if (!item) return;
+      candleSeries = generateSeries(item, selectedDays);
+      lineSeries = candleSeries.map(c => ({ time: c.time, price: c.close }));
+
+      drawSvgSeries(item, candleSeries, lineSeries, {
+        lineGroup: "lineSeriesGroup",
+        candleGroup: "candleSeriesGroup",
+        linePath: "trendLinePath",
+        areaPath: "trendAreaPath"
+      });
+      drawSvgSeries(item, candleSeries, lineSeries, {
+        lineGroup: "modalLineGroup",
+        candleGroup: "modalCandleGroup",
+        linePath: "modalLinePath",
+        areaPath: "modalAreaPath"
+      });
 
       const commentary = buildMarketCommentary(item, candleSeries, selectedDays);
       const isPos = commentary.deltaPct >= 0;
-      const badge = document.getElementById("detailWindowDelta");
-      badge.className = `pill ${isPos ? "up" : "down"}`;
-      badge.textContent = `${isPos ? "+" : ""}${commentary.deltaPct.toFixed(2)}% (${selectedDays === 1 ? "24H" : selectedDays === 7 ? "7D" : "30D"})`;
+      const tfText = selectedDays === 1 ? "24H" : selectedDays === 7 ? "7D" : "30D";
+      const deltaStr = `${isPos ? "+" : ""}${commentary.deltaPct.toFixed(2)}% (${tfText})`;
+      const pillClass = `pill ${isPos ? "up" : "down"}`;
 
+      const badge = document.getElementById("detailWindowDelta");
+      if (badge) { badge.className = pillClass; badge.textContent = deltaStr; }
       document.getElementById("detailCoinTitle").textContent = `${item.name} (${item.symbol})`;
       document.getElementById("detailSectorTag").textContent = item.sectorLabel;
-      document.getElementById("detailCoinSubtitle").textContent = `${item.note} · Mode: ${isLine ? "Line" : "Candlestick"}`;
+      document.getElementById("detailCoinSubtitle").textContent = `${item.note} · Mode: ${chartMode === "line" ? "Line" : "Candlestick"}`;
       document.getElementById("detailRangeLow").textContent = fmtAssetPrice(commentary.minVal, item);
       document.getElementById("detailRangeNow").textContent = fmtAssetPrice(item.price, item);
       document.getElementById("detailRangeHigh").textContent = fmtAssetPrice(commentary.maxVal, item);
       document.getElementById("coinCommentaryHeadline").textContent = commentary.headline;
       document.getElementById("coinCommentaryBody").textContent = commentary.body;
+
+      const modalBadge = document.getElementById("modalMarketDelta");
+      if (modalBadge) { modalBadge.className = pillClass; modalBadge.textContent = deltaStr; }
+      const mTitle = document.getElementById("modalMarketTitle");
+      if (mTitle) {
+        mTitle.textContent = `${item.name} (${item.symbol})`;
+        document.getElementById("modalMarketSector").textContent = item.sectorLabel;
+        document.getElementById("modalMarketSubtitle").textContent = `${fmtAssetPrice(item.price, item)} · ${item.note}`;
+        document.getElementById("modalRangeLow").textContent = fmtAssetPrice(commentary.minVal, item);
+        document.getElementById("modalRangeNow").textContent = fmtAssetPrice(item.price, item);
+        document.getElementById("modalRangeHigh").textContent = fmtAssetPrice(commentary.maxVal, item);
+        document.getElementById("modalCommentaryHeadline").textContent = commentary.headline;
+        document.getElementById("modalCommentaryBody").textContent = commentary.body;
+      }
+
       updatePinButtonUI();
     }
 
@@ -2605,7 +2719,7 @@
           const dir = lastDirections[item.id] || "";
           const flashCls = dir === "up" ? "tick-flash-up" : dir === "down" ? "tick-flash-down" : "";
           return `
-            <div class="market-row ${isSel ? "selected" : ""}" data-item-id="${escapeHtml(item.id)}" onclick="selectInstrument('${escapeHtml(item.id)}')">
+            <div class="market-row ${isSel ? "selected" : ""}" data-item-id="${escapeHtml(item.id)}" onclick="selectInstrument('${escapeHtml(item.id)}', true)">
               <div class="coin">
                 <span class="coin-icon">${escapeHtml(item.symbol.slice(0, 3))}</span>
                 <div>
@@ -2712,17 +2826,24 @@
       }
     }
 
-    function selectInstrument(id) {
+    function selectInstrument(id, openModal = false) {
       const item = MARKET_SECTORS.find(x => x.id === id) || MARKET_SECTORS[0];
       selectedItemId = item.id;
       renderMarketListAndTicker();
       renderChart(item);
+      if (openModal) {
+        const modalEl = document.getElementById("marketChartModal");
+        if (modalEl) bootstrap.Modal.getOrCreateInstance(modalEl).show();
+      }
     }
 
     function setChartMode(mode) {
       chartMode = mode;
-      document.getElementById("modeLineBtn").classList.toggle("active", mode === "line");
-      document.getElementById("modeCandleBtn").classList.toggle("active", mode === "candle");
+      const isLine = mode === "line";
+      document.getElementById("modeLineBtn")?.classList.toggle("active", isLine);
+      document.getElementById("modeCandleBtn")?.classList.toggle("active", !isLine);
+      document.getElementById("modalModeLineBtn")?.classList.toggle("active", isLine);
+      document.getElementById("modalModeCandleBtn")?.classList.toggle("active", !isLine);
       const item = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
       renderChart(item);
     }
@@ -2731,6 +2852,9 @@
       selectedDays = days;
       document.querySelectorAll(".tf-btn[data-days]").forEach(btn => {
         btn.classList.toggle("active", Number(btn.dataset.days) === days);
+      });
+      document.querySelectorAll(".tf-btn[data-modal-days]").forEach(btn => {
+        btn.classList.toggle("active", Number(btn.dataset.modalDays) === days);
       });
       const item = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
       renderChart(item);
@@ -2750,48 +2874,58 @@
       renderChart(activeItem);
     }
 
-    const trendStage = document.getElementById("trendStage");
-    trendStage?.addEventListener("mousemove", (e) => {
-      if (!candleSeries.length) return;
-      const item = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
-      const rect = trendStage.getBoundingClientRect();
-      const relX = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      const idx = Math.min(candleSeries.length - 1, Math.floor(relX * candleSeries.length));
-      const c = candleSeries[idx];
+    function bindChartScrubber(stageId, lineId, dotId, tooltipId) {
+      const stage = document.getElementById(stageId);
+      if (!stage) return;
+      const inspectAtClientX = (clientX) => {
+        if (!candleSeries.length) return;
+        const item = MARKET_SECTORS.find(x => x.id === selectedItemId) || MARKET_SECTORS[0];
+        const rect = stage.getBoundingClientRect();
+        const relX = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        const idx = Math.min(candleSeries.length - 1, Math.floor(relX * candleSeries.length));
+        const c = candleSeries[idx];
 
-      const lows = candleSeries.map(x => x.low);
-      const highs = candleSeries.map(x => x.high);
-      const minP = Math.min(...lows);
-      const maxP = Math.max(...highs);
-      const span = maxP - minP || 1;
-      const toY = (val) => 20 + (1 - (val - minP) / span) * (220 - 40);
+        const lows = candleSeries.map(x => x.low);
+        const highs = candleSeries.map(x => x.high);
+        const minP = Math.min(...lows);
+        const maxP = Math.max(...highs);
+        const span = maxP - minP || 1;
+        const toY = (val) => 20 + (1 - (val - minP) / span) * (220 - 40);
 
-      const xPos = chartMode === "line"
-        ? (candleSeries.length === 1 ? 300 : (idx / (candleSeries.length - 1)) * 600)
-        : (idx + 0.5) * (600 / candleSeries.length);
-      const yPos = toY(c.close);
+        const xPos = chartMode === "line"
+          ? (candleSeries.length === 1 ? 300 : (idx / (candleSeries.length - 1)) * 600)
+          : (idx + 0.5) * (600 / candleSeries.length);
+        const yPos = toY(c.close);
 
-      const hoverLine = document.getElementById("trendHoverLine");
-      const hoverDot = document.getElementById("trendHoverDot");
-      const tooltip = document.getElementById("trendTooltip");
-      if (hoverLine && hoverDot && tooltip) {
-        hoverLine.setAttribute("x1", xPos.toFixed(1));
-        hoverLine.setAttribute("x2", xPos.toFixed(1));
-        hoverLine.setAttribute("opacity", "1");
-        hoverDot.setAttribute("cx", xPos.toFixed(1));
-        hoverDot.setAttribute("cy", yPos.toFixed(1));
-        hoverDot.setAttribute("opacity", chartMode === "line" ? "1" : "0");
+        const hoverLine = document.getElementById(lineId);
+        const hoverDot = document.getElementById(dotId);
+        const tooltip = document.getElementById(tooltipId);
+        if (hoverLine && hoverDot && tooltip) {
+          hoverLine.setAttribute("x1", xPos.toFixed(1));
+          hoverLine.setAttribute("x2", xPos.toFixed(1));
+          hoverLine.setAttribute("opacity", "1");
+          hoverDot.setAttribute("cx", xPos.toFixed(1));
+          hoverDot.setAttribute("cy", yPos.toFixed(1));
+          hoverDot.setAttribute("opacity", chartMode === "line" ? "1" : "0");
 
-        const dt = new Date(c.time).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
-        tooltip.textContent = chartMode === "line"
-          ? `${fmtAssetPrice(c.close, item)} · ${dt}`
-          : `O ${fmtAssetPrice(c.open, item)} · H ${fmtAssetPrice(c.high, item)} · L ${fmtAssetPrice(c.low, item)} · C ${fmtAssetPrice(c.close, item)} · ${dt}`;
-      }
-    });
-    trendStage?.addEventListener("mouseleave", () => {
-      document.getElementById("trendHoverLine")?.setAttribute("opacity", "0");
-      document.getElementById("trendHoverDot")?.setAttribute("opacity", "0");
-    });
+          const dt = new Date(c.time).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+          tooltip.textContent = chartMode === "line"
+            ? `${fmtAssetPrice(c.close, item)} · ${dt}`
+            : `O ${fmtAssetPrice(c.open, item)} · H ${fmtAssetPrice(c.high, item)} · L ${fmtAssetPrice(c.low, item)} · C ${fmtAssetPrice(c.close, item)} · ${dt}`;
+        }
+      };
+
+      stage.addEventListener("mousemove", (e) => inspectAtClientX(e.clientX));
+      stage.addEventListener("touchstart", (e) => { if (e.touches[0]) inspectAtClientX(e.touches[0].clientX); }, { passive: true });
+      stage.addEventListener("touchmove", (e) => { if (e.touches[0]) inspectAtClientX(e.touches[0].clientX); }, { passive: true });
+      stage.addEventListener("mouseleave", () => {
+        document.getElementById(lineId)?.setAttribute("opacity", "0");
+        document.getElementById(dotId)?.setAttribute("opacity", "0");
+      });
+    }
+
+    bindChartScrubber("trendStage", "trendHoverLine", "trendHoverDot", "trendTooltip");
+    bindChartScrubber("modalTrendStage", "modalHoverLine", "modalHoverDot", "modalTrendTooltip");
 
     document.getElementById("refreshMarketsBtn")?.addEventListener("click", () => {
       tickAllMarkets();
